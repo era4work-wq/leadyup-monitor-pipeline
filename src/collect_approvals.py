@@ -26,6 +26,17 @@ def tg_call(token: str, method: str, **params):
     return body["result"]
 
 
+def tg_call_safe(token: str, method: str, **params):
+    """Как tg_call, но не роняет весь прогон (например, если callback_query
+    протух — Telegram отвечает 400, а нам всё равно нужно обработать
+    остальные апдейты и сдвинуть offset)."""
+    try:
+        return tg_call(token, method, **params)
+    except Exception as exc:
+        print(f"[WARN] {method} не удался: {exc}", file=sys.stderr)
+        return None
+
+
 def load_recent_pending_files():
     pending_dir = DATA_DIR / "pending"
     if not pending_dir.exists():
@@ -67,7 +78,7 @@ def main():
 
         path, pending = find_pending_entry(item_id)
         if pending is None:
-            tg_call(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Тема уже не найдена (устарела?)")
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Тема уже не найдена (устарела?)")
             continue
 
         entry = pending[item_id]
@@ -79,7 +90,7 @@ def main():
         write_json(path, pending)
 
         stamp = "✅ Взято" if action == "take" else "❌ Пропущено"
-        tg_call(
+        tg_call_safe(
             token,
             "editMessageText",
             chat_id=callback["message"]["chat"]["id"],
@@ -87,8 +98,9 @@ def main():
             text=f"{entry['text']}\n\n{stamp} · {approver}, {decided_at}",
             parse_mode="HTML",
             disable_web_page_preview=True,
+            reply_markup={"inline_keyboard": []},
         )
-        tg_call(token, "answerCallbackQuery", callback_query_id=callback["id"], text=stamp)
+        tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text=stamp)
 
         if action == "take":
             approved_today.append(entry)
