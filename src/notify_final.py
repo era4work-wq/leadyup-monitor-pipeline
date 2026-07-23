@@ -41,7 +41,7 @@ def load_drafts() -> list[dict]:
 
 def format_preview(item: dict) -> str:
     rubric = RUBRIC_LABEL.get(item.get("rubric", ""), item.get("rubric", ""))
-    return f"Черновик поста ({rubric}) — на публикацию:\n\n{item['draft_text']}"
+    return f"{rubric} · на публикацию:\n\n{item['draft_text']}"
 
 
 def main():
