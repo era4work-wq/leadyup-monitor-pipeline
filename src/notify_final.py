@@ -16,6 +16,8 @@ RUBRIC_LABEL = {
     "ai-инструмент": "🤖 AI-инструмент",
 }
 
+CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото
+
 
 def already_sent_ids() -> set[str]:
     final_dir = DATA_DIR / "final_pending"
@@ -65,19 +67,34 @@ def main():
                 ]
             ]
         }
-        result = tg_call(
-            token,
-            "sendMessage",
-            chat_id=chat_id,
-            text=text,
-            parse_mode="HTML",
-            disable_web_page_preview=True,
-            reply_markup=keyboard,
-        )
+        image_url = item.get("image_url")
+        sent_as = "text"
+        if image_url and len(text) <= CAPTION_LIMIT:
+            result = tg_call(
+                token,
+                "sendPhoto",
+                chat_id=chat_id,
+                photo=image_url,
+                caption=text,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+            sent_as = "photo"
+        else:
+            result = tg_call(
+                token,
+                "sendMessage",
+                chat_id=chat_id,
+                text=text,
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+                reply_markup=keyboard,
+            )
         final_pending[item["id"]] = {
             **item,
             "message_id": result["message_id"],
             "text": text,
+            "sent_as": sent_as,
             "status": "ждёт",
         }
 

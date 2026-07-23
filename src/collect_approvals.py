@@ -149,16 +149,29 @@ def main():
             "отклонено": "❌ Отклонено",
         }
         stamp = stamp_map[status_word]
-        tg_call_safe(
-            token,
-            "editMessageText",
-            chat_id=callback["message"]["chat"]["id"],
-            message_id=callback["message"]["message_id"],
-            text=f"{entry['text']}\n\n{stamp} · {approver}, {decided_at}",
-            parse_mode="HTML",
-            disable_web_page_preview=True,
-            reply_markup={"inline_keyboard": []},
-        )
+        new_text = f"{entry['text']}\n\n{stamp} · {approver}, {decided_at}"
+        if entry.get("sent_as") == "photo":
+            # Сообщение с картинкой редактируется через caption, не text
+            tg_call_safe(
+                token,
+                "editMessageCaption",
+                chat_id=callback["message"]["chat"]["id"],
+                message_id=callback["message"]["message_id"],
+                caption=new_text,
+                parse_mode="HTML",
+                reply_markup={"inline_keyboard": []},
+            )
+        else:
+            tg_call_safe(
+                token,
+                "editMessageText",
+                chat_id=callback["message"]["chat"]["id"],
+                message_id=callback["message"]["message_id"],
+                text=new_text,
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+                reply_markup={"inline_keyboard": []},
+            )
         tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text=stamp)
 
         if action == "take":
