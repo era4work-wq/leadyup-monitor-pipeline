@@ -19,7 +19,8 @@ PENDING_LOOKBACK_DAYS = 7
 def tg_call(token: str, method: str, **params):
     url = API_BASE.format(token=token, method=method)
     resp = requests.post(url, json=params, timeout=20)
-    resp.raise_for_status()
+    if not resp.ok:
+        raise RuntimeError(f"Telegram API {method} failed ({resp.status_code}): {resp.text}")
     body = resp.json()
     if not body.get("ok"):
         raise RuntimeError(f"Telegram API {method} failed: {body}")
@@ -70,10 +71,12 @@ def main():
         max_update_id = max(max_update_id, update["update_id"])
         callback = update.get("callback_query")
         if not callback:
+            print(f"[DEBUG] апдейт без callback_query: {list(update.keys())}", file=sys.stderr)
             continue
 
         action, _, item_id = callback.get("data", "").partition(":")
         if action not in ("take", "skip") or not item_id:
+            print(f"[DEBUG] callback с нераспознанным data={callback.get('data')!r}", file=sys.stderr)
             continue
 
         path, pending = find_pending_entry(item_id)
