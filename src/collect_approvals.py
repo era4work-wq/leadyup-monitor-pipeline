@@ -7,6 +7,7 @@
     → publish публикует пост в канал (TELEGRAM_CHANNEL) и остаётся в
     data/published/ для истории.
 """
+import os
 import sys
 from datetime import datetime, timezone
 
@@ -132,8 +133,12 @@ def main():
         decided_at = datetime.now(timezone.utc).strftime("%d.%m %H:%M")
 
         if action == "publish":
-            channel = require_env("TELEGRAM_CHANNEL")
-            ok = publish_to_channel(token, channel, entry)
+            channel = os.environ.get("TELEGRAM_CHANNEL")
+            if not channel:
+                print("[WARN] TELEGRAM_CHANNEL не задан — канал ещё не подключен", file=sys.stderr)
+                ok = False
+            else:
+                ok = publish_to_channel(token, channel, entry)
             status_word = "опубликовано" if ok else "ошибка публикации"
 
         entry["status"] = status_word
