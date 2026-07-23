@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional
 
 import requests
+import trafilatura
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE_DIR = ROOT / "state"
@@ -53,20 +54,36 @@ OG_IMAGE_RE_REV = re.compile(
 )
 
 
-def fetch_og_image(url: str) -> Optional[str]:
-    """Достаёт obложку статьи (og:image) для более привлекательного поста.
-    Best-effort: сайт может не отдать og:image, заблокировать бота или
-    ответить с ошибкой — в этом случае просто публикуем без картинки."""
+def _extract_og_image(html: str) -> Optional[str]:
+    html_head = html[:20000]  # og:image почти всегда в <head>
+    match = OG_IMAGE_RE.search(html_head) or OG_IMAGE_RE_REV.search(html_head)
+    return match.group(1) if match else None
+
+
+def fetch_article(url: str) -> dict:
+    """Один поход на сайт источника — достаёт и обложку (og:image), и полный
+    текст статьи (через trafilatura, чистый текст без меню/рекламы/сайдбаров).
+    Best-effort по обоим полям: сайт может блокировать ботов, быть за
+    пэйволлом или просто не поддаться экстракции — тогда соответствующее
+    поле будет None, а генерация продолжит работать на заголовке+тизере.
+    Возвращает {"image_url": str|None, "text": str|None}."""
+    result = {"image_url": None, "text": None}
     try:
         resp = requests.get(
             url,
-            timeout=15,
+            timeout=20,
             headers={"User-Agent": "Mozilla/5.0 (leadyup-monitor-bot)"},
         )
         if not resp.ok:
-            return None
-        html_head = resp.text[:20000]  # og:image почти всегда в <head>
-        match = OG_IMAGE_RE.search(html_head) or OG_IMAGE_RE_REV.search(html_head)
-        return match.group(1) if match else None
+            return result
+        html = resp.text
+        result["image_url"] = _extract_og_image(html)
+        try:
+            result["text"] = trafilatura.extract(
+                html, url=url, include_comments=False, include_tables=False, favor_recall=True
+            )
+        except Exception:
+            result["text"] = None
+        return result
     except Exception:
-        return None
+        return result

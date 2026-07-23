@@ -1,28 +1,32 @@
 """Стадия 5: генерация черновика поста по утверждённой теме.
 
 Берёт темы из data/approved/*.json, которых ещё нет в data/drafts/,
-пишет пост моделью через OpenRouter по промпту prompts/write-style.md,
-результат — data/drafts/<дата>.json.
+тянет полный текст статьи-источника (кэшируется в data/articles/ — этим же
+кэшем позже смогут пользоваться другие форматы: статьи, карусели и т.д.,
+не перекачивая страницу заново), пишет пост моделью через OpenRouter по
+промпту prompts/write-style.md, результат — data/drafts/<дата>.json.
 """
 import json
 import sys
+from typing import Optional
 
 import requests
 
-from common import DATA_DIR, ROOT, fetch_og_image, require_env, today, write_json
+from common import DATA_DIR, ROOT, fetch_article, require_env, today, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # Модель для написания текста — не для отбора (там Haiku). Sonnet 5 по
 # умолчанию; для сложных рубрик можно вручную попробовать Opus 4.8.
 MODEL = "anthropic/claude-sonnet-4.5"
-MAX_OUTPUT_TOKENS = 1200
+MAX_OUTPUT_TOKENS = 1500
 LOOKBACK_DAYS = 14
 
-# Лимит подписи к фото в Telegram — 1024. 800 задаём моделью в промпте,
-# но модель на практике промахивается — код подстраховывает: если готовый
-# текст всё равно длиннее CAPTION_SAFE_LIMIT, просим модель сократить.
-CAPTION_SAFE_LIMIT = 950
-MAX_SHORTEN_ATTEMPTS = 2
+ARTICLE_TEXT_LIMIT = 6000  # символов текста статьи, которые кладём в промпт
+
+# Не таргет по длине (её теперь определяет смысл, не формат публикации) —
+# только защита от совсем убежавшего вывода модели.
+SANITY_LIMIT = 2200
+MAX_SHORTEN_ATTEMPTS = 1
 
 
 def load_approved() -> list[dict]:
@@ -46,6 +50,23 @@ def already_drafted_ids() -> set[str]:
     return ids
 
 
+def get_article(item: dict) -> dict:
+    """Полный текст + обложка статьи, с кэшем в data/articles/<id>.json —
+    чтобы карусели/статьи позже могли переиспользовать тот же текст, не
+    перекачивая страницу заново."""
+    cache_path = DATA_DIR / "articles" / f"{item['id']}.json"
+    if cache_path.exists():
+        return json.loads(cache_path.read_text(encoding="utf-8"))
+
+    article = fetch_article(item["link"])
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(
+        json.dumps({**article, "link": item["link"], "title": item["title"]}, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return article
+
+
 def call_model(api_key: str, messages: list[dict]) -> str:
     response = requests.post(
         OPENROUTER_URL,
@@ -62,7 +83,7 @@ def call_model(api_key: str, messages: list[dict]) -> str:
     return body["choices"][0]["message"]["content"].strip()
 
 
-def write_one(api_key: str, style: str, item: dict) -> str:
+def write_one(api_key: str, style: str, item: dict, article_text: Optional[str]) -> str:
     payload = {
         "title": item["title"],
         "source": item["source"],
@@ -70,6 +91,7 @@ def write_one(api_key: str, style: str, item: dict) -> str:
         "why": item.get("why", ""),
         "rubric": item.get("rubric", ""),
         "persona": item.get("persona", ""),
+        "article_text": (article_text or "")[:ARTICLE_TEXT_LIMIT] or None,
     }
     messages = [
         {"role": "system", "content": style},
@@ -77,23 +99,16 @@ def write_one(api_key: str, style: str, item: dict) -> str:
     ]
     text = call_model(api_key, messages)
 
-    # Подстраховка: промпт просит уложиться в 800 знаков, но модель иногда
-    # промахивается — если черновик всё равно длиннее безопасного лимита
-    # подписи к фото, просим сократить явно, вместо того чтобы публиковать
-    # без картинки.
+    # Защита не от превышения таргета длины (его больше нет), а от совсем
+    # убежавшего вывода — на всякий случай, не должно срабатывать часто.
     for attempt in range(MAX_SHORTEN_ATTEMPTS):
-        if len(text) <= CAPTION_SAFE_LIMIT:
+        if len(text) <= SANITY_LIMIT:
             break
-        print(f"  черновик {len(text)} знаков — прошу сократить (попытка {attempt + 1})", file=sys.stderr)
+        print(f"  черновик {len(text)} знаков — явный перебор, прошу сократить", file=sys.stderr)
         messages.append({"role": "assistant", "content": text})
         messages.append({
             "role": "user",
-            "content": (
-                f"Слишком длинно — {len(text)} знаков, а лимит подписи к фото в Telegram — 1024. "
-                f"Сократи этот же пост до {CAPTION_SAFE_LIMIT} знаков или меньше: убери один пункт "
-                "списка и/или спойлер, но сохрани хук, блок-цитату и общий смысл. "
-                "Верни только сокращённый текст поста, без пояснений."
-            ),
+            "content": f"Это слишком длинно ({len(text)} знаков) даже для содержательного поста. Сократи примерно вдвое, сохранив главную мысль.",
         })
         text = call_model(api_key, messages)
 
@@ -115,9 +130,15 @@ def main():
     drafts = []
     for item in pending:
         print(f"Пишу черновик: {item['title'][:60]}", file=sys.stderr)
-        text = write_one(api_key, style, item)
-        image_url = fetch_og_image(item["link"])
-        print(f"  обложка: {'найдена' if image_url else 'не найдена'}", file=sys.stderr)
+        article = get_article(item)
+        article_text = article.get("text")
+        image_url = article.get("image_url")
+        print(
+            f"  статья: {'{} знаков'.format(len(article_text)) if article_text else 'не вытащилась'}"
+            f" · обложка: {'найдена' if image_url else 'не найдена'}",
+            file=sys.stderr,
+        )
+        text = write_one(api_key, style, item, article_text)
         drafts.append({
             "id": item["id"],
             "title": item["title"],
