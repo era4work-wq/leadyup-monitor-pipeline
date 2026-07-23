@@ -7,6 +7,7 @@
 промпту prompts/write-style.md, результат — data/drafts/<дата>.json.
 """
 import json
+import re
 import sys
 from typing import Optional
 
@@ -15,11 +16,22 @@ import requests
 from common import DATA_DIR, ROOT, fetch_article, require_env, today, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-# Модель для написания текста — не для отбора (там Haiku). Sonnet 5 по
-# умолчанию; для сложных рубрик можно вручную попробовать Opus 4.8.
-MODEL = "anthropic/claude-sonnet-4.5"
+# Модель для написания текста — не для отбора (там Haiku). Пробуем Opus
+# вместо Sonnet 23.07 — жалобы на связность/странные формулировки на длинных
+# постах, собранных из полной статьи.
+MODEL = "anthropic/claude-opus-4.5"
 MAX_OUTPUT_TOKENS = 1500
 LOOKBACK_DAYS = 14
+
+MARKDOWN_BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
+
+
+def sanitize_markup(text: str) -> str:
+    """Модель периодически пишет markdown (**жирный**) вместо Telegram HTML
+    (<b>жирный</b>), несмотря на прямой запрет в промпте — Telegram это не
+    рендерит, показывает звёздочки как есть. Не полагаемся только на то, что
+    модель послушается инструкции — чиним принудительно."""
+    return MARKDOWN_BOLD_RE.sub(r"<b>\1</b>", text)
 
 ARTICLE_TEXT_LIMIT = 6000  # символов текста статьи, которые кладём в промпт
 
@@ -112,7 +124,7 @@ def write_one(api_key: str, style: str, item: dict, article_text: Optional[str])
         })
         text = call_model(api_key, messages)
 
-    return text
+    return sanitize_markup(text)
 
 
 def main():
