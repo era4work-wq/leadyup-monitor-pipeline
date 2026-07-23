@@ -1,10 +1,16 @@
 name: Написать черновики постов
 
 on:
+  schedule:
+    - cron: "0 15 * * *"  # 15:00 UTC = 18:00 МСК — даёт дню время на согласование тем
   workflow_dispatch: {}
 
 permissions:
   contents: write
+
+concurrency:
+  group: write-drafts
+  cancel-in-progress: false
 
 jobs:
   write:
