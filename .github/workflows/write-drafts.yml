@@ -1,0 +1,35 @@
+name: Написать черновики постов
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Генерация черновиков
+        working-directory: src
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python write_draft.py
+
+      - name: Сохранить черновики обратно в репозиторий
+        run: |
+          git config user.name "leadyup-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && exit 0
+          git commit -m "drafts: $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push
