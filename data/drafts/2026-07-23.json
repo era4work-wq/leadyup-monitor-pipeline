@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "f960db0f3375e168",
+    "title": "Why AI Content Stopped Working & What To Do About It",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/why-ai-content-stopped-working-what-to-do-about-it-watch-now/583098/",
+    "rubric": "дайджест",
+    "draft_text": "<b>ИИ-контент больше не индексится: Google объявил войну копипасте из ChatGPT</b>\n\nSearch Engine Journal разобрал, почему ваши статьи из GPT перестали попадать в выдачу. Коротко: алгоритм научился распознавать шаблонный текст и душит его в зародыше, даже если вы три раза перефразировали.\n\n<blockquote>Спасение — не в промптах, а в том, что робот не умеет: личный опыт, кейсы, мнения</blockquote>\n\nЧто делать:\n\n🤖 <b>Генерить только каркас</b> — введение, структуру, факты. Всё остальное дописывать руками: выводы, примеры из практики, иронию.\n\n🎯 <b>Заточить контент под GEO</b> — упоминать город, локальные кейсы, региональную специфику. Google Generative Experience (ИИ-ответы в поисковой выдаче) любит конкретику, а не «работаем по всей России».\n\nПятница, можно не писать вообще ничего до понедельника. Или хотя бы не из чистого GPT.\n\nhttps://www.searchenginejournal.com/why-ai-content-stopped-working-what-to-do-about-it-watch-now/583098/",
+    "image_url": "https://cdn.searchenginejournal.com/wp-content/uploads/2026/07/post-featured-1-391.png"
+  }
+]
