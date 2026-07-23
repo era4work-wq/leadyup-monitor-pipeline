@@ -9,7 +9,7 @@ import sys
 
 import requests
 
-from common import DATA_DIR, ROOT, require_env, today, write_json
+from common import DATA_DIR, ROOT, fetch_og_image, require_env, today, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # Модель для написания текста — не для отбора (там Haiku). Sonnet 5 по
@@ -87,6 +87,8 @@ def main():
     for item in pending:
         print(f"Пишу черновик: {item['title'][:60]}", file=sys.stderr)
         text = write_one(api_key, style, item)
+        image_url = fetch_og_image(item["link"])
+        print(f"  обложка: {'найдена' if image_url else 'не найдена'}", file=sys.stderr)
         drafts.append({
             "id": item["id"],
             "title": item["title"],
@@ -94,6 +96,7 @@ def main():
             "link": item["link"],
             "rubric": item.get("rubric", ""),
             "draft_text": text,
+            "image_url": image_url,
         })
 
     out_path = DATA_DIR / "drafts" / f"{today()}.json"

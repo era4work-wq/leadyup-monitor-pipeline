@@ -64,12 +64,31 @@ def find_entry(domain: str, item_id: str):
     return None, None
 
 
+CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото (у обычных сообщений — 4096)
+
+
 def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
+    text = entry["draft_text"]
+    image_url = entry.get("image_url")
+
+    if image_url and len(text) <= CAPTION_LIMIT:
+        result = tg_call_safe(
+            token,
+            "sendPhoto",
+            chat_id=channel,
+            photo=image_url,
+            caption=text,
+            parse_mode="HTML",
+        )
+        if result is not None:
+            return True
+        print("[WARN] sendPhoto не удался, публикую без картинки", file=sys.stderr)
+
     result = tg_call_safe(
         token,
         "sendMessage",
         chat_id=channel,
-        text=entry["draft_text"],
+        text=text,
         parse_mode="HTML",
         disable_web_page_preview=False,
     )
