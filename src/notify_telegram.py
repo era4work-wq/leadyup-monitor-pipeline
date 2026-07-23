@@ -32,9 +32,11 @@ def tg_call(token: str, method: str, **params):
 
 def format_message(item: dict) -> str:
     rubric = RUBRIC_LABEL.get(item.get("rubric", ""), item.get("rubric", ""))
+    persona_line = f"Кому: {item['persona']}\n" if item.get("persona") else ""
     return (
         f"<b>{item['title']}</b>\n"
         f"Источник: {item['source']} · {rubric}\n"
+        f"{persona_line}"
         f"{item.get('why', '')}\n"
         f"{item['link']}"
     )
