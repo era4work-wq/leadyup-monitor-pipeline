@@ -81,13 +81,15 @@ def main():
             )
             sent_as = "photo"
         else:
+            # Не влезло в подпись к фото — хотя бы превью ссылки с картинкой
+            # пусть покажется (если у источника есть og:image), не отключаем.
             result = tg_call(
                 token,
                 "sendMessage",
                 chat_id=chat_id,
                 text=text,
                 parse_mode="HTML",
-                disable_web_page_preview=True,
+                disable_web_page_preview=not bool(image_url),
                 reply_markup=keyboard,
             )
         final_pending[item["id"]] = {

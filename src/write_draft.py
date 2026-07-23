@@ -18,6 +18,12 @@ MODEL = "anthropic/claude-sonnet-4.5"
 MAX_OUTPUT_TOKENS = 1200
 LOOKBACK_DAYS = 14
 
+# Лимит подписи к фото в Telegram — 1024. 800 задаём моделью в промпте,
+# но модель на практике промахивается — код подстраховывает: если готовый
+# текст всё равно длиннее CAPTION_SAFE_LIMIT, просим модель сократить.
+CAPTION_SAFE_LIMIT = 950
+MAX_SHORTEN_ATTEMPTS = 2
+
 
 def load_approved() -> list[dict]:
     approved_dir = DATA_DIR / "approved"
@@ -40,6 +46,22 @@ def already_drafted_ids() -> set[str]:
     return ids
 
 
+def call_model(api_key: str, messages: list[dict]) -> str:
+    response = requests.post(
+        OPENROUTER_URL,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "HTTP-Referer": "https://github.com/leadyup-monitor-pipeline",
+            "X-Title": "leadyup-monitor-pipeline",
+        },
+        json={"model": MODEL, "max_tokens": MAX_OUTPUT_TOKENS, "messages": messages},
+        timeout=90,
+    )
+    response.raise_for_status()
+    body = response.json()
+    return body["choices"][0]["message"]["content"].strip()
+
+
 def write_one(api_key: str, style: str, item: dict) -> str:
     payload = {
         "title": item["title"],
@@ -49,26 +71,33 @@ def write_one(api_key: str, style: str, item: dict) -> str:
         "rubric": item.get("rubric", ""),
         "persona": item.get("persona", ""),
     }
-    response = requests.post(
-        OPENROUTER_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "HTTP-Referer": "https://github.com/leadyup-monitor-pipeline",
-            "X-Title": "leadyup-monitor-pipeline",
-        },
-        json={
-            "model": MODEL,
-            "max_tokens": MAX_OUTPUT_TOKENS,
-            "messages": [
-                {"role": "system", "content": style},
-                {"role": "user", "content": "Тема (JSON):\n" + json.dumps(payload, ensure_ascii=False)},
-            ],
-        },
-        timeout=90,
-    )
-    response.raise_for_status()
-    body = response.json()
-    return body["choices"][0]["message"]["content"].strip()
+    messages = [
+        {"role": "system", "content": style},
+        {"role": "user", "content": "Тема (JSON):\n" + json.dumps(payload, ensure_ascii=False)},
+    ]
+    text = call_model(api_key, messages)
+
+    # Подстраховка: промпт просит уложиться в 800 знаков, но модель иногда
+    # промахивается — если черновик всё равно длиннее безопасного лимита
+    # подписи к фото, просим сократить явно, вместо того чтобы публиковать
+    # без картинки.
+    for attempt in range(MAX_SHORTEN_ATTEMPTS):
+        if len(text) <= CAPTION_SAFE_LIMIT:
+            break
+        print(f"  черновик {len(text)} знаков — прошу сократить (попытка {attempt + 1})", file=sys.stderr)
+        messages.append({"role": "assistant", "content": text})
+        messages.append({
+            "role": "user",
+            "content": (
+                f"Слишком длинно — {len(text)} знаков, а лимит подписи к фото в Telegram — 1024. "
+                f"Сократи этот же пост до {CAPTION_SAFE_LIMIT} знаков или меньше: убери один пункт "
+                "списка и/или спойлер, но сохрани хук, блок-цитату и общий смысл. "
+                "Верни только сокращённый текст поста, без пояснений."
+            ),
+        })
+        text = call_model(api_key, messages)
+
+    return text
 
 
 def main():
