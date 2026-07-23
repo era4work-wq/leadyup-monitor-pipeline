@@ -1,9 +1,11 @@
-"""Стадия 4: опрос Telegram на нажатия кнопок согласования.
+"""Стадии 4 и 7: опрос Telegram на нажатия кнопок согласования.
 
-Запускается часто (см. .github/workflows/poll-approvals.yml). Найденные
-решения помечаются в data/pending/<дата>.json и копируются в
-data/approved/<дата решения>.json — это вход для будущей стадии генерации
-черновиков.
+Запускается часто (см. .github/workflows/poll-approvals.yml). Обрабатывает
+два независимых круга кнопок в одной и той же группе:
+  - take/skip  — согласование ТЕМ (data/pending/) → data/approved/
+  - publish/reject — финальное согласование ГОТОВЫХ ПОСТОВ (data/final_pending/)
+    → publish публикует пост в канал (TELEGRAM_CHANNEL) и остаётся в
+    data/published/ для истории.
 """
 import sys
 from datetime import datetime, timezone
@@ -13,7 +15,15 @@ import requests
 from common import DATA_DIR, STATE_DIR, require_env, read_json, today, write_json
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
-PENDING_LOOKBACK_DAYS = 7
+LOOKBACK_DAYS = 14
+
+# action -> (папка с карточками, финальные статусы для да/нет)
+ACTION_DOMAINS = {
+    "take": ("pending", "взято"),
+    "skip": ("pending", "пропущено"),
+    "publish": ("final_pending", "опубликовано"),
+    "reject": ("final_pending", "отклонено"),
+}
 
 
 def tg_call(token: str, method: str, **params):
@@ -38,20 +48,32 @@ def tg_call_safe(token: str, method: str, **params):
         return None
 
 
-def load_recent_pending_files():
-    pending_dir = DATA_DIR / "pending"
-    if not pending_dir.exists():
+def load_recent_files(domain: str):
+    domain_dir = DATA_DIR / domain
+    if not domain_dir.exists():
         return []
-    files = sorted(pending_dir.glob("*.json"), reverse=True)
-    return files[:PENDING_LOOKBACK_DAYS]
+    files = sorted(domain_dir.glob("*.json"), reverse=True)
+    return files[:LOOKBACK_DAYS]
 
 
-def find_pending_entry(item_id: str):
-    for path in load_recent_pending_files():
-        pending = read_json(path, {})
-        if item_id in pending and pending[item_id]["status"] == "ждёт":
-            return path, pending
+def find_entry(domain: str, item_id: str):
+    for path in load_recent_files(domain):
+        data = read_json(path, {})
+        if item_id in data and data[item_id]["status"] == "ждёт":
+            return path, data
     return None, None
+
+
+def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
+    result = tg_call_safe(
+        token,
+        "sendMessage",
+        chat_id=channel,
+        text=entry["draft_text"],
+        parse_mode="HTML",
+        disable_web_page_preview=False,
+    )
+    return result is not None
 
 
 def main():
@@ -65,6 +87,7 @@ def main():
         return
 
     approved_today: list[dict] = []
+    published_today: list[dict] = []
     max_update_id = offset - 1
 
     for update in updates:
@@ -75,24 +98,38 @@ def main():
             continue
 
         action, _, item_id = callback.get("data", "").partition(":")
-        if action not in ("take", "skip") or not item_id:
+        if action not in ACTION_DOMAINS or not item_id:
             print(f"[DEBUG] callback с нераспознанным data={callback.get('data')!r}", file=sys.stderr)
             continue
 
-        path, pending = find_pending_entry(item_id)
-        if pending is None:
-            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Тема уже не найдена (устарела?)")
+        domain, status_word = ACTION_DOMAINS[action]
+        path, data = find_entry(domain, item_id)
+        if data is None:
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Карточка уже не найдена (устарела?)")
             continue
 
-        entry = pending[item_id]
+        entry = data[item_id]
         approver = callback["from"].get("first_name", "кто-то")
         decided_at = datetime.now(timezone.utc).strftime("%d.%m %H:%M")
-        entry["status"] = "взято" if action == "take" else "пропущено"
+
+        if action == "publish":
+            channel = require_env("TELEGRAM_CHANNEL")
+            ok = publish_to_channel(token, channel, entry)
+            status_word = "опубликовано" if ok else "ошибка публикации"
+
+        entry["status"] = status_word
         entry["approver"] = approver
         entry["decided_at"] = decided_at
-        write_json(path, pending)
+        write_json(path, data)
 
-        stamp = "✅ Взято" if action == "take" else "❌ Пропущено"
+        stamp_map = {
+            "взято": "✅ Взято",
+            "пропущено": "❌ Пропущено",
+            "опубликовано": "📤 Опубликовано в канал",
+            "ошибка публикации": "⚠️ Ошибка публикации — см. лог",
+            "отклонено": "❌ Отклонено",
+        }
+        stamp = stamp_map[status_word]
         tg_call_safe(
             token,
             "editMessageText",
@@ -107,6 +144,8 @@ def main():
 
         if action == "take":
             approved_today.append(entry)
+        if status_word == "опубликовано":
+            published_today.append(entry)
 
     offset_path.parent.mkdir(parents=True, exist_ok=True)
     offset_path.write_text(str(max_update_id + 1))
@@ -118,6 +157,14 @@ def main():
         existing.extend(e for e in approved_today if e["id"] not in existing_ids)
         write_json(out_path, existing)
         print(f"Утверждено тем: {len(approved_today)} → {out_path}", file=sys.stderr)
+
+    if published_today:
+        out_path = DATA_DIR / "published" / f"{today()}.json"
+        existing = read_json(out_path, [])
+        existing_ids = {e["id"] for e in existing}
+        existing.extend(e for e in published_today if e["id"] not in existing_ids)
+        write_json(out_path, existing)
+        print(f"Опубликовано постов: {len(published_today)} → {out_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":

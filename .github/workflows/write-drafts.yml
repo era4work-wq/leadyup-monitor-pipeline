@@ -24,6 +24,13 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python write_draft.py
 
+      - name: Отправка на финальное согласование
+        working-directory: src
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python notify_final.py
+
       - name: Сохранить черновики обратно в репозиторий
         run: |
           git config user.name "leadyup-monitor-bot"
