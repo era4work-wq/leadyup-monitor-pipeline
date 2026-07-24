@@ -109,7 +109,7 @@ def regenerate_draft(entry: dict) -> dict:
     style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
     article = get_article(entry)
     text = write_one(api_key, style, entry, article.get("text"))
-    cover_b64 = generate_cover(api_key, entry)
+    cover_b64 = generate_cover(api_key, entry, text)
     return {**entry, "draft_text": text, "cover_image_b64": cover_b64}
 
 

@@ -96,22 +96,47 @@ def call_model(api_key: str, messages: list[dict]) -> str:
     return body["choices"][0]["message"]["content"].strip()
 
 
-def build_image_prompt(item: dict) -> str:
+HOOK_RE = re.compile(r"<b>(.+?)</b>")
+TAG_RE = re.compile(r"<[^>]+>")
+
+BADGE_LABEL = {
+    "дайджест": "ДАЙДЖЕСТ",
+    "кейс-с-цифрами": "КЕЙС",
+    "лайфхак-инструкция": "ЛАЙФХАК",
+    "ai-инструмент": "AI-ИНСТРУМЕНТ",
+}
+
+
+def extract_hook(draft_text: str, fallback_title: str) -> str:
+    match = HOOK_RE.search(draft_text)
+    hook = match.group(1) if match else fallback_title
+    return TAG_RE.sub("", hook).strip()
+
+
+def build_image_prompt(item: dict, draft_text: str) -> str:
+    hook = extract_hook(draft_text, item["title"])
+    badge = BADGE_LABEL.get(item.get("rubric", ""), "AI РАДАР")
     return (
-        "Create a clean, modern, abstract conceptual illustration to use as a cover image "
-        f"for a social media post about: {item['title']}. "
-        "Style: minimalist tech/marketing illustration, soft gradients and simple geometric "
-        "shapes, professional and modern, suitable for a Telegram channel about AI and marketing. "
-        "STRICT RULES: absolutely no text, letters, numbers, captions or logos anywhere in the "
-        "image. No realistic human faces or recognizable people."
+        "Create a bold, modern cover image for a Telegram post, in the style of a professional "
+        "webinar/conference title card: dark (near-black or dark navy) background with a subtle "
+        "gradient or soft glow. "
+        f'A small rounded pill-shaped badge near the top-left corner with the text "{badge}" in it. '
+        f'Below the badge, the headline in large, bold, bright blue or white sans-serif letters: '
+        f'"{hook}" — this exact Russian text must be spelled correctly, clean and perfectly legible, '
+        "filling most of the image width. "
+        "Clean, modern, professional graphic design, similar to a tech conference webinar cover. "
+        "16:9 landscape composition. "
+        "STRICT RULES: do not include any real people's photos, faces, or third-party company logos "
+        "or brand names anywhere in the image — only the badge text and headline text described above."
     )
 
 
-def generate_cover(api_key: str, item: dict) -> Optional[str]:
+def generate_cover(api_key: str, item: dict, draft_text: str) -> Optional[str]:
     """Обложка поста — генерируем сами (не берём с сайта источника: там
-    английский текст на картинке и чужие лица, заказчику не подошло).
+    английский текст на картинке и чужие лица, заказчику не подошло), с
+    русским заголовком поста прямо на картинке, в стиле референса заказчика.
     Возвращает base64 PNG или None, если генерация не удалась."""
-    image_bytes = generate_cover_image(api_key, build_image_prompt(item))
+    image_bytes = generate_cover_image(api_key, build_image_prompt(item, draft_text))
     return base64.b64encode(image_bytes).decode("ascii") if image_bytes else None
 
 
@@ -169,7 +194,7 @@ def main():
             file=sys.stderr,
         )
         text = write_one(api_key, style, item, article_text)
-        cover_b64 = generate_cover(api_key, item)
+        cover_b64 = generate_cover(api_key, item, text)
         print(f"  обложка: {'сгенерирована' if cover_b64 else 'не удалось'}", file=sys.stderr)
         drafts.append({
             "id": item["id"],
