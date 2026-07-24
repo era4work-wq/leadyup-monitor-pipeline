@@ -83,6 +83,13 @@ def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
             return True
         except Exception as exc:
             print(f"[WARN] sendPhoto(bytes) не удался: {exc} — публикую без картинки", file=sys.stderr)
+    elif cover_b64:
+        # Не влезает в подпись — картинка отдельным сообщением перед текстом,
+        # чтобы она всё равно оказалась вверху поста.
+        try:
+            tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64))
+        except Exception as exc:
+            print(f"[WARN] не удалось отправить картинку отдельным сообщением: {exc}", file=sys.stderr)
 
     result = tg_call_safe(
         token,
