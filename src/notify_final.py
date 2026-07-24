@@ -4,10 +4,11 @@
 кнопками [Опубликовать] [Отклонить]. В отличие от стадии 3 (согласование
 тем) — здесь утверждают готовый текст, не идею.
 """
+import base64
 import sys
 
 from common import DATA_DIR, require_env, today, read_json, write_json
-from notify_telegram import tg_call  # переиспользуем HTTP-обвязку
+from notify_telegram import tg_call, tg_send_photo_bytes  # переиспользуем HTTP-обвязку
 
 RUBRIC_LABEL = {
     "дайджест": "📰 дайджест",
@@ -58,29 +59,29 @@ def send_final_card(token: str, chat_id: str, item: dict) -> dict:
             ]
         ]
     }
-    image_url = item.get("image_url")
+    cover_b64 = item.get("cover_image_b64")
     sent_as = "text"
-    if image_url and len(text) <= CAPTION_LIMIT:
-        result = tg_call(
+    if cover_b64 and len(text) <= CAPTION_LIMIT:
+        result = tg_send_photo_bytes(
             token,
-            "sendPhoto",
-            chat_id=chat_id,
-            photo=image_url,
+            chat_id,
+            base64.b64decode(cover_b64),
             caption=text,
             parse_mode="HTML",
             reply_markup=keyboard,
         )
         sent_as = "photo"
     else:
-        # Не влезло в подпись к фото — хотя бы превью ссылки с картинкой
-        # пусть покажется (если у источника есть og:image), не отключаем.
+        # Картинки нет (не сгенерировалась) или пост не влезает в подпись —
+        # обычным текстом. Источника здесь больше не показываем — заказчик
+        # прямо просил не брать обложку с сайта источника.
         result = tg_call(
             token,
             "sendMessage",
             chat_id=chat_id,
             text=text,
             parse_mode="HTML",
-            disable_web_page_preview=not bool(image_url),
+            disable_web_page_preview=True,
             reply_markup=keyboard,
         )
     return {

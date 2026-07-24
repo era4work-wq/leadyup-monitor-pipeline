@@ -7,6 +7,7 @@
     → publish публикует пост в канал (TELEGRAM_CHANNEL) и остаётся в
     data/published/ для истории.
 """
+import base64
 import os
 import sys
 from datetime import datetime, timezone
@@ -15,7 +16,8 @@ import requests
 
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
-from write_draft import get_article, write_one
+from notify_telegram import tg_send_photo_bytes
+from write_draft import generate_cover, get_article, write_one
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
 LOOKBACK_DAYS = 14
@@ -73,20 +75,14 @@ CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото (�
 
 def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
     text = entry["draft_text"]
-    image_url = entry.get("image_url")
+    cover_b64 = entry.get("cover_image_b64")
 
-    if image_url and len(text) <= CAPTION_LIMIT:
-        result = tg_call_safe(
-            token,
-            "sendPhoto",
-            chat_id=channel,
-            photo=image_url,
-            caption=text,
-            parse_mode="HTML",
-        )
-        if result is not None:
+    if cover_b64 and len(text) <= CAPTION_LIMIT:
+        try:
+            tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64), caption=text, parse_mode="HTML")
             return True
-        print("[WARN] sendPhoto не удался, публикую без картинки", file=sys.stderr)
+        except Exception as exc:
+            print(f"[WARN] sendPhoto(bytes) не удался: {exc} — публикую без картинки", file=sys.stderr)
 
     result = tg_call_safe(
         token,
@@ -94,7 +90,7 @@ def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
         chat_id=channel,
         text=text,
         parse_mode="HTML",
-        disable_web_page_preview=False,
+        disable_web_page_preview=True,
     )
     return result is not None
 
@@ -106,12 +102,13 @@ def regenerate_draft(entry: dict) -> dict:
     style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
     article = get_article(entry)
     text = write_one(api_key, style, entry, article.get("text"))
-    return {**entry, "draft_text": text, "image_url": article.get("image_url") or entry.get("image_url")}
+    cover_b64 = generate_cover(api_key, entry)
+    return {**entry, "draft_text": text, "cover_image_b64": cover_b64}
 
 
-def update_draft_record(item_id: str, draft_text: str, image_url) -> None:
+def update_draft_record(item_id: str, draft_text: str, cover_image_b64) -> None:
     """Обновляет исторический черновик в data/drafts/ — чтобы там тоже была
-    актуальная версия текста, не только в final_pending."""
+    актуальная версия текста и картинки, не только в final_pending."""
     drafts_dir = DATA_DIR / "drafts"
     if not drafts_dir.exists():
         return
@@ -121,8 +118,7 @@ def update_draft_record(item_id: str, draft_text: str, image_url) -> None:
         for it in items:
             if it.get("id") == item_id:
                 it["draft_text"] = draft_text
-                if image_url:
-                    it["image_url"] = image_url
+                it["cover_image_b64"] = cover_image_b64
                 changed = True
         if changed:
             write_json(path, items)
@@ -182,7 +178,7 @@ def main():
             new_card = send_final_card(token, chat_id, new_entry)
             data[item_id] = new_card
             write_json(path, data)
-            update_draft_record(item_id, new_entry["draft_text"], new_entry.get("image_url"))
+            update_draft_record(item_id, new_entry["draft_text"], new_entry.get("cover_image_b64"))
             print(f"Перегенерирован пост: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 

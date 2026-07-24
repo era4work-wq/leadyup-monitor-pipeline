@@ -6,6 +6,7 @@
 не перекачивая страницу заново), пишет пост моделью через OpenRouter по
 промпту prompts/write-style.md, результат — data/drafts/<дата>.json.
 """
+import base64
 import json
 import re
 import sys
@@ -13,7 +14,7 @@ from typing import Optional
 
 import requests
 
-from common import DATA_DIR, ROOT, fetch_article, require_env, today, write_json
+from common import DATA_DIR, ROOT, fetch_article, generate_cover_image, require_env, today, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # Модель для написания текста — не для отбора (там Haiku). Пробуем Opus
@@ -95,6 +96,25 @@ def call_model(api_key: str, messages: list[dict]) -> str:
     return body["choices"][0]["message"]["content"].strip()
 
 
+def build_image_prompt(item: dict) -> str:
+    return (
+        "Create a clean, modern, abstract conceptual illustration to use as a cover image "
+        f"for a social media post about: {item['title']}. "
+        "Style: minimalist tech/marketing illustration, soft gradients and simple geometric "
+        "shapes, professional and modern, suitable for a Telegram channel about AI and marketing. "
+        "STRICT RULES: absolutely no text, letters, numbers, captions or logos anywhere in the "
+        "image. No realistic human faces or recognizable people."
+    )
+
+
+def generate_cover(api_key: str, item: dict) -> Optional[str]:
+    """Обложка поста — генерируем сами (не берём с сайта источника: там
+    английский текст на картинке и чужие лица, заказчику не подошло).
+    Возвращает base64 PNG или None, если генерация не удалась."""
+    image_bytes = generate_cover_image(api_key, build_image_prompt(item))
+    return base64.b64encode(image_bytes).decode("ascii") if image_bytes else None
+
+
 def write_one(api_key: str, style: str, item: dict, article_text: Optional[str]) -> str:
     payload = {
         "title": item["title"],
@@ -144,13 +164,13 @@ def main():
         print(f"Пишу черновик: {item['title'][:60]}", file=sys.stderr)
         article = get_article(item)
         article_text = article.get("text")
-        image_url = article.get("image_url")
         print(
-            f"  статья: {'{} знаков'.format(len(article_text)) if article_text else 'не вытащилась'}"
-            f" · обложка: {'найдена' if image_url else 'не найдена'}",
+            f"  статья: {'{} знаков'.format(len(article_text)) if article_text else 'не вытащилась'}",
             file=sys.stderr,
         )
         text = write_one(api_key, style, item, article_text)
+        cover_b64 = generate_cover(api_key, item)
+        print(f"  обложка: {'сгенерирована' if cover_b64 else 'не удалось'}", file=sys.stderr)
         drafts.append({
             "id": item["id"],
             "title": item["title"],
@@ -158,7 +178,7 @@ def main():
             "link": item["link"],
             "rubric": item.get("rubric", ""),
             "draft_text": text,
-            "image_url": image_url,
+            "cover_image_b64": cover_b64,
         })
 
     out_path = DATA_DIR / "drafts" / f"{today()}.json"

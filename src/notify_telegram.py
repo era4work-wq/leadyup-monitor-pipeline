@@ -4,6 +4,7 @@
 message_id сохраняется в data/pending/<дата>.json, чтобы collect_approvals.py
 знал, какое сообщение редактировать после решения.
 """
+import json
 import sys
 
 import requests
@@ -27,6 +28,26 @@ def tg_call(token: str, method: str, **params):
     body = resp.json()
     if not body.get("ok"):
         raise RuntimeError(f"Telegram API {method} failed: {body}")
+    return body["result"]
+
+
+def tg_send_photo_bytes(token: str, chat_id, image_bytes: bytes, **params):
+    """sendPhoto с картинкой как двоичными данными (не URL) — нужна
+    multipart-загрузка, не обычный JSON-запрос. reply_markup, если передан,
+    сериализуем в JSON-строку вручную — так требует Telegram в multipart."""
+    url = API_BASE.format(token=token, method="sendPhoto")
+    data = {"chat_id": chat_id}
+    for key, value in params.items():
+        if value is None:
+            continue
+        data[key] = json.dumps(value) if isinstance(value, (dict, list)) else value
+    files = {"photo": ("cover.png", image_bytes, "image/png")}
+    resp = requests.post(url, data=data, files=files, timeout=60)
+    if not resp.ok:
+        raise RuntimeError(f"Telegram API sendPhoto(bytes) failed ({resp.status_code}): {resp.text}")
+    body = resp.json()
+    if not body.get("ok"):
+        raise RuntimeError(f"Telegram API sendPhoto(bytes) failed: {body}")
     return body["result"]
 
 
