@@ -1,0 +1,92 @@
+[
+  {
+    "id": "2ee786bec11aee2d",
+    "title": "AI Overviews Now Answer Most Local Searches – How To Get Your Business Cited",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-overviews-now-answer-most-local-searches-how-to-get-your-business-cited/580757/",
+    "why": "AI-ответы уже доминируют в локальном поиске — надо менять SEO-стратегию, чтобы попасть в citations, иначе теряешь видимость перед клиентами в поиске.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P2"
+  },
+  {
+    "id": "ccc3dc1d0020c07a",
+    "title": "AI Search is Working. How to Prove It With Real Tests.",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-search-is-working-how-to-prove-it-with-real-tests-recap/583306/",
+    "why": "Методология тестирования видимости в AI-поиске — конкретные шаги, как измерить, работает ли твой сайт в новых поисковых системах, вместо гаданий.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "764dffb9b4d3ef89",
+    "title": "Your client just asked if they show up in ChatGPT. Now what?",
+    "source": "MarTech",
+    "link": "https://martech.org/your-client-just-asked-if-they-show-up-in-chatgpt-now-what/",
+    "why": "Инструкция, как измерить видимость брендов в ChatGPT с данными — вместо слепых ответов на главный вопрос 2026, даёшь цифры.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "55cde5834a92750a",
+    "title": "5 AI Search Trends I'm Seeing in 2026, Backed by Ahrefs Data",
+    "source": "Ahrefs Blog",
+    "link": "https://ahrefs.com/ahrefs/blog/ai-search-trends/",
+    "why": "Тренды AI-поиска на данных, не на предположениях — поймёшь, как меняется трафик и куда адаптировать SEO-работу.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "e73037cd71269064",
+    "title": "ChatGPT has no clear brand leader in most categories",
+    "source": "MarTech",
+    "link": "https://martech.org/chatgpt-has-no-clear-brand-leader-in-most-categories/",
+    "why": "Только 15% категорий имеют лидера в ChatGPT — значит, даже средний бизнес может прорваться в AI-видимость, если правильно структурировать контент.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "3f683084f1651b97",
+    "title": "AI Search Strategy: 4 Pillars to Show Up More (and Right) in AI Answers",
+    "source": "Ahrefs Blog",
+    "link": "https://ahrefs.com/blog/ai-search-strategy/",
+    "why": "Четыре конкретных столпа SEO для AI-ответов — вместо общих советов, видишь, что именно переделать на сайте, чтобы AI его процитировал.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "4b450a3c837a2d9d",
+    "title": "Are We Repeating History & Risking Backlink Penalties Again?",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/are-we-repeating-history-risking-backlink-penalties-again/583070/",
+    "why": "Предупреждение: старые схемы покупки ссылок больше не работают и рискуют штрафами — экономишь бюджет на переоцененной ссылочной маркетинге.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "f7152d43c2a931e1",
+    "title": "Google's August 17 Bidding Change: What Advertisers Need to Do Now",
+    "source": "Optmyzr Blog",
+    "link": "https://www.optmyzr.com/blog/google-ads-august-2026-bidding-update/",
+    "why": "17 августа меняются правила бидинга в Гугл Адсах — нужно пересчитать бюджеты на Target CPA/ROAS, иначе потеряешь видимость.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, интернет-магазины P4"
+  },
+  {
+    "id": "2da113cd9dffb93f",
+    "title": "Alphabet Q2 Earnings Show $5.85 Billion Negative Free Cash Flow",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-q2-earnings-show-5-85-billion-negative-free-cash-flow/583259/",
+    "why": "Гугл вкладывает рекордные деньги в инфраструктуру AI — значит, трафик в AI-ответы точно будет расти, пора адаптировать SEO прямо сейчас.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "9226e8e201311d70",
+    "title": "Google Ads Recommended By Google AI In Conversion Summaries",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-ads-recommended-by-google-al-conversions-41716.html",
+    "why": "Гугл уже сам рекомендует оптимизацию кампаний через AI — если не смотришь эти рекомендации, теряешь конверсии и не видишь, где баги.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4, SaaS P4"
+  }
+]
