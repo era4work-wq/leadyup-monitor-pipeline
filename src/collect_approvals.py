@@ -13,7 +13,9 @@ from datetime import datetime, timezone
 
 import requests
 
-from common import DATA_DIR, STATE_DIR, require_env, read_json, today, write_json
+from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
+from notify_final import send_final_card
+from write_draft import get_article, write_one
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
 LOOKBACK_DAYS = 14
@@ -24,6 +26,7 @@ ACTION_DOMAINS = {
     "skip": ("pending", "пропущено"),
     "publish": ("final_pending", "опубликовано"),
     "reject": ("final_pending", "отклонено"),
+    "redo": ("final_pending", None),  # обрабатывается отдельно, не общей веткой
 }
 
 
@@ -96,6 +99,36 @@ def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
     return result is not None
 
 
+def regenerate_draft(entry: dict) -> dict:
+    """Пишет пост по той же теме заново (та же статья — берётся из кэша
+    data/articles/, повторно не скачивается)."""
+    api_key = require_env("OPENROUTER_API_KEY")
+    style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
+    article = get_article(entry)
+    text = write_one(api_key, style, entry, article.get("text"))
+    return {**entry, "draft_text": text, "image_url": article.get("image_url") or entry.get("image_url")}
+
+
+def update_draft_record(item_id: str, draft_text: str, image_url) -> None:
+    """Обновляет исторический черновик в data/drafts/ — чтобы там тоже была
+    актуальная версия текста, не только в final_pending."""
+    drafts_dir = DATA_DIR / "drafts"
+    if not drafts_dir.exists():
+        return
+    for path in drafts_dir.glob("*.json"):
+        items = read_json(path, [])
+        changed = False
+        for it in items:
+            if it.get("id") == item_id:
+                it["draft_text"] = draft_text
+                if image_url:
+                    it["image_url"] = image_url
+                changed = True
+        if changed:
+            write_json(path, items)
+            return
+
+
 def main():
     token = require_env("TELEGRAM_BOT_TOKEN")
     offset_path = STATE_DIR / "tg_offset.txt"
@@ -131,6 +164,27 @@ def main():
         entry = data[item_id]
         approver = callback["from"].get("first_name", "кто-то")
         decided_at = datetime.now(timezone.utc).strftime("%d.%m %H:%M")
+        chat_id = callback["message"]["chat"]["id"]
+
+        if action == "redo":
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Пересобираю пост…")
+            try:
+                new_entry = regenerate_draft(entry)
+            except Exception as exc:
+                print(f"[WARN] перегенерация не удалась: {exc}", file=sys.stderr)
+                tg_call_safe(
+                    token, "sendMessage", chat_id=chat_id,
+                    text=f"⚠️ Не удалось перегенерировать «{entry.get('title', '')[:60]}»: {exc}",
+                )
+                continue
+            # старую карточку убираем, чтобы в чате не копились версии одного поста
+            tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=callback["message"]["message_id"])
+            new_card = send_final_card(token, chat_id, new_entry)
+            data[item_id] = new_card
+            write_json(path, data)
+            update_draft_record(item_id, new_entry["draft_text"], new_entry.get("image_url"))
+            print(f"Перегенерирован пост: {entry.get('title', '')[:60]}", file=sys.stderr)
+            continue
 
         if action == "publish":
             channel = os.environ.get("TELEGRAM_CHANNEL")

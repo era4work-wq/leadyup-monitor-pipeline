@@ -44,6 +44,54 @@ def format_preview(item: dict) -> str:
     return f"{rubric} · на публикацию:\n\n{item['draft_text']}"
 
 
+def send_final_card(token: str, chat_id: str, item: dict) -> dict:
+    """Отправляет карточку черновика на финальное согласование (фото+подпись,
+    если влезает и есть картинка, иначе текст). Переиспользуется и при первой
+    отправке, и при пересборке черновика по кнопке «Перегенерировать»."""
+    text = format_preview(item)
+    keyboard = {
+        "inline_keyboard": [
+            [
+                {"text": "📤 Опубликовать", "callback_data": f"publish:{item['id']}"},
+                {"text": "🔄 Перегенерировать", "callback_data": f"redo:{item['id']}"},
+                {"text": "❌ Отклонить", "callback_data": f"reject:{item['id']}"},
+            ]
+        ]
+    }
+    image_url = item.get("image_url")
+    sent_as = "text"
+    if image_url and len(text) <= CAPTION_LIMIT:
+        result = tg_call(
+            token,
+            "sendPhoto",
+            chat_id=chat_id,
+            photo=image_url,
+            caption=text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+        sent_as = "photo"
+    else:
+        # Не влезло в подпись к фото — хотя бы превью ссылки с картинкой
+        # пусть покажется (если у источника есть og:image), не отключаем.
+        result = tg_call(
+            token,
+            "sendMessage",
+            chat_id=chat_id,
+            text=text,
+            parse_mode="HTML",
+            disable_web_page_preview=not bool(image_url),
+            reply_markup=keyboard,
+        )
+    return {
+        **item,
+        "message_id": result["message_id"],
+        "text": text,
+        "sent_as": sent_as,
+        "status": "ждёт",
+    }
+
+
 def main():
     token = require_env("TELEGRAM_BOT_TOKEN")
     chat_id = require_env("TELEGRAM_CHAT_ID")
@@ -58,47 +106,7 @@ def main():
 
     final_pending = {}
     for item in pending_send:
-        text = format_preview(item)
-        keyboard = {
-            "inline_keyboard": [
-                [
-                    {"text": "📤 Опубликовать", "callback_data": f"publish:{item['id']}"},
-                    {"text": "❌ Отклонить", "callback_data": f"reject:{item['id']}"},
-                ]
-            ]
-        }
-        image_url = item.get("image_url")
-        sent_as = "text"
-        if image_url and len(text) <= CAPTION_LIMIT:
-            result = tg_call(
-                token,
-                "sendPhoto",
-                chat_id=chat_id,
-                photo=image_url,
-                caption=text,
-                parse_mode="HTML",
-                reply_markup=keyboard,
-            )
-            sent_as = "photo"
-        else:
-            # Не влезло в подпись к фото — хотя бы превью ссылки с картинкой
-            # пусть покажется (если у источника есть og:image), не отключаем.
-            result = tg_call(
-                token,
-                "sendMessage",
-                chat_id=chat_id,
-                text=text,
-                parse_mode="HTML",
-                disable_web_page_preview=not bool(image_url),
-                reply_markup=keyboard,
-            )
-        final_pending[item["id"]] = {
-            **item,
-            "message_id": result["message_id"],
-            "text": text,
-            "sent_as": sent_as,
-            "status": "ждёт",
-        }
+        final_pending[item["id"]] = send_final_card(token, chat_id, item)
 
     write_json(DATA_DIR / "final_pending" / f"{today()}.json", final_pending)
     print(f"Отправлено на финальное согласование: {len(final_pending)}.", file=sys.stderr)
