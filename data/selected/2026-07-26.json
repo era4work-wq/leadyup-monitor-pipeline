@@ -1,0 +1,29 @@
+[
+  {
+    "id": "d3206b818bf96f2c",
+    "title": "Google Data Compares Gemini & AI Mode Use Against Daily Life",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-data-compares-gemini-ai-mode-use-against-daily-life/583533/",
+    "why": "Исследование Google показывает, как AI-поиск меняет поведение пользователей — важно понимать, как трафик перемещается между традиционным поиском и AI-ответами, чтобы адаптировать стратегию привлечения клиентов.",
+    "rubric": "дайджест",
+    "persona": "SaaS P2, интернет-магазины P2"
+  },
+  {
+    "id": "62a56cb3a1365cd8",
+    "title": "Google's Q2: Precise Revenue Figures, Click Claims You Can't Check",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/googles-q2-precise-revenue-figures-click-claims-you-cant-check/583280/",
+    "why": "Google теряет прозрачность в отчётах по кликам — для малого бизнеса это означает, что полагаться только на Google Ads метрики недостаточно, нужна собственная аналитика на сайте и в CRM.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "8bea9670d3b70d7a",
+    "title": "X Live-Tweets Its Fight Against Chatbot Spam In Real-Time",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/x-live-tweets-its-fight-against-chatbot-spam-in-real-time/583572/",
+    "why": "X борется со спам-ботами, которые засоряют трафик — практический вывод для малого бизнеса: проверять источники трафика в аналитике, не все переходы — это потенциальные клиенты.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, SaaS P1"
+  }
+]
