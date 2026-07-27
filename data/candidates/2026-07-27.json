@@ -1,0 +1,702 @@
+[
+  {
+    "id": "00b36aad162a3827",
+    "title": "AI Video After Sora: 3 Updates You Should Make Before You Publish via @sejournal, @gregjarboe",
+    "link": "https://www.searchenginejournal.com/ai-video-after-sora-3-updates-you-should-make-before-you-publish/583123/",
+    "summary": "<p>Before your next AI video goes live: Audit disclosure against YouTube's actual policy, produce below the ceiling, and name the human decision-maker.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/ai-video-after-sora-3-updates-you-should-make-before-you-publish/583123/\">AI Video After Sora: 3 Updates You Should Make Before You Publish</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "07100f862f65538c",
+    "title": "Google Ads’ Target-Based Bidding Update For Ecommerce via @sejournal, @tonyadam",
+    "link": "https://www.searchenginejournal.com/google-ads-target-based-bidding-update-for-ecommerce/581801/",
+    "summary": "<p>Google's August 17 update pushes budget-limited Target CPA and Target ROAS campaigns toward their stated targets, risking higher costs unless advertisers audit and adjust first.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/google-ads-target-based-bidding-update-for-ecommerce/581801/\">Google Ads&#8217; Target-Based Bidding Update For Ecommerce</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "1c2cb3db26bcf1f2",
+    "title": "Google May Be Penalizing AI-Generated Content As Thin Content via @sejournal, @martinibuster",
+    "link": "https://www.searchenginejournal.com/google-may-be-penalizing-ai-generated-content-as-thin-content/583773/",
+    "summary": "<p>Google may be penalizing AI-generated content under an expanded definition of thin content.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/google-may-be-penalizing-ai-generated-content-as-thin-content/583773/\">Google May Be Penalizing AI-Generated Content As Thin Content</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "f6d1775d1b0ee374",
+    "title": "Google Expands Review Guidelines And Warns Of Manual Actions via @sejournal, @martinibuster",
+    "link": "https://www.searchenginejournal.com/google-expands-review-guidelines-and-warns-of-manual-actions/583674/",
+    "summary": "<p>Google expanded its review snippet documentation with new ways content can trigger a manual action.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/google-expands-review-guidelines-and-warns-of-manual-actions/583674/\">Google Expands Review Guidelines And Warns Of Manual Actions</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "d068b21f83ff0a7d",
+    "title": "Daily Search Forum Recap: July 27, 2026",
+    "link": "https://www.seroundtable.com/recap-07-27-2026-41762.html",
+    "summary": "Here is a recap of what happened in the search forums today, through the eyes of the Search Engine Roundtable and other search forums on the web.\n\nAnother week...",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "68ff6b65605e9dd4",
+    "title": "Google Review Snippets Prohibits Fake or Undisclosed Incentivized Reviews",
+    "link": "https://www.seroundtable.com/google-review-snippets-guidelines-update-41754.html",
+    "summary": "Google updated its review snippets structured data markup guidelines on Friday to provide a pretty obvious guideline that Google felt it needed to spell out.  Google wrote, \"Don't include fake or undisclosed incentivized reviews on your page or in your structured data markup.\"",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "db3d07862bd8a69c",
+    "title": "Google Business Profile Dashboard In Blue",
+    "link": "https://www.seroundtable.com/google-business-profile-dashboard-blue-41748.html",
+    "summary": "Google may be slowly rolling out a blue colored background for the Google Business Profile dashboard within Google Search.  Previously, it was on a white background, and now some local SEOs are seeing a blue background.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "ce8b4f01e1c3df1e",
+    "title": "Google Ads Household Income Exclusions For PMax",
+    "link": "https://www.seroundtable.com/google-ads-household-income-exclusions-41753.html",
+    "summary": "Google Ads is reportedly offering a new exclusion type for Performance Max campaigns. This one is named household income exclusions, which is not new to Google Ads as a whole, but maybe for PMax campaigns.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "5114b579d13ddf33",
+    "title": "Google Ads Conversion Measurement Doc Updated With Timing & Data Sources",
+    "link": "https://www.seroundtable.com/google-ads-conversion-measurement-update-41752.html",
+    "summary": "Google has made numerous changes to its help document on Google Ads conversion measurements. The updates include information about how long the measurements need to collect data, what the best sources for gathering that data are, and even more.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "59174359acff4895",
+    "title": "Google Request Indexing Issue With Robots.txt Files?",
+    "link": "https://www.seroundtable.com/google-request-indexing-robots-txt-41761.html",
+    "summary": "Google may have a bug or issue with using the request indexing or recrawling your robots.txt files within Google Search Console. Supposedly, the feature is not working properly for all sites, but it is working for some sites as well.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "af4fe72d494780f1",
+    "title": "Google Doesn’t Punish AI Content; It Punishes Bad Content (331k Pages Studied)",
+    "link": "https://ahrefs.com/blog/google-doesnt-punish-ai-content/",
+    "summary": "On the one hand, Google says they don’t care whether AI is used for content creation, as long as the content isn’t designed “with the primary purpose of manipulating ranking in search results.” On the other hand, people like Lily<span class=\"ellipsis\">&#8230;</span><div class=\"read-more\">Read more &#8250;</div><!-- end of .read-more -->",
+    "source": "Ahrefs Blog",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "b14abbf8d06c3d88",
+    "title": "How to determine AI visibility ROI and revenue impact",
+    "link": "https://www.semrush.com/blog/ai-visibility-roi/",
+    "summary": "<p>Determine AI visibility ROI by linking mentions, citations, and AI referrals directly to leads and revenue.</p>",
+    "source": "Semrush Blog",
+    "zone": "",
+    "score": "82",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "d3110993f730e48a",
+    "title": "How to find AI visibility gaps with Semrush",
+    "link": "https://www.semrush.com/blog/find-ai-visibility-gaps-with-semrush/",
+    "summary": "<p><img alt=\"How to find AI visibility gaps with Semrush\" src=\"https://static.semrush.com/blog/uploads/media/52/a5/52a549137d6c318caee65e13febde888/854903c4e28fc894406005ed8f6d815e/how-to-find-ai-visibility-gaps-with-semrush.svg\" width=\"448\" /></p><p>Find AI visibility gaps with Semrush. Spot prompts and sources where competitors get cited but you don‘t.</p>",
+    "source": "Semrush Blog",
+    "zone": "",
+    "score": "82",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "ddb8a6d1056a87cc",
+    "title": "13 Advanced SEO techniques & strategies for 2026",
+    "link": "https://www.semrush.com/blog/advanced-seo/",
+    "summary": "<p><img alt=\"13 Advanced SEO techniques &amp; strategies for 2026\" src=\"https://static.semrush.com/blog/uploads/media/45/9c/459c2454523f693c7688b1b4fd9f826a/advanced-seo.svg\" width=\"448\" /></p><p>Advanced SEO techniques include optimizing content for AI extraction and improving crawl depth.</p>",
+    "source": "Semrush Blog",
+    "zone": "",
+    "score": "82",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "e51e52d7d1fc2e50",
+    "title": "AI Halftime Report: H1 2026",
+    "link": "https://www.growth-memo.com/p/ai-halftime-report-h1-2026",
+    "summary": "AI's impact kept growing in H1 2026, but the ability to measure it kept falling behind.",
+    "source": "Growth Memo (Kevin Indig)",
+    "zone": "",
+    "score": "80",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "eec2a8068acc7f8b",
+    "title": "The Title and Thumbnail Rule Most People Break",
+    "link": "https://www.youtube.com/shorts/SOg1Nkq1CRA",
+    "summary": "#ahrefs",
+    "source": "Ahrefs (YouTube)",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "d2527855695f8f64",
+    "title": "ChatGPT Ads adds conversion bidding and stronger measurement",
+    "link": "https://martech.org/chatgpt-ads-adds-conversion-bidding-and-stronger-measurement/",
+    "summary": "<div><img alt=\"\" class=\"attachment-large size-large wp-post-image\" height=\"452\" src=\"https://martech.org/wp-content/uploads/2025/11/ChatGPT-logo.png\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>New capabilities bring it closer to the workflow and optimization tools advertisers already use in Google Ads and Meta Ads.</p>\n<p>The post <a href=\"https://martech.org/chatgpt-ads-adds-conversion-bidding-and-stronger-measurement/\">ChatGPT Ads adds conversion bidding and stronger measurement</a> appeared first on <a href=\"https://martech.org\">MarTech</a>.</p>",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "6f4bb6108c73bf33",
+    "title": "Why your AI-review process is going to fail",
+    "link": "https://martech.org/why-your-ai-review-process-is-going-to-fail/",
+    "summary": "<div><img alt=\"An artist sitting at an easel, carefully painting a shiny coat of gold leaf onto a obviously distorted, melting chair that has five uneven legs.\" class=\"attachment-large size-large wp-post-image\" height=\"450\" src=\"https://martech.org/wp-content/uploads/2026/07/hallucination-failure-content-review-AI-800x450.png\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>Reviewing AI output for plausibility isn't enough. Here's a simple structure you can apply to protect yourself from \"hallucinations.\"</p>\n<p>The post <a href=\"https://martech.org/why-your-ai-review-process-is-going-to-",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "857884b73376bfb1",
+    "title": "Optimizing for the holiday ecommerce surge",
+    "link": "https://martech.org/optimizing-for-the-holiday-ecommerce-surge/",
+    "summary": "<div><img alt=\"MarTechBot Explains it all.\" class=\"attachment-large size-large wp-post-image\" height=\"450\" src=\"https://martech.org/wp-content/uploads/2025/11/mtb-explains-it-all-new.png\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>Maximizing your revenue during the peak retail season requires structural readiness. Here are the five essential applications your team must optimize.</p>\n<p>The post <a href=\"https://martech.org/optimizing-for-the-holiday-ecommerce-surge/\">Optimizing for the holiday ecommerce surge</a> appeared first on <a href=\"https://martech.org\">MarTech</a>.</p>",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "4a500de5fbd78720",
+    "title": "AI is pushing composability beyond software",
+    "link": "https://martech.org/ai-is-pushing-composability-beyond-software/",
+    "summary": "<div><img alt=\"How to produce modular content to drive personalization at scale\" class=\"attachment-large size-large wp-post-image\" height=\"450\" src=\"https://martech.org/wp-content/uploads/2024/07/How-to-produce-modular-content-to-drive-personalization-at-scale-800x450.png\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>The martech stack now has a new building block: intelligence that can reason, plan, and work alongside SaaS systems and human teams.</p>\n<p>The post <a href=\"https://martech.org/ai-is-pushing-composability-beyond-software/\">AI is pushing composability beyond software</a> a",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "dfcb0d75616f7832",
+    "title": "AI Sales Forecasting: The Data Your CRM’s AI Can’t See",
+    "link": "https://databox.com/ai-sales-forecasting-accuracy",
+    "summary": "<p>The pipeline is in the CRM. The forecast isn&#8217;t. TL;DR Your AI tool is connected to Salesforce. You ask: &#8220;What&#8217;s our realistic Closed-won revenue for ...</p>\n<p>The post <a href=\"https://databox.com/ai-sales-forecasting-accuracy\">AI Sales Forecasting: The Data Your CRM&#8217;s AI Can&#8217;t See</a> appeared first on <a href=\"https://databox.com\">Databox</a>.</p>",
+    "source": "Databox Blog",
+    "zone": "",
+    "score": "72",
+    "priority": "ядро"
+  },
+  {
+    "id": "2b95a17a1ab54a0e",
+    "title": "Bid Multipliers for ChatGPT Ads",
+    "link": "https://www.jonloomer.com/qvt/bid-multipliers-chatgpt-ads/",
+    "summary": "<div><img alt=\"Bid Multipliers for ChatGPT Ads\" class=\"attachment-medium size-medium wp-post-image\" height=\"533\" src=\"https://www.jonloomer.com/wp-content/uploads/2026/07/bid-multipliers-chatgpt-ads-2-300x533.png\" style=\"margin-bottom: 15px;\" width=\"300\" /></div>\n<p>In a somewhat surprising feature release, bid multipliers are here for ChatGPT ads. It&#8217;s not clear if all advertisers participating in the beta have access (I do). Let&#8217;s take a closer look&#8230; What Are Bid Multipliers? If you have this feature, you&#8217;ll see a new &#8220;Advanced&#8221; section in the ad group. Ex",
+    "source": "Jon Loomer Digital",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "8064ffbc0b2df7bc",
+    "title": "Rivault",
+    "link": "https://www.producthunt.com/products/rivault",
+    "summary": "<p>\n            Safely provide and store data and context for AI agents\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/rivault?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1207277?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "eb3e65dcae271fb5",
+    "title": "superfile",
+    "link": "https://www.producthunt.com/products/superfile",
+    "summary": "<p>\n            A modern, visual file manager for the terminal\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/superfile?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1207467?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "c2f3628701060fa0",
+    "title": "AI YC interview with Gstack agents",
+    "link": "https://www.producthunt.com/products/gstack-joins-your-meeting",
+    "summary": "<p>\n            AI specialists that join your Google Meet and gives feedback\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/gstack-joins-your-meeting?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1206376?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "35979dd2118d694b",
+    "title": "Estera",
+    "link": "https://www.producthunt.com/products/estera",
+    "summary": "<p>\n            AI Receptionist that Answers Calls & WhatsApp 24/7\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/estera?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1205300?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "137ad0f20a97bf82",
+    "title": "Tackly",
+    "link": "https://www.producthunt.com/products/tackly",
+    "summary": "<p>\n            Map your thoughts in real time with AI.\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/tackly?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1207115?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "34eabfdac68ade30",
+    "title": "Tunio",
+    "link": "https://www.producthunt.com/products/tunio",
+    "summary": "<p>\n            AI Music operations platform for venues\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/tunio?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1207280?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "034cbf515c11c843",
+    "title": "In China, people are renting out their faces to AI",
+    "link": "https://restofworld.org/2026/china-ai-microdramas-face-licensing/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "summary": "New platforms are paying people to license their likeness for AI-generated dramas and ads, creating a new marketplace for biometric identity.",
+    "source": "Rest of World",
+    "zone": "",
+    "score": "80",
+    "priority": "ядро"
+  },
+  {
+    "id": "44e8e906483ae393",
+    "title": "Build a whole marketing team with eve",
+    "link": "https://github.com/vercel-labs/marketing-team-eve-template",
+    "summary": "<p>Article URL: <a href=\"https://github.com/vercel-labs/marketing-team-eve-template\">https://github.com/vercel-labs/marketing-team-eve-template</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49069610\">https://news.ycombinator.com/item?id=49069610</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "c6ffcb1603572b45",
+    "title": "Show HN: adCasa OS – AI marketing workspace built with Bayesian attribution",
+    "link": "https://adcasa.io/",
+    "summary": "<p>Article URL: <a href=\"https://adcasa.io/\">https://adcasa.io/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49066576\">https://news.ycombinator.com/item?id=49066576</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "9dbfd4fb10349288",
+    "title": "Automate 7 Projects Marketing with AI for $40",
+    "link": "https://apsquared.co/posts/marketing-automation-claude-codex",
+    "summary": "<p>Article URL: <a href=\"https://apsquared.co/posts/marketing-automation-claude-codex\">https://apsquared.co/posts/marketing-automation-claude-codex</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49061784\">https://news.ycombinator.com/item?id=49061784</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "30eec6163df5dc0c",
+    "title": "KFC Singapore transforms 71 outlets into a Pokémon adventure",
+    "link": "https://www.marketing-interactive.com/kfc-singapore-transforms-71-outlets-into-a-pokemon-adventure",
+    "summary": "Five KFC outlets will be reimagined as Pokémon type-themed destinations, representing water, fire, electric, ghost and grass.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "3803c051e7b52c03",
+    "title": "Shell puts Monchhichi in the driver's seat this National Day",
+    "link": "https://www.marketing-interactive.com/shell-puts-monchhichi-in-the-driver-s-seat-this-national-day",
+    "summary": "The campaign marks Shell's 135th anniversary in Singapore and combines limited-edition merchandise, in-store activations, fuel promotions and exclusive motorsports rewards designed to turn everyday refuelling stops into brand experiences.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "92758b945cc90708",
+    "title": "Visa names new APAC director of experiential marketing, sponsorships and partnerships",
+    "link": "https://www.marketing-interactive.com/visa-names-new-apac-director-of-experiential-marketing-sponsorships-and-partnerships",
+    "summary": "Ong was previously head of brands, culture and partnerships, at Diageo.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "f5cda91eb282aa45",
+    "title": "TLC Worldwide taps former Monks SEA MD as APAC managing director",
+    "link": "https://www.marketing-interactive.com/tlc-worldwide-appoints-former-monks-sea-md-as-apac-managing-director",
+    "summary": "Reporting to CEO for APAC and MEA Pren Munian, she will be responsible for driving the company's growth strategy, innovation and market expansion.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "50226c0c3557ff62",
+    "title": "Is this the end of the Korean wave?",
+    "link": "https://www.marketing-interactive.com/is-this-the-end-of-the-korean-wave",
+    "summary": "As K-culture becomes part of everyday life, brands will need to move beyond fandom and focus on long-term consumer adoption.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "2b269743f52d702e",
+    "title": "Why Glow Festival is taking wellness beyond the workout",
+    "link": "https://www.marketing-interactive.com/why-glow-festival-is-taking-wellness-beyond-the-workout",
+    "summary": "\"Wellness is no longer defined purely by fitness, it has become far more holistic, and it means something different to everyone.\"",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "19ff978095692f88",
+    "title": "Shein clears Hong Kong listing hearing as Q1 growth slows to 1.1%",
+    "link": "https://kr-asia.com/shein-clears-hong-kong-listing-hearing-as-q1-growth-slows-to-1-1",
+    "summary": "The online fashion retailer could make its public market debut as early as August.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "492247cc4401bf51",
+    "title": "Tencent’s Hunyuan may shift toward world models after leadership change",
+    "link": "https://kr-asia.com/tencents-hunyuan-may-shift-toward-world-models-after-leadership-change",
+    "summary": "Former OpenAI researcher Tian Yonglong will succeed multimodal chief Han Hu, who has reportedly resigned.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7c787b2603a3c322",
+    "title": "Amazon’s global strategy comes unstuck in Southeast Asia’s localized market",
+    "link": "https://kr-asia.com/amazons-global-strategy-comes-unstuck-in-southeast-asias-localized-market",
+    "summary": "The US e-commerce giant is phasing out fulfillment services as it trails far behind regional players.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "36cf1304f449c80c",
+    "title": "CiDi targets overseas growth for autonomous mining equipment",
+    "link": "https://technode.com/2026/07/27/cidi-targets-overseas-growth-for-autonomous-mining-equipment/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"576\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/1735629955138-scaled.jpg?fit=1024%2C576&amp;ssl=1\" width=\"1024\" /></figure>Hong Kong-listed CiDi plans to expand deployments of its autonomous mining equipment outside China, including a larger rollout of partially automated excavators in Australia this year. The company is also seeking contracts in the Middle East, South America, and Europe. CiDi expects overseas markets to contribute a double-digit share of revenue next year, up f",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "a969a8b09ddf4a18",
+    "title": "AgiBot starts Hong Kong IPO process",
+    "link": "https://technode.com/2026/07/27/agibot-starts-hong-kong-ipo-process/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"523\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/banner20250418-scaled.jpg?fit=1024%2C523&amp;ssl=1\" width=\"1024\" /></figure>Chinese humanoid robot maker AgiBot has initiated the process for a Hong Kong IPO. The move follows earlier reports that the Shanghai-based company had selected banks and was preparing for a listing. Founded in 2023, AgiBot develops humanoid robots and embodied AI systems for industrial and commercial applications. The company has also released AgiBot World,",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "5d07768241355802",
+    "title": "Moonshot AI to make Kimi K3 available for public download",
+    "link": "https://technode.com/2026/07/27/moonshot-ai-to-make-kimi-k3-available-for-public-download/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"576\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2025/10/moonshot-ai.png?fit=1024%2C576&amp;ssl=1\" width=\"1024\" /></figure>Moonshot AI is set to release the model weights for Kimi K3 on July 27, allowing developers to download, modify, and host the model independently. Kimi K3 was launched earlier this month with 2.8 trillion parameters, native visual understanding, and a one-million-token context window. The Beijing-based company positions Kimi K3 as an open-weight model for [&#8230;]",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "5809677b22270009",
+    "title": "Momenta expands into autonomous freight with Robovan",
+    "link": "https://technode.com/2026/07/27/momenta-expands-into-autonomous-freight-with-robovan/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"349\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2025/09/momenta-about-car-bg.jpg?fit=1024%2C349&amp;ssl=1\" width=\"1024\" /></figure>Chinese autonomous driving company Momenta has launched its Robovan autonomous freight business, with vehicles already operating in Suzhou’s Xiangcheng district. The company said the vehicles are being deployed for express delivery and overnight delivery, using its R7 world model and a map-free approach adapted from passenger-car deployments. Momenta said the",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "fe8425b60244f56d",
+    "title": "Enterprise WeChat opens beta testing of AI assistant Dayuan",
+    "link": "https://technode.com/2026/07/27/enterprise-wechat-opens-beta-testing-of-ai-assistant-dayuan/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"683\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/adem-ay-ik_AuIWeBBM-unsplash.jpg?fit=1024%2C683&amp;ssl=1\" width=\"1024\" /></figure>Tencent’s workplace communication and collaboration platform Enterprise WeChat has opened beta testing of an AI assistant named Dayuan. Users can swipe left from any interface to activate the assistant, which can access Enterprise WeChat’s documents, spreadsheets, meetings, and calendar tools. Dayuan is designed to understand the context of ongoing wo",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "cc372528e68dd40e",
+    "title": "Samsung MX reportedly considers Chinese DRAM for low-end phones in China",
+    "link": "https://technode.com/2026/07/27/samsung-mx-reportedly-considers-chinese-dram-for-low-end-phones-in-china/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"683\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/jonathan-kemper-poSms2EzfNY-unsplash.jpg?fit=1024%2C683&amp;ssl=1\" width=\"1024\" /></figure>Samsung Electronics’ Mobile eXperience division is reportedly considering Chinese-made DRAM for low- and mid-range smartphones sold in China, including Galaxy A models, according to a South Korean media report cited by IT Home. The move would allow Samsung to use lower-cost Chinese LPDDR5X memory as rising component prices put pressure on smar",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "791172e38f581ab1",
+    "title": "Ex-Share.Market CEO Ujjwal Jain Launches Wealth Management Startup Atyx.AI",
+    "link": "https://inc42.com/buzz/ex-share-market-ceo-ujjwal-jain-launches-wealth-management-startup-atyx-ai/",
+    "summary": "<img alt=\"Ex-Share.Market CEO Ujjwal Jain Launches Wealth Management Startup Atyx.AI\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/atyx.ai_ftr.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Former Share.Market CEO Ujjwal Jain and ex-Microsoft researcher Debopam Bhattacharjee have teamed up to launch a new fintech venture Atyx.AI. &#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "9d128e00cd2a58a8",
+    "title": "Delhi HC Restrains ‘Zepto Finance’ From Using Zepto Trademark",
+    "link": "https://inc42.com/buzz/delhi-hc-restrains-zepto-finance-from-using-zepto-trademark/",
+    "summary": "<img alt=\"Delhi HC Restrains &#039;Zepto Finance&#039; From Using Zepto Trademark\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2025/10/Zepto-The-Outline-Newsletter-ftr.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Delhi High Court (HC) has granted Zepto an ex-parte interim injunction against entities operating under the name &#8220;Zepto Finance&#8221;, restraining&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "9c136e71dddee5f3",
+    "title": "Why Enterprise Trust Is India’s Next AI Growth Frontier",
+    "link": "https://inc42.com/resources/why-enterprise-trust-is-indias-next-ai-growth-frontier/",
+    "summary": "<img alt=\"Enterprise AI&#039;s binding constraint is shifting from what the models can do to what happens to the customer&#039;s data.\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/ftr-24-1.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Zero data retention is today a promise, not an architecture. As enterprise knowledge flows into the models, a new trust&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "05c08623ead75556",
+    "title": "Can TakeMe2Space Build The AWS Of Space?",
+    "link": "https://inc42.com/startups/can-takeme2space-build-the-aws-of-space/",
+    "summary": "<img alt=\"Can TakeMe2Space Build The AWS Of Space?\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/Startup-profile-tm2space-ftr.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />When Indian Space Research Organisation’s (ISRO) PSLV-C61 rocket lifted off from Sriharikota in January this year, Ronak Samantray believed that&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "6d6836a1a3c3c653",
+    "title": "IndiaMART To Invest ₹65 Cr More In Fleetx, Raise Stake To 25.8%",
+    "link": "https://inc42.com/buzz/indiamart-to-invest-%e2%82%b965-cr-more-in-fleetx-raise-stake-to-25-8/",
+    "summary": "<img alt=\"IndiaMART To Invest ₹65 Cr More In Fleetx, Raise Stake To 25.8%\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2025/01/Indiamart-FY23-featured-.png\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />B2B ecommerce platform IndiaMART InterMESH has entered into an agreement to invest about ₹65 Cr in fleet management startup Fleetx,&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "9fd8cb49583a151d",
+    "title": "IPO-Bound PhonePe Posts ₹2,792 Cr Loss In FY26, Revenue Up 11.5% YoY",
+    "link": "https://inc42.com/buzz/ipo-bound-phonepe-posts-%e2%82%b92792-cr-loss-in-fy26-revenue-up-11-5-yoy/",
+    "summary": "<img alt=\"IPO-Bound PhonePe Posts ₹2,792 Cr Loss In FY26, Revenue Up 11.5% YoY\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/FTR-1-2.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Fintech major PhonePe’s net loss widened by 62% in the financial year ended March 2026 (FY26) to ₹2,792 Cr from&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "0504aff1f5f781ca",
+    "title": "ETN steps up bid to become Europe’s TBPN with $1.6m raise: ‘We’re taking this incredibly seriously’",
+    "link": "https://sifted.eu/articles/etn-tbpn-launch-funding-round-axel-springer/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "753f30e52263d911",
+    "title": "Bessemer, Atomico in talks to lead The Exploration Company funding at $2bn valuation",
+    "link": "https://sifted.eu/articles/the-exploration-company-valuation-fundraise/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "78501b9bf07dee39",
+    "title": "UK pension providers in talks for £1bn Scale-Up Fund",
+    "link": "https://sifted.eu/articles/uk-pension-funds-scale-up-fund-invest-tech/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7a051f72ee7731bc",
+    "title": "The next AI race will be fought over trust",
+    "link": "https://sifted.eu/articles/the-next-ai-race-will-be-fought-over-trust/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7a85a37c1e07d61e",
+    "title": "Nothing to cut around 100 jobs in cost-cutting push, reports say",
+    "link": "https://sifted.eu/articles/nothing-to-cut-around-100-jobs-in-cost-cutting-push-reports-say/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "6aab448e5df5ea1f",
+    "title": "Multiverse Computing targeting €500m round at unicorn valuation",
+    "link": "https://sifted.eu/articles/multiverse-computing-series-c-unicorn/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "3013034684dbd6d6",
+    "title": "How Atlys is engineering certainty into the visa experience",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/how-atlys-is-engineering-certainty-into-the-visa-experience/132651786",
+    "summary": "Atlys is transforming visa applications by prioritising customer perception and transparency.  The company uses machine learning to predict visa approval chances for applicants.  It also employs a unique safety box system for passport handling.  Atlys maintains radical transparency in its policies and pricing structures.  This approach aims to systematically remove uncertainty from the entire visa journey.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "632050548d53fd12",
+    "title": "B2B Marketing UnBoxed 2026: What insurance, logistics, fintech and media can teach SaaS about winning customers",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/business-of-brands/b2b-marketing-unboxed-2026-what-insurance-logistics-fintech-and-media-can-teach-saas-about-winning-customers/132636895",
+    "summary": "During the B2B Marketing UnBoxed 2026 conference, marketing experts from a range of industries disseminated important insights on fostering trust and providing consistent customer experiences as engines for growth. Traditional industries offered strategic lessons specifically aimed at SaaS companies aspiring for enduring success. Notably, the event reaffirmed the significance of nurturing customer bonds and ensuring meaningful value, illustrating a pivotal transformation in B2B marketing strategies beyond simply enhancing visibility.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "0bed7f81296f37f0",
+    "title": "Are we forgetting the art of the tagline?",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/research/advertising/are-we-forgetting-the-art-of-the-tagline/132651625",
+    "summary": "Advertising taglines serve as a unique and powerful art form.  These short phrases encapsulate a brand&#039;s core promise effectively.  Great taglines become invaluable assets, aiding brand recall and continuity.  The author shares personal experiences and examples of successful taglines.  This fundamental advertising tool helps build lasting brand memories for consumers.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "1e895d0a7fc59d11",
+    "title": "AI is creating a &#039;Sea of Sameness&#039;; Marketers need a new playbook, says Parminder Singh, Reliance Enterprise Intelligence",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/ai-is-creating-a-sea-of-sameness-marketers-need-a-new-playbook-says-parminder-singh-reliance-enterprise-intelligence/132636691",
+    "summary": "During a keynote session at B2B Marketing UnBoxed 2026, Singh drew on his journey from CMO to CEO to argue that every major technological shift initially replicates existing ways of working before unlocking transformative change. Illustrating his point through the evolution of technologies such as the personal computer, the internet and social media, he said artificial intelligence (AI) is currently at a similar inflection point.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "b115b6df800d2158",
+    "title": "The great marketing debate: Does AI reward presence or precision?",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/the-great-marketing-debate-does-ai-reward-presence-or-precision/132636846",
+    "summary": "In a thought-provoking discussion among industry leaders, the effectiveness of AI-driven B2B marketing was scrutinised, weighing the importance of visibility against precision. While some experts asserted that enhanced visibility boosts AI discoverability, others countered that success derived only from presence fails to sustain long-term growth.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7d421acca1a11827",
+    "title": "UAE-based Fipera launches AI photography platform for fashion brands",
+    "link": "https://campaignme.com/uae-based-fipera-launches-ai-photography-platform-for-fashion-brands/",
+    "summary": "<p>UAE-based strategic consultancy Fipera has launched neofashion.ai, an artificial intelligence (AI) content platform for fashion retailers. The self-serve access platform allows fashion brands to generate on-brand product photography, video, and marketing or campaign content directly from its own product photos and references. The launch follows a private beta in which Fipera claims three global apparel [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/uae-based-fipera-launches-ai-photography-platform-for-fashion-brands/\">UAE-based Fipera launches AI photography platform for fashion ",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "dc4e2be2bcf4a1a9",
+    "title": "Campaign Big Global Awards 2027 now open for entries",
+    "link": "https://campaignme.com/campaign-big-global-awards-2027-now-open-for-entries/",
+    "summary": "<p>The Campaign Big Global Awards 2027 have launched and are now open for entries. The early-bird deadline is 13 August, with standard entries closing on 17 September and the final deadline on 22 October. You can enter here. The awards celebrate the most impactful and innovative creative work from around the world. Entries are judged by a panel [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/campaign-big-global-awards-2027-now-open-for-entries/\">Campaign Big Global Awards 2027 now open for entries</a> appeared first on <a href=\"https://campaignme.com\">Campaign Middle East</a>.</p>",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "ca4b534c61111ded",
+    "title": "Who leads the public relations industry in Saudi Arabia?",
+    "link": "https://campaignme.com/who-leads-the-public-relations-industry-in-saudi-arabia/",
+    "summary": "<p>For many years, the question of who leads the public relations industry in Saudi Arabia was never truly an open one. It reflected a broader global structure in which international agencies did not simply possess stronger brands or wider networks; they represented a complete knowledge ecosystem—proven methodologies, measurement frameworks, accumulated experience across multiple markets, and [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/who-leads-the-public-relations-industry-in-saudi-arabia/\">Who leads the public relations industry in Saudi Arabia?</a> appeared first on <a href=\"",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "a24b8870768cc13b",
+    "title": "Arena reflects on Ryan Fox partnership after Open win",
+    "link": "https://campaignme.com/arena-reflects-on-ryan-fox-partnership-after-open-win/",
+    "summary": "<p>Global events specialist Arena is celebrating brand ambassador Ryan Fox&#8217;s victory at The Open Championship, where the New Zealander became Champion Golfer of the Year and secured the first Major title of his career. Already a two-time PGA TOUR winner, Fox&#8217;s triumph places him among the select group of golfers to have lifted the Claret [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/arena-reflects-on-ryan-fox-partnership-after-open-win/\">Arena reflects on Ryan Fox partnership after Open win</a> appeared first on <a href=\"https://campaignme.com\">Campaign Middle East</a>.",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "9719c02dba9102ff",
+    "title": "Hypermedia and Majid Al Futtaim unveil landmark digital bridges in Dubai and Sharjah",
+    "link": "https://campaignme.com/hypermedia-and-majid-al-futtaim-unveil-landmark-digital-bridges-in-dubai-and-sharjah/",
+    "summary": "<p>Hypermedia, a subsidiary of W Group Holding and the UAE’s an advanced smart DOOH and retail media company, has partnered with Majid Al Futtaim to deliver landmark digital bridge installations at Mall of the Emirates in Dubai and City Centre Al Zahia in Sharjah. Located along one of Dubai’s most prominent and high-traffic corridors, Mall [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/hypermedia-and-majid-al-futtaim-unveil-landmark-digital-bridges-in-dubai-and-sharjah/\">Hypermedia and Majid Al Futtaim unveil landmark digital bridges in Dubai and Sharjah</a> appeared first on <a hre",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "db9144757c4c6440",
+    "title": "Kaspersky partners with WebEngage to enhance B2B marketing",
+    "link": "https://campaignme.com/kaspersky-partners-with-webengage-to-enhance-b2b-marketing/",
+    "summary": "<p>Kaspersky has strengthened its B2B customer engagement through a partnership with WebEngage. The collaboration aimed to bring the global cybersecurity and digital privacy company a more structured and scalable approach to centralise its marketing efforts. The objective was to move beyond fragmented campaign execution and build a system capable of supporting customer segmentation and lead [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/kaspersky-partners-with-webengage-to-enhance-b2b-marketing/\">Kaspersky partners with WebEngage to enhance B2B marketing</a> appeared first on <a hre",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  }
+]

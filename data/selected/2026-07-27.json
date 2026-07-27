@@ -1,0 +1,92 @@
+[
+  {
+    "id": "07100f862f65538c",
+    "title": "Google Ads' Target-Based Bidding Update For Ecommerce",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-ads-target-based-bidding-update-for-ecommerce/581801/",
+    "why": "Google изменил алгоритм ставок в Target CPA/ROAS — теперь могут расти расходы. Владельцам магазинов нужно срочно проверить кампании, иначе рекламный бюджет съест сам алгоритм.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P2"
+  },
+  {
+    "id": "af4fe72d494780f1",
+    "title": "Google Doesn't Punish AI Content; It Punishes Bad Content (331k Pages Studied)",
+    "source": "Ahrefs Blog",
+    "link": "https://ahrefs.com/blog/google-doesnt-punish-ai-content/",
+    "why": "Исследование 331k страниц: Google штрафует не за AI, а за тонкий контент без ценности. Можно генерировать текст AI — главное, чтобы он давал читателю реальный ответ на вопрос.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "SaaS P2"
+  },
+  {
+    "id": "d2527855695f8f64",
+    "title": "ChatGPT Ads adds conversion bidding and stronger measurement",
+    "source": "MarTech",
+    "link": "https://martech.org/chatgpt-ads-adds-conversion-bidding-and-stronger-measurement/",
+    "why": "ChatGPT Ads теперь считает конверсии как Google/Meta — появилась мерилка результатов. Владельцам SaaS это даёт новый канал трафика с нормальной аналитикой вместо гадания.",
+    "rubric": "ai-инструмент",
+    "persona": "SaaS P1, P2"
+  },
+  {
+    "id": "1c2cb3db26bcf1f2",
+    "title": "Google May Be Penalizing AI-Generated Content As Thin Content",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-may-be-penalizing-ai-generated-content-as-thin-content/583773/",
+    "why": "Google расширяет определение «тонкого контента» — чистый AI-текст без дополнительной ценности начинает штрафоваться. Нужно проверить свой контент: добавить уникальные данные, кейсы, опыт.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "6f4bb6108c73bf33",
+    "title": "Why your AI-review process is going to fail",
+    "source": "MarTech",
+    "link": "https://martech.org/why-your-ai-review-process-is-going-to-fail/",
+    "why": "AI галлюцинирует и врёт даже на простых проверках — просто проверить результат на правдоподобность недостаточно. Нужна система с несколькими точками проверки, иначе неправда уйдёт на сайт и убьёт доверие.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P3, SaaS P2"
+  },
+  {
+    "id": "00b36aad162a3827",
+    "title": "AI Video After Sora: 3 Updates You Should Make Before You Publish",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-video-after-sora-3-updates-you-should-make-before-you-publish/583123/",
+    "why": "YouTube требует раскрывать, что видео сделано AI, и указывать, кто за ним стоит. Три конкретных шага перед публикацией видео, иначе ролик могут заблокировать или занизить в выдаче.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P1"
+  },
+  {
+    "id": "2b95a17a1ab54a0e",
+    "title": "Bid Multipliers for ChatGPT Ads",
+    "source": "Jon Loomer Digital",
+    "link": "https://www.jonloomer.com/qvt/bid-multipliers-chatgpt-ads/",
+    "why": "ChatGPT Ads теперь позволяет множители ставок по устройствам/аудиториям — как в Google Ads. Можно более гибко управлять бюджетом и поднимать ставки там, где выше ROI.",
+    "rubric": "ai-инструмент",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "857884b73376bfb1",
+    "title": "Optimizing for the holiday ecommerce surge",
+    "source": "MarTech",
+    "link": "https://martech.org/optimizing-for-the-holiday-ecommerce-surge/",
+    "why": "Пять критических моментов на сайте для подготовки к пику продаж (скорость, интеграция CRM, всплывающие окна). Владельцы магазинов часто ловят падение конверсии именно в сезон — надо чинить до, а не во время.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "dfcb0d75616f7832",
+    "title": "AI Sales Forecasting: The Data Your CRM's AI Can't See",
+    "source": "Databox Blog",
+    "link": "https://databox.com/ai-sales-forecasting-accuracy",
+    "why": "AI в CRM видит только то, что внутри CRM — не видит подпроцессов до сделки. Показывает разрыв в аналитике: почему AI неправильно прогнозирует, если в систему не поступают все данные.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P3, P4"
+  },
+  {
+    "id": "f6d1775d1b0ee374",
+    "title": "Google Expands Review Guidelines And Warns Of Manual Actions",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-expands-review-guidelines-and-warns-of-manual-actions/583674/",
+    "why": "Google ужесточила требования к отзывам в сниппетах — ручное штрафование за подделку или скрытое вознаграждение. Проверить свои отзывы нужно срочно, иначе страница выпадет из выдачи.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  }
+]
