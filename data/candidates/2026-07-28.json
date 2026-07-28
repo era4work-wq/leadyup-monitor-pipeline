@@ -1,0 +1,792 @@
+[
+  {
+    "id": "7afb89b58f3f179d",
+    "title": "Amazon Left US Google Shopping A Year Ago & Never Came Back via @sejournal, @brookeosmundson",
+    "link": "https://www.searchenginejournal.com/amazon-left-us-google-shopping-a-year-ago-never-came-back/583307/",
+    "summary": "<p>Amazon pulled out of U.S. Google Shopping in July 2025 and still hasn't returned. Here's what a year of auction data reveals for retailers.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/amazon-left-us-google-shopping-a-year-ago-never-came-back/583307/\">Amazon Left US Google Shopping A Year Ago &#038; Never Came Back</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "5f3ab104254aa90e",
+    "title": "Google SEO Test Shows What Happens In 5-Second Rendering Window via @sejournal, @martinibuster",
+    "link": "https://www.searchenginejournal.com/google-seo-test-shows-what-happens-in-5-second-rendering-window/583878/",
+    "summary": "<p>A new SEO test shows what happens when Google's Web Rendering Service continues past five seconds: Google pauses time with a virtual clock.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/google-seo-test-shows-what-happens-in-5-second-rendering-window/583878/\">Google SEO Test Shows What Happens In 5-Second Rendering Window</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "00ccfdbe4b6c7a96",
+    "title": "Indexed Claude Chats Show Why Disallow Is Not Noindex via @sejournal, @MattGSouthern",
+    "link": "https://www.searchenginejournal.com/indexed-claude-chats-show-why-disallow-is-not-noindex/583852/",
+    "summary": "<p>Shared Claude chats showed up in Google. We checked the pages and found a noindex header sitting behind a robots.txt block that keeps Google out.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/indexed-claude-chats-show-why-disallow-is-not-noindex/583852/\">Indexed Claude Chats Show Why Disallow Is Not Noindex</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "965e8e8b1b6c1915",
+    "title": "ChatGPT Links Out Most On Travel Questions via @sejournal, @MattGSouthern",
+    "link": "https://www.searchenginejournal.com/chatgpt-links-out-most-on-travel-questions/583824/",
+    "summary": "<p>A new report finds ChatGPT citation rates vary sharply by topic, with travel answers citing sources far more often than education answers.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/chatgpt-links-out-most-on-travel-questions/583824/\">ChatGPT Links Out Most On Travel Questions</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "ef2c67e51894291a",
+    "title": "How Publishers Can Monetize AI Visibility",
+    "link": "https://www.searchenginejournal.com/how-publishers-can-monetise-ai-visibility/583345/",
+    "summary": "<p>AI sends barely any traffic, but the traffic it sends is twice as engaged. Here's why publishers should care.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/how-publishers-can-monetise-ai-visibility/583345/\">How Publishers Can Monetize AI Visibility</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "fd0a16efef3fd750",
+    "title": "Google Ads AI Generated Images With Upload Image Feature",
+    "link": "https://www.seroundtable.com/google-ads-ai-generated-images-upload-image-41766.html",
+    "summary": "Google Ads has given advertisers the ability to upload an image when creating AI-generated images within the ad platform. The uploaded image is used to help the AI generate an image in the style you are looking for.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "9d6b0b9b174cc3b4",
+    "title": "Google Ads To Allow For Social Casino Games Ads",
+    "link": "https://www.seroundtable.com/google-social-casino-games-ads-41763.html",
+    "summary": "Google updated its Google Ads policies to begin to allow for Social Casino Games. Social Casino Games are mostly free-to-play gambling-like games found on social networking sites. Google said it will gradually introduce the ability for some advertisers to apply for certification for such ads.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "75887710adfe2449",
+    "title": "ChatGPT Ads Manager Budget Changes, New Features, API & Ad Formats",
+    "link": "https://www.seroundtable.com/chatgpt-ads-budget-api-ad-formats-more-41756.html",
+    "summary": "OpenAI has released a number of new features and changes to ChatGPT Ads Manager over the past week or so.  The latest round of changes include changes to how your daily budget works, budget pacing, conversion-optimized campaigns, geo-exclusions, matching updates, API features, and the rollout of a new product ad formats.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "2ba2ae39a5e11aa6",
+    "title": "Google Ads Editor Version 2.13 Is Now Available",
+    "link": "https://www.seroundtable.com/google-ads-editor-version-2-13-41755.html",
+    "summary": "Google has released version 2.13 of the Google Ads Editor, which includes 17 new features and removes one older feature. The full list of features is below, as Google posted on its site.\n\nGoogle Ads Editor is a free...",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "b33feec174fafe4b",
+    "title": "Google Search Ranking Volatility July 24th Through The Weekend",
+    "link": "https://www.seroundtable.com/google-ranking-volatility-41758.html",
+    "summary": "As I mentioned in my Friday video, there were some rumblings kicking into gear starting late Thursday, July 23rd, and through Friday, July 24th. It seems like Google kicked some of its search ranking servers, and as a result, we are seeing an unconfirmed Google search ranking update, with a lot of volatility throughout last week, but it kicked into high gear on Friday.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "4ea711ae45d8ec6c",
+    "title": "Vibe Coding for Marketers: A Beginner’s Guide",
+    "link": "https://ahrefs.com/blog/vibe-coding-for-marketers-a-beginners-guide/",
+    "summary": "Canva made this painfully clear: they gave 5,000 employees a full week to explore AI, and most couldn’t figure out how to start. No surprise there, most vibe-coding tools expect you to manage files, wrangle a terminal, and deploy to<span class=\"ellipsis\">&#8230;</span><div class=\"read-more\">Read more &#8250;</div><!-- end of .read-more -->",
+    "source": "Ahrefs Blog",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "cbfbebad794a2577",
+    "title": "Keyword mapping for SEO: Guide + free template",
+    "link": "https://www.semrush.com/blog/keyword-mapping/",
+    "summary": "<p><img alt=\"Keyword mapping for SEO: Guide + free template\" src=\"https://static.semrush.com/blog/uploads/media/3f/e1/3fe1c663a298e65c9fbfc9da7c4dd592/keyword-mapping.svg\" width=\"448\" /></p><p>Keyword mapping is an SEO technique for assigning target terms to the corresponding pages on your site.</p>",
+    "source": "Semrush Blog",
+    "zone": "",
+    "score": "82",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "8765aec41cf8db66",
+    "title": "NEW: Brand Affinity is Now Live in SparkToro Reports",
+    "link": "https://sparktoro.com/blog/new-brand-affinity-is-now-live-in-sparktoro-reports/",
+    "summary": "Starting today, SparkToro audience research reports now contain brand affinity data, showing the companies, products, and brand names an audience is most familiar with and/or purchases from.\n\n\n\nWhen we first received requests for this data, my cofounder Casey went to work finding a way to use our existing audience data sources, and, genius that he is, uncovered a solution. Granted,&#8230;",
+    "source": "SparkToro Blog",
+    "zone": "",
+    "score": "82",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "193db2102f062cc0",
+    "title": "The CMO’s guide to building an AI-first marketing team",
+    "link": "https://martech.org/the-cmos-guide-to-building-an-ai-first-marketing-team/",
+    "summary": "<div><img alt=\"AI-assisted GTM team concept\" class=\"attachment-large size-large wp-post-image\" height=\"450\" src=\"https://martech.org/wp-content/uploads/2025/09/AI-assisted-GTM-team-concept-800x450.jpg\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>Turn early AI adoption into better workflows, faster execution, and measurable results through training, process improvements, and clear KPIs.</p>\n<p>The post <a href=\"https://martech.org/the-cmos-guide-to-building-an-ai-first-marketing-team/\">The CMO’s guide to building an AI-first marketing team</a> appeared first on <a href=\"https://martech",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "61aa3bb209a915d4",
+    "title": "5 strategies to remove negative search results in 2026 by Erase.com",
+    "link": "https://martech.org/5-strategies-to-remove-negative-search-results-in-2026/",
+    "summary": "<div><img alt=\"\" class=\"attachment-large size-large wp-post-image\" height=\"450\" src=\"https://martech.org/wp-content/uploads/2026/07/Erase-20260728-feature-800x450.jpg\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>How to remove, deindex, and suppress negative content in Google and why AI search changes the reputation playbook this year.</p>\n<p>The post <a href=\"https://martech.org/5-strategies-to-remove-negative-search-results-in-2026/\">5 strategies to remove negative search results in 2026</a> appeared first on <a href=\"https://martech.org\">MarTech</a>.</p>",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "c7b4087ad345c099",
+    "title": "AI for Ecommerce: The Interesting Possibilities Are Between Your Tools, Not Inside Them",
+    "link": "https://databox.com/ai-for-ecommerce",
+    "summary": "<p>Every tool in your stack now has AI inside it. The questions that move your P&#38;L live between them. TL;DR Almost every tool in your ...</p>\n<p>The post <a href=\"https://databox.com/ai-for-ecommerce\">AI for Ecommerce: The Interesting Possibilities Are Between Your Tools, Not Inside Them</a> appeared first on <a href=\"https://databox.com\">Databox</a>.</p>",
+    "source": "Databox Blog",
+    "zone": "",
+    "score": "72",
+    "priority": "ядро"
+  },
+  {
+    "id": "6a94999d11feb54c",
+    "title": "Google Display Ads Migrating to Demand Gen: What You Need to Know",
+    "link": "https://www.wordstream.com/blog/google-display-ads-to-demand-gen",
+    "summary": "<p>Get the details and timeline of Google's latest announcement that places display ads under Demand Gen campaigns. </p>\n<p>The post <a href=\"https://www.wordstream.com/blog/google-display-ads-to-demand-gen\">Google Display Ads Migrating to Demand Gen: What You Need to Know</a> appeared first on <a href=\"https://www.wordstream.com\">WordStream</a>.</p>",
+    "source": "WordStream (LocaliQ)",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "d662bfd727ddce79",
+    "title": "HubSpot AEO vs. Semrush AI Visibility: Which is right for your team?",
+    "link": "https://blog.hubspot.com/marketing/hubspot-vs-semrush-aeo",
+    "summary": "<div class=\"hs-featured-image-wrapper\"> \n <a class=\"hs-featured-image-link\" href=\"https://blog.hubspot.com/marketing/hubspot-vs-semrush-aeo\" title=\"\"> <img alt=\"hubspot aeo vs semrush ai visibility: woman smiling on laptop\" class=\"hs-featured-image\" src=\"https://53.fs1.hubspotusercontent-na1.net/hubfs/53/hubspot-aeo-vs-semrush-ai-visibility-1-20260724-953314.webp\" style=\"width: auto !important; float: left; margin: 0 15px 15px 0;\" /> </a> \n</div> \n<p>If you’re comparing HubSpot AEO vs Semrush AI Visibility Toolkit, I tested both for you as a marketing and AEO practitioner myself and will share",
+    "source": "HubSpot Marketing Blog",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7500226076319b87",
+    "title": "AI SEO tools that fit your growth stack",
+    "link": "https://blog.hubspot.com/marketing/ai-seo-tools",
+    "summary": "<div class=\"hs-featured-image-wrapper\"> \n <a class=\"hs-featured-image-link\" href=\"https://blog.hubspot.com/marketing/ai-seo-tools\" title=\"\"> <img alt=\"AI SEO tools\" class=\"hs-featured-image\" src=\"https://53.fs1.hubspotusercontent-na1.net/hubfs/53/ai-seo-tools-1-20260716-4310515.webp\" style=\"width: auto !important; float: left; margin: 0 15px 15px 0;\" /> </a> \n</div> \n<p>AI SEO tools have matured quickly. What started as a novelty layer atop existing keyword tools has become a full-fledged category, helping improve everything from research to AI search visibility.</p>",
+    "source": "HubSpot Marketing Blog",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "97bf97984ce568bf",
+    "title": "The 9 best applicant tracking systems in 2026",
+    "link": "https://zapier.com/blog/best-applicant-tracking-systems",
+    "summary": "When you open the floodgates that are a new job posting, you have to be ready for the wave of candidates that can follow. It's not easy to sort through hundreds or thousands of applicants to find those best fit for the job—which is why the agency I work for uses an applicant tracking system (ATS) to manage the best possible talent pipeline. To help you pick the best solution for your organization, I researched several dozen ATS platforms, testing them whenever I could and speaking to the folks w",
+    "source": "Zapier Blog",
+    "zone": "",
+    "score": "66",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "b6df7443e94979ae",
+    "title": "Which AI models can you automate on Zapier? (GPT-5.6 Sol, Gemini 3.6 Flash, Opus 5, and more)",
+    "link": "https://zapier.com/blog/ai-models-on-zapier",
+    "summary": "New AI models launch practically every week, and keeping up with which ones to use for specific workflows is a job in itself. Consider this article your living reference. At Zapier, we run every model through AutomationBench. It's our benchmark for testing how well models carry out multi-step workflows, not just static prompts. Below, I'll walk through every major AI provider available on Zapier, the models you can plug into your Zap workflows today, and what each one is best for based on Zapier",
+    "source": "Zapier Blog",
+    "zone": "",
+    "score": "66",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "76fc3e110a864ea3",
+    "title": "Prevent lock-in with AI model flexibility on Zapier",
+    "link": "https://zapier.com/blog/ai-model-flexibility",
+    "summary": "Every AI provider comes with models of varying strengths. I'm a Claude stan because it just gets my writing style, but I'll often reach for Sonnet over the higher-tier models because its results are more consistent for me. And for some tasks, Claude's lineup doesn't cut it at all—when I need to process data at scale, for example, I might reach for Gemini. When I need a versatile generalist for classification or routing, GPT might be my pick. Other people across my team and at Zapier have altoget",
+    "source": "Zapier Blog",
+    "zone": "",
+    "score": "66",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "0189a7401b5696b3",
+    "title": "Zapier vs. MuleSoft comparison: Which is best for your enterprise? [2026]",
+    "link": "https://zapier.com/blog/mulesoft-vs-zapier",
+    "summary": "In The Office, bumbling boss Michael Scott famously tries to declare bankruptcy by yelling, \"I declare bankruptcy!\" Some enterprises take a similar approach to getting people to use AI—\"I declare that AI is an organizational priority!\"—while leaving all the details for later. But as fun as the move-fast-and-break-things approach is, the inevitable result is agent sprawl, shadow AI, and credentials scattered across a dozen different tools. Zapier is built with these challenges in mind. It offers",
+    "source": "Zapier Blog",
+    "zone": "",
+    "score": "66",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "1b392603cc6d04a1",
+    "title": "The 6 best texting apps in 2026",
+    "link": "https://zapier.com/blog/best-texting-app",
+    "summary": "Let's make one thing clear: unfortunately, there's no one best texting app. Unless you absolutely require one or two specific features or are a real stickler for security, the best text message app will be the one that the people you want to text also use. Depending on where you are in the world, that can be iMessage, WhatsApp, Viber, Telegram, LINE, WeChat, or even SMS. If you're looking for some magic WhatsApp alternatives that are a million times better, you're out of luck. But if, for whatev",
+    "source": "Zapier Blog",
+    "zone": "",
+    "score": "66",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "50d194aea722e139",
+    "title": "What is Google Gemini?",
+    "link": "https://zapier.com/blog/google-gemini",
+    "summary": "Google has been in its \"Gemini era\" for a couple years now, and while the confusing rebrandings have slowed, everything else continues to improve at a rapid pace. Gemini is the name Google gave to its current generation family of multimodal AI models, but in typical Google fashion, it also applies to basically everything else that's related to AI.  It can get a touch confusing since, by my reckoning, Google has: Google Gemini, a family of multimodal AI models. The latest is the 3.6 series, thoug",
+    "source": "Zapier Blog",
+    "zone": "",
+    "score": "66",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "b661b1fcca88ecae",
+    "title": "What Is Product Adoption? Stages, Metrics, and How to Improve It",
+    "link": "https://www.crazyegg.com/blog/product-adoption/",
+    "summary": "<p>Product adoption happens when the user starts using it habitually because it delivers value and helps them accomplish their goals. To adopt the product, the...</p>\n<p>The post <a href=\"https://www.crazyegg.com/blog/product-adoption/\">What Is Product Adoption? Stages, Metrics, and How to Improve It</a> appeared first on <a href=\"https://www.crazyegg.com/blog\">The Daily Egg</a>.</p>",
+    "source": "Crazy Egg Blog",
+    "zone": "",
+    "score": "62",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "8db615c72dc35571",
+    "title": "Meta Can Now Rewrite the Text on Your Ad Images",
+    "link": "https://www.jonloomer.com/meta-rewrite-text-ad-images/",
+    "summary": "<div><img alt=\"Meta Can Now Rewrite the Text on Your Ad Images\" class=\"attachment-medium size-medium wp-post-image\" height=\"157\" src=\"https://www.jonloomer.com/wp-content/uploads/2026/07/meta-rewrite-text-ad-images-featured-300x157.png\" style=\"margin-bottom: 15px;\" width=\"300\" /></div>\n<p>Meta can now rewrite the text on your ad images while preserving the original design. Here’s how this Advantage+ Creative feature works.</p>\n<p>The post <a href=\"https://www.jonloomer.com/meta-rewrite-text-ad-images/\">Meta Can Now Rewrite the Text on Your Ad Images</a> appeared first on <a href=\"https://www.j",
+    "source": "Jon Loomer Digital",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "66afd4a10ffb761d",
+    "title": "How to get ready to hire in LATAM so the process actually works",
+    "link": "https://www.foxwelldigital.com/blog/how-to-get-ready-to-hire-in-latam-so-the-process-actually-works",
+    "summary": "Leandro Cabrini has built hundreds of LATAM teams for US brands. The hires \nthat go wrong almost always trace back to skipping essential prep work.",
+    "source": "Foxwell Digital",
+    "zone": "",
+    "score": "70",
+    "priority": "ядро"
+  },
+  {
+    "id": "1ee4fbfce7a42331",
+    "title": "The New Tariff Landscape: Predicted Impact on Consumers, Retailers & More",
+    "link": "https://tinuiti.com/blog/marketing/tariff-landscape/",
+    "summary": "The article was originally published Aug 2025 and has been updated to reflect new developments. Global trade dynamics are shifting rapidly, with new tariffs and retaliatory measures emerging between the United States, China, Canada, and the European Union. This ongoing analysis tracks key developments and their potential impact on advertisers, consumers, and the broader economy&#x2014;offering [&#8230;]",
+    "source": "Tinuiti Blog",
+    "zone": "",
+    "score": "76",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "3044b22129801f32",
+    "title": "What is BiliBili doing at the World AI Conference?",
+    "link": "https://daoinsights.com/news/bilibili-at-the-world-ai-conference/",
+    "summary": "<p>BiliBili at the World AI Conference: Key takeaways&#160; BiliBili has been at the World Artificial Intelligence Conference (WAIC). It’s not a place you might expect the video platform to show up, but they’ve got good reason to be there. They’ve also made the most of the visibility it’s given them. In doing so, they’ve showcased [&#8230;]</p>\n<p>The post <a href=\"https://daoinsights.com/news/bilibili-at-the-world-ai-conference/\">What is BiliBili doing at the World AI Conference? </a> appeared first on <a href=\"https://daoinsights.com\">Dao Insights</a>.</p>",
+    "source": "Dao Insights",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "08ac3c65eccaa9bf",
+    "title": "Nike China shifts online sales in bid to regain control",
+    "link": "https://daoinsights.com/news/nike-china-online-sales-shift/",
+    "summary": "<p>Nike China online sales shift: Key takeaways  Nike is looking to gain back control on how Chinese consumers buy its products online. Their answer is to cut back hard on online third-party sales. With a steep sales decline in the Chinese market – one of the brand’s most important – it can’t have been an [&#8230;]</p>\n<p>The post <a href=\"https://daoinsights.com/news/nike-china-online-sales-shift/\">Nike China shifts online sales in bid to regain control </a> appeared first on <a href=\"https://daoinsights.com\">Dao Insights</a>.</p>",
+    "source": "Dao Insights",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "95f7277210e1b946",
+    "title": "A delivery rider poet has just won China’s top literary prize",
+    "link": "https://daoinsights.com/news/delivery-rider-poet-wins-literary-prize/",
+    "summary": "<p>Wang Jibing wins China&#8217;s top literary prize: Key takeaways One of China’s most prestigious literary honours has been bestowed upon one of its most unlikely contenders, a delivery driver. Wang Jibing (王计兵), 56, from Jiangsu claimed the honour for a collection of poetry on the pressures of the gig work economy.   Wang became a [&#8230;]</p>\n<p>The post <a href=\"https://daoinsights.com/news/delivery-rider-poet-wins-literary-prize/\">A delivery rider poet has just won China’s top literary prize </a> appeared first on <a href=\"https://daoinsights.com\">Dao Insights</a>.</p>",
+    "source": "Dao Insights",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "a092cbfcb93f2ec2",
+    "title": "Guming ends Nanjing’s long-distance milk tea relationship with first store",
+    "link": "https://daoinsights.com/news/guming/",
+    "summary": "<p>Guming opens in Nanjing: Key takeaways  For years, anyone in Nanjing who caught a craving for Guming (Goodme, 古茗) tea had only one option: travel to nearby Jurong or Ma’anshan. While the Chinese tea chain expanded across Nanjing’s home province of Jiangsu, hitting more than 1,100 stores, the provincial capital remained empty of branches. In [&#8230;]</p>\n<p>The post <a href=\"https://daoinsights.com/news/guming/\">Guming ends Nanjing’s long-distance milk tea relationship with first store </a> appeared first on <a href=\"https://daoinsights.com\">Dao Insights</a>.</p>",
+    "source": "Dao Insights",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "1659d3770f18a65f",
+    "title": "What does JD consumers insights on imported liquors tells us?",
+    "link": "https://marketingtochina.com/what-does-jd-consumers-insights-on-imported-liquors-tells-us/",
+    "summary": "JD.com publishes consumer behavior data on imported liquors every few years, and the reports are genuinely useful for brands trying to understand who is actually buying foreign spirits and wine on China&#8217;s largest direct-sales platform. The picture in 2026 looks different from 2020: Gen Z has moved from curious to committed, female consumers have become [&#8230;]",
+    "source": "Marketing to China (GMA)",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "0251e930a10fd92c",
+    "title": "Tag Your Photos",
+    "link": "https://www.producthunt.com/products/tag-your-photos",
+    "summary": "<p>\n            AI-powered keywords for Apple Photos, 100% on your Mac\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/tag-your-photos?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1208168?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "735d396292befd8a",
+    "title": "Conduit",
+    "link": "https://www.producthunt.com/products/conduit-ai",
+    "summary": "<p>\n            AI agents purpose-built for Hospitality\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/conduit-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1205866?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "8a79013ad5c937da",
+    "title": "qsa.sh",
+    "link": "https://www.producthunt.com/products/qsa-sh-quick-security-audit",
+    "summary": "<p>\n            External security scan of your own IP, in your terminal\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/qsa-sh-quick-security-audit?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1207044?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "34ee6c51e5fe82c3",
+    "title": "MCP-Billing",
+    "link": "https://www.producthunt.com/products/mcp-billing",
+    "summary": "<p>\n            OAuth 2.1 + usage-based Stripe billing for MCP servers\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/mcp-billing?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1208282?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "8b42928d84b5b165",
+    "title": "Liminal",
+    "link": "https://www.producthunt.com/products/liminal-4",
+    "summary": "<p>\n            A workspace & 2nd brain for you, your agent, and your team\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/liminal-4?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1207862?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "a2386445ecdfaf95",
+    "title": "Phantom",
+    "link": "https://www.producthunt.com/products/phantom-6",
+    "summary": "<p>\n            Voice-first AI agent that operates your Mac\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/phantom-6?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1206262?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "e9156370e88b7048",
+    "title": "Indian EV makers beat Tesla and BYD on energy efficiency",
+    "link": "https://restofworld.org/2026/indian-evs-beat-tesla-byd-icct-efficiency-ranking/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "summary": "Tata Motors and Mahindra topped a global ranking of battery efficiency, showing India's strength in building frugal electric cars — even as they lag on charging speed and driving range.",
+    "source": "Rest of World",
+    "zone": "",
+    "score": "80",
+    "priority": "ядро"
+  },
+  {
+    "id": "81d5b41a949d13c6",
+    "title": "Qantas hands media mandate for Asia to OMD",
+    "link": "https://www.marketing-interactive.com/qantas-hands-media-mandate-for-asia-to-omd",
+    "summary": "The agency will oversee media strategy, planning, and buying for Qantas and Jetstar across Singapore, Thailand, Indonesia, the Philippines, Hong Kong, Taiwan, and Japan, as well as regional campaigns.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "09f213173efd6c68",
+    "title": "YSL Beauty partners AWARE to tackle intimate partner violence in SG",
+    "link": "https://www.marketing-interactive.com/ysl-beauty-partners-aware-to-tackle-intimate-partner-violence-in-sg",
+    "summary": "YSL Beauty will provide funding and resources to AWARE, supporting the organisation's work to end violence against women, including sexual and domestic abuse.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "b68af6d0adf2e710",
+    "title": "Why localisation is the next frontier for pop-up marketing",
+    "link": "https://www.marketing-interactive.com/why-localisation-is-the-next-frontier-for-popup-marketing",
+    "summary": "\"Culture must be treated with a trained ear. It’s about listening to the nuances of the market.\"",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "56f10042036630c8",
+    "title": "Poor customer service is pushing nearly a third of consumers to abandon brands",
+    "link": "https://www.marketing-interactive.com/poor-customer-service-is-pushing-nearly-a-third-of-consumers-to-abandon-brands",
+    "summary": "The findings suggest that while brands are increasing investment in AI and customer service technology, loyalty will continue to depend on delivering the basics: fast resolutions, seamless interactions and access to a human when automation falls short.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7ef9bcdbf275992a",
+    "title": "Wild Advertising merges with PRAP Asia and PRAP POINTS",
+    "link": "https://www.marketing-interactive.com/wild-advertising-merges-with-prap-asia-and-prap-points",
+    "summary": "The integration marks a new chapter for the Japan-headquartered communications group as it looks to strengthen its integrated marketing offering across Southeast Asia.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "6f8e28e9cd16e7f8",
+    "title": "Quantcast taps ex-Trade Desk leader to drive SEA growth",
+    "link": "https://www.marketing-interactive.com/quantcast-taps-ex-trade-desk-leader-to-drive-sea-growth",
+    "summary": "Weaving will oversee revenue growth across Southeast Asia, with a focus on Singapore, Hong Kong and other emerging markets.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "1806ff09621f17f4",
+    "title": "Deals in brief: Ropedia and PCG Global raise pre-Series A funding, HiDream.ai secures RMB 1.5 billion, four other China investments, and more",
+    "link": "https://kr-asia.com/deals-in-brief-ropedia-and-pcg-global-raise-pre-series-a-funding-hidream-ai-secures-rmb-1-5-billion-four-other-china-investments-and-more",
+    "summary": "Bringing you the latest updates on funding and investment activity across the Asia Pacific.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "81b69f158ee56a65",
+    "title": "Singapore’s GIC eyes more investments in companies leveraging AI",
+    "link": "https://kr-asia.com/singapores-gic-eyes-more-investments-in-companies-leveraging-ai",
+    "summary": "The government-owned investor also focuses on hedge funds to diversify its portfolio.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "3ff4ed4e108e5c99",
+    "title": "China’s Unitree says “GPT moment” for robots remains years away",
+    "link": "https://kr-asia.com/chinas-unitree-says-gpt-moment-for-robots-remains-years-away",
+    "summary": "The robotics company intends to allocate nearly half of its IPO proceeds to embodied intelligence research.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "4c6306b7d0f23ab9",
+    "title": "InfiMaker seeks to bring industrial manufacturing to every desktop with AI",
+    "link": "https://technode.com/2026/07/28/infimaker-seeks-to-bring-industrial-manufacturing-to-every-desktop-with-ai/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"675\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/infimaker-2.png?fit=1024%2C675&amp;ssl=1\" width=\"1024\" /></figure>When people think of advanced manufacturing, they typically picture multimillion-dollar industrial machines operating inside factories, not a compact device sitting on a desk. But that&#8217;s precisely the perception InfiMaker, a startup founded in 2024, is trying to change. The startup positions itself as a desktop manufacturing company, developing manufacturing too",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "e33717072751e077",
+    "title": "QQ Pet returns as Tencent integrates Hunyuan Hy3 into the classic virtual companion",
+    "link": "https://technode.com/2026/07/28/qq-pet-returns-as-tencent-integrates-hunyuan-hy3-into-the-classic-virtual-companion/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"531\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/QQ-PETS.png?fit=1024%2C531&amp;ssl=1\" width=\"1024\" /></figure>Tencent on Monday announced the return of its classic virtual pet service, QQ Pet, in a redesigned form. The new version features 3D character models and is powered by Tencent&#8217;s in-house Hunyuan Hy3 large language model, which supports more natural interactions and proactive responses. The updated QQ Pet retains classic gameplay elements such as feeding, [&#8230;]",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "e1b9f9bfde9ef0f3",
+    "title": "Shein reportedly targets Hong Kong IPO as early as late August",
+    "link": "https://technode.com/2026/07/27/shein-reportedly-targets-hong-kong-ipo-as-early-as-late-august/",
+    "summary": "<figure><img alt=\"Shein to sell co-branded Forever 21 clothes in latest partnership\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"430\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2023/10/Shein_logo.png?fit=515%2C430&amp;ssl=1\" width=\"515\" /></figure>Shein is reportedly preparing for a Hong Kong IPO as early as late August, with the listing potentially moving into September, according to its draft prospectus and people familiar with the plan. The fast-fashion ecommerce company has cleared key regulatory and listing hurdles, although the filing did not d",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "f588b67c61330e14",
+    "title": "China’s AI models are closing the gap with overseas rivals on a different cost curve",
+    "link": "https://technode.com/2026/07/27/chinas-ai-models-are-closing-the-gap-with-overseas-rivals-on-a-different-cost-curve/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"683\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/data-center-scott-rodgerson-PSpf_XgOM5w-unsplash.jpg?fit=1024%2C683&amp;ssl=1\" width=\"1024\" /></figure>China’s AI model market is beginning to compete on cost as much as capability. Leading Chinese models may cost roughly one-tenth as much to train as comparable overseas systems, while their API prices often sit at 10% to 20% of foreign alternatives, according to UBS estimates. If enterprise users increasingly judge AI by the return",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "619326aebd93122b",
+    "title": "CXMT becomes China’s most valuable A-share company after $8.6 billion IPO",
+    "link": "https://technode.com/2026/07/27/cxmt-becomes-chinas-most-valuable-a-share-company-after-8-6-billion-ipo/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"480\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/20230129061325525.jpg?fit=1024%2C480&amp;ssl=1\" width=\"1024\" /></figure>ChangXin Memory Technologies (CXMT), China’s largest DRAM maker, raised RMB57.92 billion ($8.6 billion) in its Shanghai STAR Market IPO on July 27, in what became the largest mainland semiconductor offering on record. By the midday break, its shares had risen 531% from the IPO price, pushing its market value to RMB3.66 trillion and making it [&#8230;]",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "fb5b39b385388700",
+    "title": "Ctrip hit with $760 million antitrust fine over market dominance abuse",
+    "link": "https://technode.com/2026/07/27/ctrip-hit-with-760-million-antitrust-fine-over-market-dominance-abuse/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"456\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2018/09/Ctrip.jpg?fit=608%2C456&amp;ssl=1\" width=\"608\" /></figure>On Saturday, China&#8217;s State Administration for Market Regulation (SAMR) imposed administrative penalties on Ctrip Group for abusing its dominant market position in violation of the country&#8217;s Anti-Monopoly Law. The total fine and confiscated illegal gains amounted to RMB 5.179 billion ($760 million). In a statement released the same day, Ctrip said it had received t",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "176a8eb517616c61",
+    "title": "Table Space To File Draft Papers For $350 Mn IPO Next Month: Report",
+    "link": "https://inc42.com/buzz/table-space-to-file-draft-papers-for-350-mn-ipo-next-month-report/",
+    "summary": "<img alt=\"Table Space To File Draft Papers For $350 Mn IPO Next Month: Report\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2025/01/Table-Space-ftr.png\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Managed workspace provider Table Space is reportedly preparing to file draft papers for its proposed IPO by early August. According&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "f9d37bd3279694a7",
+    "title": "Centre Summons Meta Over Removal Of PM Modi’s Facebook Post",
+    "link": "https://inc42.com/buzz/centre-summons-meta-over-removal-of-pm-modis-facebook-post/",
+    "summary": "<img alt=\"Centre Summons Meta\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2025/10/Meta-USIBC-featured.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />The electronics and IT ministry (MeitY) has summoned Meta’s global head of public policy after Facebook temporarily removed a video&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "95b5d5b2d8b35da0",
+    "title": "Pine Labs Q1: Profit Surges 4X YoY To ₹20 Cr, Revenue Up 20%",
+    "link": "https://inc42.com/buzz/pine-labs-q1-profit-surges-4x-yoy-to-%e2%82%b920-cr-revenue-up-20/",
+    "summary": "<img alt=\"Pine Labs Reports ₹19.6 Cr Profit In Q1, Revenue Up 20% YoY\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/Pinelabs-Financials-ftr-1.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Fintech major Pine Labs’ Q1 FY27 net profit surged over 4X YoY to ₹19.6 Cr from a net profit of&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "d97a1fa23083594b",
+    "title": "Nykaa Ropes In Ex-Instamart COO Ankit Jain To Helm Nykaa Now",
+    "link": "https://inc42.com/buzz/nykaa-ropes-in-ex-instamart-coo-ankit-jain-to-helm-nykaa-now/",
+    "summary": "<img alt=\"Nykaa Jumps 2.5% After It Projects Mid-20% Revenue Growth In Q1\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2025/07/nykaa-oman-featured.png\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Ex-Swiggy Instamart COO Ankit Jain has joined beauty and personal care major Nykaa to lead its quick commerce business Nykaa&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "78257c6d63776aee",
+    "title": "Why QOSMIC Pivoted From Building Satellites To Ground Infrastructure For Satellite Data",
+    "link": "https://inc42.com/startups/why-qosmic-pivoted-from-building-satellites-to-ground-infrastructure-for-satellite-data/",
+    "summary": "<img alt=\"QOSMIC Space\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/ftr-6.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Modern satellites are producing more data than ever, and the gap between what they capture and what reaches the ground&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "f868b84dee5bfa3d",
+    "title": "upGrad-Unacademy Merger Nears Completion",
+    "link": "https://inc42.com/buzz/upgrad-unacademy-merger-nears-completion/",
+    "summary": "<img alt=\"upGrad-Unacademy\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/03/ftr-2.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Edtech major upGrad is in the final stages of acquiring edtech rival Unacademy in a transaction valued at ₹1,955 Cr,&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "ea977af10f2879b8",
+    "title": "AI rollup startup Dwelly raises $170m backed by EQT and General Catalyst",
+    "link": "https://sifted.eu/articles/dwelly-ai-property-rollup-funding-round-elevenlabs-legora/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "29d1bb58d0c957ba",
+    "title": "Visionaries cuts investment team to two lead partners for next fund",
+    "link": "https://sifted.eu/articles/visionaries-cuts-investment-team-next-fund/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "b6427ec2ff251915",
+    "title": "How an office makeover can boost productivity: ‘Your physical space conveys credibility’",
+    "link": "https://sifted.eu/articles/how-an-office-makeover-can-boost-productivity-brnd/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "64ca19377b08447b",
+    "title": "Exclusive: ETH Zurich spinout ZuriQ raises $25.5m seed",
+    "link": "https://sifted.eu/articles/eth-spinout-zuriq-seed-round/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "0d0fd25ad4506a8c",
+    "title": "Every European unicorn exit of 2026 so far",
+    "link": "https://sifted.eu/articles/billion-dollar-exits-are-back/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "3ae1621f86c110d2",
+    "title": "9fin completes first employee share sale after $170m raise",
+    "link": "https://sifted.eu/articles/9fin-employee-share-sale/",
+    "summary": "",
+    "source": "Sifted (FT)",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "61454ad3820a0bd3",
+    "title": "Fashion brands want CTV to do more than build aspiration",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/fashion-brands-want-ctv-to-do-more-than-build-aspiration/132677417",
+    "summary": "Connected TV is emerging as a promising area of investment for fashion marketers as they look to combine television&#039;s storytelling power with digital-style targeting and measurement.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "bcd6402c8e7851bf",
+    "title": "Has protein become FMCG&#039;s new premiumisation engine?",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/business-of-brands/has-protein-become-fmcgs-new-premiumisation-engine/132674550",
+    "summary": "Protein has become the food industry&#039;s new shorthand for better nutrition. Many Indians are protein deficient, creating a massive market opportunity. Brands are now repositioning everyday products with protein claims to command higher prices. This strategy allows companies to sell nutritional outcomes and higher price points. Genuine nutritional value will define future market success beyond simple claims.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "8869e91727291538",
+    "title": "Shashi Sinha steps down as Strategic Advisor at Omnicom Media India",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/the-people-report/shashi-sinha-steps-down-as-strategic-advisor-at-omnicom-media-india/132674884",
+    "summary": "Sinha, an alumnus of IIT Kanpur and IIM Bangalore whose career spans nearly four decades, has been one of the most influential figures in shaping media planning, buying, and audience measurement across the Indian market.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "ca8cae6bafa4f338",
+    "title": "CTV attracts wider advertiser mix during Wimbledon 2026, TV ad volumes rise 30%: TAM Adex",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/media/ctv-attracts-wider-advertiser-mix-during-wimbledon-2026-tv-ad-volumes-rise-30-tam-adex/132677703",
+    "summary": "Connected TV attracted more advertisers and categories during Wimbledon 2026. Linear television advertising volumes increased by thirty percent compared to the previous event. Mutual funds led advertising categories on both platforms, with differing preferences beyond that. William Grant &amp; Sons India was the top advertiser on Connected TV. ICICI Prudential Asset Management Company led advertisers on linear television.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "db0e15c2d4900c4c",
+    "title": "Turning TVs into transaction hubs: The future of interactive and shoppable CTV ads",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/turning-tvs-into-transaction-hubs-the-future-of-interactive-and-shoppable-ctv-ads/132677852",
+    "summary": "Connected TV offers a powerful platform for brand building and emotional connection.  The living room environment is ideal for fostering brand loyalty and cultural relevance.  Shoppable CTV features should extend consideration journeys, not force immediate transactions.  These integrations can create frictionless bridges from awareness to deeper engagement.  Brands should use shoppable capabilities to enhance engagement and capture intent effectively.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "9a8aca4827e2b4ca",
+    "title": "The CEO Who Had No Time for Fuzzy Things",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/the-ceo-who-had-no-time-for-fuzzy-things/132661215",
+    "summary": "We spent six months in customers&#039; homes. The leadership meeting lasted forty minutes. What died in that room is still dying in boardrooms everywhere.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "2d150e7c83c3d390",
+    "title": "Mom Store celebrates the beautiful game of parenthood during World Cup season",
+    "link": "https://campaignme.com/mom-store-celebrates-the-beautiful-game-of-parenthood-during-world-cup-season/",
+    "summary": "<p>Mom Store has partnered with independent integrated agency Think Human to launch ‘For the Love of the Beautiful Game’, a social-first campaign that draws parallels between football and parenthood during the World Cup season. Created to capitalise on one of the world&#8217;s biggest sporting events while remaining true to the retailer&#8217;s parenting focus, the campaign [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/mom-store-celebrates-the-beautiful-game-of-parenthood-during-world-cup-season/\">Mom Store celebrates the beautiful game of parenthood during World Cup season</a> app",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "eadd3ce5c2b6f3be",
+    "title": "AI platform updates you need to know from July 2026",
+    "link": "https://campaignme.com/ai-platform-updates-you-need-to-know-from-july-2026/",
+    "summary": "<p>Campaign Middle East rounds up the latest AI platform updates from July 2026. OpenAI OpenAI has introduced ChatGPT Work – an agent in ChatGPT that helps users take on more ambitious tasks. It can gather information across users apps and workflows to create finished materials like sheets, slides, docs, and web apps, and stay with [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/ai-platform-updates-you-need-to-know-from-july-2026/\">AI platform updates you need to know from July 2026</a> appeared first on <a href=\"https://campaignme.com\">Campaign Middle East</a>.</p>",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "66fd8d1dadbdffcd",
+    "title": "The platform updates you need to know from July 2026",
+    "link": "https://campaignme.com/the-platform-updates-you-need-to-know-from-july-2026/",
+    "summary": "<p>Campaign Middle East rounds up the latest updates on social media, and content and streaming platforms from July 2026. Here are the key highlights: Spotify Spotify has launched Your Summer Persona in Egypt, a personalised in-app experience that matches listeners to a summer identity. The platform also rolled out Podcast Clips, a new feature designed [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/the-platform-updates-you-need-to-know-from-july-2026/\">The platform updates you need to know from July 2026</a> appeared first on <a href=\"https://campaignme.com\">Campaign Middle East</a>",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "c41b7b67c6883e9f",
+    "title": "Building trust: Why good intentions no longer cut it",
+    "link": "https://campaignme.com/building-trust-why-good-intentions-no-longer-cut-it/",
+    "summary": "<p>Ask a company what it’s doing for society, and there’s a good chance the answer is still a photo: a tree being planted, a check being handed over, a volunteer day captured for the annual report. That used to be enough. It isn’t anymore. Leaders, investors and employees don’t just want to hear that a [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/building-trust-why-good-intentions-no-longer-cut-it/\">Building trust: Why good intentions no longer cut it</a> appeared first on <a href=\"https://campaignme.com\">Campaign Middle East</a>.</p>",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "8d024b2853bc047f",
+    "title": "RAKTDA strengthens executive leadership team with new appointments",
+    "link": "https://campaignme.com/raktda-strengthens-executive-leadership-team-with-new-appointments/",
+    "summary": "<p>Ras Al Khaimah Tourism Development Authority (RAKTDA) has announced the appointments of Emma Campbell as Chief Marketing Officer and Maha Kassim as Senior Director, People &#38; Culture, expanding its executive leadership team as the emirate works towards its target of welcoming 3.5 million visitors annually by 2030. As Chief Marketing Officer, Campbell will lead RAKTDA&#8217;s [&#8230;]</p>\n<p>The post <a href=\"https://campaignme.com/raktda-strengthens-executive-leadership-team-with-new-appointments/\">RAKTDA strengthens executive leadership team with new appointments</a> appeared first on ",
+    "source": "Campaign Middle East",
+    "zone": "",
+    "score": "60",
+    "priority": "вспомогательный"
+  }
+]
