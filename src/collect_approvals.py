@@ -245,6 +245,9 @@ def main():
             "отклонено": "❌ Отклонено",
         }
         stamp = stamp_map[status_word]
+        if status_word == "взято" and entry.get("formats"):
+            # Видно, под какой именно контент взяли тему — чтобы отследить.
+            stamp += " (" + ", ".join(entry["formats"]) + ")"
         new_text = f"{entry['text']}\n\n{stamp} · {approver}, {decided_at}"
         if entry.get("sent_as") == "photo":
             # Сообщение с картинкой редактируется через caption, не text
