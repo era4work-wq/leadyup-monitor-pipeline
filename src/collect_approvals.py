@@ -14,6 +14,8 @@ from datetime import datetime, timezone
 
 import requests
 
+import publish_max
+import publish_vk
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
 from notify_telegram import FORMAT_ACTION, build_topic_keyboard, tg_send_photo_bytes
@@ -114,6 +116,33 @@ def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
         disable_web_page_preview=True,
     )
     return result is not None
+
+
+def publish_everywhere(token: str, entry: dict) -> dict:
+    """Публикует пост на все настроенные площадки. Площадка без секретов
+    (собственник ещё не подключил канал/группу) молча пропускается — это не
+    ошибка, а ожидаемое состояние на пути к Фазе 1 (Max, потом VK). Возвращает
+    {"Telegram"/"Max"/"VK": True/False} — только для реально подключённых
+    площадок, чтобы штамп в чате показывал, куда пост действительно ушёл."""
+    results = {}
+
+    tg_channel = os.environ.get("TELEGRAM_CHANNEL")
+    if tg_channel:
+        results["Telegram"] = publish_to_channel(token, tg_channel, entry)
+    else:
+        print("[WARN] TELEGRAM_CHANNEL не задан — канал ещё не подключен", file=sys.stderr)
+
+    max_token = os.environ.get("MAX_BOT_TOKEN")
+    max_chat = os.environ.get("MAX_CHAT_ID")
+    if max_token and max_chat:
+        results["Max"] = publish_max.publish(max_token, max_chat, entry["draft_text"], entry.get("image_url"))
+
+    vk_token = os.environ.get("VK_GROUP_TOKEN")
+    vk_group = os.environ.get("VK_GROUP_ID")
+    if vk_token and vk_group:
+        results["VK"] = publish_vk.publish(vk_token, vk_group, entry["draft_text"], entry.get("image_url"))
+
+    return results
 
 
 def regenerate_draft(entry: dict) -> dict:
@@ -223,13 +252,10 @@ def main():
             print(f"Перегенерирован пост: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 
+        platform_results = None
         if action == "publish":
-            channel = os.environ.get("TELEGRAM_CHANNEL")
-            if not channel:
-                print("[WARN] TELEGRAM_CHANNEL не задан — канал ещё не подключен", file=sys.stderr)
-                ok = False
-            else:
-                ok = publish_to_channel(token, channel, entry)
+            platform_results = publish_everywhere(token, entry)
+            ok = any(platform_results.values())
             status_word = "опубликовано" if ok else "ошибка публикации"
 
         entry["status"] = status_word
@@ -248,6 +274,18 @@ def main():
         if status_word == "взято" and entry.get("formats"):
             # Видно, под какой именно контент взяли тему — чтобы отследить.
             stamp += " (" + ", ".join(entry["formats"]) + ")"
+        if platform_results:
+            # Мультиплатформенная публикация — видно, куда реально долетело,
+            # а не только общий да/нет (площадки без секретов сюда не попадают).
+            done = [name for name, r in platform_results.items() if r]
+            failed = [name for name, r in platform_results.items() if not r]
+            parts = []
+            if done:
+                parts.append("📤 Опубликовано: " + ", ".join(done))
+            if failed:
+                parts.append("⚠️ ошибка: " + ", ".join(failed))
+            if parts:
+                stamp = " · ".join(parts)
         new_text = f"{entry['text']}\n\n{stamp} · {approver}, {decided_at}"
         if entry.get("sent_as") == "photo":
             # Сообщение с картинкой редактируется через caption, не text
