@@ -48,8 +48,14 @@
     "persona": "интернет-магазины P3, SaaS P3",
     "message_id": 83,
     "text": "<b>The Future Of Search & AI: What I Learned From Google's Latest Earnings Call via @sejournal, @marie_haynes</b>\nИсточник: Search Engine Journal · 📰 дайджест\nКому: интернет-магазины P3, SaaS P3\nGoogle перестаёт быть поисковиком в классическом смысле — это меняет весь funnel трафика, сайт должен быть готов к новым схемам попадания клиентов.\nhttps://www.searchenginejournal.com/the-future-of-search-ai-what-i-learned-from-googles-latest-earnings-call/583662/",
-    "formats": [],
-    "status": "ждёт"
+    "formats": [
+      "пост",
+      "статья",
+      "карусель"
+    ],
+    "status": "взято",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "29.07 06:03"
   },
   "226656d97da0fca9": {
     "id": "226656d97da0fca9",
