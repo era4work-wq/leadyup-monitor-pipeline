@@ -10,13 +10,6 @@ import sys
 from common import DATA_DIR, require_env, today, read_json, visible_length, write_json
 from notify_telegram import tg_call, tg_send_photo_bytes  # переиспользуем HTTP-обвязку
 
-RUBRIC_LABEL = {
-    "дайджест": "📰 дайджест",
-    "кейс-с-цифрами": "📊 кейс с цифрами",
-    "лайфхак-инструкция": "🛠 лайфхак",
-    "ai-инструмент": "🤖 AI-инструмент",
-}
-
 CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото
 
 
@@ -41,8 +34,9 @@ def load_drafts() -> list[dict]:
 
 
 def format_preview(item: dict) -> str:
-    rubric = RUBRIC_LABEL.get(item.get("rubric", ""), item.get("rubric", ""))
-    return f"{rubric} · на публикацию:\n\n{item['draft_text']}"
+    # Без служебной метки рубрики (убрано 29.07.2026 по просьбе владелицы —
+    # экономит символы подписи, рубрика видна и так по картинке/бейджу).
+    return item["draft_text"]
 
 
 def send_final_card(token: str, chat_id: str, item: dict) -> dict:
