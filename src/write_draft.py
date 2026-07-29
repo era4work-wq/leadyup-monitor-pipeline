@@ -143,7 +143,18 @@ def generate_cover(api_key: str, item: dict, draft_text: str) -> Optional[str]:
     return base64.b64encode(image_bytes).decode("ascii") if image_bytes else None
 
 
-def write_one(api_key: str, style: str, item: dict, article_text: Optional[str]) -> str:
+def humanize_draft(api_key: str, humanize_prompt: str, text: str) -> str:
+    """Второй проход — вычищает признаки нейросетевого текста (адаптация
+    скилла «Антидетектор», Георгий Ривера, prompts/humanize.md), сохраняя
+    факты и Telegram-разметку нетронутыми."""
+    messages = [
+        {"role": "system", "content": humanize_prompt},
+        {"role": "user", "content": text},
+    ]
+    return call_model(api_key, messages)
+
+
+def write_one(api_key: str, style: str, humanize_prompt: str, item: dict, article_text: Optional[str]) -> str:
     payload = {
         "title": item["title"],
         "source": item["source"],
@@ -158,6 +169,7 @@ def write_one(api_key: str, style: str, item: dict, article_text: Optional[str])
         {"role": "user", "content": "Тема (JSON):\n" + json.dumps(payload, ensure_ascii=False)},
     ]
     text = call_model(api_key, messages)
+    text = humanize_draft(api_key, humanize_prompt, text)
 
     # Картинка должна попасть в подпись к фото вместе с текстом одним
     # сообщением — жмём до тех пор, пока видимый текст не влезет в лимит.
@@ -183,6 +195,7 @@ def write_one(api_key: str, style: str, item: dict, article_text: Optional[str])
 def main():
     api_key = require_env("OPENROUTER_API_KEY")
     style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
+    humanize_prompt = (ROOT / "prompts" / "humanize.md").read_text(encoding="utf-8")
 
     approved = load_approved()
     drafted_ids = already_drafted_ids()
@@ -205,7 +218,7 @@ def main():
             f"  статья: {'{} знаков'.format(len(article_text)) if article_text else 'не вытащилась'}",
             file=sys.stderr,
         )
-        text = write_one(api_key, style, item, article_text)
+        text = write_one(api_key, style, humanize_prompt, item, article_text)
         # ИИ-обложка с русским текстом временно выключена — модели ломают
         # кириллицу (см. память проекта). Пока используем og:image источника;
         # generate_cover() остаётся в коде для рендера через HTML/шрифты позже.

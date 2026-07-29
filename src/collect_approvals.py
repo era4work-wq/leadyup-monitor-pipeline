@@ -150,8 +150,9 @@ def regenerate_draft(entry: dict) -> dict:
     data/articles/, повторно не скачивается)."""
     api_key = require_env("OPENROUTER_API_KEY")
     style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
+    humanize_prompt = (ROOT / "prompts" / "humanize.md").read_text(encoding="utf-8")
     article = get_article(entry)
-    text = write_one(api_key, style, entry, article.get("text"))
+    text = write_one(api_key, style, humanize_prompt, entry, article.get("text"))
     return {**entry, "draft_text": text, "image_url": article.get("image_url")}
 
 
