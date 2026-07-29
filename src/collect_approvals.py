@@ -17,7 +17,7 @@ import requests
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
 from notify_telegram import tg_send_photo_bytes
-from write_draft import generate_cover, get_article, write_one
+from write_draft import get_article, write_one
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
 LOOKBACK_DAYS = 14
@@ -74,20 +74,32 @@ CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото (�
 
 
 def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
+    """Картинка — сначала ИИ-обложка (cover_image_b64, байты), если она
+    когда-нибудь появится (сейчас генерация с текстом выключена — см.
+    write_draft.py), иначе og:image источника (image_url, по ссылке)."""
     text = entry["draft_text"]
     cover_b64 = entry.get("cover_image_b64")
+    image_url = entry.get("image_url")
 
     if cover_b64 and len(text) <= CAPTION_LIMIT:
         try:
             tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64), caption=text, parse_mode="HTML")
             return True
         except Exception as exc:
-            print(f"[WARN] sendPhoto(bytes) не удался: {exc} — публикую без картинки", file=sys.stderr)
-    elif cover_b64:
+            print(f"[WARN] sendPhoto(bytes) не удался: {exc} — пробую URL-картинку", file=sys.stderr)
+    elif image_url and len(text) <= CAPTION_LIMIT:
+        result = tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url, caption=text, parse_mode="HTML")
+        if result is not None:
+            return True
+        print("[WARN] sendPhoto(url) не удался — публикую без картинки в подписи", file=sys.stderr)
+    elif cover_b64 or image_url:
         # Не влезает в подпись — картинка отдельным сообщением перед текстом,
         # чтобы она всё равно оказалась вверху поста.
         try:
-            tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64))
+            if cover_b64:
+                tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64))
+            else:
+                tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url)
         except Exception as exc:
             print(f"[WARN] не удалось отправить картинку отдельным сообщением: {exc}", file=sys.stderr)
 
@@ -109,8 +121,7 @@ def regenerate_draft(entry: dict) -> dict:
     style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
     article = get_article(entry)
     text = write_one(api_key, style, entry, article.get("text"))
-    cover_b64 = generate_cover(api_key, entry, text)
-    return {**entry, "draft_text": text, "cover_image_b64": cover_b64}
+    return {**entry, "draft_text": text, "image_url": article.get("image_url")}
 
 
 def update_draft_record(item_id: str, draft_text: str, cover_image_b64) -> None:

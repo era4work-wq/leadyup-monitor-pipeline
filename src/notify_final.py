@@ -60,23 +60,28 @@ def send_final_card(token: str, chat_id: str, item: dict) -> dict:
         ]
     }
     cover_b64 = item.get("cover_image_b64")
+    image_url = item.get("image_url")
     sent_as = "text"
     if cover_b64 and len(text) <= CAPTION_LIMIT:
         result = tg_send_photo_bytes(
-            token,
-            chat_id,
-            base64.b64decode(cover_b64),
-            caption=text,
-            parse_mode="HTML",
-            reply_markup=keyboard,
+            token, chat_id, base64.b64decode(cover_b64),
+            caption=text, parse_mode="HTML", reply_markup=keyboard,
+        )
+        sent_as = "photo"
+    elif image_url and len(text) <= CAPTION_LIMIT:
+        result = tg_call(
+            token, "sendPhoto", chat_id=chat_id, photo=image_url,
+            caption=text, parse_mode="HTML", reply_markup=keyboard,
         )
         sent_as = "photo"
     else:
+        # Пост не влезает в подпись к фото — картинку всё равно шлём
+        # отдельным сообщением ПЕРЕД текстом (заказчик просил картинку
+        # именно вверху), кнопки и статус живут на текстовом сообщении.
         if cover_b64:
-            # Пост не влезает в подпись к фото — картинку всё равно шлём
-            # отдельным сообщением ПЕРЕД текстом (заказчик просил картинку
-            # именно вверху), кнопки и статус живут на текстовом сообщении.
             tg_send_photo_bytes(token, chat_id, base64.b64decode(cover_b64))
+        elif image_url:
+            tg_call(token, "sendPhoto", chat_id=chat_id, photo=image_url)
         result = tg_call(
             token,
             "sendMessage",

@@ -194,8 +194,11 @@ def main():
             file=sys.stderr,
         )
         text = write_one(api_key, style, item, article_text)
-        cover_b64 = generate_cover(api_key, item, text)
-        print(f"  обложка: {'сгенерирована' if cover_b64 else 'не удалось'}", file=sys.stderr)
+        # ИИ-обложка с русским текстом временно выключена — модели ломают
+        # кириллицу (см. память проекта). Пока используем og:image источника;
+        # generate_cover() остаётся в коде для рендера через HTML/шрифты позже.
+        image_url = article.get("image_url")
+        print(f"  обложка источника: {'найдена' if image_url else 'не найдена'}", file=sys.stderr)
         drafts.append({
             "id": item["id"],
             "title": item["title"],
@@ -203,7 +206,7 @@ def main():
             "link": item["link"],
             "rubric": item.get("rubric", ""),
             "draft_text": text,
-            "cover_image_b64": cover_b64,
+            "image_url": image_url,
         })
 
     out_path = DATA_DIR / "drafts" / f"{today()}.json"
