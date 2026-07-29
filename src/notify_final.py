@@ -7,7 +7,7 @@
 import base64
 import sys
 
-from common import DATA_DIR, require_env, today, read_json, write_json
+from common import DATA_DIR, require_env, today, read_json, visible_length, write_json
 from notify_telegram import tg_call, tg_send_photo_bytes  # переиспользуем HTTP-обвязку
 
 RUBRIC_LABEL = {
@@ -62,13 +62,13 @@ def send_final_card(token: str, chat_id: str, item: dict) -> dict:
     cover_b64 = item.get("cover_image_b64")
     image_url = item.get("image_url")
     sent_as = "text"
-    if cover_b64 and len(text) <= CAPTION_LIMIT:
+    if cover_b64 and visible_length(text) <= CAPTION_LIMIT:
         result = tg_send_photo_bytes(
             token, chat_id, base64.b64decode(cover_b64),
             caption=text, parse_mode="HTML", reply_markup=keyboard,
         )
         sent_as = "photo"
-    elif image_url and len(text) <= CAPTION_LIMIT:
+    elif image_url and visible_length(text) <= CAPTION_LIMIT:
         result = tg_call(
             token, "sendPhoto", chat_id=chat_id, photo=image_url,
             caption=text, parse_mode="HTML", reply_markup=keyboard,

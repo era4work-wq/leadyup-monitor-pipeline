@@ -14,7 +14,7 @@ from typing import Optional
 
 import requests
 
-from common import DATA_DIR, ROOT, fetch_article, generate_cover_image, require_env, today, write_json
+from common import DATA_DIR, ROOT, fetch_article, generate_cover_image, require_env, today, visible_length, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # Модель для написания текста — не для отбора (там Haiku). Пробуем Opus
@@ -36,10 +36,13 @@ def sanitize_markup(text: str) -> str:
 
 ARTICLE_TEXT_LIMIT = 6000  # символов текста статьи, которые кладём в промпт
 
-# Не таргет по длине (её теперь определяет смысл, не формат публикации) —
-# только защита от совсем убежавшего вывода модели.
-SANITY_LIMIT = 2200
-MAX_SHORTEN_ATTEMPTS = 1
+# Картинка должна быть ВМЕСТЕ с текстом одним сообщением (решение 29.07.2026,
+# отменяет более раннее «длина не ограничена форматом публикации» от 23.07) —
+# значит видимый текст (без HTML-тегов, именно так Telegram считает лимит
+# подписи к фото) обязан укладываться в 1024. Небольшой запас на случай
+# погрешности подсчёта.
+CAPTION_VISIBLE_LIMIT = 1000
+MAX_SHORTEN_ATTEMPTS = 3
 
 
 def load_approved() -> list[dict]:
@@ -156,16 +159,21 @@ def write_one(api_key: str, style: str, item: dict, article_text: Optional[str])
     ]
     text = call_model(api_key, messages)
 
-    # Защита не от превышения таргета длины (его больше нет), а от совсем
-    # убежавшего вывода — на всякий случай, не должно срабатывать часто.
+    # Картинка должна попасть в подпись к фото вместе с текстом одним
+    # сообщением — жмём до тех пор, пока видимый текст не влезет в лимит.
     for attempt in range(MAX_SHORTEN_ATTEMPTS):
-        if len(text) <= SANITY_LIMIT:
+        vlen = visible_length(text)
+        if vlen <= CAPTION_VISIBLE_LIMIT:
             break
-        print(f"  черновик {len(text)} знаков — явный перебор, прошу сократить", file=sys.stderr)
+        print(f"  черновик {vlen} видимых знаков — сокращаю (попытка {attempt + 1})", file=sys.stderr)
         messages.append({"role": "assistant", "content": text})
         messages.append({
             "role": "user",
-            "content": f"Это слишком длинно ({len(text)} знаков) даже для содержательного поста. Сократи примерно вдвое, сохранив главную мысль.",
+            "content": (
+                f"Это {vlen} знаков видимого текста, а нужно не больше {CAPTION_VISIBLE_LIMIT} — "
+                f"иначе картинка не поместится в одно сообщение вместе с текстом. Сократи, "
+                f"сохранив хук, спойлер и главную мысль — режь вступление и общие слова в первую очередь."
+            ),
         })
         text = call_model(api_key, messages)
 

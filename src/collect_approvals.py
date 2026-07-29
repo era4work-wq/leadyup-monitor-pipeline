@@ -16,7 +16,7 @@ import requests
 
 import publish_max
 import publish_vk
-from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
+from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, visible_length, write_json
 from notify_final import send_final_card
 from notify_telegram import FORMAT_ACTION, build_topic_keyboard, tg_send_photo_bytes
 from write_draft import get_article, write_one
@@ -85,13 +85,13 @@ def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
     cover_b64 = entry.get("cover_image_b64")
     image_url = entry.get("image_url")
 
-    if cover_b64 and len(text) <= CAPTION_LIMIT:
+    if cover_b64 and visible_length(text) <= CAPTION_LIMIT:
         try:
             tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64), caption=text, parse_mode="HTML")
             return True
         except Exception as exc:
             print(f"[WARN] sendPhoto(bytes) не удался: {exc} — пробую URL-картинку", file=sys.stderr)
-    elif image_url and len(text) <= CAPTION_LIMIT:
+    elif image_url and visible_length(text) <= CAPTION_LIMIT:
         result = tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url, caption=text, parse_mode="HTML")
         if result is not None:
             return True

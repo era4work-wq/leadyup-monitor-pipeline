@@ -47,6 +47,17 @@ def require_env(name: str) -> str:
     return value
 
 
+_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def visible_length(html_text: str) -> int:
+    """Длина текста без HTML-тегов — именно так Telegram считает лимит
+    подписи к фото (1024 «после разбора сущностей»), не по сырой строке
+    с тегами. Проверено эмпирически 29.07.2026: caption с сырой длиной
+    1032 символа (из них теги) прошёл, потому что видимый текст — 1000."""
+    return len(_TAG_RE.sub("", html_text))
+
+
 OG_IMAGE_RE = re.compile(
     r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']', re.IGNORECASE
 )
