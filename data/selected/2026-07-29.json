@@ -1,92 +1,92 @@
 [
   {
-    "id": "9b46beb91f2c2a3f",
-    "title": "AI Recognizes 96% Of Brands But Mentions Almost None, New Study Finds",
+    "id": "de90946f8974f7e5",
+    "title": "How Perplexity Actually Picks Sources (I Read The Stream, Not The Answers)",
     "source": "Search Engine Journal",
-    "link": "https://www.searchenginejournal.com/ai-brand-mention-study-victorious-spa/582765/",
-    "why": "Конкретное исследование показывает проблему видимости в AI-поиске: бренд распознаётся, но не упоминается в ответах — это новый способ потерять трафик, который нужно срочно исправить на сайте.",
-    "rubric": "кейс-с-цифрами",
-    "persona": "интернет-магазины P3, SaaS P2"
-  },
-  {
-    "id": "cca442a2959c3e1c",
-    "title": "AI Opt-Out May Cost Sites A Google Top Stories Spot via @sejournal, @MattGSouthern",
-    "source": "Search Engine Journal",
-    "link": "https://www.searchenginejournal.com/ai-opt-out-may-cost-publishers-a-top-stories-spot/584016/",
-    "why": "Вынужденный выбор: или в AI Overview, или в Top Stories — но не одновременно. Практическое решение для владельца: разберитесь, где ваша аудитория ищет информацию, прежде чем отключать AI.",
+    "link": "https://www.searchenginejournal.com/how-perplexity-actually-picks-sources-i-read-the-stream-not-the-answers/583769/",
+    "why": "Поиск через AI-ассистентов теперь конкурирует с Google — нужно понять, как попасть в Perplexity, чтобы не терять трафик и лидов через новый канал",
     "rubric": "лайфхак-инструкция",
     "persona": "интернет-магазины P1, SaaS P1"
   },
   {
-    "id": "388c942a36c6581a",
-    "title": "AI shopping stats 2026: What you need to know",
-    "source": "MarTech",
-    "link": "https://martech.org/the-ai-shopping-stats-2026-what-you-need-to-know/",
-    "why": "Цифры по AI-шопингу — канал, который растёт быстрее всех, это показывает, куда переходят клиенты вашего e-comm. Нужно понимать, на каком этапе ловить трафик.",
-    "rubric": "кейс-с-цифрами",
-    "persona": "интернет-магазины P1, интернет-магазины P2"
-  },
-  {
-    "id": "a6673d6bd04a808d",
-    "title": "The Future Of Search & AI: What I Learned From Google's Latest Earnings Call via @sejournal, @marie_haynes",
-    "source": "Search Engine Journal",
-    "link": "https://www.searchenginejournal.com/the-future-of-search-ai-what-i-learned-from-googles-latest-earnings-call/583662/",
-    "why": "Google перестаёт быть поисковиком в классическом смысле — это меняет весь funnel трафика, сайт должен быть готов к новым схемам попадания клиентов.",
-    "rubric": "дайджест",
-    "persona": "интернет-магазины P3, SaaS P3"
-  },
-  {
-    "id": "226656d97da0fca9",
-    "title": "Yelp brings reviews and local leads to ChatGPT",
-    "source": "MarTech",
-    "link": "https://martech.org/yelp-brings-reviews-and-local-leads-to-chatgpt/",
-    "why": "Локальный бизнес теперь появляется в ChatGPT прямо с отзывами и возможностью перейти — это новый канал трафика, если ваш бизнес в Yelp.",
-    "rubric": "лайфхак-инструкция",
-    "persona": "интернет-магазины P1, SaaS P1"
-  },
-  {
-    "id": "d292606564ae740e",
-    "title": "Google Search Results Still Rank Heavily AI-Flagged Pages via @sejournal, @MattGSouthern",
-    "source": "Search Engine Journal",
-    "link": "https://www.searchenginejournal.com/heavily-ai-flagged-pages-still-rank-across-googles-top-10/583983/",
-    "why": "Данные показывают: AI-контент ранжируется ниже, но всё ещё в топ-10 — не катастрофа, но штраф реален. Практический вывод: качество контента и E-E-A-T важнее паники.",
-    "rubric": "кейс-с-цифрами",
-    "persona": "интернет-магазины P3, SaaS P2"
-  },
-  {
-    "id": "4cd90bdc13d840b5",
-    "title": "How AEO drives higher-intent site visitors than other channels",
-    "source": "HubSpot Marketing Blog",
-    "link": "https://blog.hubspot.com/marketing/aeo-drives-higher-intent-visitors",
-    "why": "AEO даёт более целевой трафик, чем обычный SEO — это значит меньше нужно людей, но с выше вероятностью заявки. Переориентируйте бюджет, если CPA растёт.",
+    "id": "8be33a2439f948c3",
+    "title": "AI Search Stats 2026: Market Share, Referral, and Citation Data",
+    "source": "Similarweb Blog",
+    "link": "https://www.similarweb.com/blog/marketing/geo/gen-ai-stats/",
+    "why": "Конкретные цифры доли трафика ChatGPT, Gemini и Claude — показывают, куда уходит трафик и почему SEO одного Google уже недостаточно",
     "rubric": "кейс-с-цифрами",
     "persona": "интернет-магазины P2, SaaS P2"
   },
   {
-    "id": "42bf80f0e42e5bbb",
-    "title": "17 Marketing Tasks You Can Stop Doing Manually",
-    "source": "WordStream (LocaliQ)",
-    "link": "https://www.wordstream.com/blog/marketing-tasks-to-automate",
-    "why": "Если маркетолог вручную готовит отчёты, заявки идут в спам, интеграция CRM рваная — автоматизировать можно 17 задач прямо сейчас, это сэкономит время на оптимизацию.",
+    "id": "70f1b27d16e4b836",
+    "title": "Google Ads Lead Journey Mapping",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-ads-lead-journey-mapping-41782.html",
+    "why": "Новый инструмент Google для визуализации пути лида от клика до заявки — решает боль P4 «куда идут заявки» и позволяет найти, на каком этапе теряются лиды",
     "rubric": "лайфхак-инструкция",
-    "persona": "интернет-магазины P4, SaaS P2"
+    "persona": "интернет-магазины P4, SaaS P3"
   },
   {
-    "id": "ee99c730cb7ccd1c",
-    "title": "Google Lost Its Scraping Case – Now You Have To Pick A Side On The Open Web via @sejournal, @slobodanmanic",
-    "source": "Search Engine Journal",
-    "link": "https://www.searchenginejournal.com/google-lost-its-scraping-case-now-you-have-to-pick-a-side-on-the-open-web/583066/",
-    "why": "Защита от парсинга слабеет — ваш контент может быть скопирован в AI-ответы без ссылки, нужно теперь сами решить: robots.txt или лучше получать трафик из AI-источников.",
-    "rubric": "дайджест",
+    "id": "d23e229c2f997186",
+    "title": "Google Ads Target CPA & Target ROAS As Explicit Bidding Strategy Options",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-ads-target-cpa-target-roas-bidding-options-41770.html",
+    "why": "Явное выделение ROAS/CPA в интерфейсе упрощает контроль за стоимостью лида — критично для P3, который требует реальных «было/стало» с ROI",
+    "rubric": "лайфхак-инструкция",
     "persona": "интернет-магазины P3, SaaS P3"
   },
   {
-    "id": "e519527fec7f4f82",
-    "title": "Google On SEO Impact Of URLs Injected Into HTML By CMS Platforms via @sejournal, @martinibuster",
-    "source": "Search Engine Journal",
-    "link": "https://www.searchenginejournal.com/google-on-seo-impact-of-urls-injected-into-html-by-cms-platforms/584037/",
-    "why": "CMS добавляет мусорные URL в HTML — это может повредить индексацию. Если используешь популярный конструктор, проверь robots.txt и исключи служебные страницы.",
+    "id": "24396256589256b0",
+    "title": "Google testing a way to ease email signups",
+    "source": "MarTech",
+    "link": "https://martech.org/google-testing-a-way-to-ease-email-signups/",
+    "why": "Новый метод Google для упрощения email-подписок может повысить конверсию на сайте — решает боль P1 «трафик есть, а заявок нет» через улучшение формы захвата",
     "rubric": "лайфхак-инструкция",
-    "persona": "интернет-магазины P4, SaaS P4"
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "af63207d99a5172d",
+    "title": "Learn 80% of AEO in 19 Minutes",
+    "source": "Ahrefs (YouTube)",
+    "link": "https://www.youtube.com/watch?v=58MR03s0ev8",
+    "why": "Answer Engine Optimization — как быть видимым в ChatGPT и Claude, а не только в Google поиске; практический путь к трафику из AI-помощников",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "5cc3b7a825a78904",
+    "title": "Platform properties roll out globally, plus a new social and video performance guide",
+    "source": "Google Search Central Blog",
+    "link": "https://developers.google.com/search/blog/2026/07/platform-properties-social-video-guide",
+    "why": "Отслеживание того, как Instagram/TikTok/YouTube-контент попадает в Google Search и Discover — показывает новый канал трафика на сайт через социальные посты",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "c2c51bc2508cc66b",
+    "title": "YouTube Views Rose While Long-Form Ad Revenue Fell, Data Shows",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/youtube-views-rose-while-long-form-ad-revenue-fell-data-shows/584040/",
+    "why": "Конкретные цифры: просмотры выросли, но доход упал — показывает, что одного трафика недостаточно, нужна конверсия; урок для P3 о реальных метриках",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "ac8b17069fb7c4ad",
+    "title": "Google's Open Knowledge Format Adds Five Trust Signals",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/googles-open-knowledge-format-adds-five-trust-signals/584120/",
+    "why": "Пять новых сигналов доверия в разметке — SEO-техника для повышения видимости в Google Knowledge Panel, важна для брендов, которые теряют трафик конкурентам",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "8b53412ced740515",
+    "title": "Google Ads Budget Panel",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-ads-budget-panel-41779.html",
+    "why": "Автоматические рекомендации по бюджету для предотвращения недофинансирования кампании — помогает P1 не потерять потенциальный трафик из-за низкого бюджета",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
   }
 ]
