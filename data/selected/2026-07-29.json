@@ -1,0 +1,92 @@
+[
+  {
+    "id": "9b46beb91f2c2a3f",
+    "title": "AI Recognizes 96% Of Brands But Mentions Almost None, New Study Finds",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-brand-mention-study-victorious-spa/582765/",
+    "why": "Конкретное исследование показывает проблему видимости в AI-поиске: бренд распознаётся, но не упоминается в ответах — это новый способ потерять трафик, который нужно срочно исправить на сайте.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P2"
+  },
+  {
+    "id": "cca442a2959c3e1c",
+    "title": "AI Opt-Out May Cost Sites A Google Top Stories Spot via @sejournal, @MattGSouthern",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-opt-out-may-cost-publishers-a-top-stories-spot/584016/",
+    "why": "Вынужденный выбор: или в AI Overview, или в Top Stories — но не одновременно. Практическое решение для владельца: разберитесь, где ваша аудитория ищет информацию, прежде чем отключать AI.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "388c942a36c6581a",
+    "title": "AI shopping stats 2026: What you need to know",
+    "source": "MarTech",
+    "link": "https://martech.org/the-ai-shopping-stats-2026-what-you-need-to-know/",
+    "why": "Цифры по AI-шопингу — канал, который растёт быстрее всех, это показывает, куда переходят клиенты вашего e-comm. Нужно понимать, на каком этапе ловить трафик.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, интернет-магазины P2"
+  },
+  {
+    "id": "a6673d6bd04a808d",
+    "title": "The Future Of Search & AI: What I Learned From Google's Latest Earnings Call via @sejournal, @marie_haynes",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/the-future-of-search-ai-what-i-learned-from-googles-latest-earnings-call/583662/",
+    "why": "Google перестаёт быть поисковиком в классическом смысле — это меняет весь funnel трафика, сайт должен быть готов к новым схемам попадания клиентов.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "226656d97da0fca9",
+    "title": "Yelp brings reviews and local leads to ChatGPT",
+    "source": "MarTech",
+    "link": "https://martech.org/yelp-brings-reviews-and-local-leads-to-chatgpt/",
+    "why": "Локальный бизнес теперь появляется в ChatGPT прямо с отзывами и возможностью перейти — это новый канал трафика, если ваш бизнес в Yelp.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "d292606564ae740e",
+    "title": "Google Search Results Still Rank Heavily AI-Flagged Pages via @sejournal, @MattGSouthern",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/heavily-ai-flagged-pages-still-rank-across-googles-top-10/583983/",
+    "why": "Данные показывают: AI-контент ранжируется ниже, но всё ещё в топ-10 — не катастрофа, но штраф реален. Практический вывод: качество контента и E-E-A-T важнее паники.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P2"
+  },
+  {
+    "id": "4cd90bdc13d840b5",
+    "title": "How AEO drives higher-intent site visitors than other channels",
+    "source": "HubSpot Marketing Blog",
+    "link": "https://blog.hubspot.com/marketing/aeo-drives-higher-intent-visitors",
+    "why": "AEO даёт более целевой трафик, чем обычный SEO — это значит меньше нужно людей, но с выше вероятностью заявки. Переориентируйте бюджет, если CPA растёт.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "42bf80f0e42e5bbb",
+    "title": "17 Marketing Tasks You Can Stop Doing Manually",
+    "source": "WordStream (LocaliQ)",
+    "link": "https://www.wordstream.com/blog/marketing-tasks-to-automate",
+    "why": "Если маркетолог вручную готовит отчёты, заявки идут в спам, интеграция CRM рваная — автоматизировать можно 17 задач прямо сейчас, это сэкономит время на оптимизацию.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4, SaaS P2"
+  },
+  {
+    "id": "ee99c730cb7ccd1c",
+    "title": "Google Lost Its Scraping Case – Now You Have To Pick A Side On The Open Web via @sejournal, @slobodanmanic",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-lost-its-scraping-case-now-you-have-to-pick-a-side-on-the-open-web/583066/",
+    "why": "Защита от парсинга слабеет — ваш контент может быть скопирован в AI-ответы без ссылки, нужно теперь сами решить: robots.txt или лучше получать трафик из AI-источников.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "e519527fec7f4f82",
+    "title": "Google On SEO Impact Of URLs Injected Into HTML By CMS Platforms via @sejournal, @martinibuster",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-on-seo-impact-of-urls-injected-into-html-by-cms-platforms/584037/",
+    "why": "CMS добавляет мусорные URL в HTML — это может повредить индексацию. Если используешь популярный конструктор, проверь robots.txt и исключи служебные страницы.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4, SaaS P4"
+  }
+]
