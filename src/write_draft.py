@@ -178,7 +178,11 @@ def main():
 
     approved = load_approved()
     drafted_ids = already_drafted_ids()
-    pending = [item for item in approved if item["id"] not in drafted_ids]
+    # Без формата (старые записи до этой фичи) — считаем, что «пост» подразумевался.
+    pending = [
+        item for item in approved
+        if item["id"] not in drafted_ids and "пост" in item.get("formats", ["пост"])
+    ]
 
     if not pending:
         print("Нет утверждённых тем без черновика.", file=sys.stderr)

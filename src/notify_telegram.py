@@ -51,6 +51,34 @@ def tg_send_photo_bytes(token: str, chat_id, image_bytes: bytes, **params):
     return body["result"]
 
 
+FORMAT_ORDER = ["пост", "статья", "карусель"]
+FORMAT_EMOJI = {"пост": "📝", "статья": "📄", "карусель": "🎠"}
+FORMAT_ACTION = {"пост": "fmtpost", "статья": "fmtarticle", "карусель": "fmtcarousel"}
+
+
+def build_topic_keyboard(item_id: str, selected_formats: list) -> dict:
+    """Верхний ряд — toggle-кнопки форматов контента (можно выбрать
+    несколько или ни одной — тогда по умолчанию берём «пост» при взятии в
+    работу). Нижний ряд — обычное решение по теме."""
+    selected = set(selected_formats or [])
+    format_row = []
+    for fmt in FORMAT_ORDER:
+        mark = "✅ " if fmt in selected else ""
+        format_row.append({
+            "text": f"{mark}{FORMAT_EMOJI[fmt]} {fmt.capitalize()}",
+            "callback_data": f"{FORMAT_ACTION[fmt]}:{item_id}",
+        })
+    return {
+        "inline_keyboard": [
+            format_row,
+            [
+                {"text": "✅ Взять в работу", "callback_data": f"take:{item_id}"},
+                {"text": "❌ Пропустить", "callback_data": f"skip:{item_id}"},
+            ],
+        ]
+    }
+
+
 def format_message(item: dict) -> str:
     rubric = RUBRIC_LABEL.get(item.get("rubric", ""), item.get("rubric", ""))
     persona_line = f"Кому: {item['persona']}\n" if item.get("persona") else ""
@@ -78,14 +106,7 @@ def main():
     pending = {}
     for item in selected:
         text = format_message(item)
-        keyboard = {
-            "inline_keyboard": [
-                [
-                    {"text": "✅ Взять в работу", "callback_data": f"take:{item['id']}"},
-                    {"text": "❌ Пропустить", "callback_data": f"skip:{item['id']}"},
-                ]
-            ]
-        }
+        keyboard = build_topic_keyboard(item["id"], [])
         result = tg_call(
             token,
             "sendMessage",
@@ -99,6 +120,7 @@ def main():
             **item,
             "message_id": result["message_id"],
             "text": text,
+            "formats": [],
             "status": "ждёт",
         }
 

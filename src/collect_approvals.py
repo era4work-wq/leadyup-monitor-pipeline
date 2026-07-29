@@ -16,7 +16,7 @@ import requests
 
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
-from notify_telegram import tg_send_photo_bytes
+from notify_telegram import FORMAT_ACTION, build_topic_keyboard, tg_send_photo_bytes
 from write_draft import get_article, write_one
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
@@ -30,6 +30,8 @@ ACTION_DOMAINS = {
     "reject": ("final_pending", "отклонено"),
     "redo": ("final_pending", None),  # обрабатывается отдельно, не общей веткой
 }
+
+FORMAT_BY_ACTION = {v: k for k, v in FORMAT_ACTION.items()}  # "fmtpost" -> "пост"
 
 
 def tg_call(token: str, method: str, **params):
@@ -165,6 +167,27 @@ def main():
             continue
 
         action, _, item_id = callback.get("data", "").partition(":")
+
+        if action in FORMAT_BY_ACTION and item_id:
+            fmt = FORMAT_BY_ACTION[action]
+            path, data = find_entry("pending", item_id)
+            if data is None:
+                tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Тема уже не найдена")
+                continue
+            entry = data[item_id]
+            formats = set(entry.get("formats", []))
+            formats.symmetric_difference_update({fmt})
+            entry["formats"] = [f for f in ("пост", "статья", "карусель") if f in formats]
+            write_json(path, data)
+            tg_call_safe(
+                token, "editMessageReplyMarkup",
+                chat_id=callback["message"]["chat"]["id"],
+                message_id=callback["message"]["message_id"],
+                reply_markup=build_topic_keyboard(item_id, entry["formats"]),
+            )
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text=f"Формат: {fmt}")
+            continue
+
         if action not in ACTION_DOMAINS or not item_id:
             print(f"[DEBUG] callback с нераспознанным data={callback.get('data')!r}", file=sys.stderr)
             continue
@@ -248,6 +271,8 @@ def main():
         tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text=stamp)
 
         if action == "take":
+            if not entry.get("formats"):
+                entry["formats"] = ["пост"]  # ничего не отмечали — по умолчанию только пост
             approved_today.append(entry)
         if status_word == "опубликовано":
             published_today.append(entry)
