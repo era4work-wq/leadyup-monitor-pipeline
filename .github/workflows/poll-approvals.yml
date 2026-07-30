@@ -29,8 +29,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Опрос Telegram getUpdates
-        working-directory: src
+      - name: Опрос Telegram и сохранение (с ретраем при гонке параллельных вебхуков)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
@@ -40,14 +39,30 @@ jobs:
           VK_GROUP_TOKEN: ${{ secrets.VK_GROUP_TOKEN }}
           VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
           TELEGRAM_UPDATE_JSON: ${{ github.event.inputs.telegram_update }}
-        run: python collect_approvals.py
-
-      - name: Сохранить решения обратно в репозиторий
         run: |
           git config user.name "leadyup-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state/ data/
-          git diff --cached --quiet && exit 0
-          git commit -m "approvals: $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push
+          # Вебхук может прислать несколько кликов почти одновременно — два
+          # запуска этого workflow могут пушить одновременно и словить
+          # конфликт на одном и том же файле очереди (было на практике
+          # 30.07.2026). При конфликте откатываемся к свежему origin/main и
+          # переигрываем обработку с нуля — обработка одного и того же
+          # апдейта безопасно повторяема (Telegram API вызовы идемпотентны
+          # по эффекту, а данные на диске всегда берутся из чистого origin).
+          for attempt in 1 2 3 4 5; do
+            (cd src && python collect_approvals.py)
+            git add state/ data/
+            if git diff --cached --quiet; then
+              exit 0
+            fi
+            git commit -m "approvals: $(date -u +%Y-%m-%dT%H:%M)"
+            if git push origin "${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "::warning::Конфликт при push (попытка $attempt) — откатываюсь и переигрываю"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --hard "origin/${GITHUB_REF_NAME}"
+            sleep $(( (RANDOM % 5) + attempt ))
+          done
+          echo "::error::Не удалось сохранить после нескольких попыток"
+          exit 1
