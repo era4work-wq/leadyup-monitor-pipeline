@@ -83,20 +83,31 @@ def get_article(item: dict) -> dict:
     return article
 
 
-def call_model(api_key: str, messages: list[dict]) -> str:
-    response = requests.post(
-        OPENROUTER_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "HTTP-Referer": "https://github.com/leadyup-monitor-pipeline",
-            "X-Title": "leadyup-monitor-pipeline",
-        },
-        json={"model": MODEL, "max_tokens": MAX_OUTPUT_TOKENS, "messages": messages},
-        timeout=90,
-    )
-    response.raise_for_status()
-    body = response.json()
-    return body["choices"][0]["message"]["content"].strip()
+def call_model(api_key: str, messages: list[dict], max_tokens: int = MAX_OUTPUT_TOKENS) -> str:
+    # Длинные ответы (статьи, max_tokens в тысячах) иногда обрываются на
+    # сетевом уровне (ChunkedEncodingError) — чаще на локальной машине
+    # (Python 3.9 / LibreSSL), но и в CI сеть не идеальна. Пара повторов
+    # дешевле, чем ронять весь прогон из-за одного обрыва потока.
+    last_exc = None
+    for attempt in range(3):
+        try:
+            response = requests.post(
+                OPENROUTER_URL,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "HTTP-Referer": "https://github.com/leadyup-monitor-pipeline",
+                    "X-Title": "leadyup-monitor-pipeline",
+                },
+                json={"model": MODEL, "max_tokens": max_tokens, "messages": messages},
+                timeout=180,
+            )
+            response.raise_for_status()
+            body = response.json()
+            return body["choices"][0]["message"]["content"].strip()
+        except requests.exceptions.RequestException as exc:
+            last_exc = exc
+            print(f"  [WARN] запрос к модели не удался (попытка {attempt + 1}/3): {exc}", file=sys.stderr)
+    raise last_exc
 
 
 HOOK_RE = re.compile(r"<b>(.+?)</b>")
@@ -143,15 +154,17 @@ def generate_cover(api_key: str, item: dict, draft_text: str) -> Optional[str]:
     return base64.b64encode(image_bytes).decode("ascii") if image_bytes else None
 
 
-def humanize_draft(api_key: str, humanize_prompt: str, text: str) -> str:
+def humanize_draft(api_key: str, humanize_prompt: str, text: str, max_tokens: int = MAX_OUTPUT_TOKENS) -> str:
     """Второй проход — вычищает признаки нейросетевого текста (адаптация
     скилла «Антидетектор», Георгий Ривера, prompts/humanize.md), сохраняя
-    факты и Telegram-разметку нетронутыми."""
+    факты и разметку (Telegram HTML для постов, Markdown для статей)
+    нетронутыми. max_tokens нужно поднимать для длинных статей — иначе
+    вывод обрезается на дефолтном лимите поста."""
     messages = [
         {"role": "system", "content": humanize_prompt},
         {"role": "user", "content": text},
     ]
-    return call_model(api_key, messages)
+    return call_model(api_key, messages, max_tokens=max_tokens)
 
 
 def write_one(api_key: str, style: str, humanize_prompt: str, item: dict, article_text: Optional[str]) -> str:

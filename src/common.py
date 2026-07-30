@@ -72,14 +72,21 @@ def _extract_og_image(html: str) -> Optional[str]:
     return match.group(1) if match else None
 
 
+MARKDOWN_IMAGE_RE = re.compile(r"!\[[^\]]*\]\((\S+?)\)")
+
+
 def fetch_article(url: str) -> dict:
-    """Один поход на сайт источника — достаёт и обложку (og:image), и полный
-    текст статьи (через trafilatura, чистый текст без меню/рекламы/сайдбаров).
-    Best-effort по обоим полям: сайт может блокировать ботов, быть за
-    пэйволлом или просто не поддаться экстракции — тогда соответствующее
-    поле будет None, а генерация продолжит работать на заголовке+тизере.
-    Возвращает {"image_url": str|None, "text": str|None}."""
-    result = {"image_url": None, "text": None}
+    """Один поход на сайт источника — достаёт обложку (og:image), полный
+    текст статьи в markdown (через trafilatura, чистый текст без меню/
+    рекламы/сайдбаров) и реальные ссылки на картинки из тела статьи
+    (include_images=True — по просьбе владелицы: подписи-заглушки на
+    иллюстрации в статье не нужны, если картинку неоткуда взять; вместо
+    этого модель ссылается только на реально найденные в источнике
+    изображения). Best-effort по всем полям: сайт может блокировать ботов,
+    быть за пэйволлом или не поддаться экстракции — тогда поле будет
+    пустым, а генерация продолжит работать на заголовке+тизере.
+    Возвращает {"image_url": str|None, "image_urls": list[str], "text": str|None}."""
+    result = {"image_url": None, "image_urls": [], "text": None}
     try:
         resp = requests.get(
             url,
@@ -92,10 +99,19 @@ def fetch_article(url: str) -> dict:
         result["image_url"] = _extract_og_image(html)
         try:
             result["text"] = trafilatura.extract(
-                html, url=url, include_comments=False, include_tables=False, favor_recall=True
+                html, url=url, include_comments=False, include_tables=False,
+                include_images=True, output_format="markdown", favor_recall=True,
             )
         except Exception:
             result["text"] = None
+        if result["text"]:
+            # На некоторых сайтах одна и та же картинка встречается в тексте
+            # по многу раз (ленивая загрузка/трекинг-пиксели) — дедуплицируем.
+            seen = []
+            for src in MARKDOWN_IMAGE_RE.findall(result["text"]):
+                if src not in seen:
+                    seen.append(src)
+            result["image_urls"] = seen
         return result
     except Exception:
         return result
