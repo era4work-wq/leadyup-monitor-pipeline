@@ -2,8 +2,13 @@ name: Опрос согласований в Telegram
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # каждые ~15 минут (GitHub может задерживать под нагрузкой)
-  workflow_dispatch: {}
+    - cron: "*/15 * * * *"  # подстраховка — GitHub сильно задерживает частые cron, основной триггер теперь вебхук ниже
+  workflow_dispatch:
+    inputs:
+      telegram_update:
+        description: "JSON одного апдейта Telegram (от webhook-relay/), опционально"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -34,6 +39,7 @@ jobs:
           MAX_CHAT_ID: ${{ secrets.MAX_CHAT_ID }}
           VK_GROUP_TOKEN: ${{ secrets.VK_GROUP_TOKEN }}
           VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+          TELEGRAM_UPDATE_JSON: ${{ github.event.inputs.telegram_update }}
         run: python collect_approvals.py
 
       - name: Сохранить решения обратно в репозиторий
