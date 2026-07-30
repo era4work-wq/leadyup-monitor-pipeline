@@ -100,6 +100,34 @@ def tg_send_document_bytes(token: str, chat_id, filename: str, content_bytes: by
     return body["result"]
 
 
+def tg_send_media_group_bytes(token: str, chat_id, photos: list[bytes], caption: str = None) -> list:
+    """sendMediaGroup — альбом фото как двоичные данные (не URL), для
+    карусели (7 слайдов одним альбомом, см. notify_carousel.py). Подпись,
+    если передана, идёт только на первом фото — так работает Telegram API,
+    у альбома нет общей подписи. Возвращает список message-объектов, по
+    одному на фото — их message_id нужны, чтобы потом удалить альбом целиком
+    при перегенерации (см. redo_car в collect_approvals.py)."""
+    url = API_BASE.format(token=token, method="sendMediaGroup")
+    media = []
+    files = {}
+    for i, photo in enumerate(photos):
+        key = f"photo{i}"
+        entry = {"type": "photo", "media": f"attach://{key}"}
+        if i == 0 and caption:
+            entry["caption"] = caption
+            entry["parse_mode"] = "HTML"
+        media.append(entry)
+        files[key] = (f"{key}.png", photo, "image/png")
+    data = {"chat_id": chat_id, "media": json.dumps(media)}
+    resp = requests.post(url, data=data, files=files, timeout=120)
+    if not resp.ok:
+        raise RuntimeError(f"Telegram API sendMediaGroup failed ({resp.status_code}): {resp.text}")
+    body = resp.json()
+    if not body.get("ok"):
+        raise RuntimeError(f"Telegram API sendMediaGroup failed: {body}")
+    return body["result"]
+
+
 def build_decision_edit(chat_id, message_id, sent_as: str, text: str):
     """Собирает (метод, параметры) для правки карточки решения (взято/в
     очереди/опубликовано/отклонено) — редактирует caption у фото или text у

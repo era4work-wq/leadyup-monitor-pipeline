@@ -15,9 +15,12 @@ from datetime import datetime, timezone
 
 import requests
 
+import drive_banners
+import notify_carousel
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
 from notify_telegram import FORMAT_ACTION, build_decision_edit, build_topic_keyboard
+from write_carousel import build_carousel_record
 from write_draft import get_article, write_one
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
@@ -30,6 +33,9 @@ ACTION_DOMAINS = {
     "publish": ("final_pending", "в очереди"),
     "reject": ("final_pending", "отклонено"),
     "redo": ("final_pending", None),  # обрабатывается отдельно, не общей веткой
+    "approve_car": ("carousel_pending", "утверждено"),
+    "reject_car": ("carousel_pending", "отклонено"),
+    "redo_car": ("carousel_pending", None),  # обрабатывается отдельно, не общей веткой
 }
 
 FORMAT_BY_ACTION = {v: k for k, v in FORMAT_ACTION.items()}  # "fmtpost" -> "пост"
@@ -82,6 +88,17 @@ def regenerate_draft(entry: dict) -> dict:
     article = get_article(entry)
     text = write_one(api_key, style, humanize_prompt, entry, article.get("text"))
     return {**entry, "draft_text": text, "image_url": article.get("image_url")}
+
+
+def regenerate_carousel(entry: dict) -> dict:
+    """Пересобирает карусель по той же теме заново (та же статья — берётся
+    из кэша data/articles/, повторно не скачивается), по образцу
+    regenerate_draft() выше."""
+    api_key = require_env("OPENROUTER_API_KEY")
+    style = (ROOT / "prompts" / "write-carousel.md").read_text(encoding="utf-8")
+    humanize_prompt = (ROOT / "prompts" / "humanize.md").read_text(encoding="utf-8")
+    service = drive_banners.get_service()
+    return build_carousel_record(api_key, style, humanize_prompt, service, entry)
 
 
 def update_draft_record(item_id: str, draft_text: str, cover_image_b64) -> None:
@@ -193,6 +210,28 @@ def main():
             print(f"Перегенерирован пост: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 
+        if action == "redo_car":
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Пересобираю карусель…")
+            try:
+                new_entry = regenerate_carousel(entry)
+            except Exception as exc:
+                print(f"[WARN] перегенерация карусели не удалась: {exc}", file=sys.stderr)
+                tg_call_safe(
+                    token, "sendMessage", chat_id=chat_id,
+                    text=f"⚠️ Не удалось перегенерировать карусель «{entry.get('title', '')[:60]}»: {exc}",
+                )
+                continue
+            # старый альбом (7 фото) и старую карточку с кнопками убираем,
+            # чтобы в чате не копились версии одной карусели
+            for mid in entry.get("photo_message_ids", []):
+                tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=mid)
+            tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=callback["message"]["message_id"])
+            new_card = notify_carousel.send_carousel(token, chat_id, new_entry, drive_banners.get_service())
+            data[item_id] = new_card
+            write_json(path, data)
+            print(f"Перегенерирована карусель: {entry.get('title', '')[:60]}", file=sys.stderr)
+            continue
+
         if action == "publish":
             # Не публикуем сразу — кладём в очередь, реальная отправка идёт
             # позже из publish_queue.py, с разрядкой по времени (см. решение
@@ -210,6 +249,7 @@ def main():
             "пропущено": "❌ Пропущено",
             "в очереди": "🕐 В очереди на публикацию",
             "отклонено": "❌ Отклонено",
+            "утверждено": "✅ Утверждено",
         }
         stamp = stamp_map[status_word]
         if status_word == "взято" and entry.get("formats"):

@@ -1,4 +1,4 @@
-name: Написать черновики постов
+name: Написать черновики (пост, карусель, статья)
 
 on:
   schedule:
@@ -24,20 +24,63 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Генерация черновиков
+      - run: playwright install --with-deps chromium
+
+      - name: Записать сервисный аккаунт Google Drive
+        run: |
+          mkdir -p secrets
+          echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > secrets/drive-service-account.json
+
+      # continue-on-error на каждом этапе — три формата независимы, сбой
+      # одного (сетевой сбой, модель отказала) не должен ронять остальные
+      # и не должен пропускать финальное сохранение уже готовых результатов.
+      - name: Генерация черновиков (пост)
         working-directory: src
+        continue-on-error: true
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python write_draft.py
 
-      - name: Отправка на финальное согласование
+      - name: Отправка поста на финальное согласование
         working-directory: src
+        continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python notify_final.py
 
+      - name: Генерация карусели
+        working-directory: src
+        continue-on-error: true
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python write_carousel.py
+
+      - name: Отправка карусели на согласование
+        working-directory: src
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python notify_carousel.py
+
+      - name: Генерация статьи
+        working-directory: src
+        continue-on-error: true
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python write_article.py
+
+      - name: Отправка статьи файлом в чат
+        working-directory: src
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python notify_article.py
+
       - name: Сохранить черновики обратно в репозиторий
+        if: always()
         run: |
           git config user.name "leadyup-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
