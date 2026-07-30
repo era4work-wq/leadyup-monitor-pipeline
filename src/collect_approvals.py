@@ -101,9 +101,9 @@ def regenerate_carousel(entry: dict) -> dict:
     return build_carousel_record(api_key, style, humanize_prompt, service, entry)
 
 
-def update_draft_record(item_id: str, draft_text: str, cover_image_b64) -> None:
+def update_draft_record(item_id: str, draft_text: str, banner) -> None:
     """Обновляет исторический черновик в data/drafts/ — чтобы там тоже была
-    актуальная версия текста и картинки, не только в final_pending."""
+    актуальная версия текста и баннера, не только в final_pending."""
     drafts_dir = DATA_DIR / "drafts"
     if not drafts_dir.exists():
         return
@@ -113,7 +113,7 @@ def update_draft_record(item_id: str, draft_text: str, cover_image_b64) -> None:
         for it in items:
             if it.get("id") == item_id:
                 it["draft_text"] = draft_text
-                it["cover_image_b64"] = cover_image_b64
+                it["banner"] = banner
                 changed = True
         if changed:
             write_json(path, items)
@@ -203,10 +203,10 @@ def main():
                 continue
             # старую карточку убираем, чтобы в чате не копились версии одного поста
             tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=callback["message"]["message_id"])
-            new_card = send_final_card(token, chat_id, new_entry)
+            new_card = send_final_card(token, chat_id, new_entry, drive_banners.get_service())
             data[item_id] = new_card
             write_json(path, data)
-            update_draft_record(item_id, new_entry["draft_text"], new_entry.get("cover_image_b64"))
+            update_draft_record(item_id, new_entry["draft_text"], new_entry.get("banner"))
             print(f"Перегенерирован пост: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 

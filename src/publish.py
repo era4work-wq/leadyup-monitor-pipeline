@@ -10,10 +10,13 @@ import sys
 
 import publish_max
 import publish_vk
+import render_html
 from common import visible_length
 from notify_telegram import tg_call, tg_send_photo_bytes
 
 CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото (у обычных сообщений — 4096)
+BANNER_TEMPLATE = "шаблон-баннер.html"
+BANNER_SIZE = (1920, 1080)
 
 
 def tg_call_safe(token: str, method: str, **params):
@@ -27,31 +30,64 @@ def tg_call_safe(token: str, method: str, **params):
         return None
 
 
-def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
-    """Картинка — сначала ИИ-обложка (cover_image_b64, байты), если она
-    когда-нибудь появится (сейчас генерация с текстом выключена — см.
-    write_draft.py), иначе og:image источника (image_url, по ссылке)."""
-    text = entry["draft_text"]
-    cover_b64 = entry.get("cover_image_b64")
-    image_url = entry.get("image_url")
+def render_banner(entry: dict, service) -> bytes:
+    """Рендерит баннер темы (id/headline/badge из общего кэша drive_banners,
+    см. get_post_banner в write_draft.py) с наложенным заголовком — та же
+    логика, что в notify_final.py для карточки согласования, но здесь для
+    РЕАЛЬНОЙ публикации в канал. Возвращает None, если баннера нет или
+    рендер не удался (Drive недоступен и т.п.) — тогда publish_to_channel
+    падает обратно на og:image источника."""
+    banner = entry.get("banner")
+    if not banner or service is None:
+        return None
+    try:
+        raw = service.files().get_media(fileId=banner["id"]).execute()
+        headline = banner.get("headline")
+        if not headline:
+            return raw  # старый кэш без headline (до 30.07.2026) — как есть
+        data_uri = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")
+        width, height = BANNER_SIZE
+        return render_html.render(BANNER_TEMPLATE, {
+            "BACKGROUND": data_uri,
+            "BADGE": banner.get("badge") or "AI РАДАР",
+            "HEADLINE": headline,
+        }, width, height)
+    except Exception as exc:
+        print(f"[WARN] не удалось отрендерить баннер: {exc}", file=sys.stderr)
+        return None
 
-    if cover_b64 and visible_length(text) <= CAPTION_LIMIT:
+
+def publish_to_channel(token: str, channel: str, entry: dict, service) -> bool:
+    """Картинка — сначала баннер темы (render_banner, общий с постом/статьёй/
+    каруселью), при любом сбое падаем обратно на og:image источника
+    (image_url), при сбое и того — публикуем без картинки, но текст всё
+    равно должен уйти."""
+    text = entry["draft_text"]
+    cover_bytes = render_banner(entry, service)
+    image_url = entry.get("image_url")
+    fits_caption = visible_length(text) <= CAPTION_LIMIT
+
+    if cover_bytes and fits_caption:
         try:
-            tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64), caption=text, parse_mode="HTML")
+            tg_send_photo_bytes(token, channel, cover_bytes, caption=text, parse_mode="HTML")
             return True
         except Exception as exc:
-            print(f"[WARN] sendPhoto(bytes) не удался: {exc} — пробую URL-картинку", file=sys.stderr)
-    elif image_url and visible_length(text) <= CAPTION_LIMIT:
+            print(f"[WARN] sendPhoto(bytes) не удался: {exc} — пробую og:image", file=sys.stderr)
+            cover_bytes = None
+
+    if cover_bytes is None and image_url and fits_caption:
         result = tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url, caption=text, parse_mode="HTML")
         if result is not None:
             return True
         print("[WARN] sendPhoto(url) не удался — публикую без картинки в подписи", file=sys.stderr)
-    elif cover_b64 or image_url:
+        image_url = None
+
+    if cover_bytes or image_url:
         # Не влезает в подпись — картинка отдельным сообщением перед текстом,
         # чтобы она всё равно оказалась вверху поста.
         try:
-            if cover_b64:
-                tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64))
+            if cover_bytes:
+                tg_send_photo_bytes(token, channel, cover_bytes)
             else:
                 tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url)
         except Exception as exc:
@@ -68,17 +104,20 @@ def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
     return result is not None
 
 
-def publish_everywhere(token: str, entry: dict) -> dict:
+def publish_everywhere(token: str, entry: dict, service=None) -> dict:
     """Публикует пост на все настроенные площадки. Площадка без секретов
     (собственник ещё не подключил канал/группу) молча пропускается — это не
     ошибка, а ожидаемое состояние на пути к Фазе 1 (Max, потом VK). Возвращает
     {"Telegram"/"Max"/"VK": True/False} — только для реально подключённых
-    площадок, чтобы штамп в чате показывал, куда пост действительно ушёл."""
+    площадок, чтобы штамп в чате показывал, куда пост действительно ушёл.
+    `service` — клиент Google Drive для баннера темы (см. render_banner);
+    Max/VK пока берут только image_url (og:image) — у них нет своего
+    рендера баннера, это отдельная доработка на будущее."""
     results = {}
 
     tg_channel = os.environ.get("TELEGRAM_CHANNEL")
     if tg_channel:
-        results["Telegram"] = publish_to_channel(token, tg_channel, entry)
+        results["Telegram"] = publish_to_channel(token, tg_channel, entry, service)
     else:
         print("[WARN] TELEGRAM_CHANNEL не задан — канал ещё не подключен", file=sys.stderr)
 

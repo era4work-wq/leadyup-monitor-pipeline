@@ -24,6 +24,13 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - run: playwright install --with-deps chromium
+
+      - name: Записать сервисный аккаунт Google Drive
+        run: |
+          mkdir -p secrets
+          echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > secrets/drive-service-account.json
+
       - name: Публикация из очереди (не больше одной записи за раз)
         working-directory: src
         env:

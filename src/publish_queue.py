@@ -10,6 +10,7 @@
 import sys
 from datetime import datetime, timedelta, timezone
 
+import drive_banners
 from common import DATA_DIR, STATE_DIR, read_json, require_env, write_json
 from notify_telegram import build_decision_edit
 from publish import publish_everywhere, tg_call_safe
@@ -75,7 +76,12 @@ def main():
         return
 
     entry = items[i]
-    results = publish_everywhere(token, entry)
+    try:
+        service = drive_banners.get_service()
+    except Exception as exc:
+        print(f"[WARN] Drive недоступен ({exc}) — публикую без баннера, если получится, на og:image", file=sys.stderr)
+        service = None
+    results = publish_everywhere(token, entry, service)
     ok = any(results.values())
     stamp = format_publish_stamp(results)
 

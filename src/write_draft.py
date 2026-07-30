@@ -14,6 +14,7 @@ from typing import Optional
 
 import requests
 
+import drive_banners
 from common import DATA_DIR, ROOT, fetch_article, generate_cover_image, require_env, today, visible_length, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
@@ -205,10 +206,28 @@ def write_one(api_key: str, style: str, humanize_prompt: str, item: dict, articl
     return sanitize_markup(text)
 
 
+def get_post_banner(service, item: dict, draft_text: str) -> Optional[dict]:
+    """Тот же общий кэш баннера/заголовка, что у статьи и карусели темы
+    (drive_banners.get_or_pick_banner) — пост больше не единственный формат
+    без наложенного заголовка. Возвращает None, если подбор не удался
+    (Drive недоступен и т.п.) — тогда notify_final.py падает обратно на
+    og:image источника."""
+    hook = extract_hook(draft_text, item["title"])
+    badge = BADGE_LABEL.get(item.get("rubric", ""), "AI РАДАР")
+    banner = drive_banners.get_or_pick_banner(service, item, headline=hook, badge=badge)
+    return {
+        "id": banner["id"],
+        "name": banner["name"],
+        "headline": banner.get("headline", hook),
+        "badge": banner.get("badge", badge),
+    }
+
+
 def main():
     api_key = require_env("OPENROUTER_API_KEY")
     style = (ROOT / "prompts" / "write-style.md").read_text(encoding="utf-8")
     humanize_prompt = (ROOT / "prompts" / "humanize.md").read_text(encoding="utf-8")
+    service = drive_banners.get_service()
 
     approved = load_approved()
     drafted_ids = already_drafted_ids()
@@ -233,10 +252,18 @@ def main():
         )
         text = write_one(api_key, style, humanize_prompt, item, article_text)
         # ИИ-обложка с русским текстом временно выключена — модели ломают
-        # кириллицу (см. память проекта). Пока используем og:image источника;
-        # generate_cover() остаётся в коде для рендера через HTML/шрифты позже.
+        # кириллицу (см. память проекта); generate_cover() остаётся в коде
+        # неактивным на будущее. Основной путь теперь — общий баннер темы
+        # (drive_banners), тот же, что у статьи и карусели; image_url
+        # (og:image источника) остаётся как запасной вариант, если подбор
+        # баннера не удался (Drive недоступен и т.п.).
+        try:
+            banner = get_post_banner(service, item, text)
+            print(f"  баннер: {banner['name']}", file=sys.stderr)
+        except Exception as exc:
+            print(f"  [WARN] не удалось подобрать баннер: {exc}", file=sys.stderr)
+            banner = None
         image_url = article.get("image_url")
-        print(f"  обложка источника: {'найдена' if image_url else 'не найдена'}", file=sys.stderr)
         drafts.append({
             "id": item["id"],
             "title": item["title"],
@@ -244,6 +271,7 @@ def main():
             "link": item["link"],
             "rubric": item.get("rubric", ""),
             "draft_text": text,
+            "banner": banner,
             "image_url": image_url,
         })
 

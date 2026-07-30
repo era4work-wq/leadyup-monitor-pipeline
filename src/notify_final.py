@@ -7,10 +7,14 @@
 import base64
 import sys
 
+import drive_banners
+import render_html
 from common import DATA_DIR, require_env, today, read_json, visible_length, write_json
 from notify_telegram import tg_call, tg_send_photo_bytes  # переиспользуем HTTP-обвязку
 
 CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото
+BANNER_TEMPLATE = "шаблон-баннер.html"
+BANNER_SIZE = (1920, 1080)
 
 
 def already_sent_ids() -> set[str]:
@@ -39,7 +43,33 @@ def format_preview(item: dict) -> str:
     return item["draft_text"]
 
 
-def send_final_card(token: str, chat_id: str, item: dict) -> dict:
+def render_banner(item: dict, service) -> bytes:
+    """Рендерит баннер темы (id/headline/badge из общего кэша drive_banners,
+    см. get_post_banner в write_draft.py) с наложенным заголовком — тот же
+    подход, что у статьи (notify_article.py) и карусели (notify_carousel.py).
+    Возвращает None, если баннера нет или рендер не удался — тогда
+    send_final_card падает обратно на og:image источника."""
+    banner = item.get("banner")
+    if not banner:
+        return None
+    try:
+        raw = service.files().get_media(fileId=banner["id"]).execute()
+        headline = banner.get("headline")
+        if not headline:
+            return raw  # старый кэш без headline (до 30.07.2026) — как есть
+        data_uri = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")
+        width, height = BANNER_SIZE
+        return render_html.render(BANNER_TEMPLATE, {
+            "BACKGROUND": data_uri,
+            "BADGE": banner.get("badge") or "AI РАДАР",
+            "HEADLINE": headline,
+        }, width, height)
+    except Exception as exc:
+        print(f"  [WARN] не удалось отрендерить баннер: {exc}", file=sys.stderr)
+        return None
+
+
+def send_final_card(token: str, chat_id: str, item: dict, service) -> dict:
     """Отправляет карточку черновика на финальное согласование (фото+подпись,
     если влезает и есть картинка, иначе текст). Переиспользуется и при первой
     отправке, и при пересборке черновика по кнопке «Перегенерировать»."""
@@ -53,12 +83,12 @@ def send_final_card(token: str, chat_id: str, item: dict) -> dict:
             ]
         ]
     }
-    cover_b64 = item.get("cover_image_b64")
+    cover_bytes = render_banner(item, service)
     image_url = item.get("image_url")
     sent_as = "text"
-    if cover_b64 and visible_length(text) <= CAPTION_LIMIT:
+    if cover_bytes and visible_length(text) <= CAPTION_LIMIT:
         result = tg_send_photo_bytes(
-            token, chat_id, base64.b64decode(cover_b64),
+            token, chat_id, cover_bytes,
             caption=text, parse_mode="HTML", reply_markup=keyboard,
         )
         sent_as = "photo"
@@ -72,8 +102,8 @@ def send_final_card(token: str, chat_id: str, item: dict) -> dict:
         # Пост не влезает в подпись к фото — картинку всё равно шлём
         # отдельным сообщением ПЕРЕД текстом (заказчик просил картинку
         # именно вверху), кнопки и статус живут на текстовом сообщении.
-        if cover_b64:
-            tg_send_photo_bytes(token, chat_id, base64.b64decode(cover_b64))
+        if cover_bytes:
+            tg_send_photo_bytes(token, chat_id, cover_bytes)
         elif image_url:
             tg_call(token, "sendPhoto", chat_id=chat_id, photo=image_url)
         result = tg_call(
@@ -106,9 +136,10 @@ def main():
         print("Нет новых черновиков для финального согласования.", file=sys.stderr)
         return
 
+    service = drive_banners.get_service()
     final_pending = {}
     for item in pending_send:
-        final_pending[item["id"]] = send_final_card(token, chat_id, item)
+        final_pending[item["id"]] = send_final_card(token, chat_id, item, service)
 
     write_json(DATA_DIR / "final_pending" / f"{today()}.json", final_pending)
     print(f"Отправлено на финальное согласование: {len(final_pending)}.", file=sys.stderr)
