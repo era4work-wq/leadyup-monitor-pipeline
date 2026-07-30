@@ -79,6 +79,54 @@ def build_topic_keyboard(item_id: str, selected_formats: list) -> dict:
     }
 
 
+def tg_send_document_bytes(token: str, chat_id, filename: str, content_bytes: bytes, **params):
+    """sendDocument с файлом как двоичными данными — по образцу
+    tg_send_photo_bytes, но для произвольного файла (например .md-статьи).
+    Используется, когда контент должен прийти именно файлом, не текстом
+    сообщения (решение владелицы 29.07.2026 — для статей)."""
+    url = API_BASE.format(token=token, method="sendDocument")
+    data = {"chat_id": chat_id}
+    for key, value in params.items():
+        if value is None:
+            continue
+        data[key] = json.dumps(value) if isinstance(value, (dict, list)) else value
+    files = {"document": (filename, content_bytes, "text/markdown")}
+    resp = requests.post(url, data=data, files=files, timeout=60)
+    if not resp.ok:
+        raise RuntimeError(f"Telegram API sendDocument failed ({resp.status_code}): {resp.text}")
+    body = resp.json()
+    if not body.get("ok"):
+        raise RuntimeError(f"Telegram API sendDocument failed: {body}")
+    return body["result"]
+
+
+def build_decision_edit(chat_id, message_id, sent_as: str, text: str):
+    """Собирает (метод, параметры) для правки карточки решения (взято/в
+    очереди/опубликовано/отклонено) — редактирует caption у фото или text у
+    обычного сообщения, убирает кнопки. Вызывающий сам решает, каким tg_call
+    это отправить (обычным или *_safe) — переиспользуется и в
+    collect_approvals.py (сразу после клика), и в publish_queue.py (после
+    реальной публикации из очереди)."""
+    if sent_as == "photo":
+        params = {
+            "chat_id": chat_id,
+            "message_id": message_id,
+            "caption": text,
+            "parse_mode": "HTML",
+            "reply_markup": {"inline_keyboard": []},
+        }
+        return "editMessageCaption", params
+    params = {
+        "chat_id": chat_id,
+        "message_id": message_id,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
+        "reply_markup": {"inline_keyboard": []},
+    }
+    return "editMessageText", params
+
+
 def format_message(item: dict) -> str:
     rubric = RUBRIC_LABEL.get(item.get("rubric", ""), item.get("rubric", ""))
     persona_line = f"Кому: {item['persona']}\n" if item.get("persona") else ""

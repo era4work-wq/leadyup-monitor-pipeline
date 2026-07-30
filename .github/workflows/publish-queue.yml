@@ -1,0 +1,46 @@
+name: Публикация из очереди
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"  # каждые ~20 минут — скрипт сам решает, публиковать ли (окно + интервал)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-queue
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Публикация из очереди (не больше одной записи за раз)
+        working-directory: src
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+          MAX_BOT_TOKEN: ${{ secrets.MAX_BOT_TOKEN }}
+          MAX_CHAT_ID: ${{ secrets.MAX_CHAT_ID }}
+          VK_GROUP_TOKEN: ${{ secrets.VK_GROUP_TOKEN }}
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+        run: python publish_queue.py
+
+      - name: Сохранить состояние очереди обратно в репозиторий
+        run: |
+          git config user.name "leadyup-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ state/
+          git diff --cached --quiet && exit 0
+          git commit -m "publish-queue: $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push

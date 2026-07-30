@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Карусель — финальный слайд (мятный, без фото) 1080×1350</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800;900&family=Inter:wght@500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: linear-gradient(160deg, var(--mint-soft) 0%, var(--mint) 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 88px 84px 72px;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--green-2);
+    border-radius: var(--radius-lg);
+    padding: 14px 30px;
+  }
+  .slide-num {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 34px;
+    color: var(--text-mid);
+  }
+  .content { margin-top: auto; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 84px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--green-2);
+  }
+  .body-text {
+    font-size: 40px;
+    line-height: 1.4;
+    color: var(--text-mid);
+    margin-top: 28px;
+    max-width: 860px;
+  }
+  .footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid rgba(15,25,35,0.15);
+    padding-top: 40px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--text);
+    white-space: nowrap;
+    margin-right: 48px;
+  }
+  .cta {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--text-mid);
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="tag">{{BADGE}}</div>
+    <div class="slide-num">{{SLIDE_NUM}}</div>
+  </div>
+  <div class="content">
+    <h1>{{HEADLINE}}</h1>
+    <p class="body-text">{{BODY}}</p>
+  </div>
+  <div class="footer">
+    <div class="brand">LeadYup</div>
+    <div class="cta">leadyup.com · бесплатно за 2 минуты</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Карусель 1080×1350 — слайд</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--green-soft) 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 88px 84px 72px;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green-2);
+    background: var(--mint-soft);
+    border: 2px solid var(--green-3);
+    border-radius: var(--radius-lg);
+    padding: 14px 30px;
+  }
+  .slide-num {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 34px;
+    color: var(--text-dim);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 88px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--green);
+  }
+  .body-text {
+    font-size: 44px;
+    line-height: 1.42;
+    color: var(--text-mid);
+    max-width: 860px;
+  }
+  .hand {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 58px;
+    color: var(--green-2);
+    transform: rotate(-2deg);
+    margin-top: 56px;
+    display: inline-block;
+  }
+  .footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid var(--border);
+    padding-top: 40px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--text);
+    white-space: nowrap;
+    margin-right: 48px;
+  }
+  .brand .dot { color: var(--green); }
+  .cta {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--text-dim);
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="tag">{{TAG}}</div>          <!-- линия: Польза / Скетч / Разбор -->
+    <div class="slide-num">{{SLIDE_NUM}}</div>
+  </div>
+
+  <h1>{{HEADLINE}}</h1>  <!-- em = зелёное слово -->
+
+  <p class="body-text">{{BODY}}</p>
+
+  <span class="hand">{{HAND}}</span>       <!-- Caveat: пометки, стрелки, юмор; пусто — не показывать -->
+
+  <div class="footer">
+    <div class="brand">LeadYup</div>
+    <div class="cta">leadyup.com · бесплатно за 2 минуты</div>
+  </div>
+</body>
+</html>

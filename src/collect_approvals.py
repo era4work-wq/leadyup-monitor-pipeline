@@ -4,21 +4,20 @@
 два независимых круга кнопок в одной и той же группе:
   - take/skip  — согласование ТЕМ (data/pending/) → data/approved/
   - publish/reject — финальное согласование ГОТОВЫХ ПОСТОВ (data/final_pending/)
-    → publish публикует пост в канал (TELEGRAM_CHANNEL) и остаётся в
-    data/published/ для истории.
+    → publish НЕ публикует сразу, а кладёт запись в data/publish_queue/ —
+    реальная отправка на площадки происходит позже, из publish_queue.py, с
+    разрядкой по времени (см. .github/workflows/publish-queue.yml).
 """
-import base64
+import json
 import os
 import sys
 from datetime import datetime, timezone
 
 import requests
 
-import publish_max
-import publish_vk
-from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, visible_length, write_json
+from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
-from notify_telegram import FORMAT_ACTION, build_topic_keyboard, tg_send_photo_bytes
+from notify_telegram import FORMAT_ACTION, build_decision_edit, build_topic_keyboard
 from write_draft import get_article, write_one
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
@@ -28,7 +27,7 @@ LOOKBACK_DAYS = 14
 ACTION_DOMAINS = {
     "take": ("pending", "взято"),
     "skip": ("pending", "пропущено"),
-    "publish": ("final_pending", "опубликовано"),
+    "publish": ("final_pending", "в очереди"),
     "reject": ("final_pending", "отклонено"),
     "redo": ("final_pending", None),  # обрабатывается отдельно, не общей веткой
 }
@@ -74,77 +73,6 @@ def find_entry(domain: str, item_id: str):
     return None, None
 
 
-CAPTION_LIMIT = 1024  # лимит Telegram для подписи к фото (у обычных сообщений — 4096)
-
-
-def publish_to_channel(token: str, channel: str, entry: dict) -> bool:
-    """Картинка — сначала ИИ-обложка (cover_image_b64, байты), если она
-    когда-нибудь появится (сейчас генерация с текстом выключена — см.
-    write_draft.py), иначе og:image источника (image_url, по ссылке)."""
-    text = entry["draft_text"]
-    cover_b64 = entry.get("cover_image_b64")
-    image_url = entry.get("image_url")
-
-    if cover_b64 and visible_length(text) <= CAPTION_LIMIT:
-        try:
-            tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64), caption=text, parse_mode="HTML")
-            return True
-        except Exception as exc:
-            print(f"[WARN] sendPhoto(bytes) не удался: {exc} — пробую URL-картинку", file=sys.stderr)
-    elif image_url and visible_length(text) <= CAPTION_LIMIT:
-        result = tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url, caption=text, parse_mode="HTML")
-        if result is not None:
-            return True
-        print("[WARN] sendPhoto(url) не удался — публикую без картинки в подписи", file=sys.stderr)
-    elif cover_b64 or image_url:
-        # Не влезает в подпись — картинка отдельным сообщением перед текстом,
-        # чтобы она всё равно оказалась вверху поста.
-        try:
-            if cover_b64:
-                tg_send_photo_bytes(token, channel, base64.b64decode(cover_b64))
-            else:
-                tg_call_safe(token, "sendPhoto", chat_id=channel, photo=image_url)
-        except Exception as exc:
-            print(f"[WARN] не удалось отправить картинку отдельным сообщением: {exc}", file=sys.stderr)
-
-    result = tg_call_safe(
-        token,
-        "sendMessage",
-        chat_id=channel,
-        text=text,
-        parse_mode="HTML",
-        disable_web_page_preview=True,
-    )
-    return result is not None
-
-
-def publish_everywhere(token: str, entry: dict) -> dict:
-    """Публикует пост на все настроенные площадки. Площадка без секретов
-    (собственник ещё не подключил канал/группу) молча пропускается — это не
-    ошибка, а ожидаемое состояние на пути к Фазе 1 (Max, потом VK). Возвращает
-    {"Telegram"/"Max"/"VK": True/False} — только для реально подключённых
-    площадок, чтобы штамп в чате показывал, куда пост действительно ушёл."""
-    results = {}
-
-    tg_channel = os.environ.get("TELEGRAM_CHANNEL")
-    if tg_channel:
-        results["Telegram"] = publish_to_channel(token, tg_channel, entry)
-    else:
-        print("[WARN] TELEGRAM_CHANNEL не задан — канал ещё не подключен", file=sys.stderr)
-
-    max_token = os.environ.get("MAX_BOT_TOKEN")
-    max_chat = os.environ.get("MAX_CHAT_ID")
-    if max_token and max_chat:
-        results["Max"] = publish_max.publish(max_token, max_chat, entry["draft_text"], entry.get("image_url"))
-
-    vk_token = os.environ.get("VK_GROUP_TOKEN")
-    vk_group = os.environ.get("VK_GROUP_ID")
-    if vk_token and vk_group:
-        results["VK"] = publish_vk.publish(vk_token, vk_group, entry["draft_text"], entry.get("image_url"))
-
-    return results
-
-
 def regenerate_draft(entry: dict) -> dict:
     """Пишет пост по той же теме заново (та же статья — берётся из кэша
     data/articles/, повторно не скачивается)."""
@@ -177,17 +105,29 @@ def update_draft_record(item_id: str, draft_text: str, cover_image_b64) -> None:
 
 def main():
     token = require_env("TELEGRAM_BOT_TOKEN")
-    offset_path = STATE_DIR / "tg_offset.txt"
-    offset = int(offset_path.read_text().strip()) if offset_path.exists() else 0
 
-    updates = tg_call(token, "getUpdates", offset=offset, timeout=0)
-    if not updates:
-        print("Новых апдейтов нет.", file=sys.stderr)
-        return
+    # Мгновенный путь: webhook-relay/ пересылает сюда апдейт в момент клика
+    # (см. .github/workflows/poll-approvals.yml, workflow_dispatch inputs) —
+    # тогда getUpdates вообще не вызываем (Telegram и не отдаст ничего через
+    # getUpdates, пока у бота настроен webhook — эти два режима исключают
+    # друг друга). offset_path=None ниже отключает обновление offset — он
+    # больше не актуален для доставки апдейтов, только исторический артефакт.
+    injected = os.environ.get("TELEGRAM_UPDATE_JSON", "").strip()
+    offset_path = None
+    if injected:
+        updates = [json.loads(injected)]
+        max_update_id = 0
+    else:
+        offset_path = STATE_DIR / "tg_offset.txt"
+        offset = int(offset_path.read_text().strip()) if offset_path.exists() else 0
+        updates = tg_call(token, "getUpdates", offset=offset, timeout=0)
+        if not updates:
+            print("Новых апдейтов нет.", file=sys.stderr)
+            return
+        max_update_id = offset - 1
 
     approved_today: list[dict] = []
-    published_today: list[dict] = []
-    max_update_id = offset - 1
+    queued_today: list[dict] = []
 
     for update in updates:
         max_update_id = max(max_update_id, update["update_id"])
@@ -253,11 +193,12 @@ def main():
             print(f"Перегенерирован пост: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 
-        platform_results = None
         if action == "publish":
-            platform_results = publish_everywhere(token, entry)
-            ok = any(platform_results.values())
-            status_word = "опубликовано" if ok else "ошибка публикации"
+            # Не публикуем сразу — кладём в очередь, реальная отправка идёт
+            # позже из publish_queue.py, с разрядкой по времени (см. решение
+            # в плане: клик остаётся триггером, но без мгновенного залпа и
+            # без «раз в сутки по расписанию»).
+            status_word = "в очереди"
 
         entry["status"] = status_word
         entry["approver"] = approver
@@ -267,60 +208,38 @@ def main():
         stamp_map = {
             "взято": "✅ Взято",
             "пропущено": "❌ Пропущено",
-            "опубликовано": "📤 Опубликовано в канал",
-            "ошибка публикации": "⚠️ Ошибка публикации — см. лог",
+            "в очереди": "🕐 В очереди на публикацию",
             "отклонено": "❌ Отклонено",
         }
         stamp = stamp_map[status_word]
         if status_word == "взято" and entry.get("formats"):
             # Видно, под какой именно контент взяли тему — чтобы отследить.
             stamp += " (" + ", ".join(entry["formats"]) + ")"
-        if platform_results:
-            # Мультиплатформенная публикация — видно, куда реально долетело,
-            # а не только общий да/нет (площадки без секретов сюда не попадают).
-            done = [name for name, r in platform_results.items() if r]
-            failed = [name for name, r in platform_results.items() if not r]
-            parts = []
-            if done:
-                parts.append("📤 Опубликовано: " + ", ".join(done))
-            if failed:
-                parts.append("⚠️ ошибка: " + ", ".join(failed))
-            if parts:
-                stamp = " · ".join(parts)
         new_text = f"{entry['text']}\n\n{stamp} · {approver}, {decided_at}"
-        if entry.get("sent_as") == "photo":
-            # Сообщение с картинкой редактируется через caption, не text
-            tg_call_safe(
-                token,
-                "editMessageCaption",
-                chat_id=callback["message"]["chat"]["id"],
-                message_id=callback["message"]["message_id"],
-                caption=new_text,
-                parse_mode="HTML",
-                reply_markup={"inline_keyboard": []},
-            )
-        else:
-            tg_call_safe(
-                token,
-                "editMessageText",
-                chat_id=callback["message"]["chat"]["id"],
-                message_id=callback["message"]["message_id"],
-                text=new_text,
-                parse_mode="HTML",
-                disable_web_page_preview=True,
-                reply_markup={"inline_keyboard": []},
-            )
+        method, params = build_decision_edit(
+            callback["message"]["chat"]["id"],
+            callback["message"]["message_id"],
+            entry.get("sent_as", "text"),
+            new_text,
+        )
+        tg_call_safe(token, method, **params)
         tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text=stamp)
 
         if action == "take":
             if not entry.get("formats"):
                 entry["formats"] = ["пост"]  # ничего не отмечали — по умолчанию только пост
             approved_today.append(entry)
-        if status_word == "опубликовано":
-            published_today.append(entry)
+        if status_word == "в очереди":
+            queued_today.append({
+                **entry,
+                "status": "queued",
+                "chat_id": callback["message"]["chat"]["id"],
+                "message_id": callback["message"]["message_id"],
+            })
 
-    offset_path.parent.mkdir(parents=True, exist_ok=True)
-    offset_path.write_text(str(max_update_id + 1))
+    if offset_path is not None:
+        offset_path.parent.mkdir(parents=True, exist_ok=True)
+        offset_path.write_text(str(max_update_id + 1))
 
     if approved_today:
         out_path = DATA_DIR / "approved" / f"{today()}.json"
@@ -330,13 +249,13 @@ def main():
         write_json(out_path, existing)
         print(f"Утверждено тем: {len(approved_today)} → {out_path}", file=sys.stderr)
 
-    if published_today:
-        out_path = DATA_DIR / "published" / f"{today()}.json"
+    if queued_today:
+        out_path = DATA_DIR / "publish_queue" / f"{today()}.json"
         existing = read_json(out_path, [])
         existing_ids = {e["id"] for e in existing}
-        existing.extend(e for e in published_today if e["id"] not in existing_ids)
+        existing.extend(e for e in queued_today if e["id"] not in existing_ids)
         write_json(out_path, existing)
-        print(f"Опубликовано постов: {len(published_today)} → {out_path}", file=sys.stderr)
+        print(f"Поставлено в очередь на публикацию: {len(queued_today)} → {out_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":

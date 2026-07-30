@@ -1,0 +1,52 @@
+/* Дизайн-токены контент-машины LeadYup / «Ловец лидов»
+   Источник: ловец-лидов.рф (снято 12.07.2026) + логотип /static/logo.svg
+   Правило: цвета и шрифты менять здесь, а не в шаблонах. */
+
+:root {
+  /* Бренд: зелёный */
+  --green: #1FAD5F;        /* основной бренд-зелёный */
+  --green-2: #16a34a;      /* тёмный зелёный (ховеры, глубина) */
+  --green-3: #22c55e;      /* светлый зелёный (акценты) */
+  --green-soft: #f0fdf4;   /* зелёная подложка */
+  --green-50: #ecfdf5;
+  --green-glow: rgba(31, 173, 95, 0.45); /* свечение для тёмных обложек */
+
+  /* Из логотипа (мятная гамма зайца/артефакта) */
+  --logo-green: #26A361;
+  --logo-green-2: #2FAB68;
+  --mint: #C8FAE0;
+  --mint-soft: #EDFEF6;
+
+  /* Тёмные (ink) */
+  --ink: #0a0e14;
+  --ink-2: #1a1f2e;
+  --ink-3: #2d3548;
+  --bg-dark: #050810;      /* фон тёмных обложек */
+
+  /* Текст */
+  --text: #0f1923;
+  --text-mid: #475569;
+  --text-dim: #64748b;
+
+  /* Поверхности и границы */
+  --bg: #ffffff;
+  --bg-soft: #fafbfc;
+  --border: #e8ecf1;
+  --border-soft: #f1f5f9;
+
+  /* Вторичные акценты (умеренно: плашки, метки линий контента) */
+  --accent-purple: #8b5cf6;
+  --accent-amber: #f59e0b;
+
+  /* Геометрия */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Шрифты (все — с кириллицей, Google Fonts) */
+  --font-display: 'Inter Tight', system-ui, sans-serif; /* заголовки, 600–900 */
+  --font-body: 'Inter', system-ui, sans-serif;          /* текст, 400–600 */
+  --font-mono: 'JetBrains Mono', monospace;             /* цифры, метки, номера слайдов */
+  --font-hand: 'Caveat', cursive;                       /* рукописный акцент скетч-вселенной */
+}
