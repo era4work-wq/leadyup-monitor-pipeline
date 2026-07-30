@@ -1,0 +1,92 @@
+[
+  {
+    "id": "7c51e362e55ed24f",
+    "title": "89% Of AI Search Demand Has No Clear Owner: Use This Before The Window Closes",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/89-of-ai-search-demand-has-no-clear-owner-use-this-before-the-window-closes/583255/",
+    "why": "Исследование с конкретной цифрой (89% и 15.2%) показывает, что большинство поисков в AI-ответчиках ещё не закреплены за конкретным брендом — это окно возможности для малого бизнеса захватить позицию раньше конкурентов.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P1"
+  },
+  {
+    "id": "342bef1ab77f0c50",
+    "title": "Q3 AI Visibility: AI Citations, Brand Mentions & Content Refreshes That Work",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/rundowns/q3-ai-visibility-ai-citations-brand-mentions-content-refreshes-that-work/",
+    "why": "Дайджест из 5 статей про то, как попасть в AI-ответы и стабильно там оставаться — практическая инструкция для владельца, который хочет перенести трафик с Google в новые площадки.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "888a1edfe610cf5b",
+    "title": "Google Ads Bidding Strategies: Where To Spend Your Time In 2026",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-ads-bidding-strategies-where-to-spend-your-time-in-2026/581479/",
+    "why": "Аудит смен в алгоритмах Google Ads летом 2026 — для маркетолога/менеджера в интернет-магазине или lead-gen сервисе это означает, что нужно срочно проверить, на какие кампании уходят деньги и работают ли они.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "89624528acaef8c7",
+    "title": "Implementing A/B Testing Without a Dedicated Tool: How It Works",
+    "source": "VWO Blog",
+    "link": "https://vwo.com/blog/implementing-ab-testing-without-a-dedicated-tool/",
+    "why": "Для владельца с ограниченным бюджетом — способ протестировать попапы, кнопки и формы на сайте без платной платформы, используя встроенные инструменты и скрипты; напрямую влияет на конверсию.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P4"
+  },
+  {
+    "id": "5a8147aed62f3c23",
+    "title": "European Search Strategy Goes Beyond Google & Bing",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/european-search-strategy-goes-beyond-google-bing/581780/",
+    "why": "Если магазин или сервис ориентирован на европейскую аудиторию, нужно знать о Lista, Ecosia, региональных площадках и регуляторных рисках — иначе 30% трафика может пройти мимо.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "5507450b74d745e2",
+    "title": "AI for Customer Success: What an Agent Can Actually Do (and What It Needs to Do It Right)",
+    "source": "Databox Blog",
+    "link": "https://databox.com/ai-for-customer-success",
+    "why": "Разбор того, что реально может сделать AI-агент в работе с заявками и клиентами — без обещаний, только требования к данным; актуально для P4, который отвечает за интеграцию CRM и мессенджеров.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4, SaaS P2"
+  },
+  {
+    "id": "83740af8e7e60a6c",
+    "title": "How to Find Keywords That Still Drive Results in the AI Era",
+    "source": "WordStream (LocaliQ)",
+    "link": "https://www.wordstream.com/blog/keyword-research-for-ai-era",
+    "why": "Рекомендации по подбору ключевых слов, которые ещё приносят клики, когда AI поглощает всё больше ответов — для владельца это означает: нужно проверить свой список ключей, потому что часть уже бесполезна.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "25aaae92dd46fc81",
+    "title": "Prepare for the holiday season with July's Demand Gen Drop",
+    "source": "Google Ads & Commerce Blog",
+    "link": "https://blog.google/products/ads-commerce/demand-gen-drop-july-2026/",
+    "why": "Новые возможности в Google Ads (tROAS, Checkout Links) — для маркетолога интернет-магазина это инструменты, которые могут поднять конверсию объявлений именно сейчас, пока конкуренты не адаптировались.",
+    "rubric": "ai-инструмент",
+    "persona": "интернет-магазины P2, интернет-магазины P4"
+  },
+  {
+    "id": "8e1fea4a8f107c83",
+    "title": "Google Opens Search Console Social Reporting To Everyone",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-opens-search-console-social-reporting-to-everyone/584144/",
+    "why": "Раньше это была привилегия крупных сайтов, теперь любой видит, как его контент из Instagram/TikTok/YouTube работает в Google — для владельца это способ измерить реальную конверсию социального трафика.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "7761ffe8cfb07a18",
+    "title": "Entity Mapping Works On Google. Does Any Of It Reach ChatGPT?",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/entity-mapping-works-on-google-does-any-of-it-reach-chatgpt/583663/",
+    "why": "Объяснение, почему сёма и структурированные данные помогают Google, но не работают в ChatGPT — важно для владельца, который раньше вкладывался в оптимизацию, чтобы не терять деньги на неработающие тактики.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P3, SaaS P3"
+  }
+]
