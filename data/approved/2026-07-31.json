@@ -32,5 +32,22 @@
     "status": "взято",
     "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
     "decided_at": "31.07 13:49"
+  },
+  {
+    "id": "37ad6e665d49f0ad",
+    "title": "Google: Offline Conversions With GBRAID URL Parameter Help Doc",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-offline-conversions-gbraid-url-parameter-41792.html",
+    "why": "Как отследить оффлайн-конверсии от рекламы с приватностью-friendly методом — для P4 критично замкнуть цикл «объявление → заявка → продажа».",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4; SaaS P2, P4",
+    "message_id": 194,
+    "text": "<b>Google: Offline Conversions With GBRAID URL Parameter Help Doc</b>\nИсточник: Search Engine Roundtable · 🛠 лайфхак\nКому: интернет-магазины P4; SaaS P2, P4\nКак отследить оффлайн-конверсии от рекламы с приватностью-friendly методом — для P4 критично замкнуть цикл «объявление → заявка → продажа».\nhttps://www.seroundtable.com/google-offline-conversions-gbraid-url-parameter-41792.html",
+    "formats": [
+      "пост"
+    ],
+    "status": "взято",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "31.07 13:50"
   }
 ]
