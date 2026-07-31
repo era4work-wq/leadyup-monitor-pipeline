@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fdf7ff92f0e11f4f",
+    "title": "What 13 Billion Google Searches Reveal About Zero-Click Behavior",
+    "source": "iPullRank Blog",
+    "link": "https://ipullrank.com/zero-click-behavior-analysis-q3-2026",
+    "rubric": "кейс-с-цифрами",
+    "draft_text": "<b>Почти половина поисков в Google заканчивается ничем</b>\n\nСвежий анализ 13 миллиардов поисковых сессий показал: <span class=\"tg-spoiler\">46,96%</span> запросов не приводят ни к одному клику. Человек ввёл запрос, Google ответил прямо в выдаче — сайты остались без визита.\n\n📊 Цифра растёт: за 15 месяцев +2,6 п.п., декабрь 2025-го — рекорд\n📱 76% поисков — один запрос и один исход, без возврата к результатам\n🤖 AI Overviews запустили в 100+ странах, и это только начало\n\n<blockquote>Средняя цифра по рынку ничего не говорит о вашей нише — разброс между категориями огромный</blockquote>\n\nДля интернет-магазина расклад такой: хорошие позиции в поиске больше не равны трафику. Если ваш товар можно описать в двух строчках — Google так и сделает. Без вас.\n\nПроверьте свои топовые запросы: если там уже есть AI-ответ или расширенный сниппет — пора думать, как забирать клиента до того, как он дойдёт до поиска.",
+    "banner": {
+      "id": "1uK7LRBUfzdGRi5MnFEahQGhq5UaO8k2h",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785340822891.png",
+      "headline": "Почти половина поисков в Google заканчивается ничем",
+      "badge": "КЕЙС"
+    },
+    "image_url": "https://ipullrank.com/wp-content/uploads/2026/07/interacting-with-google-search-header.jpg"
+  },
+  {
+    "id": "0df8c6c5ac59c5f6",
+    "title": "AI Search Isn't Replacing Google, It's Layering On Top – Similarweb Data",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-search-isnt-replacing-google-its-layering-on-top-similarweb-data/583378/",
+    "rubric": "кейс-с-цифрами",
+    "draft_text": "<b>95% пользователей ChatGPT всё ещё гуглят — и это не баг, это реальность</b>\n\nSimilarweb выкатил 38-страничный отчёт, который расстроит и фанатов AI-поиска, и скептиков одновременно.\n\n📊 Главные цифры:\n— <span class=\"tg-spoiler\">461 из 494 млн</span> юзеров ChatGPT параллельно сидят в Google\n— Поиск всё ещё в 5 раз больше всех AI-чатботов вместе взятых\n— Только 6,8% ответов ChatGPT содержат ссылку на внешний сайт\n\n<blockquote>AI-поиск не заменяет Google — он накладывается сверху как новый слой</blockquote>\n\nНо нюанс: трафик с AI растёт на 70% в год, а половина юзеров уже старше 35. Это не тренд зумеров, это массовое принятие.\n\nСамое интересное для тех, кто гонится за «AI-видимостью»: 65% цитируемых страниц — глубокие разделы сайта, а 58% реальных кликов приходят на главную. Цитирование и трафик — два разных KPI, и мерить их одной линейкой — способ упустить оба.\n\nНе переносите весь бюджет в ChatGPT Ads и не игнорируйте их — просто считайте оба слоя отдельно.",
+    "banner": {
+      "id": "1ke0MerWUkAxxeqYl8iIdJZqb4WFIWMR8",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785339215463.png",
+      "headline": "95% пользователей ChatGPT всё ещё гуглят — и это не баг, это реальность",
+      "badge": "КЕЙС"
+    },
+    "image_url": "https://cdn.searchenginejournal.com/wp-content/uploads/2026/07/ai-search-265.png"
+  },
+  {
+    "id": "37ad6e665d49f0ad",
+    "title": "Google: Offline Conversions With GBRAID URL Parameter Help Doc",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-offline-conversions-gbraid-url-parameter-41792.html",
+    "rubric": "лайфхак-инструкция",
+    "draft_text": "<b>Google добавил способ трекать оффлайн-конверсии без слежки за юзерами</b>\n\nПараметр GBRAID в URL рекламы — privacy-friendly идентификатор. Привязывает конверсию к кампании, не к конкретному человеку. Вы видите, какая реклама привела к продаже, но без персональных данных.\n\nЗачем вам это:\n📍 Замыкаете цикл «клик по объявлению → заявка на сайте → оплата в офисе/по звонку»\n📍 Автостратегии Google получают больше сигналов и <span class=\"tg-spoiler\">оптимизируются точнее</span>\n\n<blockquote>GBRAID чувствителен к регистру — не конвертируйте в upper/lower case, иначе сломается.</blockquote>\n\nНастройка — в новой справке Google Ads по offline conversions. Если часть продаж происходит вне сайта — разберитесь сейчас, пока конкуренты ещё думают.",
+    "banner": {
+      "id": "1oJP1cvsbclj7iled2Etpp1aSXH-_3jFZ",
+      "name": "гугл, стремление к №1.png",
+      "headline": "Google добавил способ трекать оффлайн-конверсии без слежки за юзерами",
+      "badge": "ЛАЙФХАК"
+    },
+    "image_url": "https://images.seroundtable.com/google-browser-url-parameters-boGfAPdl.jpg"
+  },
+  {
+    "id": "071bedca2aece8cf",
+    "title": "Social Search Data For All, AI-Detected Pages Rank Lower – SEO Pulse",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/seo-pulse-social-search-data-for-all-ai-detected-pages-rank-lower/584337/",
+    "rubric": "лайфхак-инструкция",
+    "draft_text": "<b>AI-детектор видит ваш контент — и позиции падают?</b>\n\nAhrefs выкатил свежие данные: страницы с высоким «AI-скором» ранжируются в топ-10, но стабильно ниже, чем тексты с меньшей долей генерации.\n\nПочему так:\n🔹 Корреляция есть, но Google не «наказывает за AI» напрямую\n🔹 Проблема в качестве — большинство AI-текстов это <span class=\"tg-spoiler\">single-shot промпты без оригинальных данных</span>\n🔹 Information gain = ноль, когда пересказываешь то, что уже в топе\n\n<blockquote>«Многие умножают 1000 на ноль и ждут результата» — John Ozuysal, House of Growth</blockquote>\n\nЧто делать, если у вас много AI-контента: добавляйте свои кейсы, цифры, экспертизу — то, чего нет у конкурентов. Детектор не приговор, но <b>повод посмотреть на текст глазами редактора</b>, а не генератора.",
+    "banner": {
+      "id": "1JQ7w9lb-H4_LjbICzI9ewM7Xhqfgr-Cb",
+      "name": "№1, заяц, кубок, seo.png",
+      "headline": "AI-детектор видит ваш контент — и позиции падают?",
+      "badge": "ЛАЙФХАК"
+    },
+    "image_url": "https://cdn.searchenginejournal.com/wp-content/uploads/2026/07/seo-pulse-584337.jpg"
+  }
+]

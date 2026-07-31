@@ -1,0 +1,126 @@
+{
+  "0df8c6c5ac59c5f6": {
+    "id": "0df8c6c5ac59c5f6",
+    "title": "AI Search Isn't Replacing Google, It's Layering On Top – Similarweb Data",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-search-isnt-replacing-google-its-layering-on-top-similarweb-data/583378/",
+    "rubric": "кейс-с-цифрами",
+    "cover_headline": "AI-поиск убивает Google? Данные говорят иначе",
+    "cover_body": "Similarweb изучили 494 млн пользователей ChatGPT. Результат удивит обе стороны спора",
+    "slides": [
+      {
+        "tag": "Разбор",
+        "headline": "95% юзеров ChatGPT всё ещё в Google",
+        "body": "461 из 494 млн пользователей ChatGPT заходят и в Google тоже. Никто не ушёл — просто добавили новую привычку к старой.",
+        "hand": "не замена, а слой сверху"
+      },
+      {
+        "tag": "Скетч",
+        "headline": "Поиск всё ещё в 5 раз больше",
+        "body": "3,3 млрд уников в месяц у поиска против 655 млн у всех AI-чатботов вместе. Даже при росте 57% в год — пропасть огромна.",
+        "hand": ""
+      },
+      {
+        "tag": "Разбор",
+        "headline": "93 из 100 ответов ChatGPT — без ссылки",
+        "body": "Только 6,8% ответов содержат внешнюю ссылку. Рост в 5 раз за год, но трафик пока капает, а не льётся.",
+        "hand": ""
+      },
+      {
+        "tag": "Польза",
+        "headline": "Цитируют одно, кликают на другое",
+        "body": "65% цитат ведут на глубокие страницы, но 58,8% кликов приземляются на главную. Два разных KPI — не путайте.",
+        "hand": "вот это инсайт"
+      },
+      {
+        "tag": "Польза",
+        "headline": "Разделите метрики: цитаты ≠ конверсии",
+        "body": "Трекайте отдельно, цитирует ли AI ваш контент. И отдельно — куда реально приходит трафик и что с ним происходит дальше.",
+        "hand": ""
+      }
+    ],
+    "cta_headline": "Трафик меняет маршруты",
+    "cta_body": "Визиты приземляются не туда, где ждёте — важно ловить лид сразу. LeadYup поможет не терять тех, кто всё-таки дошёл.",
+    "banner": {
+      "id": "1ke0MerWUkAxxeqYl8iIdJZqb4WFIWMR8",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785339215463.png",
+      "headline": "95% пользователей ChatGPT всё ещё гуглят — и это не баг, это реальность",
+      "badge": "КЕЙС"
+    },
+    "message_id": 206,
+    "photo_message_ids": [
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205
+    ],
+    "text": "Карусель выше — <b>AI Search Isn't Replacing Google, It's Layering On Top – Similarweb Data</b>\nИсточник: Search Engine Journal",
+    "sent_as": "text",
+    "status": "ждёт"
+  },
+  "071bedca2aece8cf": {
+    "id": "071bedca2aece8cf",
+    "title": "Social Search Data For All, AI-Detected Pages Rank Lower – SEO Pulse",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/seo-pulse-social-search-data-for-all-ai-detected-pages-rank-lower/584337/",
+    "rubric": "лайфхак-инструкция",
+    "cover_headline": "AI-тексты ранжируются ниже?",
+    "cover_body": "Свежие данные Ahrefs: чем больше AI-контента на странице, тем хуже позиции. Разбираем, что с этим делать.",
+    "slides": [
+      {
+        "tag": "Разбор",
+        "headline": "Что показало исследование Ahrefs",
+        "body": "AI-страницы есть во всём топ-10 Google. Но чем выше «AI-score» детектора, тем ниже средняя позиция в выдаче.",
+        "hand": ""
+      },
+      {
+        "tag": "Разбор",
+        "headline": "Это корреляция, не приговор",
+        "body": "Google не банит AI-контент напрямую. Дело в качестве: больше AI → чаще ленивый рерайт без новой ценности.",
+        "hand": "вот в чём дело"
+      },
+      {
+        "tag": "Скетч",
+        "headline": "«Умножают 1000 на 0»",
+        "body": "Цитата из отчёта: один промпт, пересказ топа выдачи, ноль оригинальных инсайтов — information gain = 0.",
+        "hand": ""
+      },
+      {
+        "tag": "Польза",
+        "headline": "Что реально снижает риск",
+        "body": "Добавляйте свою экспертизу, кейсы, данные. AI — черновик, не финал. Уникальность важнее скорости.",
+        "hand": "золотое правило"
+      },
+      {
+        "tag": "Польза",
+        "headline": "Проверяйте свои страницы",
+        "body": "Ahrefs Site Audit показывает AI-score. Высокий балл — повод пересмотреть контент, не паниковать.",
+        "hand": ""
+      }
+    ],
+    "cta_headline": "Трафик дорожает — лиды терять нельзя",
+    "cta_body": "Каждый визит на сайт стоит дороже — важно конвертировать его сразу. LeadYup захватит контакт, пока посетитель не ушёл.",
+    "banner": {
+      "id": "1JQ7w9lb-H4_LjbICzI9ewM7Xhqfgr-Cb",
+      "name": "№1, заяц, кубок, seo.png",
+      "headline": "AI-детектор видит ваш контент — и позиции падают?",
+      "badge": "ЛАЙФХАК"
+    },
+    "message_id": 214,
+    "photo_message_ids": [
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213
+    ],
+    "text": "Карусель выше — <b>Social Search Data For All, AI-Detected Pages Rank Lower – SEO Pulse</b>\nИсточник: Search Engine Journal",
+    "sent_as": "text",
+    "status": "ждёт"
+  }
+}
