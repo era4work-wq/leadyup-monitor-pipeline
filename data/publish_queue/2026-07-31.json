@@ -42,5 +42,27 @@
     "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
     "decided_at": "31.07 15:43",
     "chat_id": -5473654877
+  },
+  {
+    "id": "071bedca2aece8cf",
+    "title": "Social Search Data For All, AI-Detected Pages Rank Lower – SEO Pulse",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/seo-pulse-social-search-data-for-all-ai-detected-pages-rank-lower/584337/",
+    "rubric": "лайфхак-инструкция",
+    "draft_text": "<b>AI-детектор видит ваш контент — и позиции падают?</b>\n\nAhrefs выкатил свежие данные: страницы с высоким «AI-скором» ранжируются в топ-10, но стабильно ниже, чем тексты с меньшей долей генерации.\n\nПочему так:\n🔹 Корреляция есть, но Google не «наказывает за AI» напрямую\n🔹 Проблема в качестве — большинство AI-текстов это <span class=\"tg-spoiler\">single-shot промпты без оригинальных данных</span>\n🔹 Information gain = ноль, когда пересказываешь то, что уже в топе\n\n<blockquote>«Многие умножают 1000 на ноль и ждут результата» — John Ozuysal, House of Growth</blockquote>\n\nЧто делать, если у вас много AI-контента: добавляйте свои кейсы, цифры, экспертизу — то, чего нет у конкурентов. Детектор не приговор, но <b>повод посмотреть на текст глазами редактора</b>, а не генератора.",
+    "banner": {
+      "id": "1JQ7w9lb-H4_LjbICzI9ewM7Xhqfgr-Cb",
+      "name": "№1, заяц, кубок, seo.png",
+      "headline": "AI-детектор видит ваш контент — и позиции падают?",
+      "badge": "ЛАЙФХАК"
+    },
+    "image_url": "https://cdn.searchenginejournal.com/wp-content/uploads/2026/07/seo-pulse-584337.jpg",
+    "message_id": 198,
+    "text": "<b>AI-детектор видит ваш контент — и позиции падают?</b>\n\nAhrefs выкатил свежие данные: страницы с высоким «AI-скором» ранжируются в топ-10, но стабильно ниже, чем тексты с меньшей долей генерации.\n\nПочему так:\n🔹 Корреляция есть, но Google не «наказывает за AI» напрямую\n🔹 Проблема в качестве — большинство AI-текстов это <span class=\"tg-spoiler\">single-shot промпты без оригинальных данных</span>\n🔹 Information gain = ноль, когда пересказываешь то, что уже в топе\n\n<blockquote>«Многие умножают 1000 на ноль и ждут результата» — John Ozuysal, House of Growth</blockquote>\n\nЧто делать, если у вас много AI-контента: добавляйте свои кейсы, цифры, экспертизу — то, чего нет у конкурентов. Детектор не приговор, но <b>повод посмотреть на текст глазами редактора</b>, а не генератора.",
+    "sent_as": "photo",
+    "status": "queued",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "31.07 20:30",
+    "chat_id": -5473654877
   }
 ]
