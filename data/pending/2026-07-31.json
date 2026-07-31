@@ -55,7 +55,9 @@
     "formats": [
       "статья"
     ],
-    "status": "ждёт"
+    "status": "взято",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "31.07 13:49"
   },
   "071bedca2aece8cf": {
     "id": "071bedca2aece8cf",
