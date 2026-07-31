@@ -48,12 +48,17 @@ jobs:
           VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
         run: |
           python -c "
-          import os
-          import publish_max, publish_vk
-          text = 'Тестовое сообщение пайплайна — проверка Max/ВК после фикса сертификата и токенов (31.07.2026). Можно удалить.'
-          ok_max = publish_max.publish(os.environ['MAX_BOT_TOKEN'], os.environ['MAX_CHAT_ID'], text)
+          import json, os
+          import drive_banners, publish, publish_max, publish_vk
+          text = 'Тестовое сообщение пайплайна — проверка Max/ВК С КАРТИНКОЙ после сегодняшних фиксов (31.07.2026). Можно удалить.'
+          items = json.load(open('../data/publish_queue/2026-07-31.json', encoding='utf-8'))
+          entry = items[0]
+          service = drive_banners.get_service()
+          cover_bytes = publish.render_banner(entry, service)
+          print('баннер:', 'есть' if cover_bytes else 'нет')
+          ok_max = publish_max.publish(os.environ['MAX_BOT_TOKEN'], os.environ['MAX_CHAT_ID'], text, image_bytes=cover_bytes)
           print('Max:', 'OK' if ok_max else 'ОШИБКА')
-          ok_vk = publish_vk.publish(os.environ['VK_GROUP_TOKEN'], os.environ['VK_GROUP_ID'], text, user_token=os.environ['VK_USER_TOKEN'])
+          ok_vk = publish_vk.publish(os.environ['VK_GROUP_TOKEN'], os.environ['VK_GROUP_ID'], text, image_bytes=cover_bytes, user_token=os.environ['VK_USER_TOKEN'])
           print('VK:', 'OK' if ok_vk else 'ОШИБКА')
           "
 
