@@ -18,10 +18,14 @@ VK REST API, https://api.vk.com/method/. Публикация фото на ст
 - `photos.getWallUploadServer`/`photos.saveWallPhoto` — наоборот, падают с
   токеном сообщества ("Group authorization failed: method is unavailable
   with group auth"), работают только с ПОЛЬЗОВАТЕЛЬСКИМ токеном
-  (VK_USER_TOKEN, OAuth через oauth.vk.com/authorize с client_id
-  созданного приложения, scope=wall,photos — без groups и offline, ВК их
-  не принимает для этого типа приложения; из-за отсутствия offline токен
-  живёт ~24 часа, требует периодического обновления вручную).
+  (VK_USER_TOKEN). Токен, полученный через собственное приложение (тип
+  «Плагин для сообщества») с scope=wall,photos,groups,offline падал
+  ошибкой invalid scope на groups/offline и жил только ~24 часа. Рабочий
+  обход (31.07.2026) — авторизоваться через oauth.vk.com/authorize с
+  client_id ОФИЦИАЛЬНОГО приложения VK (Kate Mobile, id 2685278; давно и
+  открыто используется разработчиками именно для получения токена с
+  расширенными правами) вместо своего — тот же scope принимается без
+  ошибок, `expires_in=0` в ответе означает бессрочный токен.
 Поэтому картинка грузится одним токеном, а сам пост с уже готовым
 attachment — другим (attachment можно передать в wall.post любым токеном,
 у которого есть доступ к посту, независимо от того, кто грузил фото).
