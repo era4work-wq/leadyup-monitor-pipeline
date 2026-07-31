@@ -1,5 +1,6 @@
 import base64
 import hashlib
+import html as html_lib
 import json
 import os
 import re
@@ -56,6 +57,30 @@ def visible_length(html_text: str) -> int:
     с тегами. Проверено эмпирически 29.07.2026: caption с сырой длиной
     1032 символа (из них теги) прошёл, потому что видимый текст — 1000."""
     return len(_TAG_RE.sub("", html_text))
+
+
+_SPOILER_TAG_RE = re.compile(r'</?span(?:\s+class="tg-spoiler")?>')
+_BLOCKQUOTE_RE = re.compile(r"<blockquote(?:\s[^>]*)?>(.*?)</blockquote>", re.DOTALL)
+_BOLD_TAG_RE = re.compile(r"</?(?:b|strong)>")
+
+
+def html_to_plain_text(html_text: str) -> str:
+    """Черновик пишется в Telegram HTML (<b>, tg-spoiler, <blockquote>) —
+    для площадок без поддержки такой разметки (ВК: у wall.post нет вообще
+    никакого форматирования текста — ни жирного, ни спойлеров, ни цитат,
+    это ограничение самой площадки, не наше — проверено 31.07.2026, теги
+    иначе показываются как есть, сырым текстом) нужен читаемый plain text.
+    Жирный и спойлер просто теряют оформление (площадка физически не может
+    его показать), цитата помечается «❝ » построчно, чтобы не потеряться
+    в обычном тексте."""
+    text = _BLOCKQUOTE_RE.sub(
+        lambda m: "\n".join(f"❝ {line}" for line in m.group(1).strip().split("\n")),
+        html_text,
+    )
+    text = _BOLD_TAG_RE.sub("", text)
+    text = _SPOILER_TAG_RE.sub("", text)
+    text = _TAG_RE.sub("", text)  # любые оставшиеся теги — подстраховка
+    return html_lib.unescape(text)
 
 
 OG_IMAGE_RE = re.compile(

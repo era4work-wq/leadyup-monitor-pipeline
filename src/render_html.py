@@ -32,9 +32,15 @@ def _render_one(browser, template_name: str, substitutions: dict, width: int, he
         page = browser.new_page(viewport={"width": width, "height": height})
         page.goto(f"file://{tmp_path}")
         page.wait_for_timeout(300)  # догрузка шрифтов Google Fonts
-        png_bytes = page.screenshot()
+        # JPEG, не PNG — тот же дизайн без прозрачности (сплошной фон-баннер),
+        # но в разы легче. PNG на полноразмерном баннере (1920×1080, ~1.7 МБ)
+        # ВК молча отклонял при загрузке на стену (photos.saveWallPhoto
+        # возвращал пустой photo, без явной ошибки) — поймано и подтверждено
+        # 31.07.2026 тестами напрямую против upload_url. Telegram/Max проблем
+        # с PNG не показывали, но JPEG им тоже подходит без изменений кода.
+        jpeg_bytes = page.screenshot(type="jpeg", quality=90)
         page.close()
-        return png_bytes
+        return jpeg_bytes
     finally:
         tmp_path.unlink(missing_ok=True)
 

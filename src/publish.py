@@ -135,6 +135,7 @@ def publish_everywhere(token: str, entry: dict, service=None) -> dict:
     if vk_token and vk_group:
         results["VK"] = publish_vk.publish(
             vk_token, vk_group, entry["draft_text"], image_url=image_url, image_bytes=cover_bytes,
+            user_token=os.environ.get("VK_USER_TOKEN"),
         )
 
     return results
