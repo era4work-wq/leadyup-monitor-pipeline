@@ -48,7 +48,12 @@ def _upload_image(token: str, image_bytes: bytes) -> str:
     узкий CA_BUNDLE (только российский НУЦ Минцифры) его не покрывает.
     Поймано на практике 31.07.2026: с verify=CA_BUNDLE падало
     CERTIFICATE_VERIFY_FAILED именно на этом шаге. Здесь — стандартная
-    проверка (verify по умолчанию), CA_BUNDLE — только для _call()."""
+    проверка (verify по умолчанию), CA_BUNDLE — только для _call().
+
+    Ответ upload_url НЕ {"token": "..."} в корне, как можно предположить
+    по документации — реальная форма (проверено 31.07.2026):
+    {"photos": {"<photoId>": {"token": "..."}}}, id фото — сгенерированный
+    ключ, не то же самое, что подставлялось в photoIds параметре URL."""
     upload_info = _call(token, "POST", "/uploads", params={"type": "image"})
     resp = requests.post(
         upload_info["url"],
@@ -57,7 +62,8 @@ def _upload_image(token: str, image_bytes: bytes) -> str:
     )
     if not resp.ok:
         raise RuntimeError(f"MAX upload failed ({resp.status_code}): {resp.text}")
-    return resp.json()["token"]
+    photos = resp.json()["photos"]
+    return next(iter(photos.values()))["token"]
 
 
 def publish(token: str, chat_id: str, text: str, image_url: str = None, image_bytes: bytes = None) -> bool:
