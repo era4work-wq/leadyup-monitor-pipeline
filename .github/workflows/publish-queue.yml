@@ -3,7 +3,13 @@ name: Публикация из очереди
 on:
   schedule:
     - cron: "*/20 * * * *"  # каждые ~20 минут — скрипт сам решает, публиковать ли (окно + интервал)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      smoke_test:
+        description: "Тестовое сообщение в Max/ВК напрямую (не трогает очередь/Telegram) — для проверки токенов/сертификатов без ожидания дневного окна"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -31,7 +37,28 @@ jobs:
           mkdir -p secrets
           echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > secrets/drive-service-account.json
 
+      - name: Тест Max/ВК напрямую (только если запущено с smoke_test)
+        if: ${{ github.event.inputs.smoke_test == 'true' }}
+        working-directory: src
+        env:
+          MAX_BOT_TOKEN: ${{ secrets.MAX_BOT_TOKEN }}
+          MAX_CHAT_ID: ${{ secrets.MAX_CHAT_ID }}
+          VK_GROUP_TOKEN: ${{ secrets.VK_GROUP_TOKEN }}
+          VK_USER_TOKEN: ${{ secrets.VK_USER_TOKEN }}
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+        run: |
+          python -c "
+          import os
+          import publish_max, publish_vk
+          text = 'Тестовое сообщение пайплайна — проверка Max/ВК после фикса сертификата и токенов (31.07.2026). Можно удалить.'
+          ok_max = publish_max.publish(os.environ['MAX_BOT_TOKEN'], os.environ['MAX_CHAT_ID'], text)
+          print('Max:', 'OK' if ok_max else 'ОШИБКА')
+          ok_vk = publish_vk.publish(os.environ['VK_GROUP_TOKEN'], os.environ['VK_GROUP_ID'], text, user_token=os.environ['VK_USER_TOKEN'])
+          print('VK:', 'OK' if ok_vk else 'ОШИБКА')
+          "
+
       - name: Публикация из очереди (не больше одной записи за раз)
+        if: ${{ github.event.inputs.smoke_test != 'true' }}
         working-directory: src
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -44,6 +71,7 @@ jobs:
         run: python publish_queue.py
 
       - name: Сохранить состояние очереди обратно в репозиторий
+        if: ${{ github.event.inputs.smoke_test != 'true' }}
         run: |
           git config user.name "leadyup-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
