@@ -64,5 +64,27 @@
     "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
     "decided_at": "31.07 20:30",
     "chat_id": -5473654877
+  },
+  {
+    "id": "37ad6e665d49f0ad",
+    "title": "Google: Offline Conversions With GBRAID URL Parameter Help Doc",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-offline-conversions-gbraid-url-parameter-41792.html",
+    "rubric": "лайфхак-инструкция",
+    "draft_text": "<b>Google добавил способ трекать оффлайн-конверсии без слежки за юзерами</b>\n\nПараметр GBRAID в URL рекламы — privacy-friendly идентификатор. Привязывает конверсию к кампании, не к конкретному человеку. Вы видите, какая реклама привела к продаже, но без персональных данных.\n\nЗачем вам это:\n📍 Замыкаете цикл «клик по объявлению → заявка на сайте → оплата в офисе/по звонку»\n📍 Автостратегии Google получают больше сигналов и <span class=\"tg-spoiler\">оптимизируются точнее</span>\n\n<blockquote>GBRAID чувствителен к регистру — не конвертируйте в upper/lower case, иначе сломается.</blockquote>\n\nНастройка — в новой справке Google Ads по offline conversions. Если часть продаж происходит вне сайта — разберитесь сейчас, пока конкуренты ещё думают.",
+    "banner": {
+      "id": "1oJP1cvsbclj7iled2Etpp1aSXH-_3jFZ",
+      "name": "гугл, стремление к №1.png",
+      "headline": "Google добавил способ трекать оффлайн-конверсии без слежки за юзерами",
+      "badge": "ЛАЙФХАК"
+    },
+    "image_url": "https://images.seroundtable.com/google-browser-url-parameters-boGfAPdl.jpg",
+    "message_id": 197,
+    "text": "<b>Google добавил способ трекать оффлайн-конверсии без слежки за юзерами</b>\n\nПараметр GBRAID в URL рекламы — privacy-friendly идентификатор. Привязывает конверсию к кампании, не к конкретному человеку. Вы видите, какая реклама привела к продаже, но без персональных данных.\n\nЗачем вам это:\n📍 Замыкаете цикл «клик по объявлению → заявка на сайте → оплата в офисе/по звонку»\n📍 Автостратегии Google получают больше сигналов и <span class=\"tg-spoiler\">оптимизируются точнее</span>\n\n<blockquote>GBRAID чувствителен к регистру — не конвертируйте в upper/lower case, иначе сломается.</blockquote>\n\nНастройка — в новой справке Google Ads по offline conversions. Если часть продаж происходит вне сайта — разберитесь сейчас, пока конкуренты ещё думают.",
+    "sent_as": "photo",
+    "status": "queued",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "31.07 20:30",
+    "chat_id": -5473654877
   }
 ]
