@@ -47,7 +47,25 @@ jobs:
           git config user.name "leadyup-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/ state/
-          git diff --cached --quiet && exit 0
+          if git diff --cached --quiet; then
+            exit 0
+          fi
           git commit -m "publish-queue: $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push
+          # Прогон теперь может дёргаться сразу по клику "Опубликовать" (см.
+          # poll-approvals.yml) в дополнение к тикеру каждые ~20 минут — пуш
+          # уже готового коммита (публикация уже фактически ушла на площадки)
+          # ретраим через pull --rebase, не через git reset --hard, чтобы не
+          # потерять запись о том, что пост уже опубликован.
+          for attempt in 1 2 3 4 5; do
+            if git push origin "${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "::warning::Конфликт при push (попытка $attempt) — подтягиваю и перебазируюсь"
+            if ! git pull --rebase origin "${GITHUB_REF_NAME}"; then
+              echo "::error::Конфликт при rebase — нужна ручная проверка, публикация уже прошла, но статус в данных мог не сохраниться"
+              exit 1
+            fi
+            sleep $(( (RANDOM % 5) + attempt ))
+          done
+          echo "::error::Не удалось запушить после нескольких попыток"
+          exit 1

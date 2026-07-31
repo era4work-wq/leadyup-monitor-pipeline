@@ -85,7 +85,28 @@ jobs:
           git config user.name "leadyup-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/
-          git diff --cached --quiet && exit 0
+          if git diff --cached --quiet; then
+            exit 0
+          fi
           git commit -m "drafts: $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push
+          # Прогон теперь может дёргаться сразу по каждому клику "Взять"
+          # (см. poll-approvals.yml), а сама генерация длится минуты — за
+          # это время параллельно может уйти push из другого клика. Пуш
+          # уже готового коммита ретраим через pull --rebase, не через
+          # git reset --hard (это стёрло бы только что сгенерированные,
+          # но ещё не запушенные черновики) — если сам rebase конфликтует
+          # (редкость, разные файлы обычно перебазируются чисто), останавливаемся
+          # и сообщаем явно, а не теряем результат молча.
+          for attempt in 1 2 3 4 5; do
+            if git push origin "${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "::warning::Конфликт при push (попытка $attempt) — подтягиваю и перебазируюсь"
+            if ! git pull --rebase origin "${GITHUB_REF_NAME}"; then
+              echo "::error::Конфликт при rebase — нужна ручная проверка, локальный коммит с черновиками не потерян в рамках этого прогона"
+              exit 1
+            fi
+            sleep $(( (RANDOM % 5) + attempt ))
+          done
+          echo "::error::Не удалось запушить после нескольких попыток"
+          exit 1
