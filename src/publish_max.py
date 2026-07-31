@@ -37,14 +37,41 @@ def _call(token: str, method: str, path: str, **kwargs):
     return resp.json()
 
 
-def publish(token: str, chat_id: str, text: str, image_url: str = None) -> bool:
-    """Публикует пост в чат/канал MAX. Картинка — по прямому URL (MAX это
-    поддерживает без предварительной загрузки, как и sendPhoto в Telegram)."""
+def _upload_image(token: str, image_bytes: bytes) -> str:
+    """Двухшаговая загрузка байтов (та же схема, что у VK): POST /uploads
+    даёт одноразовый upload_url, туда мультипартом заливаются байты (поле
+    "data"), в ответ приходит token — им наполняется attachments.payload.
+    См. dev.max.ru/docs-api/methods/POST/uploads."""
+    upload_info = _call(token, "POST", "/uploads", params={"type": "image"})
+    resp = requests.post(
+        upload_info["url"],
+        files={"data": ("banner.png", image_bytes, "image/png")},
+        verify=str(CA_BUNDLE),
+        timeout=60,
+    )
+    if not resp.ok:
+        raise RuntimeError(f"MAX upload failed ({resp.status_code}): {resp.text}")
+    return resp.json()["token"]
+
+
+def publish(token: str, chat_id: str, text: str, image_url: str = None, image_bytes: bytes = None) -> bool:
+    """Публикует пост в чат/канал MAX. Картинка — сначала image_bytes (баннер
+    темы, та же картинка, что и в Telegram/VK — см. publish.py), если задан
+    и загрузка удалась; иначе image_url по прямому URL (MAX поддерживает
+    его без загрузки, как sendPhoto в Telegram)."""
     if len(text) > TEXT_LIMIT:
         text = text[: TEXT_LIMIT - 1] + "…"
 
     attachments = []
-    if image_url:
+    if image_bytes:
+        try:
+            img_token = _upload_image(token, image_bytes)
+            attachments.append({"type": "image", "payload": {"token": img_token}})
+        except Exception as exc:
+            print(f"[WARN] загрузка баннера в MAX не удалась: {exc} — пробую og:image", file=sys.stderr)
+            if image_url:
+                attachments.append({"type": "image", "payload": {"url": image_url}})
+    elif image_url:
         attachments.append({"type": "image", "payload": {"url": image_url}})
 
     body = {"text": text, "format": "html"}

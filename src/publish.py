@@ -57,14 +57,13 @@ def render_banner(entry: dict, service) -> bytes:
         return None
 
 
-def publish_to_channel(token: str, channel: str, entry: dict, service) -> bool:
-    """Картинка — сначала баннер темы (render_banner, общий с постом/статьёй/
-    каруселью), при любом сбое падаем обратно на og:image источника
-    (image_url), при сбое и того — публикуем без картинки, но текст всё
-    равно должен уйти."""
+def publish_to_channel(token: str, channel: str, entry: dict, cover_bytes: bytes, image_url: str) -> bool:
+    """Картинка — сначала баннер темы (готовые байты, отрендеренные один раз
+    в publish_everywhere — та же картинка уходит и в Max/VK, пост должен
+    выглядеть одинаково на всех площадках), при сбое отправки падаем обратно
+    на og:image источника (image_url), при сбое и того — публикуем без
+    картинки, но текст всё равно должен уйти."""
     text = entry["draft_text"]
-    cover_bytes = render_banner(entry, service)
-    image_url = entry.get("image_url")
     fits_caption = visible_length(text) <= CAPTION_LIMIT
 
     if cover_bytes and fits_caption:
@@ -105,30 +104,37 @@ def publish_to_channel(token: str, channel: str, entry: dict, service) -> bool:
 
 
 def publish_everywhere(token: str, entry: dict, service=None) -> dict:
-    """Публикует пост на все настроенные площадки. Площадка без секретов
-    (собственник ещё не подключил канал/группу) молча пропускается — это не
-    ошибка, а ожидаемое состояние на пути к Фазе 1 (Max, потом VK). Возвращает
-    {"Telegram"/"Max"/"VK": True/False} — только для реально подключённых
-    площадок, чтобы штамп в чате показывал, куда пост действительно ушёл.
-    `service` — клиент Google Drive для баннера темы (см. render_banner);
-    Max/VK пока берут только image_url (og:image) — у них нет своего
-    рендера баннера, это отдельная доработка на будущее."""
+    """Публикует ОДИН И ТОТ ЖЕ пост на все настроенные площадки — тот же
+    текст, та же картинка (баннер темы рендерится один раз здесь и байты
+    передаются в каждую площадку, а не перерендериваются/берутся с сайта
+    отдельно для каждой — решение владелицы 30.07.2026: везде должно быть
+    одинаково). Площадка без секретов (собственник ещё не подключил канал/
+    группу) молча пропускается — это не ошибка, а ожидаемое переходное
+    состояние. Возвращает {"Telegram"/"Max"/"VK": True/False} — только для
+    реально подключённых площадок, чтобы штамп в чате показывал, куда пост
+    действительно ушёл. `service` — клиент Google Drive для баннера темы."""
     results = {}
+    cover_bytes = render_banner(entry, service)
+    image_url = entry.get("image_url")
 
     tg_channel = os.environ.get("TELEGRAM_CHANNEL")
     if tg_channel:
-        results["Telegram"] = publish_to_channel(token, tg_channel, entry, service)
+        results["Telegram"] = publish_to_channel(token, tg_channel, entry, cover_bytes, image_url)
     else:
         print("[WARN] TELEGRAM_CHANNEL не задан — канал ещё не подключен", file=sys.stderr)
 
     max_token = os.environ.get("MAX_BOT_TOKEN")
     max_chat = os.environ.get("MAX_CHAT_ID")
     if max_token and max_chat:
-        results["Max"] = publish_max.publish(max_token, max_chat, entry["draft_text"], entry.get("image_url"))
+        results["Max"] = publish_max.publish(
+            max_token, max_chat, entry["draft_text"], image_url=image_url, image_bytes=cover_bytes,
+        )
 
     vk_token = os.environ.get("VK_GROUP_TOKEN")
     vk_group = os.environ.get("VK_GROUP_ID")
     if vk_token and vk_group:
-        results["VK"] = publish_vk.publish(vk_token, vk_group, entry["draft_text"], entry.get("image_url"))
+        results["VK"] = publish_vk.publish(
+            vk_token, vk_group, entry["draft_text"], image_url=image_url, image_bytes=cover_bytes,
+        )
 
     return results

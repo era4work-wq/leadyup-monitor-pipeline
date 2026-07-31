@@ -31,11 +31,14 @@ def _call(method: str, token: str, **params):
     return body["response"]
 
 
-def _upload_photo(token: str, group_id: str, image_url: str):
-    """Загружает картинку по image_url в альбом стены сообщества.
-    Возвращает attachment-строку "photo{owner_id}_{id}" или None при неудаче."""
+def _upload_photo(token: str, group_id: str, image_bytes: bytes = None, image_url: str = None):
+    """Загружает картинку в альбом стены сообщества — готовыми байтами
+    (баннер темы, та же картинка, что и в Telegram/Max — см. publish.py),
+    если переданы, иначе скачивает по image_url. Возвращает attachment-строку
+    "photo{owner_id}_{id}"."""
+    if image_bytes is None:
+        image_bytes = requests.get(image_url, timeout=30).content
     upload_server = _call("photos.getWallUploadServer", token, group_id=group_id)
-    image_bytes = requests.get(image_url, timeout=30).content
     upload_resp = requests.post(
         upload_server["upload_url"],
         files={"photo": ("cover.jpg", image_bytes, "image/jpeg")},
@@ -53,14 +56,14 @@ def _upload_photo(token: str, group_id: str, image_url: str):
     return f"photo{photo['owner_id']}_{photo['id']}"
 
 
-def publish(token: str, group_id: str, text: str, image_url: str = None) -> bool:
+def publish(token: str, group_id: str, text: str, image_url: str = None, image_bytes: bytes = None) -> bool:
     if len(text) > TEXT_LIMIT:
         text = text[: TEXT_LIMIT - 1] + "…"
 
     attachment = None
-    if image_url:
+    if image_bytes or image_url:
         try:
-            attachment = _upload_photo(token, group_id, image_url)
+            attachment = _upload_photo(token, group_id, image_bytes=image_bytes, image_url=image_url)
         except Exception as exc:
             print(f"[WARN] не удалось загрузить картинку в VK — публикую без неё: {exc}", file=sys.stderr)
 
