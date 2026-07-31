@@ -41,12 +41,18 @@ def _upload_image(token: str, image_bytes: bytes) -> str:
     """Двухшаговая загрузка байтов (та же схема, что у VK): POST /uploads
     даёт одноразовый upload_url, туда мультипартом заливаются байты (поле
     "data"), в ответ приходит token — им наполняется attachments.payload.
-    См. dev.max.ru/docs-api/methods/POST/uploads."""
+    См. dev.max.ru/docs-api/methods/POST/uploads.
+
+    upload_url — ДРУГОЙ домен (не platform-api2.max.ru, например
+    iu.oneme.ru), с обычным международно доверенным сертификатом — наш
+    узкий CA_BUNDLE (только российский НУЦ Минцифры) его не покрывает.
+    Поймано на практике 31.07.2026: с verify=CA_BUNDLE падало
+    CERTIFICATE_VERIFY_FAILED именно на этом шаге. Здесь — стандартная
+    проверка (verify по умолчанию), CA_BUNDLE — только для _call()."""
     upload_info = _call(token, "POST", "/uploads", params={"type": "image"})
     resp = requests.post(
         upload_info["url"],
         files={"data": ("banner.png", image_bytes, "image/png")},
-        verify=str(CA_BUNDLE),
         timeout=60,
     )
     if not resp.ok:
