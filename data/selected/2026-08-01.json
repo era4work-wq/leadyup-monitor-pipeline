@@ -1,74 +1,38 @@
 [
   {
-    "id": "2a010204703c0bb3",
-    "title": "75+ Online Form Statistics: Completion, Abandonment, and Design",
-    "source": "Crazy Egg Blog",
-    "link": "https://www.crazyegg.com/blog/form-statistics/",
-    "why": "Конкретные цифры по отправке форм на сайте — прямо по боли P1/P3 «почему нет заявок при хорошем трафике»; даст читателям инструмент диагностировать проблему на своём сайте.",
+    "id": "7b2f3e6921e64d87",
+    "title": "What Opting Out Of Google's AI Search Features Means Now via @sejournal, @MattGSouthern",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/what-opting-out-of-googles-ai-search-features-means-now/584321/",
+    "why": "Google AI Overviews меняют видимость органических результатов — читатель узнает, как это влияет на его SEO-трафик и что можно измерить прямо сейчас.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P2"
+  },
+  {
+    "id": "f746c2ac54d9758f",
+    "title": "SaaS Lead Generation: The Funnel-Stage Playbook",
+    "source": "OptinMonster Blog",
+    "link": "https://optinmonster.com/saas-lead-generation/",
+    "why": "Разбирает, почему одна и та же тактика работает на одном этапе воронки и не работает на другом — прямой ответ на боль SaaS P1 «реклама работает, заявок мало».",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P1, SaaS P2"
+  },
+  {
+    "id": "ed58562edfcb6b4b",
+    "title": "China's Viral Personality Test Craze: How Luckin, Starbucks and Duolingo Turned a Meme Into a Campaign in Hours",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/chinas-viral-personality-test-craze-how-luckin-starbucks-and-duolingo-turned-a-meme-into-a-campaign-in-hours/",
+    "why": "Эксклюзив — кейс о том, как рывок по скорости запуска кампании в чат дал бесплатный трафик, релевантно для малого бизнеса, ищущего дешёвые способы привлечь внимание.",
     "rubric": "кейс-с-цифрами",
-    "persona": "интернет-магазины P1, интернет-магазины P3, SaaS P1"
+    "persona": "интернет-магазины P1, SaaS P1"
   },
   {
-    "id": "74d8a9bfe7283e70",
-    "title": "AI speeds marketing production, but measurement lags",
-    "source": "MarTech",
-    "link": "https://martech.org/ai-speeds-marketing-production-but-measurement-lags/",
-    "why": "Исследование показывает разрыв между ускорением производства и измерением ROI — боль P2/P3 в SaaS и магазинах, которые вкладывают в рекламу, но не видят результата в CRM; даст аргумент, почему нужна сквозная аналитика.",
-    "rubric": "кейс-с-цифрами",
-    "persona": "SaaS P2, интернет-магазины P2, интернет-магазины P3"
-  },
-  {
-    "id": "ac4c5181a955a685",
-    "title": "The Performance Marketer's Guide to Testing, Validating, and Scaling",
-    "source": "Foxwell Digital",
-    "link": "https://www.foxwelldigital.com/blog/the-performance-marketers-guide-to-testing-validating-and-scaling",
-    "why": "Практический метод: тестить 100 креативов в неделю, масштабировать только выжившие — это конкретный способ увеличить ROI рекламы, который могут применить P1/P2 в магазинах и SaaS.",
-    "rubric": "лайфхак-инструкция",
-    "persona": "интернет-магазины P1, интернет-магазины P2, SaaS P2"
-  },
-  {
-    "id": "0053d1f0beb9580d",
-    "title": "ChatGPT Ads Business Agent Conversation Campaign Type",
+    "id": "6e5cabd28a1c8fbb",
+    "title": "Google Local Service Ads To Require D-U-N-S Numbers For Some",
     "source": "Search Engine Roundtable",
-    "link": "https://www.seroundtable.com/chatgpt-ads-business-agent-41801.html",
-    "why": "Новый способ отправить лид не просто на сайт, а в чат — решает боль P2/P4 по мессенджерам и скорости ответа; эксклюзив для малого бизнеса, пока немногие пробуют.",
+    "link": "https://www.seroundtable.com/google-local-service-ads-duns-41760.html",
+    "why": "Практическое изменение в LSA — читателю нужно понять, как оно влияет на его возможность запускать местную рекламу через Google.",
     "rubric": "лайфхак-инструкция",
-    "persona": "SaaS P2, интернет-магазины P4, SaaS P4"
-  },
-  {
-    "id": "618a26c68b4b1df3",
-    "title": "Generative Engine Optimization (GEO): Explanation & Algorithm Breakdown",
-    "source": "FirstPageSage",
-    "link": "https://firstpagesage.com/seo-blog/generative-engine-optimization-geo-explanation/",
-    "why": "GEO — новый тип трафика через генеративные чат-боты (ChatGPT, Claude и др.), факторы ранжирования; для P1/P3, которые ищут новые каналы трафика кроме Директа и органики.",
-    "rubric": "лайфхак-инструкция",
-    "persona": "интернет-магазины P1, SaaS P1, интернет-магазины P3"
-  },
-  {
-    "id": "39f8db1e43bf4610",
-    "title": "NudgeForMe",
-    "source": "Product Hunt",
-    "link": "https://www.producthunt.com/products/nudgeforme",
-    "why": "AI-агент автоматически пересылает забытые письма/заявки — решает боль P4 по потере лидов в мессенджерах и почте; конкретный инструмент, который можно внедрить за день.",
-    "rubric": "ai-инструмент",
-    "persona": "интернет-магазины P4, SaaS P2, SaaS P4"
-  },
-  {
-    "id": "4e0baf6e681911be",
-    "title": "Microsoft Ads Predictive Matching Moving To Search Term Matching",
-    "source": "Search Engine Roundtable",
-    "link": "https://www.seroundtable.com/microsoft-predictive-matching-search-term-41783.html",
-    "why": "Изменение в Яндекс-аналоге (Microsoft Ads) может подсказать, как работает AI-ставки в Директе — для P2, которые оптимизируют контекстную рекламу и хотят понять, что изменилось.",
-    "rubric": "дайджест",
-    "persona": "интернет-магазины P2, SaaS P2"
-  },
-  {
-    "id": "42d98232e4082c02",
-    "title": "Blocking Internal Search Results Not In Google Guidelines Anymore But...",
-    "source": "Search Engine Roundtable",
-    "link": "https://www.seroundtable.com/internal-search-results-google-guidelines-41794.html",
-    "why": "Гугл разрешил индексировать внутренний поиск, но объяснил, почему это может замедлить сайт — важно для P4/techs, которые следят за техническим SEO и скоростью сайта (а скорость влияет на конверсию).",
-    "rubric": "лайфхак-инструкция",
-    "persona": "интернет-магазины P4, SaaS P4"
+    "persona": "интернет-магазины P1, P3"
   }
 ]

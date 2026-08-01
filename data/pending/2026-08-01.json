@@ -108,5 +108,57 @@
     "text": "<b>Blocking Internal Search Results Not In Google Guidelines Anymore But...</b>\nИсточник: Search Engine Roundtable · 🛠 лайфхак\nКому: интернет-магазины P4, SaaS P4\nГугл разрешил индексировать внутренний поиск, но объяснил, почему это может замедлить сайт — важно для P4/techs, которые следят за техническим SEO и скоростью сайта (а скорость влияет на конверсию).\nhttps://www.seroundtable.com/internal-search-results-google-guidelines-41794.html",
     "formats": [],
     "status": "ждёт"
+  },
+  "7b2f3e6921e64d87": {
+    "id": "7b2f3e6921e64d87",
+    "title": "What Opting Out Of Google's AI Search Features Means Now via @sejournal, @MattGSouthern",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/what-opting-out-of-googles-ai-search-features-means-now/584321/",
+    "why": "Google AI Overviews меняют видимость органических результатов — читатель узнает, как это влияет на его SEO-трафик и что можно измерить прямо сейчас.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P2",
+    "message_id": 234,
+    "text": "<b>What Opting Out Of Google's AI Search Features Means Now via @sejournal, @MattGSouthern</b>\nИсточник: Search Engine Journal · 🛠 лайфхак\nКому: интернет-магазины P1, SaaS P2\nGoogle AI Overviews меняют видимость органических результатов — читатель узнает, как это влияет на его SEO-трафик и что можно измерить прямо сейчас.\nhttps://www.searchenginejournal.com/what-opting-out-of-googles-ai-search-features-means-now/584321/",
+    "formats": [],
+    "status": "ждёт"
+  },
+  "f746c2ac54d9758f": {
+    "id": "f746c2ac54d9758f",
+    "title": "SaaS Lead Generation: The Funnel-Stage Playbook",
+    "source": "OptinMonster Blog",
+    "link": "https://optinmonster.com/saas-lead-generation/",
+    "why": "Разбирает, почему одна и та же тактика работает на одном этапе воронки и не работает на другом — прямой ответ на боль SaaS P1 «реклама работает, заявок мало».",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P1, SaaS P2",
+    "message_id": 235,
+    "text": "<b>SaaS Lead Generation: The Funnel-Stage Playbook</b>\nИсточник: OptinMonster Blog · 🛠 лайфхак\nКому: SaaS P1, SaaS P2\nРазбирает, почему одна и та же тактика работает на одном этапе воронки и не работает на другом — прямой ответ на боль SaaS P1 «реклама работает, заявок мало».\nhttps://optinmonster.com/saas-lead-generation/",
+    "formats": [],
+    "status": "ждёт"
+  },
+  "ed58562edfcb6b4b": {
+    "id": "ed58562edfcb6b4b",
+    "title": "China's Viral Personality Test Craze: How Luckin, Starbucks and Duolingo Turned a Meme Into a Campaign in Hours",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/chinas-viral-personality-test-craze-how-luckin-starbucks-and-duolingo-turned-a-meme-into-a-campaign-in-hours/",
+    "why": "Эксклюзив — кейс о том, как рывок по скорости запуска кампании в чат дал бесплатный трафик, релевантно для малого бизнеса, ищущего дешёвые способы привлечь внимание.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, SaaS P1",
+    "message_id": 236,
+    "text": "<b>China's Viral Personality Test Craze: How Luckin, Starbucks and Duolingo Turned a Meme Into a Campaign in Hours</b>\nИсточник: Marketing to China (GMA) · 📊 кейс с цифрами\nКому: интернет-магазины P1, SaaS P1\nЭксклюзив — кейс о том, как рывок по скорости запуска кампании в чат дал бесплатный трафик, релевантно для малого бизнеса, ищущего дешёвые способы привлечь внимание.\nhttps://marketingtochina.com/chinas-viral-personality-test-craze-how-luckin-starbucks-and-duolingo-turned-a-meme-into-a-campaign-in-hours/",
+    "formats": [],
+    "status": "ждёт"
+  },
+  "6e5cabd28a1c8fbb": {
+    "id": "6e5cabd28a1c8fbb",
+    "title": "Google Local Service Ads To Require D-U-N-S Numbers For Some",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-local-service-ads-duns-41760.html",
+    "why": "Практическое изменение в LSA — читателю нужно понять, как оно влияет на его возможность запускать местную рекламу через Google.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3",
+    "message_id": 237,
+    "text": "<b>Google Local Service Ads To Require D-U-N-S Numbers For Some</b>\nИсточник: Search Engine Roundtable · 🛠 лайфхак\nКому: интернет-магазины P1, P3\nПрактическое изменение в LSA — читателю нужно понять, как оно влияет на его возможность запускать местную рекламу через Google.\nhttps://www.seroundtable.com/google-local-service-ads-duns-41760.html",
+    "formats": [],
+    "status": "ждёт"
   }
 }
