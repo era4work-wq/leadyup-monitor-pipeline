@@ -25,12 +25,11 @@ import sys
 
 import requests
 
-from common import DATA_DIR, ROOT, item_id, require_env, today, read_json, write_json
+from common import DATA_DIR, ROOT, item_id, load_content_plan, require_env, today, read_json, write_json
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL = "anthropic/claude-haiku-4.5"  # выбор + короткий why — не творческое письмо, дёшево
 MAX_OUTPUT_TOKENS = 2000
-PAINS_PER_WEEK = 4  # ориентир — если банк начнёт заканчиваться, донастроить отдельно
 
 ALLOWED_FORMATS = {"пост", "статья", "карусель", "EN-пост", "EN-карусель"}
 USED_PATH = DATA_DIR / "pains_used.json"
@@ -51,12 +50,12 @@ def extract_json(text: str):
     return json.loads(match.group(0))
 
 
-def plan_week(api_key: str, used_pain_ids: list) -> list:
+def plan_week(api_key: str, used_pain_ids: list, pains_per_week: int) -> list:
     prompt = (ROOT / "prompts" / "plan-pains.md").read_text(encoding="utf-8")
     user_content = (
         f"Уже использованные pain_id (не выбирай их снова, если есть из чего выбрать): "
         f"{json.dumps(used_pain_ids, ensure_ascii=False)}\n"
-        f"Сколько болей выбрать на эту неделю: {PAINS_PER_WEEK}"
+        f"Сколько болей выбрать на эту неделю: {pains_per_week}"
     )
     response = requests.post(
         OPENROUTER_URL,
@@ -106,8 +105,9 @@ def build_items(plan: list) -> list:
 def main():
     api_key = require_env("OPENROUTER_API_KEY")
     used_pain_ids = load_used_pain_ids()
+    pains_per_week = load_content_plan()["pains_per_week"]
 
-    plan = plan_week(api_key, used_pain_ids)
+    plan = plan_week(api_key, used_pain_ids, pains_per_week)
     if not plan:
         print("Модель не предложила ни одной боли на неделю.", file=sys.stderr)
         return

@@ -48,6 +48,26 @@ def require_env(name: str) -> str:
     return value
 
 
+_CONTENT_PLAN_DEFAULTS = {
+    "articles_per_month": {"monitoring": 7, "pains": 3},
+    "posts_per_day": 2,
+    "carousels_per_day": 1,
+    "pains_per_week": 4,
+}
+
+
+def load_content_plan() -> dict:
+    """Цели контент-плана — content-plan.json в корне репозитория, правится
+    вручную владелицей, отдельно от кода (см. решение 01.08.2026). Дефолты
+    ниже — на случай, если файл ещё не создан или не подтянулся с пуша, не
+    должны ронять пайплайн."""
+    path = ROOT / "content-plan.json"
+    if not path.exists():
+        return _CONTENT_PLAN_DEFAULTS
+    plan = read_json(path, {})
+    return {**_CONTENT_PLAN_DEFAULTS, **plan}
+
+
 _TAG_RE = re.compile(r"<[^>]+>")
 
 

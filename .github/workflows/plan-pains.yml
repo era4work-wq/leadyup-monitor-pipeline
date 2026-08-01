@@ -1,4 +1,4 @@
-name: Контент-план «по болям» (еженедельно)
+name: Контент-план «по болям» + отчёт о графике (еженедельно)
 
 on:
   schedule:
@@ -19,6 +19,13 @@ jobs:
           python-version: "3.12"
 
       - run: pip install -r requirements.txt
+
+      - name: Отчёт о выполнении контент-плана (как прошёл месяц к сегодня)
+        working-directory: src
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python report_progress.py
 
       - name: Собрать контент-план на неделю (CA Research, банк болей)
         working-directory: src

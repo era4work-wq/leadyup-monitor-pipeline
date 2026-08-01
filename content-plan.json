@@ -1,0 +1,10 @@
+{
+  "_comment": "Цели контент-плана — правь эти числа напрямую, пересчитывать ничего не нужно. plan_pains.py берёт pains_per_week отсюда, report_progress.py сверяет факт с этими целями каждую неделю. Предварительные цифры от 01.08.2026, легко менять.",
+  "articles_per_month": {
+    "monitoring": 7,
+    "pains": 3
+  },
+  "posts_per_day": 2,
+  "carousels_per_day": 1,
+  "pains_per_week": 4
+}
