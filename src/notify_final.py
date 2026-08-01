@@ -141,7 +141,15 @@ def main():
     for item in pending_send:
         final_pending[item["id"]] = send_final_card(token, chat_id, item, service)
 
-    write_json(DATA_DIR / "final_pending" / f"{today()}.json", final_pending)
+    # Слияние, не перезапись — write-drafts.yml теперь может запускаться
+    # несколько раз в день (мгновенный триггер по каждому клику), и второй
+    # запуск в тот же день раньше стирал карточки, отправленные первым, —
+    # они переставали числиться «уже отправленными» и рассылались заново
+    # (поймано на практике 01.08.2026: посты A/B чередовались в файле).
+    path = DATA_DIR / "final_pending" / f"{today()}.json"
+    existing = read_json(path, {})
+    existing.update(final_pending)
+    write_json(path, existing)
     print(f"Отправлено на финальное согласование: {len(final_pending)}.", file=sys.stderr)
 
 

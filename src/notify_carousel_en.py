@@ -153,7 +153,13 @@ def main():
 
     if not carousel_pending:
         return
-    write_json(DATA_DIR / "carousel_pending_en" / f"{today()}.json", carousel_pending)
+    # Слияние, не перезапись — см. notify_final.py, тот же баг: несколько
+    # запусков write-drafts.yml в день (мгновенный триггер) стирали друг
+    # у друга уже отправленные карточки.
+    path = DATA_DIR / "carousel_pending_en" / f"{today()}.json"
+    existing = read_json(path, {})
+    existing.update(carousel_pending)
+    write_json(path, existing)
     print(f"Отправлено EN-каруселей на согласование: {len(carousel_pending)}.", file=sys.stderr)
 
 

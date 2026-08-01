@@ -98,7 +98,13 @@ def main():
         print(f"Отправляю: {item['title'][:60]}", file=sys.stderr)
         article_sent[item["id"]] = send_article(token, chat_id, item, service)
 
-    write_json(DATA_DIR / "article_sent" / f"{today()}.json", article_sent)
+    # Слияние, не перезапись — см. notify_final.py, тот же баг: несколько
+    # запусков write-drafts.yml в день (мгновенный триггер) стирали друг
+    # у друга уже отправленные записи.
+    path = DATA_DIR / "article_sent" / f"{today()}.json"
+    existing = read_json(path, {})
+    existing.update(article_sent)
+    write_json(path, existing)
     print(f"Отправлено статей файлом: {len(article_sent)}.", file=sys.stderr)
 
 

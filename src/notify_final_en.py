@@ -99,7 +99,13 @@ def main():
     for item in pending_send:
         final_pending[item["id"]] = send_final_card_en(token, chat_id, item, service)
 
-    write_json(DATA_DIR / "final_pending_en" / f"{today()}.json", final_pending)
+    # Слияние, не перезапись — см. notify_final.py, тот же баг: несколько
+    # запусков write-drafts.yml в день (мгновенный триггер) стирали друг
+    # у друга уже отправленные карточки.
+    path = DATA_DIR / "final_pending_en" / f"{today()}.json"
+    existing = read_json(path, {})
+    existing.update(final_pending)
+    write_json(path, existing)
     print(f"Отправлено EN-постов на согласование: {len(final_pending)}.", file=sys.stderr)
 
 
