@@ -372,6 +372,23 @@ def main():
         write_json(out_path, existing)
         print(f"Поставлено в очередь на публикацию: {len(queued_today)} → {out_path}", file=sys.stderr)
 
+    # Сигнал для poll-approvals.yml — дёргать write-drafts.yml/publish-queue.yml
+    # мгновенным триггером ТОЛЬКО если реально появилась новая работа (take/
+    # publish), а не на каждый клик подряд (тумблер формата, skip, reject,
+    # redo — redo уже сам генерирует и шлёт карточку прямо здесь, ему
+    # write-drafts.yml не нужен). Раньше триггерили безусловно на любой
+    # клик — при быстрой серии кликов (несколько тумблеров + take за секунды)
+    # это создавало очередь из нескольких параллельных запусков write-drafts.yml,
+    # которые сталкивались на пуше одного и того же data/drafts/<дата>.json —
+    # проигравший терял результат целиком, а следующий запуск генерировал ту
+    # же тему заново, с нуля, другой моделью — отсюда задвоенные, по-разному
+    # сгенерированные посты (поймано на практике 01.08.2026).
+    github_output = os.environ.get("GITHUB_OUTPUT")
+    if github_output:
+        with open(github_output, "a", encoding="utf-8") as f:
+            f.write(f"approved={'true' if approved_today else 'false'}\n")
+            f.write(f"queued={'true' if queued_today else 'false'}\n")
+
 
 if __name__ == "__main__":
     main()

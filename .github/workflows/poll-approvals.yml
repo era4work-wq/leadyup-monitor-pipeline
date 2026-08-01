@@ -38,6 +38,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Опрос Telegram и сохранение (с ретраем при гонке параллельных вебхуков)
+        id: poll
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
@@ -80,16 +81,27 @@ jobs:
         if: success()
         env:
           GH_TOKEN: ${{ github.token }}
+          APPROVED: ${{ steps.poll.outputs.approved }}
+          QUEUED: ${{ steps.poll.outputs.queued }}
         run: |
-          # Триггерим оба workflow безусловно на каждый обработанный клик —
-          # дёшево: если новых тем/публикаций нет, скрипты внутри сами тихо
-          # выходят за секунды. Оба workflow уже имеют свою concurrency-группу
-          # (write-drafts/publish-queue, cancel-in-progress: false) — если
-          # клики идут пачкой, лишние запуски схлопнутся в один, обработав
-          # всё накопившееся к моменту старта. Это безопасно именно для этих
-          # двух workflow (в отличие от concurrency в этом файле, см. коммент
-          # выше) — они каждый раз обрабатывают ВЕСЬ текущий бэклог, а не
-          # применяют конкретный клик, так что потеря лишнего "тика" не теряет
-          # данные, просто следующий выживший прогон подхватит то же самое.
-          gh workflow run write-drafts.yml
-          gh workflow run publish-queue.yml
+          # Триггерим ТОЛЬКО если этот клик реально породил новую работу —
+          # write-drafts.yml только если что-то взяли в работу (take),
+          # publish-queue.yml только если что-то поставили в очередь
+          # (publish). Раньше триггерили безусловно на любой клик (даже
+          # тумблер формата или skip/reject) — при быстрой серии кликов это
+          # плодило несколько параллельных запусков write-drafts.yml,
+          # которые сталкивались на пуше одного файла: проигравший терял
+          # результат целиком (это НЕ спасала concurrency-группа — она не
+          # даёт двум запускам работать ОДНОВРЕМЕННО, но каждый следующий
+          # успевал стартовать до пуша предыдущего при частых триггерах), и
+          # следующий запуск генерировал ту же тему заново с нуля — отсюда
+          # задвоенные, по-разному сгенерированные посты (поймано на
+          # практике 01.08.2026). redo/redo_en/redo_car/redo_car_en сюда не
+          # относятся — они уже сами генерируют и шлют карточку внутри
+          # collect_approvals.py, write-drafts.yml им не нужен.
+          if [ "$APPROVED" = "true" ]; then
+            gh workflow run write-drafts.yml
+          fi
+          if [ "$QUEUED" = "true" ]; then
+            gh workflow run publish-queue.yml
+          fi
