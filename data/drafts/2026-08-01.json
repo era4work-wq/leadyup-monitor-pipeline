@@ -43,5 +43,20 @@
       "badge": "КЕЙС"
     },
     "image_url": "https://marketingtochina.com/wp-content/uploads/starbucks-xbti-personality-test-china.jpg"
+  },
+  {
+    "id": "f746c2ac54d9758f",
+    "title": "SaaS Lead Generation: The Funnel-Stage Playbook",
+    "source": "OptinMonster Blog",
+    "link": "https://optinmonster.com/saas-lead-generation/",
+    "rubric": "лайфхак-инструкция",
+    "draft_text": "<b>Почему одна и та же тактика лидгена работает у одних SaaS и не работает у других</b>\n\nПотому что тактика попала не в ту стадию воронки.\n\nБлог, LinkedIn-реклама, реферальная программа — всё это работает. Но только когда приземляется в нужную точку: \n🔹 exit-popup на статье про чурн — ловит того, кто уже думает об этой боли\n🔹 тот же popup на странице интеграций — раздражает, человек пришёл за другим\n\n<blockquote>Средний B2B SaaS-сайт конвертит 2–5% трафика в лиды. Топ-10% — 8–15%. Разница не в объёме трафика, а в том, что происходит на сайте.</blockquote>\n\nТри вещи, которые меняют конверсию:\n🔸 оффер должен соответствовать странице, а не висеть одинаковый на весь сайт\n🔸 exit-intent — не «последний шанс», а <span class=\"tg-spoiler\">сигнал, что текущая страница не зацепила</span>\n🔸 на первом касании — только email, квалификацию оставьте на потом\n\nПроверьте, на какой стадии воронки висит ваша «неработающая» тактика. Возможно, она просто не там.",
+    "banner": {
+      "id": "1SiAhQtQDXofwx0h5q-26ujP2RrNkBGsE",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785340816048.png",
+      "headline": "Почему одна и та же тактика лидгена работает у одних SaaS и не работает у других",
+      "badge": "ЛАЙФХАК"
+    },
+    "image_url": "https://cdn.optinmonster.com/wp-content/uploads/2026/08/SaaS-Lead-Generation-Featured-Image.png"
   }
 ]
