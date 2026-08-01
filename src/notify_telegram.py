@@ -51,9 +51,13 @@ def tg_send_photo_bytes(token: str, chat_id, image_bytes: bytes, **params):
     return body["result"]
 
 
-FORMAT_ORDER = ["пост", "статья", "карусель"]
-FORMAT_EMOJI = {"пост": "📝", "статья": "📄", "карусель": "🎠"}
-FORMAT_ACTION = {"пост": "fmtpost", "статья": "fmtarticle", "карусель": "fmtcarousel"}
+FORMAT_ORDER = ["пост", "статья", "карусель", "EN-пост"]
+FORMAT_EMOJI = {"пост": "📝", "статья": "📄", "карусель": "🎠", "EN-пост": "🇬🇧"}
+FORMAT_ACTION = {"пост": "fmtpost", "статья": "fmtarticle", "карусель": "fmtcarousel", "EN-пост": "fmtenpost"}
+# EN-пост — независимая генерация, не перевод (см. write_draft_en.py), в
+# отдельный необязательный модуль (Фаза 2, план 30.07.2026). В отличие от
+# RU-форматов у него нет дефолта "не отмечено — значит пост": берётся в
+# работу только по явному тумблеру.
 
 
 def build_topic_keyboard(item_id: str, selected_formats: list) -> dict:
@@ -64,8 +68,10 @@ def build_topic_keyboard(item_id: str, selected_formats: list) -> dict:
     format_row = []
     for fmt in FORMAT_ORDER:
         mark = "✅ " if fmt in selected else ""
+        # "EN-пост" уже в нужном регистре — .capitalize() испортил бы "EN" до "En"
+        label = fmt if fmt == "EN-пост" else fmt.capitalize()
         format_row.append({
-            "text": f"{mark}{FORMAT_EMOJI[fmt]} {fmt.capitalize()}",
+            "text": f"{mark}{FORMAT_EMOJI[fmt]} {label}",
             "callback_data": f"{FORMAT_ACTION[fmt]}:{item_id}",
         })
     return {

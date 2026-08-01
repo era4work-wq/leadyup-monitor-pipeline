@@ -19,9 +19,11 @@ import drive_banners
 import notify_carousel
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
+from notify_final_en import send_final_card_en
 from notify_telegram import FORMAT_ACTION, build_decision_edit, build_topic_keyboard
 from write_carousel import build_carousel_record
 from write_draft import get_article, write_one
+from write_draft_en import write_one_en
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
 LOOKBACK_DAYS = 14
@@ -36,6 +38,11 @@ ACTION_DOMAINS = {
     "approve_car": ("carousel_pending", "утверждено"),
     "reject_car": ("carousel_pending", "отклонено"),
     "redo_car": ("carousel_pending", None),  # обрабатывается отдельно, не общей веткой
+    # EN (Фаза 2) — "утверждено" тут терминальный статус, не "в очереди":
+    # площадок (Twitter/X, Threads) ещё нет, публикация не подключена.
+    "approve_en": ("final_pending_en", "утверждено"),
+    "reject_en": ("final_pending_en", "отклонено"),
+    "redo_en": ("final_pending_en", None),  # обрабатывается отдельно, не общей веткой
 }
 
 FORMAT_BY_ACTION = {v: k for k, v in FORMAT_ACTION.items()}  # "fmtpost" -> "пост"
@@ -88,6 +95,18 @@ def regenerate_draft(entry: dict) -> dict:
     article = get_article(entry)
     text = write_one(api_key, style, humanize_prompt, entry, article.get("text"))
     return {**entry, "draft_text": text, "image_url": article.get("image_url")}
+
+
+def regenerate_draft_en(entry: dict) -> dict:
+    """Пишет EN-пост по той же теме заново (по образцу regenerate_draft) —
+    баннер (и его EN headline/badge) не трогаем, остаётся зафиксированным
+    с первой генерации, как и у RU-поста."""
+    api_key = require_env("OPENROUTER_API_KEY")
+    style = (ROOT / "prompts" / "write-style-en.md").read_text(encoding="utf-8")
+    humanize_prompt = (ROOT / "prompts" / "humanize-en.md").read_text(encoding="utf-8")
+    article = get_article(entry)
+    _headline, post = write_one_en(api_key, style, humanize_prompt, entry, article.get("text"))
+    return {**entry, "draft_text": post, "image_url": article.get("image_url")}
 
 
 def regenerate_carousel(entry: dict) -> dict:
@@ -164,7 +183,7 @@ def main():
             entry = data[item_id]
             formats = set(entry.get("formats", []))
             formats.symmetric_difference_update({fmt})
-            entry["formats"] = [f for f in ("пост", "статья", "карусель") if f in formats]
+            entry["formats"] = [f for f in ("пост", "статья", "карусель", "EN-пост") if f in formats]
             write_json(path, data)
             tg_call_safe(
                 token, "editMessageReplyMarkup",
@@ -230,6 +249,24 @@ def main():
             data[item_id] = new_card
             write_json(path, data)
             print(f"Перегенерирована карусель: {entry.get('title', '')[:60]}", file=sys.stderr)
+            continue
+
+        if action == "redo_en":
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Пересобираю EN-пост…")
+            try:
+                new_entry = regenerate_draft_en(entry)
+            except Exception as exc:
+                print(f"[WARN] перегенерация EN-поста не удалась: {exc}", file=sys.stderr)
+                tg_call_safe(
+                    token, "sendMessage", chat_id=chat_id,
+                    text=f"⚠️ Не удалось перегенерировать EN-пост «{entry.get('title', '')[:60]}»: {exc}",
+                )
+                continue
+            tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=callback["message"]["message_id"])
+            new_card = send_final_card_en(token, chat_id, new_entry, drive_banners.get_service())
+            data[item_id] = new_card
+            write_json(path, data)
+            print(f"Перегенерирован EN-пост: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 
         if action == "publish":
