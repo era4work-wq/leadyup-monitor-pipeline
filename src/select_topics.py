@@ -41,7 +41,10 @@ def select(candidates: list[dict]) -> list[dict]:
     api_key = require_env("OPENROUTER_API_KEY")
 
     payload = [
-        {k: c[k] for k in ("id", "title", "source", "link", "summary", "priority")}
+        {
+            **{k: c[k] for k in ("id", "title", "source", "link", "summary", "priority")},
+            "age_days": c.get("age_days"),  # None = дата публикации неизвестна, см. select-criteria.md
+        }
         for c in candidates
     ]
 

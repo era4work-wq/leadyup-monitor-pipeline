@@ -28,12 +28,24 @@ def load_sources():
     return sources
 
 
-def entry_is_fresh(entry) -> bool:
+def entry_age_days(entry):
+    """Возраст публикации в днях, или None, если дата в фиде не указана.
+    Раньше возврат None означал «не отбрасываем, пусть решает select.py» —
+    но select.py никогда не получал саму дату, только не глядя пропускал
+    (поймано на практике 01.08.2026: недатированный «вечнозелёный» материал
+    с внутренней статистикой за прошлый год прошёл отбор как «свежий»).
+    Теперь возраст (или его отсутствие) явно передаётся дальше в кандидате —
+    решение принимается на основе данных, а не по умолчанию."""
     parsed = entry.get("published_parsed") or entry.get("updated_parsed")
     if not parsed:
-        return True  # нет даты — не отбрасываем, пусть решает select.py
+        return None
     published_ts = calendar.timegm(parsed)
-    age_days = (time.time() - published_ts) / 86400
+    return (time.time() - published_ts) / 86400
+
+
+def entry_is_fresh(age_days) -> bool:
+    if age_days is None:
+        return True  # дата неизвестна — не отбрасываем на этом шаге, но передаём как есть, см. entry_age_days
     return age_days <= MAX_AGE_DAYS
 
 
@@ -66,7 +78,8 @@ def collect() -> list[dict]:
             uid = item_id(link)
             if uid in seen:
                 continue
-            if not entry_is_fresh(entry):
+            age_days = entry_age_days(entry)
+            if not entry_is_fresh(age_days):
                 continue
             if added >= MAX_PER_FEED:
                 break
@@ -82,6 +95,7 @@ def collect() -> list[dict]:
                     "zone": row.get("Зона", ""),
                     "score": row.get("Скор", ""),
                     "priority": row.get("Приоритет", ""),
+                    "age_days": round(age_days, 1) if age_days is not None else None,
                 }
             )
             seen[uid] = today()
