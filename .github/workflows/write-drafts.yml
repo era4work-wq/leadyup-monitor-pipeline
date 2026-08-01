@@ -96,6 +96,23 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python notify_final_en.py
 
+      - name: Генерация EN-карусели (перенесена из Фазы 4, необязательный модуль)
+        working-directory: src
+        continue-on-error: true
+        env:
+          EN_CONTENT_ENABLED: ${{ secrets.EN_CONTENT_ENABLED }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python write_carousel_en.py
+
+      - name: Отправка EN-карусели на согласование
+        working-directory: src
+        continue-on-error: true
+        env:
+          EN_CONTENT_ENABLED: ${{ secrets.EN_CONTENT_ENABLED }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python notify_carousel_en.py
+
       - name: Сохранить черновики обратно в репозиторий
         if: always()
         run: |

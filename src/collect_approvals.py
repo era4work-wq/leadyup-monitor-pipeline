@@ -17,11 +17,13 @@ import requests
 
 import drive_banners
 import notify_carousel
+import notify_carousel_en
 from common import DATA_DIR, ROOT, STATE_DIR, require_env, read_json, today, write_json
 from notify_final import send_final_card
 from notify_final_en import send_final_card_en
 from notify_telegram import FORMAT_ACTION, build_decision_edit, build_topic_keyboard
 from write_carousel import build_carousel_record
+from write_carousel_en import build_carousel_record_en
 from write_draft import get_article, write_one
 from write_draft_en import write_one_en
 
@@ -43,6 +45,12 @@ ACTION_DOMAINS = {
     "approve_en": ("final_pending_en", "утверждено"),
     "reject_en": ("final_pending_en", "отклонено"),
     "redo_en": ("final_pending_en", None),  # обрабатывается отдельно, не общей веткой
+    # EN-карусель (перенесена из Фазы 4 вперёд 01.08.2026) — тоже терминальное
+    # "утверждено", не очередь: Instagram/Pinterest не подключены (как и у
+    # RU-карусели — публикация карусели вообще не автоматизирована).
+    "approve_car_en": ("carousel_pending_en", "утверждено"),
+    "reject_car_en": ("carousel_pending_en", "отклонено"),
+    "redo_car_en": ("carousel_pending_en", None),  # обрабатывается отдельно, не общей веткой
 }
 
 FORMAT_BY_ACTION = {v: k for k, v in FORMAT_ACTION.items()}  # "fmtpost" -> "пост"
@@ -120,6 +128,16 @@ def regenerate_carousel(entry: dict) -> dict:
     return build_carousel_record(api_key, style, humanize_prompt, service, entry)
 
 
+def regenerate_carousel_en(entry: dict) -> dict:
+    """Пересобирает EN-карусель по той же теме заново, по образцу
+    regenerate_carousel()."""
+    api_key = require_env("OPENROUTER_API_KEY")
+    style = (ROOT / "prompts" / "write-carousel-en.md").read_text(encoding="utf-8")
+    humanize_prompt = (ROOT / "prompts" / "humanize-en.md").read_text(encoding="utf-8")
+    service = drive_banners.get_service()
+    return build_carousel_record_en(api_key, style, humanize_prompt, service, entry)
+
+
 def update_draft_record(item_id: str, draft_text: str, banner) -> None:
     """Обновляет исторический черновик в data/drafts/ — чтобы там тоже была
     актуальная версия текста и баннера, не только в final_pending."""
@@ -183,7 +201,7 @@ def main():
             entry = data[item_id]
             formats = set(entry.get("formats", []))
             formats.symmetric_difference_update({fmt})
-            entry["formats"] = [f for f in ("пост", "статья", "карусель", "EN-пост") if f in formats]
+            entry["formats"] = [f for f in ("пост", "статья", "карусель", "EN-пост", "EN-карусель") if f in formats]
             write_json(path, data)
             tg_call_safe(
                 token, "editMessageReplyMarkup",
@@ -249,6 +267,26 @@ def main():
             data[item_id] = new_card
             write_json(path, data)
             print(f"Перегенерирована карусель: {entry.get('title', '')[:60]}", file=sys.stderr)
+            continue
+
+        if action == "redo_car_en":
+            tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text="Пересобираю EN-карусель…")
+            try:
+                new_entry = regenerate_carousel_en(entry)
+            except Exception as exc:
+                print(f"[WARN] перегенерация EN-карусели не удалась: {exc}", file=sys.stderr)
+                tg_call_safe(
+                    token, "sendMessage", chat_id=chat_id,
+                    text=f"⚠️ Не удалось перегенерировать EN-карусель «{entry.get('title', '')[:60]}»: {exc}",
+                )
+                continue
+            for mid in entry.get("photo_message_ids", []):
+                tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=mid)
+            tg_call_safe(token, "deleteMessage", chat_id=chat_id, message_id=callback["message"]["message_id"])
+            new_card = notify_carousel_en.send_carousel_en(token, chat_id, new_entry, drive_banners.get_service())
+            data[item_id] = new_card
+            write_json(path, data)
+            print(f"Перегенерирована EN-карусель: {entry.get('title', '')[:60]}", file=sys.stderr)
             continue
 
         if action == "redo_en":

@@ -51,32 +51,46 @@ def tg_send_photo_bytes(token: str, chat_id, image_bytes: bytes, **params):
     return body["result"]
 
 
-FORMAT_ORDER = ["пост", "статья", "карусель", "EN-пост"]
-FORMAT_EMOJI = {"пост": "📝", "статья": "📄", "карусель": "🎠", "EN-пост": "🇬🇧"}
-FORMAT_ACTION = {"пост": "fmtpost", "статья": "fmtarticle", "карусель": "fmtcarousel", "EN-пост": "fmtenpost"}
-# EN-пост — независимая генерация, не перевод (см. write_draft_en.py), в
-# отдельный необязательный модуль (Фаза 2, план 30.07.2026). В отличие от
-# RU-форматов у него нет дефолта "не отмечено — значит пост": берётся в
-# работу только по явному тумблеру.
+FORMAT_ORDER = ["пост", "статья", "карусель"]
+FORMAT_EMOJI = {"пост": "📝", "статья": "📄", "карусель": "🎠"}
+FORMAT_ACTION = {"пост": "fmtpost", "статья": "fmtarticle", "карусель": "fmtcarousel"}
+
+# EN-форматы (Фаза 2/4) — независимая генерация, не перевод (см.
+# write_draft_en.py/write_carousel_en.py), отдельный необязательный модуль
+# (план 30.07.2026). В отличие от RU-форматов у них нет дефолта "не
+# отмечено — значит пост": берутся в работу только по явному тумблеру.
+# Отдельный ряд клавиатуры, не смешиваем с RU-рядом, чтобы не расползалось.
+FORMAT_ORDER_EN = ["EN-пост", "EN-карусель"]
+FORMAT_EMOJI_EN = {"EN-пост": "🇬🇧", "EN-карусель": "🇬🇧🎠"}
+FORMAT_ACTION_EN = {"EN-пост": "fmtenpost", "EN-карусель": "fmtencarousel"}
+
+FORMAT_EMOJI.update(FORMAT_EMOJI_EN)
+FORMAT_ACTION.update(FORMAT_ACTION_EN)
+ALL_FORMATS = FORMAT_ORDER + FORMAT_ORDER_EN
+
+
+def _format_button(fmt: str, item_id: str, selected: set) -> dict:
+    mark = "✅ " if fmt in selected else ""
+    # EN-метки уже в нужном регистре — .capitalize() испортил бы "EN" до "En"
+    label = fmt if fmt.startswith("EN-") else fmt.capitalize()
+    return {
+        "text": f"{mark}{FORMAT_EMOJI[fmt]} {label}",
+        "callback_data": f"{FORMAT_ACTION[fmt]}:{item_id}",
+    }
 
 
 def build_topic_keyboard(item_id: str, selected_formats: list) -> dict:
-    """Верхний ряд — toggle-кнопки форматов контента (можно выбрать
-    несколько или ни одной — тогда по умолчанию берём «пост» при взятии в
-    работу). Нижний ряд — обычное решение по теме."""
+    """Верхний ряд — RU-форматы, второй — EN-форматы (тумблеры контента,
+    можно выбрать несколько или ни одного — для RU тогда по умолчанию
+    берём «пост» при взятии в работу, для EN дефолта нет). Нижний ряд —
+    обычное решение по теме."""
     selected = set(selected_formats or [])
-    format_row = []
-    for fmt in FORMAT_ORDER:
-        mark = "✅ " if fmt in selected else ""
-        # "EN-пост" уже в нужном регистре — .capitalize() испортил бы "EN" до "En"
-        label = fmt if fmt == "EN-пост" else fmt.capitalize()
-        format_row.append({
-            "text": f"{mark}{FORMAT_EMOJI[fmt]} {label}",
-            "callback_data": f"{FORMAT_ACTION[fmt]}:{item_id}",
-        })
+    ru_row = [_format_button(fmt, item_id, selected) for fmt in FORMAT_ORDER]
+    en_row = [_format_button(fmt, item_id, selected) for fmt in FORMAT_ORDER_EN]
     return {
         "inline_keyboard": [
-            format_row,
+            ru_row,
+            en_row,
             [
                 {"text": "✅ Взять в работу", "callback_data": f"take:{item_id}"},
                 {"text": "❌ Пропустить", "callback_data": f"skip:{item_id}"},
