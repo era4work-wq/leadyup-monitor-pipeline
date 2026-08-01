@@ -18,6 +18,7 @@ RUBRIC_LABEL = {
     "кейс-с-цифрами": "📊 кейс с цифрами",
     "лайфхак-инструкция": "🛠 лайфхак",
     "ai-инструмент": "🤖 AI-инструмент",
+    "боль-и-решение": "💡 боль и решение",
 }
 
 
@@ -220,7 +221,13 @@ def main():
             "status": "ждёт",
         }
 
-    write_json(DATA_DIR / "pending" / f"{today()}.json", pending)
+    # Слияние, не перезапись — plan_pains.py/notify_pains.py (еженедельно)
+    # может писать в тот же дневной файл в тот же день, что и этот скрипт
+    # (ежедневно). Блайндная перезапись стёрла бы уже отправленные записи.
+    pending_path = DATA_DIR / "pending" / f"{today()}.json"
+    existing = read_json(pending_path, {})
+    existing.update(pending)
+    write_json(pending_path, existing)
     print(f"Отправлено на согласование: {len(pending)} тем.", file=sys.stderr)
 
 

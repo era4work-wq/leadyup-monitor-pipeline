@@ -1,0 +1,57 @@
+name: Контент-план «по болям» (еженедельно)
+
+on:
+  schedule:
+    - cron: "30 6 * * 1"  # понедельник 06:30 UTC = 09:30 МСК — после дневного мониторинга (06:00 UTC), чтобы не столкнуться на записи data/pending/
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Собрать контент-план на неделю (CA Research, банк болей)
+        working-directory: src
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python plan_pains.py
+
+      - name: Отправить на согласование в Telegram
+        working-directory: src
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python notify_pains.py
+
+      - name: Сохранить state и data обратно в репозиторий
+        run: |
+          git config user.name "leadyup-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "plan-pains: $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3 4 5; do
+            if git push origin "${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "::warning::Конфликт при push (попытка $attempt) — подтягиваю и перебазируюсь"
+            if ! git pull --rebase origin "${GITHUB_REF_NAME}"; then
+              echo "::error::Конфликт при rebase — нужна ручная проверка"
+              exit 1
+            fi
+            sleep $(( (RANDOM % 5) + attempt ))
+          done
+          echo "::error::Не удалось запушить после нескольких попыток"
+          exit 1

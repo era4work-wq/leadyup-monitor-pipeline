@@ -70,10 +70,26 @@ def already_drafted_ids() -> set[str]:
 def get_article(item: dict) -> dict:
     """Полный текст + обложка статьи, с кэшем в data/articles/<id>.json —
     чтобы карусели/статьи позже могли переиспользовать тот же текст, не
-    перекачивая страницу заново."""
+    перекачивая страницу заново.
+
+    Темы «по болям» (plan_pains.py, rubric «боль-и-решение») не привязаны к
+    внешней статье — их link указывает на leadyup.com, не на источник с
+    фактурой. Тянуть его через fetch_article было бы неправильно: модель
+    получила бы обрывки собственного лендинга как «факты источника» вместо
+    настоящего материала (а «почему» уже полностью задан в why из
+    plan-pains.md). Для таких тем article_text всегда пустой."""
     cache_path = DATA_DIR / "articles" / f"{item['id']}.json"
     if cache_path.exists():
         return json.loads(cache_path.read_text(encoding="utf-8"))
+
+    if item.get("rubric") == "боль-и-решение":
+        article = {"image_url": None, "image_urls": [], "text": None}
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(
+            json.dumps({**article, "link": item["link"], "title": item["title"]}, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        return article
 
     article = fetch_article(item["link"])
     cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -119,6 +135,7 @@ BADGE_LABEL = {
     "кейс-с-цифрами": "КЕЙС",
     "лайфхак-инструкция": "ЛАЙФХАК",
     "ai-инструмент": "AI-ИНСТРУМЕНТ",
+    "боль-и-решение": "РЕШЕНИЕ",
 }
 
 

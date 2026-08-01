@@ -47,6 +47,7 @@ BADGE_LABEL_EN = {
     "кейс-с-цифрами": "CASE STUDY",
     "лайфхак-инструкция": "HOW-TO",
     "ai-инструмент": "AI TOOL",
+    "боль-и-решение": "SOLUTION",
 }
 DEFAULT_BADGE_EN = "NEWS"
 
