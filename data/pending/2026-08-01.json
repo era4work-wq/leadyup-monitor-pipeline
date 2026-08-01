@@ -132,7 +132,9 @@
     "persona": "SaaS P1, SaaS P2",
     "message_id": 235,
     "text": "<b>SaaS Lead Generation: The Funnel-Stage Playbook</b>\nИсточник: OptinMonster Blog · 🛠 лайфхак\nКому: SaaS P1, SaaS P2\nРазбирает, почему одна и та же тактика работает на одном этапе воронки и не работает на другом — прямой ответ на боль SaaS P1 «реклама работает, заявок мало».\nhttps://optinmonster.com/saas-lead-generation/",
-    "formats": [],
+    "formats": [
+      "пост"
+    ],
     "status": "ждёт"
   },
   "ed58562edfcb6b4b": {
