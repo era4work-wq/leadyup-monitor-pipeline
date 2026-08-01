@@ -1,0 +1,492 @@
+[
+  {
+    "id": "102c0a11b6d63295",
+    "title": "Cloudflare’s PACT Is Not Live Yet – Decide Which Track Your Traffic Needs via @sejournal, @slobodanmanic",
+    "link": "https://www.searchenginejournal.com/cloudflares-pact-is-not-live-yet-decide-which-track-your-traffic-needs/580328/",
+    "summary": "<p>Cloudflare and three rival browsers agreed on one protocol. That's rare. It still only solves half of the agentic access problem.</p>\n<p>The post <a href=\"https://www.searchenginejournal.com/cloudflares-pact-is-not-live-yet-decide-which-track-your-traffic-needs/580328/\">Cloudflare&#8217;s PACT Is Not Live Yet – Decide Which Track Your Traffic Needs</a> appeared first on <a href=\"https://www.searchenginejournal.com\">Search Engine Journal</a>.</p>",
+    "source": "Search Engine Journal",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "71c77df8bd50da7e",
+    "title": "Daily Search Forum Recap: July 31, 2026",
+    "link": "https://www.seroundtable.com/recap-07-31-2026-41800.html",
+    "summary": "Here is a recap of what happened in the search forums today...",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "30ebad4f66ddf422",
+    "title": "Search News Buzz Video Recap: Google Platform Properties Live, Google Ads Lead Journey Mapping, Microsoft Ads, ChatGPT Ads & More SEO",
+    "link": "https://www.seroundtable.com/video-07-31-2026-41791.html",
+    "summary": "This week, yep, we had more ongoing Google Search volatility but a calming period on Wednesday.  Google has rolled out the platform properties to track X, YouTube...",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "4e0baf6e681911be",
+    "title": "Microsoft Ads Predictive Matching Moving To Search Term Matching",
+    "link": "https://www.seroundtable.com/microsoft-predictive-matching-search-term-41783.html",
+    "summary": "Microsoft Advertising is moving its Predictive Matching targeting option to Search term matching within AI Max. Microsoft added a note to various help document pages about the change, it says:",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "42d98232e4082c02",
+    "title": "Blocking Internal Search Results Not In Google Guidelines Anymore But...",
+    "link": "https://www.seroundtable.com/internal-search-results-google-guidelines-41794.html",
+    "summary": "In the latest Search Off the Record podcast, John Mueller from Google said that it is no longer in the Google Guidelines, now Google Search Essentials, that you must block Google from accessing your internal search results pages.  He added that you likely should continue to do so because it can lead to (a) intense server load and (b) quality issues if abused, which can cause Google search ranking issues as a result.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "e170ac7db492eba5",
+    "title": "Google Ads Insights Carousel",
+    "link": "https://www.seroundtable.com/google-ads-insights-carousel-41790.html",
+    "summary": "Google Ads may be rolling out a new design for its insights section where it gives you the \"Top things to know today.\" This new interface for this section is in a carousel format, where you can toggle through the various automated insights that Google Ads is providing.",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "0053d1f0beb9580d",
+    "title": "ChatGPT Ads Business Agent Conversation Campaign Type",
+    "link": "https://www.seroundtable.com/chatgpt-ads-business-agent-41801.html",
+    "summary": "OpenAI is testing a new campaign type named Agent, which allows you to send ChatGPT searchers and users to a Business Agent conversation.  So instead of just going to your website, you send them into a chat experience on your website?",
+    "source": "Search Engine Roundtable",
+    "zone": "",
+    "score": "82",
+    "priority": "ядро"
+  },
+  {
+    "id": "8bcb9c27e53bca18",
+    "title": "7 best AI visibility tracking tools for agencies by need",
+    "link": "https://www.semrush.com/blog/ai-visibility-tracking-tools-for-agencies/",
+    "summary": "<p>The best AI visibility tracking tools for agencies include Semrush, OtterlyAI, and Peec AI. Here’s why.</p>",
+    "source": "Semrush Blog",
+    "zone": "",
+    "score": "82",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "3c469edee0203c4c",
+    "title": "No New Name Has Replaced “UX”",
+    "link": "https://www.nngroup.com/articles/no-new-name-ux/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+    "summary": "A survey of 604 tech and design professionals found that “UX” remains the default name for our field, while alternative names remain fragmented.",
+    "source": "Nielsen Norman Group",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "05669fae76316b5b",
+    "title": "Why You Need Mentorship and How to Get It Right",
+    "link": "https://www.nngroup.com/articles/mentorship/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+    "summary": "Mentorship is an essential growth tool that offers substantial personal and career benefits, but only if you engage in it properly.",
+    "source": "Nielsen Norman Group",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "54a9f75fb81b6eec",
+    "title": "The Top Agentic Search Optimization (ASO) Agencies of 2026",
+    "link": "https://firstpagesage.com/seo-blog/top-agentic-search-optimization-aso-agencies/",
+    "summary": "Last updated: July 31, 2026 AI systems now do more than make recommendations for humans to act on. They can also act on those recommendations and complete tasks with limited human intervention. Agentic Search Optimization (ASO) is the practice of making a company more likely to be selected by an AI agent when fulfilling a [&#8230;]",
+    "source": "FirstPageSage",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "d93c21c85c16ae4b",
+    "title": "The Top Real Estate GEO / AEO Agencies of 2026",
+    "link": "https://firstpagesage.com/seo-blog/the-top-real-estate-geo-aeo-agencies/",
+    "summary": "In this report, we present the top 8 real estate GEO / AEO agencies of 2026, based on their results, technical expertise, and client experience.",
+    "source": "FirstPageSage",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "ac60436178805648",
+    "title": "Top Plastic Surgery SEO Agencies in 2026",
+    "link": "https://firstpagesage.com/seo-blog/top-plastic-surgery-seo-agencies/",
+    "summary": "We evaluated 50+ agencies on their experience and reputation in the plastic surgery SEO niche, ranking them based on 6 factors.",
+    "source": "FirstPageSage",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "38f939242c2f58ab",
+    "title": "The Top Law Firm Generative Engine Optimization (GEO) Agencies",
+    "link": "https://firstpagesage.com/seo-blog/the-top-law-firm-generative-engine-optimization-geo-agencies/",
+    "summary": "Our research team conducted a comprehensive analysis of law firm GEO agencies. The top 8 are presented in this report.",
+    "source": "FirstPageSage",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "2fb97c6d1d9fa079",
+    "title": "The Top Digital Marketing Agencies of 2026",
+    "link": "https://firstpagesage.com/seo-blog/top-digital-marketing-agencies/",
+    "summary": "In this article, we share our research on the top digital marketing agencies in the US, and discuss their specialties.",
+    "source": "FirstPageSage",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "618a26c68b4b1df3",
+    "title": "Generative Engine Optimization (GEO): Explanation & Algorithm Breakdown",
+    "link": "https://firstpagesage.com/seo-blog/generative-engine-optimization-geo-explanation/",
+    "summary": "This report shares our team's research into the factors used by generative AI chatbots to make product and service recommendations.",
+    "source": "FirstPageSage",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "74d8a9bfe7283e70",
+    "title": "AI speeds marketing production, but measurement lags",
+    "link": "https://martech.org/ai-speeds-marketing-production-but-measurement-lags/",
+    "summary": "<div><img alt=\"\" class=\"attachment-large size-large wp-post-image\" height=\"427\" src=\"https://martech.org/wp-content/uploads/2025/10/New-MarTech-Charts2-800x427.png\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>AI is accelerating marketing production, but most teams still measure clicks instead of business outcomes, limiting their ability to prove AI's impact.</p>\n<p>The post <a href=\"https://martech.org/ai-speeds-marketing-production-but-measurement-lags/\">AI speeds marketing production, but measurement lags</a> appeared first on <a href=\"https://martech.org\">MarTech</a>.</p>",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "e679269857536a67",
+    "title": "AI can simulate buyers, but it misses personality",
+    "link": "https://martech.org/ai-can-simulate-buyers-but-it-misses-personality/",
+    "summary": "<div><img alt=\"\" class=\"attachment-large size-large wp-post-image\" height=\"450\" src=\"https://martech.org/wp-content/uploads/2018/09/audience-shutterstock-296154869-800x450.jpg\" style=\"margin-bottom: 15px;\" width=\"800\" /></div>\n<p>Synthetic audiences depend on the signals they're built from. Personality may be the missing ingredient for improving accuracy.</p>\n<p>The post <a href=\"https://martech.org/ai-can-simulate-buyers-but-it-misses-personality/\">AI can simulate buyers, but it misses personality</a> appeared first on <a href=\"https://martech.org\">MarTech</a>.</p>",
+    "source": "MarTech",
+    "zone": "",
+    "score": "78",
+    "priority": "ядро"
+  },
+  {
+    "id": "2a010204703c0bb3",
+    "title": "75+ Online Form Statistics: Completion, Abandonment, and Design",
+    "link": "https://www.crazyegg.com/blog/form-statistics/",
+    "summary": "<p>Search &#8220;online form statistics,&#8221; and you&#8217;ll get the same dozen numbers, copied from roundup to roundup: 81% of people abandon forms, multi-step forms convert 86%...</p>\n<p>The post <a href=\"https://www.crazyegg.com/blog/form-statistics/\">75+ Online Form Statistics: Completion, Abandonment, and Design</a> appeared first on <a href=\"https://www.crazyegg.com/blog\">The Daily Egg</a>.</p>",
+    "source": "Crazy Egg Blog",
+    "zone": "",
+    "score": "62",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "ac4c5181a955a685",
+    "title": "The Performance Marketer’s Guide to Testing, Validating, and Scaling",
+    "link": "https://www.foxwelldigital.com/blog/the-performance-marketers-guide-to-testing-validating-and-scaling",
+    "summary": "Torii Rowe carefully manages his budget by utilizing a structured pipeline \nthat tests 100 creatives each week, scaling only those that successfully \npass the evaluation. and only scales what actually survives the filter.",
+    "source": "Foxwell Digital",
+    "zone": "",
+    "score": "70",
+    "priority": "ядро"
+  },
+  {
+    "id": "b1e5bba59bb52e7f",
+    "title": "Chatbot breakup: China limits the use of AI for companionship",
+    "link": "https://daoinsights.com/news/china-limits-ai-companionship/",
+    "summary": "<p>Chinese regulators have begun to take a tougher stance on AI chatbots being used for emotional companionship – a move that comes as a sizable demand for this type of relationship is beginning to emerge in China.   The rules target services offering continuous emotional interaction, so your regular-type customers-service bots and workplace assistants should be [&#8230;]</p>\n<p>The post <a href=\"https://daoinsights.com/news/china-limits-ai-companionship/\">Chatbot breakup: China limits the use of AI for companionship </a> appeared first on <a href=\"https://daoinsights.com\">Dao Insights</a>.</p",
+    "source": "Dao Insights",
+    "zone": "",
+    "score": "88",
+    "priority": "ядро"
+  },
+  {
+    "id": "39f8db1e43bf4610",
+    "title": "NudgeForMe",
+    "link": "https://www.producthunt.com/products/nudgeforme",
+    "summary": "<p>\n            AI follow-up agent for missed email opportunities\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/nudgeforme?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1211493?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "5dc729f6dc5eba66",
+    "title": "SyncStaq",
+    "link": "https://www.producthunt.com/products/syncstaq",
+    "summary": "<p>\n            Stripe billing data, always current in Google Sheets\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/syncstaq?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1210288?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "9485e4897bb097b7",
+    "title": "DeepSeek-V4-Flash-0731",
+    "link": "https://www.producthunt.com/products/deepseek",
+    "summary": "<p>\n            Frontier agent intelligence at Flash prices\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/deepseek?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1211631?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "ec41ed513c00aeed",
+    "title": "Port22",
+    "link": "https://www.producthunt.com/products/port22",
+    "summary": "<p>\n            Claude Code, Codex & more on your phone \n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/port22?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1210161?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "0b4fb2527d1b3f7f",
+    "title": "Yamanote 3D",
+    "link": "https://www.producthunt.com/products/yamanote-3d",
+    "summary": "<p>\n            Ride Tokyo’s Yamanote Line in a 3D world\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/yamanote-3d?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1211399?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "6d8748c9972db38d",
+    "title": "EssayKraft",
+    "link": "https://www.producthunt.com/products/essaykraft",
+    "summary": "<p>\n            Native essay writing app for Mac and iPad \n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/essaykraft?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1211804?app_id=339\">Link</a>\n          </p>",
+    "source": "Product Hunt",
+    "zone": "",
+    "score": "85",
+    "priority": "ядро"
+  },
+  {
+    "id": "dcf9932e737e4122",
+    "title": "Can we train AI to choose safety over speed?",
+    "link": "https://restofworld.org/2026/india-ai-extreme-weather/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "summary": "Delivery personnel from Swiggy navigate a flooded street amid heavy rainfall in Mumbai, India, on July 4, 2026.",
+    "source": "Rest of World",
+    "zone": "",
+    "score": "80",
+    "priority": "ядро"
+  },
+  {
+    "id": "4054bd06f723189a",
+    "title": "Marketing post 1 for beadedcloud environmental intelligence",
+    "link": "https://www.beaded.cloud/",
+    "summary": "<p>Article URL: <a href=\"https://www.beaded.cloud/\">https://www.beaded.cloud/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49132791\">https://news.ycombinator.com/item?id=49132791</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "4e309171b1239770",
+    "title": "Marketing sucks when all you want to do is build.\"builder's dopamine\"",
+    "link": "https://www.reddit.com/r/SaaS/comments/1vblhwy/comment/p0z1i6b/",
+    "summary": "<p>Article URL: <a href=\"https://www.reddit.com/r/SaaS/comments/1vblhwy/comment/p0z1i6b/\">https://www.reddit.com/r/SaaS/comments/1vblhwy/comment/p0z1i6b/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49131967\">https://news.ycombinator.com/item?id=49131967</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "070049c2585088ff",
+    "title": "New Free Marketing vs. Advertising Digital Download",
+    "link": "https://laptopformulas.com/",
+    "summary": "<p>Article URL: <a href=\"https://laptopformulas.com/\">https://laptopformulas.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49129033\">https://news.ycombinator.com/item?id=49129033</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "925f18b57d5635f6",
+    "title": "Solving the Low-Budget Online Marketing Dilemma (2013)",
+    "link": "https://longform.asmartbear.com/low-budget-marketing/",
+    "summary": "<p>Article URL: <a href=\"https://longform.asmartbear.com/low-budget-marketing/\">https://longform.asmartbear.com/low-budget-marketing/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49125849\">https://news.ycombinator.com/item?id=49125849</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "f7c54bfdf7104c3e",
+    "title": "Promote.chat: AI Marketing Agent for Vibe Coders",
+    "link": "https://www.promote.chat/",
+    "summary": "<p>Article URL: <a href=\"https://www.promote.chat/\">https://www.promote.chat/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49122539\">https://news.ycombinator.com/item?id=49122539</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "source": "Hacker News (hnrss)",
+    "zone": "",
+    "score": "75",
+    "priority": "ядро"
+  },
+  {
+    "id": "c9f9341b7977b99e",
+    "title": "Lau Pa Sat gamifies hawker culture for National Day",
+    "link": "https://www.marketing-interactive.com/lau-pa-sat-gamifies-hawker-culture-for-national-day",
+    "summary": "The campaign positions supporting hawkers as an act of national pride, encouraging Singaporeans to celebrate one of the country's most recognisable cultural institutions by continuing to patronise the people behind it.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "e0af5a555c207296",
+    "title": "Refine your 2026 event marketing strategies at Cvent Accelerate",
+    "link": "https://www.marketing-interactive.com/refine-your-2026-event-marketing-strategy-at-cvent-accelerate",
+    "summary": "If events are part of your marketing mix, this is where you can learn how martech, insights, and best practices will help you grow reach, drive engagement, build pipelines, and prove ROI.",
+    "source": "Marketing-Interactive",
+    "zone": "",
+    "score": "78",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "24b5e6f6018741f3",
+    "title": "BYD takes aim at Malaysia’s luxury EV segment",
+    "link": "https://kr-asia.com/byd-takes-aim-at-malaysias-luxury-ev-segment",
+    "summary": "Increasingly positive views of China is casting a halo over the company as it takes on Tesla, BMW and Mercedes-Benz.",
+    "source": "KrASIA",
+    "zone": "",
+    "score": "75",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "6b4d3e194428446c",
+    "title": "ByteDance restructures AI business, merging Doubao and Feishu product teams",
+    "link": "https://technode.com/2026/07/30/bytedance-restructures-ai-business-merging-doubao-and-feishu-product-teams/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"683\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2025/10/bytedance-0-cb0d883e8d2c1c45bafb93eb7cd64468.png?fit=1024%2C683&amp;ssl=1\" width=\"1024\" /></figure>ByteDance today launched an organizational restructuring initiative centered on its AI business, aiming to enhance collaboration among Doubao, Feishu, and Volcano Engine in enterprise productivity scenarios. As part of the restructuring, the Feishu product team will be merged with the Doubao product team to form a new Doubao product or",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "ab2e75f6435fa261",
+    "title": "China’s renewable energy generation surpasses 40% of total power output for first time in H1 2026",
+    "link": "https://technode.com/2026/07/30/chinas-renewable-energy-generation-surpasses-40-of-total-power-output-for-first-time-in-h1-2026/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"535\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2026/07/renewable-energy.png?fit=1024%2C535&amp;ssl=1\" width=\"1024\" /></figure>According to CCTV News, the National Energy Administration (NEA) held a press conference on Wednesday, announcing that China’s renewable energy sector saw rapid growth in the first half of 2026, with renewable power generation accounting for more than 40% of total electricity generation for the first time. During the first half of the year, China’s [&#8230;]",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "191ac1555e51f497",
+    "title": "China’s H1 game market sees mobile growth, PC boom, continued slump in web and console games",
+    "link": "https://technode.com/2026/07/30/chinas-h1-game-market-sees-mobile-growth-pc-boom-continued-slump-in-web-and-console-games/",
+    "summary": "<figure><img alt=\"\" class=\"attachment-rss-image-size size-rss-image-size wp-post-image\" height=\"523\" src=\"https://i0.wp.com/technode.com/wp-content/uploads/2025/12/where-winds-meet1.png?fit=1024%2C523&amp;ssl=1\" width=\"1024\" /></figure>According to data released at the China Digital Entertainment Expo &#38; Conference (ChinaJoy), China&#8217;s mobile gaming market generated RMB 135.21 billion ($19.98 billion) in actual sales revenue during the first half of the year, up 7.9% year over year. The PC game market posted RMB 45.29 billion ($6.69 billion) in actual sales revenue, marking a [&#8230;]",
+    "source": "TechNode",
+    "zone": "",
+    "score": "72",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "035983dc5ba74744",
+    "title": "UPI Transactions Rise 4% MoM To 23.7 Bn In July",
+    "link": "https://inc42.com/buzz/upi-transactions-rise-4-mom-to-23-7-bn-in-july/",
+    "summary": "<img alt=\"UPI Transactions Rise 4% MoM To 23.7 Bn In July\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/08/UPI-RBI-featured.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />UPI transaction volume rose 4% to 23.66 Bn in July from 22.72 Bn in June, according to data released by&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "244b95830b06c78c",
+    "title": "Bharat Mandot Of Stelcore Group On The Hidden Costs Of Taking Indian Brands Global",
+    "link": "https://inc42.com/features/bharat-mandot-of-stelcore-group-on-the-hidden-costs-of-taking-indian-brands-global/",
+    "summary": "<img alt=\"Bharat Mandot Of Stelcore Group On The Hidden Costs Of Taking Indian Brands Global\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/08/Bharat-Mandot-Interview-ftr.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />What&#8217;s driving the next phase of India’s export story? It’s no longer just manufacturing capacity or shipping lanes, but the&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "d92fa73a7b28ecfd",
+    "title": "From Freehand To Sid’s Farms — Indian Startups Raised $142 Mn This Week",
+    "link": "https://inc42.com/buzz/from-freehand-to-sids-farms-indian-startups-raised-142-mn-this-week/",
+    "summary": "<img alt=\"From Freehand To Sid’s Farms — Indian Startups Raised $142 Mn This Week\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/Ftr-100-23.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Indian startup funding cooled in the final week of July. Between July 27 and 31, Indian startups cumulatively raised about&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "7c15e678dd182070",
+    "title": "Kissht’s Next Growth Play: Better Borrowers, Lower Costs & Loan Against Property",
+    "link": "https://inc42.com/features/kisshts-next-growth-play-better-borrowers-lower-costs-loan-against-property/",
+    "summary": "<img alt=\"Kissht&#039;s Next Growth Play: Better Borrowers, Lower Costs &amp; LAP\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/07/ftr-25-1.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Recently listed NBFC Kissht is entering its “quality over quantity” phase, as it looks to build a more sustainable lending&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "04636ba00a129869",
+    "title": "After A Stellar Q1, Shadowfax Elevates FY27 Revenue Guidance",
+    "link": "https://inc42.com/buzz/after-a-stellar-q1-shadowfax-elevates-fy27-revenue-guidance/",
+    "summary": "<img alt=\"After A Stellar Q1, Shadowfax Elevates FY27 Revenue Guidance\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/08/Shadowfax-Q4-ftr.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Fresh off a record Q1 FY27, Shadowfax is now setting the stage for a standout fiscal year. Fuelled by a&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "d741e2b9c9e5eb1e",
+    "title": "Can Aequs Build A Consumer Engine Under Its Aerospace Wings?",
+    "link": "https://inc42.com/buzz/can-aequs-build-a-consumer-engine-under-its-aerospace-wings/",
+    "summary": "<img alt=\"Can Aequs Build A Consumer Engine Under Its Aerospace Wings?\" class=\"webfeedsFeaturedVisual wp-post-image\" height=\"1020\" src=\"https://inc42.com/cdn-cgi/image/quality=90/https://asset.inc42.com/2026/08/Aequs-ftr-2.jpg\" style=\"display: block; margin: auto; margin-bottom: 5px;\" width=\"1360\" />Earlier this week, listed manufacturing company Aequs reported its Q1 FY27 earnings. As usual, most of the investor attention focused&#8230;",
+    "source": "Inc42",
+    "zone": "",
+    "score": "70",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "360a13930fbd38d5",
+    "title": "Why TVS Motor’s growth bet goes beyond discounts and viral buzz",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/business-of-brands/why-tvs-motors-growth-bet-goes-beyond-discounts-and-viral-buzz/132781091",
+    "summary": "TVS Motor prioritizes product enhancement and consumer experiences over short-term discounts.  The company builds lasting brand equity through consistent marketing efforts.  Digital channels are integrated to enhance customer journeys and business outcomes.  TVS Motor understands next-generation buyers by focusing on evolving expectations.  This strategy aims for sustained relevance and broad market participation.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "df70dceee409051b",
+    "title": "Campari - king of the spritz - hopes to conquer American heartland",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/campari-king-of-the-spritz-hopes-to-conquer-american-heartland/132768184",
+    "summary": "Whether made with Aperol, Campari or Sarti, the spritz has rapidly established itself on terraces across Europe —with Italy&#039;s Campari Group now hoping to conquer the heart of America. Campari has also used Aperol as a springboard to introduce their other spritz-friendly brands to Europeans, Neri said — such as Cynar, made from artichokes, the bitter, bright red Campari, and the pink and fruity Sarti.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "45911a49f5f60e40",
+    "title": "&#039;Spider-Man: Brand New Day&#039; nets biggest ever opening for a Hollywood blockbuster in India",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/media/spider-man-brand-new-day-nets-biggest-ever-opening-for-a-hollywood-blockbuster-in-india/132781290",
+    "summary": "Spider-Man: Brand New Day has earned over Rs 100 crore in India. The film released in India a day before its global release. It picks up four years after the events of No Way Home. This Marvel Cinematic Universe film features Tom Holland and Zendaya. The movie also stars Mark Ruffalo and Jon Bernthal.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  },
+  {
+    "id": "6c88b42d20e7ab50",
+    "title": "Diet Coke shortage a wonderful problem; India lost share but an attractive market: Coca-Cola",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/diet-coke-shortage-a-wonderful-problem-india-lost-share-but-an-attractive-market-coca-cola/132759778",
+    "summary": "The CFO of Coca-Cola pointed out the Diet Coke shortage in India as a promising sign of consumer demand, even while facing the pressures of rising costs for aluminium and packaging materials, which have affected their supplies and pricing. Although the beverage giant experienced a loss in market share in the second quarter, India continues to be a key focus for future investments amid growing competition within the beverage industry.",
+    "source": "ET BrandEquity",
+    "zone": "",
+    "score": "68",
+    "priority": "вспомогательный"
+  }
+]
