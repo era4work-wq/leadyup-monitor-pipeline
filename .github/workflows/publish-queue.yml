@@ -48,17 +48,20 @@ jobs:
           VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
         run: |
           python -c "
-          import json, os
+          import glob, json, os
           import drive_banners, publish, publish_max, publish_vk
-          text = 'Тестовое сообщение пайплайна — проверка Max/ВК С КАРТИНКОЙ после сегодняшних фиксов (31.07.2026). Можно удалить.'
-          items = json.load(open('../data/publish_queue/2026-07-31.json', encoding='utf-8'))
-          entry = items[0]
+          text = 'Тестовое сообщение пайплайна — проверка Max/ВК с картинкой. Можно удалить.'
+          queue_files = sorted(glob.glob('../data/publish_queue/*.json'))
+          entry = None
+          if queue_files:
+              items = json.load(open(queue_files[-1], encoding='utf-8'))
+              entry = items[0] if items else None
           service = drive_banners.get_service()
-          cover_bytes = publish.render_banner(entry, service)
-          print('баннер:', 'есть' if cover_bytes else 'нет')
+          cover_bytes = publish.render_banner(entry, service) if entry else None
+          print('баннер:', f'{len(cover_bytes)} байт, сигнатура {cover_bytes[:8]!r}' if cover_bytes else 'нет')
           ok_max = publish_max.publish(os.environ['MAX_BOT_TOKEN'], os.environ['MAX_CHAT_ID'], text, image_bytes=cover_bytes)
           print('Max:', 'OK' if ok_max else 'ОШИБКА')
-          ok_vk = publish_vk.publish(os.environ['VK_GROUP_TOKEN'], os.environ['VK_GROUP_ID'], text, image_bytes=cover_bytes, user_token=os.environ['VK_USER_TOKEN'])
+          ok_vk = publish_vk.publish(os.environ['VK_GROUP_TOKEN'], os.environ['VK_GROUP_ID'], text, image_bytes=cover_bytes, user_token=os.environ.get('VK_USER_TOKEN'))
           print('VK:', 'OK' if ok_vk else 'ОШИБКА')
           "
 

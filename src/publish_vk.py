@@ -78,6 +78,19 @@ def _upload_photo(token: str, group_id: str, image_bytes: bytes = None, image_ur
         files={"photo": (filename, image_bytes, content_type)},
         timeout=60,
     ).json()
+    if not upload_resp.get("photo"):
+        # ВК не даёт внятной ошибки на этом шаге — просто возвращает пустой
+        # photo (см. docstring модуля), а реальная ошибка всплывает только
+        # на следующем шаге (saveWallPhoto: "photo is undefined"), без
+        # контекста о том, что именно не понравилось загрузке. Ловим здесь
+        # и добавляем размер/формат — этого обычно достаточно, чтобы понять,
+        # уткнулись ли в лимит размера или это что-то другое (поймано на
+        # практике 01.08.2026 — размер картинки для этого конкретного случая
+        # не выяснен, ВК не сказал, добавлено сюда для следующего раза).
+        raise RuntimeError(
+            f"VK принял upload_url, но вернул пустой photo — картинка не сохранилась "
+            f"({len(image_bytes)} байт, {content_type}): {upload_resp}"
+        )
     saved = _call(
         "photos.saveWallPhoto",
         token,
