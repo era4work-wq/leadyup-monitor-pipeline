@@ -122,5 +122,67 @@
     "text": "EN-карусель выше — <b>Заявки теряются в почте — нужна срочная доставка в мессенджер</b>\nИсточник: Исследование ЦА",
     "sent_as": "text",
     "status": "ждёт"
+  },
+  "22bfca807db64e9f": {
+    "id": "22bfca807db64e9f",
+    "title": "Трафик есть, заказов нет — как поднять конверсию",
+    "source": "Исследование ЦА",
+    "link": "https://leadyup.com",
+    "rubric": "боль-и-решение",
+    "cover_headline": "Traffic's fine. Sales aren't. Now what?",
+    "cover_body": "5 conversion leaks you're probably ignoring right now",
+    "slides": [
+      {
+        "tag": "Breakdown",
+        "headline": "Visitors browse. Then vanish.",
+        "body": "97% of site visitors leave without doing anything. Your ad budget brought them in — then the site let them walk.",
+        "hand": "ouch"
+      },
+      {
+        "tag": "Tip",
+        "headline": "Stop asking for the sale first",
+        "body": "Lead with value: a quiz, a guide, a discount code. Get the email before they ghost. Sell later.",
+        "hand": ""
+      },
+      {
+        "tag": "Example",
+        "headline": "Quiz beats contact form",
+        "body": "\"Find your perfect [product]\" gets clicks. \"Contact us\" gets ignored. Interactive means engaging means converting.",
+        "hand": "tested this"
+      },
+      {
+        "tag": "Tip",
+        "headline": "Catch exit intent",
+        "body": "Cursor moves to close tab? That's your last shot. A popup with a real offer can recover 5-15% of leaving visitors.",
+        "hand": ""
+      },
+      {
+        "tag": "Breakdown",
+        "headline": "More ads ≠ more sales",
+        "body": "Doubling ad spend doubles traffic — and doubles waste if your site still leaks. Fix the bucket before you pour more water.",
+        "hand": "math checks out"
+      }
+    ],
+    "cta_headline": "You're paying for traffic that leaks out",
+    "cta_body": "LeadYup adds quizzes, popups, and lead magnets to your site — so visitors become contacts before they disappear.",
+    "banner": {
+      "id": "1LKKmOzx1xeAVTF53B9R_IdeTaTyBi5Sk",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785340811752.png",
+      "headline": "Traffic's fine. Sales aren't. Now what?",
+      "badge": "SOLUTION"
+    },
+    "message_id": 325,
+    "photo_message_ids": [
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324
+    ],
+    "text": "EN-карусель выше — <b>Трафик есть, заказов нет — как поднять конверсию</b>\nИсточник: Исследование ЦА",
+    "sent_as": "text",
+    "status": "ждёт"
   }
 }
