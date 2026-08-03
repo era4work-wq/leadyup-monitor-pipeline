@@ -1,0 +1,74 @@
+[
+  {
+    "id": "eaf4f222302640f7",
+    "title": "Google's Documentation Refresh Offers Ideas For SEO Content Updates via @sejournal, @martinibuster",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/googles-documentation-refresh-offers-seo-lessons-on-content-updates/584464/",
+    "why": "Свежие практические подсказки от Google о том, как обновлять контент для SEO — прямое применение для владельцев сайтов, которые хотят вернуть трафик, упавший после обновлений алгоритма.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "834c4343a1b631c8",
+    "title": "Luckin Coffee's Viral Pancake Shop Ad: What Hyperlocal Humor Teaches Foreign Brands in China",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/luckin-coffees-viral-pancake-shop-ad-what-hyperlocal-humor-teaches-foreign-brands-in-china/",
+    "why": "Кейс органичного, дешёвого PR-хода, который обошёл дорогие кампании — учебник для малых брендов о том, как получить вирал без бюджета за счёт контекста и юмора, не обещаний.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "49e3d87019f90030",
+    "title": "Why Chinese Brands Are Going 'Light' in 2026: Less Ad Spend, More Authenticity",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/why-chinese-brands-are-going-light-in-2026-less-ad-spend-more-authenticity/",
+    "why": "Тренд 2026 года: брутальное сокращение бюджетов работает лучше, чем масс-маркет — прямой урок для читателя, который платит за рекламу, но не видит ROI, и боится еще вкладывать.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, P3, SaaS P1"
+  },
+  {
+    "id": "07c21c1776592d81",
+    "title": "Show HN: Kuvu AI – Your All-in-One AI Creative Studio and Marketing Studio",
+    "source": "Hacker News (hnrss)",
+    "link": "https://kuvu.ai/",
+    "why": "AI-студия для создания UGC-видео и изображений за минуты — инструмент, который сокращает цикл создания креатива для рекламных кампаний, если контент сейчас узкое место.",
+    "rubric": "ai-инструмент",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "c8793cb3f4885fc1",
+    "title": "Open Minis",
+    "source": "Product Hunt",
+    "link": "https://www.producthunt.com/products/open-minis",
+    "why": "AI-агент на телефоне, работающий офлайн — может быть полезен для автоматизации первого ответа на заявки через мобильное приложение компании без облака.",
+    "rubric": "ai-инструмент",
+    "persona": "SaaS P4, интернет-магазины P4"
+  },
+  {
+    "id": "a343af96e8ccb197",
+    "title": "Zepto, Blinkit or Amazon: How a marketer decides where to invest?",
+    "source": "ET BrandEquity",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/marketing/zepto-blinkit-or-amazon-how-a-marketer-decides-where-to-invest/132818007",
+    "why": "Аналитика выбора площадки для рекламы когда все предлагают одно и то же — практический кейс о том, как не ошибиться с выделением бюджета между похожими каналами трафика.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, P3"
+  },
+  {
+    "id": "272ba4589002e199",
+    "title": "Your Segmentation Deck Is Probably Wrong",
+    "source": "ET BrandEquity",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/research/your-segmentation-deck-is-probably-wrong/132818183",
+    "why": "Исследование показало, что стандартная демографическая сегментация не работает — нужна переориентация на фичи продукта, иначе реклама летит мимо целевой аудитории.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, P3"
+  },
+  {
+    "id": "a96b09f03379ada4",
+    "title": "Reading in the age of social media",
+    "source": "ET BrandEquity",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/media/reading-in-the-age-of-social-media/132788243",
+    "why": "Социальные медиа возвращают интерес к длинному контенту через инфлюэнсеров — сигнал того, что микро-контент работает лучше всего, когда за ним стоит авторитет, не просто ссылка.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, SaaS P1"
+  }
+]
