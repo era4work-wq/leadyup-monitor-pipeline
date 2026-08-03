@@ -1,0 +1,51 @@
+[
+  {
+    "id": "eaf4f222302640f7",
+    "title": "Google's Documentation Refresh Offers Ideas For SEO Content Updates via @sejournal, @martinibuster",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/googles-documentation-refresh-offers-seo-lessons-on-content-updates/584464/",
+    "rubric": "лайфхак-инструкция",
+    "cover_headline": "Google just rewrote their own docs. Here's why.",
+    "cover_body": "Their edits show exactly what makes content easier to rank.",
+    "slides": [
+      {
+        "tag": "Breakdown",
+        "headline": "Vague → precise",
+        "body": "Google swapped \"responds quickly\" for \"response times remain stable.\" General fluff got cut. Specifics stayed.",
+        "hand": ""
+      },
+      {
+        "tag": "Example",
+        "headline": "\"Server errors\" is now \"5xx codes\"",
+        "body": "Every fuzzy term got a concrete replacement. \"Every URL\" → \"every publicly accessible URL.\" Details matter.",
+        "hand": "precision wins"
+      },
+      {
+        "tag": "Tip",
+        "headline": "Cut the \"why,\" show the effect",
+        "body": "Old: \"calculated to provide coverage.\" New: \"ensures Google can cover.\" Readers want outcomes, not explanations.",
+        "hand": ""
+      },
+      {
+        "tag": "Breakdown",
+        "headline": "Comprehension road bumps",
+        "body": "Sentences with clashing ideas make readers re-read. Google removed them. If humans pause, so does their algorithm.",
+        "hand": ""
+      },
+      {
+        "tag": "Tip",
+        "headline": "Short ≠ clear",
+        "body": "Not about sentence length. One idea per sentence, logically ordered. That's what Google actually fixed.",
+        "hand": "the real rule"
+      }
+    ],
+    "cta_headline": "Clearer pages. But are visitors staying?",
+    "cta_body": "Good content gets them there — LeadYup turns that attention into contacts before they bounce.",
+    "banner": {
+      "id": "1EImaAXqR1xrbSVbGcSKmF9ePgUOj0UGe",
+      "name": "заяц на ракете SEO.png",
+      "headline": "Google just rewrote their own docs. Here's why.",
+      "badge": "HOW-TO"
+    }
+  }
+]

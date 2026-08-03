@@ -1,0 +1,17 @@
+[
+  {
+    "id": "eaf4f222302640f7",
+    "title": "Google's Documentation Refresh Offers Ideas For SEO Content Updates via @sejournal, @martinibuster",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/googles-documentation-refresh-offers-seo-lessons-on-content-updates/584464/",
+    "rubric": "лайфхак-инструкция",
+    "draft_text": "<b>Google показал, как редактировать контент — на своём же гайде</b>\n\nОбновили документацию по crawl budget и заодно устроили мастер-класс по улучшению текстов. Три принципа, которые работают и для SEO-статей:\n\n📌 Общее → конкретное: вместо «ошибки сервера» пишите «коды 5xx или HTTP 429»\n📌 Убирайте лишнее «почему» — читателю важнее <span class=\"tg-spoiler\">что произойдёт, а не зачем Google так делает</span>\n📌 Одна мысль — одно предложение: если дочитал и не понял, о чём речь — это «дорожная кочка»\n\n<blockquote>Короткие предложения — не самоцель. Цель — чтобы и человек, и AI поняли с первого раза.</blockquote>\n\nОткройте любую старую статью, найдите три «кочки» — и у вас готовый план обновления контента. Без переписывания с нуля, без драмы.",
+    "banner": {
+      "id": "1EImaAXqR1xrbSVbGcSKmF9ePgUOj0UGe",
+      "name": "заяц на ракете SEO.png",
+      "headline": "Google показал, как редактировать контент — на своём же гайде",
+      "badge": "ЛАЙФХАК"
+    },
+    "image_url": "https://cdn.searchenginejournal.com/wp-content/uploads/2026/08/google-content-seo-329.jpg"
+  }
+]
