@@ -60,5 +60,67 @@
     "text": "EN-карусель выше — <b>Google's Documentation Refresh Offers Ideas For SEO Content Updates via @sejournal, @martinibuster</b>\nИсточник: Search Engine Journal",
     "sent_as": "text",
     "status": "ждёт"
+  },
+  "7bee50ba130004a1": {
+    "id": "7bee50ba130004a1",
+    "title": "Заявки теряются в почте — нужна срочная доставка в мессенджер",
+    "source": "Исследование ЦА",
+    "link": "https://leadyup.com",
+    "rubric": "боль-и-решение",
+    "cover_headline": "Your leads land in spam. You reply 3 days late.",
+    "cover_body": "Why email kills your response time — and what actually works.",
+    "slides": [
+      {
+        "tag": "Breakdown",
+        "headline": "Email inboxes are graveyards",
+        "body": "Promo tabs, spam filters, 100+ unread messages. Your hot lead sits there while competitors reply first.",
+        "hand": "check yours right now"
+      },
+      {
+        "tag": "Example",
+        "headline": "\"Sorry, just saw this\"",
+        "body": "You spot the inquiry 2 days later. They've already signed with someone who answered in 20 minutes.",
+        "hand": ""
+      },
+      {
+        "tag": "Tip",
+        "headline": "Route leads to where you actually look",
+        "body": "Telegram, WhatsApp, Slack — wherever you spend your day. No digging through folders.",
+        "hand": "instant ping"
+      },
+      {
+        "tag": "Breakdown",
+        "headline": "Speed isn't optional anymore",
+        "body": "First response under 5 min dramatically boosts conversion. Email can't compete with a direct message.",
+        "hand": ""
+      },
+      {
+        "tag": "Tip",
+        "headline": "Automate the handoff, not the reply",
+        "body": "Software pushes the lead to your chat. You still reply like a human — just faster.",
+        "hand": "best of both"
+      }
+    ],
+    "cta_headline": "Leads deserve better than your spam folder",
+    "cta_body": "LeadYup sends every form submission straight to Telegram or WhatsApp — so you reply while they still care.",
+    "banner": {
+      "id": "1z6i93xjisOSsDWFf24YPElsxODD4xX7j",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785340672513.png",
+      "headline": "Your leads land in spam. You reply 3 days late.",
+      "badge": "SOLUTION"
+    },
+    "message_id": 307,
+    "photo_message_ids": [
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306
+    ],
+    "text": "EN-карусель выше — <b>Заявки теряются в почте — нужна срочная доставка в мессенджер</b>\nИсточник: Исследование ЦА",
+    "sent_as": "text",
+    "status": "ждёт"
   }
 }

@@ -18,5 +18,25 @@
     "text": "🇬🇧 Regular popups interrupt. Exit-intent ones wait. AI catches the exact moment someone's leaving — shows your offer right then. Not earlier, not randomly. leadyup.com",
     "sent_as": "photo",
     "status": "ждёт"
+  },
+  "7bee50ba130004a1": {
+    "id": "7bee50ba130004a1",
+    "title": "Заявки теряются в почте — нужна срочная доставка в мессенджер",
+    "source": "Исследование ЦА",
+    "link": "https://leadyup.com",
+    "rubric": "боль-и-решение",
+    "draft_text": "Your form submissions go to inbox. Half land in spam, rest get buried under newsletters. Meanwhile the lead goes cold. Route them straight to Telegram or WhatsApp instead — you'll actually see them. leadyup.com",
+    "headline": "Leads vanish in email spam",
+    "banner": {
+      "id": "1z6i93xjisOSsDWFf24YPElsxODD4xX7j",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785340672513.png",
+      "headline": "Leads vanish in email spam",
+      "badge": "SOLUTION"
+    },
+    "image_url": null,
+    "message_id": 297,
+    "text": "🇬🇧 Your form submissions go to inbox. Half land in spam, rest get buried under newsletters. Meanwhile the lead goes cold. Route them straight to Telegram or WhatsApp instead — you'll actually see them. leadyup.com",
+    "sent_as": "photo",
+    "status": "ждёт"
   }
 }
