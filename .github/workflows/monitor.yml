@@ -12,7 +12,10 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     steps:
+      # ref явно на имя ветки — см. подробный комментарий в write-drafts.yml.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
         with:
