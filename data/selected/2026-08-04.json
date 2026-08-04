@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1e59e6c3c2d8d520",
+    "title": "Paid Search Absorbed Organic's Collapse – Then Q2 Slowed Down",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/paid-search-absorbed-organics-collapse-then-q2-slowed-down/583560/",
+    "why": "Q2 2026 данные о замедлении роста платного поиска помогут P1/P3 пересчитать бюджет контекстной рекламы и понять, почему «платим, а результат не прибавляется»",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "5c1d3f8d4ee42ab8",
+    "title": "Is AI Replacing Search? What The 2026 Numbers Actually Reveal",
+    "source": "Similarweb Blog",
+    "link": "https://www.similarweb.com/blog/marketing/geo/is-ai-replacing-search/",
+    "why": "Конкретные цифры 2026 о росте AI-платформ (9.5B посещений, +70% YoY) дают основу для пересчёта стратегии трафика — нужно ли переводить бюджет или держать курс на Google/Meta",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "b10d2648d8ae9e3b",
+    "title": "Why AI Recommends Your Competitor & What To Do About It",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/why-ai-recommends-your-competitor-what-to-do-about-it/584488/",
+    "why": "Практический вывод о том, как AI-агенты выбирают брендов (слово «synthesis») — прямо применимо к контенту сайта и трафику из AI-поиска",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P1, P2"
+  },
+  {
+    "id": "c2ff15a2bebff934",
+    "title": "Beyond Static Personalization: How Real-Time Intent Is Transforming Customer Experience",
+    "source": "VWO Blog",
+    "link": "https://vwo.com/blog/adaptive-ecommerce-personalization/",
+    "why": "Персонализация на сайте по реальному поведению (не по сегментам) — классическая боль P1: хороший трафик, но заказов нет; решение: разные опыты для разных намерений",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P2"
+  },
+  {
+    "id": "d820cc4aada4b221",
+    "title": "Best MCP Servers for Cross-Tool Business Analysis: Why Most Marketing and Sales Stacks Can't Compute the Metrics That Matter",
+    "source": "Databox Blog",
+    "link": "https://databox.com/best-mcp-servers",
+    "why": "Проблема: менеджеры не видят, куда идут заявки из разных каналов (боль P4, SaaS P4) — MCP-серверы связывают Google Ads, CRM и мессенджеры для сквозной аналитики",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4, SaaS P3, P4"
+  },
+  {
+    "id": "c58966501fccc945",
+    "title": "The Ultimate Guide to Google Local Services Ads",
+    "source": "WordStream (LocaliQ)",
+    "link": "https://www.wordstream.com/blog/google-local-services-ads",
+    "why": "Google Local Services — альтернатива контекстной рекламе для малого бизнеса, где можно получить заявки с другой ставкой и видимостью; актуально для P1 с географически привязанным сервисом",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1"
+  },
+  {
+    "id": "8cc4171f02cd22d2",
+    "title": "Types of Popups: Every Popup Type Explained (With Real Examples)",
+    "source": "OptinMonster Blog",
+    "link": "https://optinmonster.com/website-popups/",
+    "why": "Попапы — инструмент повышения конверсии на сайте; материал развенчивает миф о том, что один попап на всех работает; прямо применимо к боли «платим за трафик, а заявок нет»",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P2"
+  },
+  {
+    "id": "301b764bf5f4c108",
+    "title": "Channel Diversification for Q4: Highlights from Nextdoor, Roku, and AppLovin",
+    "source": "Foxwell Digital",
+    "link": "https://www.foxwelldigital.com/blog/channel-diversification-for-q4-highlights-from-nextdoor-roku-and-applovin",
+    "why": "Google и Meta дорожают — практический анализ альтернативных каналов трафика (Nextdoor, Roku) для малого/среднего бизнеса, чтобы не весь бюджет лежал в двух платформах",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "2d3d47632fb893aa",
+    "title": "AI can knock on the door. Your CRM marketing platform is still the house.",
+    "source": "MarTech",
+    "link": "https://martech.org/ai-can-knock-on-the-door-your-crm-marketing-platform-is-still-the-house/",
+    "why": "AI-ассистенты (ChatGPT, Claude) могут интегрироваться в CRM, но не заменяют саму платформу — актуально для P4 и P3, которые боятся потерять контроль над данными при внедрении AI",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P3, P4"
+  }
+]
