@@ -93,7 +93,9 @@
     "persona": "интернет-магазины P1, P2",
     "message_id": 350,
     "text": "<b>Types of Popups: Every Popup Type Explained (With Real Examples)</b>\nИсточник: OptinMonster Blog · 🛠 лайфхак\nКому: интернет-магазины P1, P2\nПопапы — инструмент повышения конверсии на сайте; материал развенчивает миф о том, что один попап на всех работает; прямо применимо к боли «платим за трафик, а заявок нет»\nhttps://optinmonster.com/website-popups/",
-    "formats": [],
+    "formats": [
+      "пост"
+    ],
     "status": "ждёт"
   },
   "301b764bf5f4c108": {
