@@ -1,0 +1,92 @@
+[
+  {
+    "id": "186264d08760e9ff",
+    "title": "Reddit Wants To Be The Destination, Not Just The Source Behind Search & AI via @sejournal, @brentcsutoras",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/reddit-wants-to-be-the-destination-not-just-the-source-behind-search-ai/584586/",
+    "why": "Reddit меняет алгоритмы поиска и AI — маркетологу нужно знать, где теперь видны клиенты и как на это повлиять трафик со своего сайта через поиск.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "2dff21202265a29c",
+    "title": "How to audit your email automations for revenue gaps",
+    "source": "MarTech",
+    "link": "https://martech.org/how-to-audit-your-email-automations-for-revenue-gaps/",
+    "why": "Практический гайд по поиску дыр в email-воронке — ровно на больную тему P2 и P4: заявка пришла, но она теряется на этапе nurturing, и виноват не трафик, а процесс.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "8f9e91eff13eec36",
+    "title": "Reddit CEO Intends To Show More Reviews And Recommendations via @sejournal, @martinibuster",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/reddit-ceo-intends-to-show-more-reviews-and-recommendations/584731/",
+    "why": "Reddit наполняется отзывами и рекомендациями — новое место, где ищут клиенты перед покупкой; маркетолог должен понимать, как туда попасть и влиять на поиск.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, P2"
+  },
+  {
+    "id": "a7becb95d2ff38db",
+    "title": "What Top Stories Inside AI Overviews Means For Publishers And Brands In 2026 And Beyond via @sejournal, @gregjarboe",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/what-top-stories-inside-ai-overviews-means-for-publishers-and-brands-in-2026-and-beyond/584175/",
+    "why": "С цифрами о том, как robots.txt не защищает от AI Overviews — практическая ошибка, которая стоит трафика; P3 оценит конкретные потери.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "cbb20a6439515c5f",
+    "title": "Google Now Reports AI Search Impressions. Here's How To Read Them via @sejournal, @cshel",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-reports-ai-search-impressions-how-to-read-them/582824/",
+    "why": "Новая метрика в GSC для отслеживания видимости в AI-ответах — инструмент для P2 и P4, чтобы понять: трафик теряется потому что нас вообще не видят в AI.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, P4"
+  },
+  {
+    "id": "d3c45c9f23a18516",
+    "title": "OpenAI ad experiment could change what happens after the click",
+    "source": "MarTech",
+    "link": "https://martech.org/openai-ad-experiment-could-change-what-happens-after-the-click/",
+    "why": "ChatGPT-реклама выводит прямо в AI-агент, который отвечает на вопросы и захватывает лиды — новый канал трафика, который минует сайт; P1 и P2 должны понять, как это влияет на их воронку.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, P2"
+  },
+  {
+    "id": "fc6b98a9b5aa64bc",
+    "title": "The Biggest AI Search Signals You're Probably Ignoring",
+    "source": "WordStream (LocaliQ)",
+    "link": "https://www.wordstream.com/blog/ai-search-signals",
+    "why": "Пять сигналов видимости в AI-поиске, которые большинство упускает — прямой ответ на боль P1: почему трафик не приходит, даже когда все кажется правильным.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1"
+  },
+  {
+    "id": "f8b87ecffd0348f5",
+    "title": "eCommerce Lead Generation: 14 Strategies That Actually Work",
+    "source": "OptinMonster Blog",
+    "link": "https://optinmonster.com/ecommerce-lead-generation/",
+    "why": "Гайд по захвату контактов из уходящего трафика — ровно про то, как из 97% теряемого трафика получить хотя бы заявку; P1 услышит знакомую фразу «платим за рекламу, а заказов нет».",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1"
+  },
+  {
+    "id": "52e88687f62d9301",
+    "title": "Why the F.A.C.T.S. model is the key to search everywhere optimization by SOCi",
+    "source": "MarTech",
+    "link": "https://martech.org/why-the-f-a-c-t-s-model-is-the-key-to-search-everywhere-optimization/",
+    "why": "Модель видимости в Google Search, соцсетях, репутации и AI — нужно знать все каналы поиска, чтобы понять, где именно теряются потенциальные клиенты.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, P3"
+  },
+  {
+    "id": "951ef66fabd426d5",
+    "title": "15 Years of Facebook and Meta Advertising",
+    "source": "Jon Loomer Digital",
+    "link": "https://www.jonloomer.com/15-years-facebook-meta-advertising/",
+    "why": "Историческая справка о том, как эволюционировала Meta-реклама — контекст для P2, чтобы понимать тренды и не повторять ошибки прошлого на текущем этапе воронки.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P2"
+  }
+]
