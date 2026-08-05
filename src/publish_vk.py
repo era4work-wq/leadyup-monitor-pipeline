@@ -33,6 +33,7 @@ attachment — другим (attachment можно передать в wall.post
 (мягкая деградация, не ошибка всего поста).
 """
 import sys
+import time
 
 import requests
 
@@ -71,25 +72,33 @@ def _upload_photo(token: str, group_id: str, image_bytes: bytes = None, image_ur
     "photo{owner_id}_{id}"."""
     if image_bytes is None:
         image_bytes = requests.get(image_url, timeout=30).content
-    upload_server = _call("photos.getWallUploadServer", token, group_id=group_id)
     filename, content_type = _sniff_image(image_bytes)
-    upload_resp = requests.post(
-        upload_server["upload_url"],
-        files={"photo": (filename, image_bytes, content_type)},
-        timeout=60,
-    ).json()
-    if not upload_resp.get("photo"):
-        # ВК не даёт внятной ошибки на этом шаге — просто возвращает пустой
-        # photo (см. docstring модуля), а реальная ошибка всплывает только
-        # на следующем шаге (saveWallPhoto: "photo is undefined"), без
-        # контекста о том, что именно не понравилось загрузке. Ловим здесь
-        # и добавляем размер/формат — этого обычно достаточно, чтобы понять,
-        # уткнулись ли в лимит размера или это что-то другое (поймано на
-        # практике 01.08.2026 — размер картинки для этого конкретного случая
-        # не выяснен, ВК не сказал, добавлено сюда для следующего раза).
+
+    # ВК не даёт внятной ошибки, когда загрузка не удалась — просто
+    # возвращает пустой photo без объяснений (см. докстринг модуля).
+    # Проверено на практике 01-05.08.2026: причина НЕ в размере картинки —
+    # падали и крупные, и мелкие (190-235КБ, обычный диапазон, часть таких
+    # же по размеру грузится нормально), не зависит от рубрики темы —
+    # похоже на плавающий сбой на стороне ВК, не на нашей. Ретраим весь
+    # цикл (новый upload_url на каждую попытку — старый одноразовый) вместо
+    # того, чтобы сразу сдаваться.
+    last_upload_resp = None
+    for attempt in range(3):
+        upload_server = _call("photos.getWallUploadServer", token, group_id=group_id)
+        upload_resp = requests.post(
+            upload_server["upload_url"],
+            files={"photo": (filename, image_bytes, content_type)},
+            timeout=60,
+        ).json()
+        if upload_resp.get("photo"):
+            break
+        last_upload_resp = upload_resp
+        print(f"  [WARN] ВК вернул пустой photo (попытка {attempt + 1}/3) — пробую снова", file=sys.stderr)
+        time.sleep(2 * (attempt + 1))
+    else:
         raise RuntimeError(
-            f"VK принял upload_url, но вернул пустой photo — картинка не сохранилась "
-            f"({len(image_bytes)} байт, {content_type}): {upload_resp}"
+            f"VK трижды принял upload_url, но так и не сохранил картинку "
+            f"({len(image_bytes)} байт, {content_type}): {last_upload_resp}"
         )
     saved = _call(
         "photos.saveWallPhoto",
