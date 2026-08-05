@@ -100,5 +100,22 @@
     "status": "взято",
     "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
     "decided_at": "05.08 06:23"
+  },
+  {
+    "id": "c2ff15a2bebff934",
+    "title": "Beyond Static Personalization: How Real-Time Intent Is Transforming Customer Experience",
+    "source": "VWO Blog",
+    "link": "https://vwo.com/blog/adaptive-ecommerce-personalization/",
+    "why": "Персонализация на сайте по реальному поведению (не по сегментам) — классическая боль P1: хороший трафик, но заказов нет; решение: разные опыты для разных намерений",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P2",
+    "message_id": 347,
+    "text": "<b>Beyond Static Personalization: How Real-Time Intent Is Transforming Customer Experience</b>\nИсточник: VWO Blog · 🛠 лайфхак\nКому: интернет-магазины P1, P2\nПерсонализация на сайте по реальному поведению (не по сегментам) — классическая боль P1: хороший трафик, но заказов нет; решение: разные опыты для разных намерений\nhttps://vwo.com/blog/adaptive-ecommerce-personalization/",
+    "formats": [
+      "пост"
+    ],
+    "status": "взято",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "05.08 06:23"
   }
 ]
