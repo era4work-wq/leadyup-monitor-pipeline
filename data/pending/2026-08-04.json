@@ -123,7 +123,9 @@
     "persona": "SaaS P3, P4",
     "message_id": 352,
     "text": "<b>AI can knock on the door. Your CRM marketing platform is still the house.</b>\nИсточник: MarTech · 🛠 лайфхак\nКому: SaaS P3, P4\nAI-ассистенты (ChatGPT, Claude) могут интегрироваться в CRM, но не заменяют саму платформу — актуально для P4 и P3, которые боятся потерять контроль над данными при внедрении AI\nhttps://martech.org/ai-can-knock-on-the-door-your-crm-marketing-platform-is-still-the-house/",
-    "formats": [],
+    "formats": [
+      "EN-карусель"
+    ],
     "status": "ждёт"
   }
 }
