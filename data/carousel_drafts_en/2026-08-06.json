@@ -1,0 +1,51 @@
+[
+  {
+    "id": "2d3d47632fb893aa",
+    "title": "AI can knock on the door. Your CRM marketing platform is still the house.",
+    "source": "MarTech",
+    "link": "https://martech.org/ai-can-knock-on-the-door-your-crm-marketing-platform-is-still-the-house/",
+    "rubric": "лайфхак-инструкция",
+    "cover_headline": "AI assistants are smart. They're not your CRM.",
+    "cover_body": "Why ChatGPT plugging into your platform doesn't make the platform optional.",
+    "slides": [
+      {
+        "tag": "Breakdown",
+        "headline": "The house, the door, the visitor",
+        "body": "AI assistant = visitor. MCP connection = door. Your CRM platform = the house where all the value actually lives.",
+        "hand": "three jobs, three things"
+      },
+      {
+        "tag": "Example",
+        "headline": "Smart enough to know what it lacks",
+        "body": "Ask AI which customers might churn. It reasons well — but the answer comes from your platform's data. Take that away, it's standing in an empty lot.",
+        "hand": ""
+      },
+      {
+        "tag": "Tip",
+        "headline": "\"We'll build it ourselves\" — slow down",
+        "body": "Technical teams see an easy wire-up. But building an audience isn't a query — it's years of judgment calls a general model hasn't lived through.",
+        "hand": "reasonable ≠ right"
+      },
+      {
+        "tag": "Breakdown",
+        "headline": "Not competitors. Parts of one system.",
+        "body": "Assistant handles reasoning and conversation. Platform holds data, decisioning, what works. MCP connects them. Remove any one — value collapses.",
+        "hand": ""
+      },
+      {
+        "tag": "Example",
+        "headline": "Already in production, not theory",
+        "body": "Teams draft a week of campaigns in 90 minutes. Agents flag broken journeys before anyone arrives. Small teams run like big ones.",
+        "hand": "AI + platform, not AI alone"
+      }
+    ],
+    "cta_headline": "Visitors need something to visit",
+    "cta_body": "AI can knock — but if there's nothing behind the door, there's nothing to capture. LeadYup turns your site into the house worth entering.",
+    "banner": {
+      "id": "1QfaW-ptH7yGrHhTT1hWs1t4Cj587CPjc",
+      "name": "Dark_cinematic_169_banner_The_exact_serious_adul-1785339251878.png",
+      "headline": "AI assistants are smart. They're not your CRM.",
+      "badge": "HOW-TO"
+    }
+  }
+]
