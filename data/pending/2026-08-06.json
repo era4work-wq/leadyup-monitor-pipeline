@@ -82,7 +82,9 @@
     "persona": "интернет-магазины P2, SaaS P2",
     "message_id": 388,
     "text": "<b>AI Content Creation Statistics: 2026 Report</b>\nИсточник: FirstPageSage · 📰 дайджест\nКому: интернет-магазины P2, SaaS P2\nИсследование за H1 2026 о том, как AI встроился в создание контента — свежие цифры о тренде, который уже касается сайтов малого бизнеса и влияет на качество трафика.\nhttps://firstpagesage.com/seo-blog/ai-content-creation-statistics-report/",
-    "formats": [],
+    "formats": [
+      "пост"
+    ],
     "status": "ждёт"
   },
   "9b9f867c3b564df1": {
