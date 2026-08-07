@@ -85,7 +85,9 @@
     "formats": [
       "пост"
     ],
-    "status": "ждёт"
+    "status": "взято",
+    "approver": "𝒀𝒖𝒍𝒊𝒚𝒂✨",
+    "decided_at": "07.08 05:39"
   },
   "9b9f867c3b564df1": {
     "id": "9b9f867c3b564df1",
