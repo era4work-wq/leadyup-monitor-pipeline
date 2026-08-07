@@ -1,0 +1,92 @@
+[
+  {
+    "id": "67b1c25f10119035",
+    "title": "The AEO Playbook: How to Get Cited & Stay Visible",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/aeo-playbook-get-cited-stay-visible-recap/584926/",
+    "why": "Практический гайд по видимости в AI-поиске — прямо влияет на трафик, который тянет в воронку конверсии.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P2"
+  },
+  {
+    "id": "2c52a2ff4bfae48d",
+    "title": "I Helped Scale Google Ads To Billions – Here's How I'd Build An AI Search Strategy Today",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/i-helped-scale-google-ads-to-billions-heres-how-id-build-an-ai-search-strategy-today/582556/",
+    "why": "Конкретная методология 90-дневного спринта для выигрыша в AI-поиске — применимо для P1/P3 магазинов, которые ищут практическую схему.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "ff224f06aa9e936f",
+    "title": "Time's AI-only ads may be marketing's next frontier",
+    "source": "MarTech",
+    "link": "https://martech.org/times-ai-only-ads-may-be-marketing-next-frontier/",
+    "why": "Новая стратегия привлечения трафика через AI-агентов — эксклюзивный формат, которого нет в рунете, важна для маркетологов SaaS P2.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "SaaS P2"
+  },
+  {
+    "id": "e7986c82d57c177b",
+    "title": "How agencies are evolving to overcome AI",
+    "source": "MarTech",
+    "link": "https://martech.org/how-agencies-are-evolving-to-overcome-ai/",
+    "why": "Исследование: рутинная работа теряет ценность, агентства переходят на экспертизу — помогает понять, как меняется рынок и на чём зарабатывают конкуренты.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "SaaS P2"
+  },
+  {
+    "id": "3903a5e24d779fc4",
+    "title": "3 Layers of Monitoring That Catch Amazon PPC Problems Before They Cost You",
+    "source": "Optmyzr Blog",
+    "link": "https://www.optmyzr.com/blog/amazon-ppc-3-layer-monitoring-system/",
+    "why": "Системный подход к мониторингу рекламы в Amazon — прямо решает боль P1 магазина: 'платим за трафик, результата нет', выявляет проблему до потери денег.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1"
+  },
+  {
+    "id": "0b79d66302cf15f9",
+    "title": "Meet Wandz: The AI Layer That Powers the Wingify Suite",
+    "source": "VWO Blog",
+    "link": "https://vwo.com/blog/wandz-ai-layer/",
+    "why": "AI-инструмент для A/B-тестирования и оптимизации сайта — напрямую повышает конверсию и помогает диагностировать, почему реклама 'не работает'.",
+    "rubric": "ai-инструмент",
+    "persona": "интернет-магазины P2, P4"
+  },
+  {
+    "id": "8cbd409dd63f68de",
+    "title": "Google Ads Won't Let Free Email Accounts Take Sensitive Actions",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-ads-free-email-account-security-41827.html",
+    "why": "Важное изменение политики Google Ads — напрямую касается P4 (техспециалистов) и ответственных за интеграцию, требует внимания к аккаунту.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4"
+  },
+  {
+    "id": "fc320867715fa20e",
+    "title": "58 Free & Creative September Marketing Ideas for Any Business",
+    "source": "WordStream (LocaliQ)",
+    "link": "https://www.wordstream.com/blog/september-marketing-ideas",
+    "why": "Практические идеи привлечения трафика и контакта с клиентом — подходит для P1 собственников магазинов, ищущих быстрые и бюджетные способы.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1"
+  },
+  {
+    "id": "0786ef37f13bf95f",
+    "title": "Heytea's Transparent Craft Store: Why Showing the Process Builds Trust in China",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/heyteas-transparent-craft-store-why-showing-the-process-builds-trust-in-china/",
+    "why": "Кейс прозрачности как инструмента завоевания доверия и клиентов — эксклюзив из Китая, применимо к стратегии сайта и контента для конверсии.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "53af52ea24c05656",
+    "title": "Your AI marketing agent is only as smart as the pipes behind it",
+    "source": "ET BrandEquity",
+    "link": "https://brandequity.economictimes.indiatimes.com/news/digital/your-ai-marketing-agent-is-only-as-smart-as-the-pipes-behind-it/133020310",
+    "why": "Критическое замечание: AI-агенты работают только с качественной инфраструктурой данных — предупреждает об ошибке внедрения для скептичных P3 и P1.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P1, интернет-магазины P3"
+  }
+]
