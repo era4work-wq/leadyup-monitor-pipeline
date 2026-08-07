@@ -52,7 +52,9 @@
     "persona": "интернет-магазины P1, P2",
     "message_id": 386,
     "text": "<b>New Google Product Listing Ads Deal Ends Experimental Annotation</b>\nИсточник: Search Engine Roundtable · 🛠 лайфхак\nКому: интернет-магазины P1, P2\nБейджи типа «3 дня осталось» прямо под ценой товара — срочность поднимает CTR в Google Shopping. Практический инструмент для интернет-магазина P1/P2, который хочет больше кликов на объявления.\nhttps://www.seroundtable.com/google-pla-deal-ends-annotation-41826.html",
-    "formats": [],
+    "formats": [
+      "пост"
+    ],
     "status": "ждёт"
   },
   "23786874259584b0": {
