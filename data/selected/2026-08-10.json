@@ -1,0 +1,56 @@
+[
+  {
+    "id": "c7dc5c1b0cc66ad8",
+    "title": "How To Remove Negative Content From Google Before AI Answers Cite It via @sejournal, @EraseDotCom",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/how-to-remove-negative-content-from-google-before-ai-answers-cite-it-spa/582989/",
+    "why": "Практический гайд по защите репутации в поиске — актуально для владельцев магазинов, которые опасаются негативных отзывов в Google и AI-ответах.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "5e87804d818982cb",
+    "title": "Zero-Click Searches in 2026: What They're Costing You, and How to Win Anyway",
+    "source": "Similarweb Blog",
+    "link": "https://www.similarweb.com/blog/marketing/seo/zero-click-searches/",
+    "why": "Исследование о том, почему рейтинг в Google не гарантирует клики — объясняет часть боли P1 «трафик хороший, а заказов нет».",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, P3; SaaS P1"
+  },
+  {
+    "id": "7cd69ec017a6f332",
+    "title": "How to Optimize Your Homepage for AI Traffic",
+    "source": "Similarweb Blog",
+    "link": "https://www.similarweb.com/blog/marketing/geo/optimize-your-homepage-for-ai-traffic/",
+    "why": "Конкретная инструкция по адаптации сайта под AI-ответы (глубокие страницы цитируются, но клики приходят на главную) — прямо про сайт и его конверсию.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "49addec864f811d2",
+    "title": "Traffic Is Down—Now What? Marketing Success In the Age of AI",
+    "source": "Semrush Blog",
+    "link": "https://www.semrush.com/blog/overcoming-ai-related-traffic-loss/",
+    "why": "Актуальное объяснение падения трафика из-за AI и способы адаптации — прямой ответ на боль владельца магазина, который видит падение посещений.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "730eb5256248406c",
+    "title": "Weilong Turned a Random Viral Story Into a Product Line: What Reactive Marketing Looks Like in China",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/weilong-turned-a-random-viral-story-into-a-product-line-what-reactive-marketing-looks-like-in-china/",
+    "why": "Кейс реактивного маркетинга: как быстро превратить вирусный момент в продажу — пример из другого рынка, но стратегия применима к малому бизнесу.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1"
+  },
+  {
+    "id": "239daec07d34d976",
+    "title": "Local SEO keyword research: A step-by-step guide",
+    "source": "Semrush Blog",
+    "link": "https://www.semrush.com/blog/local-keyword-research/",
+    "why": "Пошаговый гайд по локальному SEO и попаданию в AI-ответы — полезно для магазинов с локальной привязкой, ищущих клиентов в своём регионе.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1"
+  }
+]
