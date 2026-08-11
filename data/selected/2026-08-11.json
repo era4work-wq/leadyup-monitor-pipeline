@@ -1,0 +1,92 @@
+[
+  {
+    "id": "b4a5875c200397ec",
+    "title": "Sales Funnel Conversion Rate Benchmarks: 2026 Report",
+    "source": "FirstPageSage",
+    "link": "https://firstpagesage.com/seo-blog/sales-funnel-conversion-rate-benchmarks-report/",
+    "why": "Исследование с конкретными бенчмарками конверсии по индустриям — точно то, что нужно P1 и P3 (магазины) и SaaS P2 для понимания «почему у нас заказов нет»: сравни свою цифру с отраслевой нормой.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, P3; SaaS P2"
+  },
+  {
+    "id": "d337d37ec0eaa025",
+    "title": "The Scenic Route To ROI: Mastering Non-Linear Targeting In Google Ads",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/the-scenic-route-to-roi-mastering-non-linear-targeting-in-google-ads/581784/",
+    "why": "Шесть реальных кейсов, как доставить до нишевой аудитории в Google Ads обходными путями — для P2 маркетолога это показывает, как трафик можно ориентировать, чтобы снизить траты и привести более релевантных.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2; SaaS P2"
+  },
+  {
+    "id": "d442ada98b1de026",
+    "title": "The marketing-to-sales handoff is where revenue leaks",
+    "source": "MarTech",
+    "link": "https://martech.org/the-marketing-to-sales-handoff-is-where-revenue-leaks/",
+    "why": "Критическая боль: заявки теряются на переходе маркетинг→продажи. Для P4 (техспециалист) и SaaS P2 это прямо про интеграцию и скорость ответа — где именно может быть «дырка» в воронке после заявки.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4; SaaS P2, P4"
+  },
+  {
+    "id": "f54c326828ad6948",
+    "title": "5 AI blind spots that cost you conversions",
+    "source": "MarTech",
+    "link": "https://martech.org/5-ai-blind-spots-that-cost-you-conversions/",
+    "why": "AI копирайтинг звучит просто, но не меняет поведение — статья показывает, где реально теряются конверсии, когда полагаются только на нейросеть. Для P1 магазина: «вот почему нейросеть на сайте заказов не принесла».",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P2"
+  },
+  {
+    "id": "8999ed8c25864c08",
+    "title": "Google Announces Campaign Benchmarking In Google Analytics via Ask Advisor",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-analytics-will-benchmark-campaigns-through-ask-advisor/585213/",
+    "why": "Google Analytics теперь показывает, как твоя кампания работает относительно похожих компаний — ровно то, что P3 скептику нужно услышать: «вот что нормально, а что нет», без пересказов.",
+    "rubric": "ai-инструмент",
+    "persona": "интернет-магазины P2, P3"
+  },
+  {
+    "id": "061a2b054cebdbab",
+    "title": "The simple way to make your marketing claims 42.9% more believable",
+    "source": "HubSpot Marketing Blog",
+    "link": "https://blog.hubspot.com/marketing/marketing-claims-psychology",
+    "why": "Конкретная цифра (42.9%) про достоверность — и это прямо про боль: при недоверии ЦА нужно привести не обещание, а точную статистику. Для поста в канал: как говорить с недоверчивыми владельцами.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "2a431b1744e66bf2",
+    "title": "National Day 2026 gave AI a reality check: Creative leaders weigh in",
+    "source": "Marketing-Interactive",
+    "link": "https://www.marketing-interactive.com/national-day-2026-gave-ai-a-reality-check-creative-leaders-weigh-in",
+    "why": "Даже в ЮВА (Сингапур) зафиксирован момент: AI в маркетинге столкнулся с реальностью — людям нужно человеческое творчество, не только нейросеть. Эксклюзив из другого региона про то, что наши маркетологи уже чувствуют.",
+    "rubric": "дайджест",
+    "persona": "SaaS P2, P3"
+  },
+  {
+    "id": "2f5dcd5a42da8b63",
+    "title": "Microsoft Clarity Now Separates Branded And Non-Branded AI Citations",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/clarity-branded-non-branded-ai-citations/584654/",
+    "why": "AI-цитирование в поиске теперь делится на два типа — только нежирендерная цитата считается трафиком. Для P2 маркетолога и P4 техспеца: понимание того, откуда реально идёт трафик через AI-поиск.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, P4; SaaS P2, P4"
+  },
+  {
+    "id": "0d2f65506f980233",
+    "title": "Google Is Making Smart Bidding More Obedient. Here's What Advertisers Must Control Next.",
+    "source": "Optmyzr Blog",
+    "link": "https://www.optmyzr.com/blog/smart-bidding-budget-caps-guide/",
+    "why": "Google смягчил Smart Bidding, но это не панацея — статья показывает, что теперь нужно контролировать вручную. Для P2 и P3: почему автоматизация не заменяет голову и ROI может упасть.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, P3"
+  },
+  {
+    "id": "9d985ff8184484fd",
+    "title": "What is Custom Attribution?",
+    "source": "Jon Loomer Digital",
+    "link": "https://www.jonloomer.com/qvt/custom-attribution/",
+    "why": "Meta открыла Custom Attribution — зашить свою модель атрибуции вместо стандартной. Для P2 SaaS маркетолога и P3 владельца: наконец-то видно реальный путь клиента, не гадаем по последнему клику.",
+    "rubric": "ai-инструмент",
+    "persona": "SaaS P2, P3"
+  }
+]
