@@ -1,0 +1,92 @@
+[
+  {
+    "id": "163eed720caf2d2b",
+    "title": "The Metric Most SEOs Are Still Not Measuring In The Age Of AI",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/the-metric-most-seos-are-still-not-measuring-in-the-age-of-ai/584027/",
+    "why": "AI-ответы теперь влияют на решения покупателя ДО того, как он попадает на сайт — нужно мерить не только клики, но и видимость в AI-поиске, иначе будешь оптимизировать не то",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P2"
+  },
+  {
+    "id": "74c951231b73d28e",
+    "title": "Organic Traffic Dropped? What to Tell Clients & the AI Visibility Metrics to Report Instead",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/organic-traffic-dropped-what-to-tell-clients-the-ai-visibility-metrics-to-report-instead-spa/584388/",
+    "why": "Трафик упал — но это не вина SEO, а результат AI-поиска; показывает, какие метрики вместо кликов рассказывают реальную историю видимости",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "6b9e531d6d368cec",
+    "title": "ChatGPT's Search Index Serves Small Sites Too, Data Shows",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/chatgpts-search-index-serves-small-sites-too-data-shows/585388/",
+    "why": "Малые сайты попадают в ChatGPT Search наравне с крупными — это новый канал трафика, который нельзя игнорировать владельцам микробизнеса",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "a7809214ffdcbe20",
+    "title": "A 7-step guide to running ads on ChatGPT",
+    "source": "MarTech",
+    "link": "https://martech.org/a-7-step-guide-to-running-ads-on-chatgpt/",
+    "why": "Новый канал реклама — ChatGPT Ads; статья на примерах показывает, чем это отличается от других платформ, какие CPC и как мерить результат",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "45a87d58a756bc4f",
+    "title": "UX and AI: 10 Emotional Audience Segments That Transform Personalization",
+    "source": "VWO Blog",
+    "link": "https://vwo.com/blog/emotional-audience-segments/",
+    "why": "80% решений принимаются эмоционально — если разбить аудиторию на эмоциональные сегменты, можно повысить конверсию на сайте без роста трафика",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, интернет-магазины P3"
+  },
+  {
+    "id": "8b36fe9956f9c855",
+    "title": "B2B growth doesn't end at closed-won",
+    "source": "MarTech",
+    "link": "https://martech.org/b2b-growth-doesnt-end-at-closed-won/",
+    "why": "Не только лид важен — система работы после продажи определяет рост; для SaaS и онлайн-сервисов это означает внимание к удержанию и интеграции с CRM/мессенджерами",
+    "rubric": "лайфхак-инструкция",
+    "persona": "SaaS P3, SaaS P2"
+  },
+  {
+    "id": "d7d9e7d286c3f1a9",
+    "title": "Battling Creative Apathy in the Age of AI",
+    "source": "Foxwell Digital",
+    "link": "https://www.foxwelldigital.com/blog/battling-creative-apathy-in-the-age-of-ai",
+    "why": "AI делает креатив проще, но объявления становятся менее эффективны — нужно сохранять суждение и не полностью полагаться на генерацию, чтобы реклама действительно работала",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "072f33f098635d62",
+    "title": "Impact of AI Watermarking on SEO & GEO Results",
+    "source": "FirstPageSage",
+    "link": "https://firstpagesage.com/seo-blog/impact-of-ai-watermarking-on-seo-geo-results/",
+    "why": "Водяные знаки в AI-контенте — исследование показывает реальное влияние на ранжирование, нужно учитывать при SEO-стратегии",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "78ee78ae91739cc2",
+    "title": "Google vs ChatGPT Market Share: 2026 Report",
+    "source": "FirstPageSage",
+    "link": "https://firstpagesage.com/seo-blog/google-vs-chatgpt-market-share-report/",
+    "why": "Конкретные цифры: как быстро ChatGPT отбирает трафик у Google — важно понять динамику для планирования бюджетов на трафик",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P2"
+  },
+  {
+    "id": "2e656cbaff9e0c92",
+    "title": "China's Podcast Boom: The Underused Channel Foreign Brands Are Missing",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/chinas-podcast-boom-the-underused-channel-foreign-brands-are-missing/",
+    "why": "Эксклюзив: подкасты в Китае — вот где большой аудитория и малая конкуренция; для тех, кто ищет новый канал трафика за пределами Google/Яндекса",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P1, SaaS P1"
+  }
+]
