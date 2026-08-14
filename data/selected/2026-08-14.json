@@ -1,0 +1,92 @@
+[
+  {
+    "id": "bd872b7a873e8a10",
+    "title": "Google Is Removing Language Targeting From Search Campaigns via @sejournal, @brookeosmundson",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/google-is-removing-language-targeting-from-search-campaigns/585592/",
+    "why": "Практическое изменение в Директе, которое повлияет на настройку кампаний — нужно переделать стратегию таргетинга прямо сейчас, чтобы не потерять трафик.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "b367de87fb8fa97c",
+    "title": "The PPC Clean-Up: How to Audit and Fix 'Value Inflation' in Google Ads",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/the-ppc-clean-up-how-to-audit-and-fix-value-inflation-in-google-ads/583009/",
+    "why": "Решает боль P3 («только отвлекают менеджеров») — объясняет, почему трафик есть, а продаж нет: задираются конверсионные значения, стратегия ставит на фантомные лиды вместо реальных.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P3, SaaS P3"
+  },
+  {
+    "id": "6538005c332107c9",
+    "title": "How Do I Know If AI Overviews Are Taking Clicks From My Site And What Can I Do About It? – Ask An SEO",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/how-do-i-know-if-ai-overviews-are-taking-clicks-from-my-site-and-what-can-i-do-about-it-ask-an-seo/583417/",
+    "why": "AI Overview крадёт клики из органики — учит владельцев малых магазинов (P1) диагностировать проблему и действовать до того, как трафик рухнет совсем.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "04cf03b767dd1b84",
+    "title": "Misconfiguring Cloudflare Can Hurt Your SEO Badly",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/misconfigure-cloudflare-seo-41865.html",
+    "why": "Техническая ошибка, которая убивает весь трафик — P4 (digital-менеджер) должен знать, как она выглядит, чтобы сразу поймать падение рейтинга и не винить рекламу.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P4, SaaS P4"
+  },
+  {
+    "id": "7fd7e5be62ced920",
+    "title": "ChatGPT Ads Get Automated Bidding, Placements, and URL Parameters",
+    "source": "Jon Loomer Digital",
+    "link": "https://www.jonloomer.com/chatgpt-ads-automated-bidding-placements-url-parameters/",
+    "why": "ChatGPT как новый канал трафика — уже можно ставить автоматические ставки и отслеживать параметры, значит, это новая площадка для теста в микс трафика.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "f15f85ec0a16aa6d",
+    "title": "The GEO Trust Gap: SEOs Want The Data, But Not The Platforms Selling It",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/the-geo-trust-gap-seos-want-the-data-but-not-the-platforms-selling-it/585161/",
+    "why": "Исследование: специалисты хотят видимость в AI-поиске, но не готовы платить платформам — важно для тех, кто боится потерять трафик в новых AI-ответах и ищет дешёвые способы мониторинга.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "66dbea588042a70a",
+    "title": "Introducing AI Ads: See Who's Advertising Inside ChatGPT, Google AI Mode, and AI Overviews",
+    "source": "Similarweb Blog",
+    "link": "https://www.similarweb.com/blog/updates/product-updates/introducing-ai-ads/",
+    "why": "Первый раз видно, кто рекламируется в AI-ответах и ChatGPT — инструмент для аналитика (P2) проверить, стоит ли вообще туда идти или конкуренты уже перекрыли площадку.",
+    "rubric": "ai-инструмент",
+    "persona": "интернет-магазины P2, SaaS P2"
+  },
+  {
+    "id": "c2e68f7ebce5ba13",
+    "title": "The AI debt hidden in faster marketing",
+    "source": "MarTech",
+    "link": "https://martech.org/the-ai-debt-hidden-in-faster-marketing/",
+    "why": "За скоростью AI-инструментов скрывается работа по интеграции и поддержке — нужно переделывать CRM, синхронизировать данные, иначе боль P4 («куда идут заявки?») только усилится.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P4, SaaS P3"
+  },
+  {
+    "id": "16beedf7c8d58a39",
+    "title": "Google Lowers Subscriber Requirements For Search Profiles",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-search-profiles-lowers-subscriber-requirements-41866.html",
+    "why": "Google опустил планку для Search Profile с 100K до 35K подписчиков — теперь больше малых магазинов и SaaS могут попасть в профиль и дополнительно работать с трафиком.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, SaaS P1"
+  },
+  {
+    "id": "928f0d3b11357e70",
+    "title": "Why Chinese Brands Are Playing It Safer in 2026 (And What Foreign Brands Should Learn)",
+    "source": "Marketing to China (GMA)",
+    "link": "https://marketingtochina.com/why-chinese-brands-are-playing-it-safer-in-2026-and-what-foreign-brands-should-learn/",
+    "why": "Исследование: китайские бренды меняют тон общения в 2026 — для тех, кто работает с китайским рынком, сигнал переделать копирайт и стратегию позиционирования перед тем, как вкладывать в трафик.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P3, SaaS P2"
+  }
+]
