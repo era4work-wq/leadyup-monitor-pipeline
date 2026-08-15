@@ -174,11 +174,17 @@ CANON_REFERENCE_FILENAMES = ["01-фронт.png", "02-три-четверти.pn
 def build_banner_prompt(item: dict) -> str:
     theme = item["title"] + (f' — {item["why"]}' if item.get("why") else "")
     return (
-        "Using the exact same cartoon rabbit mascot character shown in the reference images "
-        "(same species, same fur color, same art style, same proportions — do not redesign it), "
+        "Using the exact same rabbit mascot character shown in the reference images "
+        "(same species, same fur color, same art style, same proportions, same outfit — do not redesign it), "
         f'create a NEW scene themed around: "{theme}". '
+        "CRITICAL — match the reference images' fur rendering EXACTLY: high-end 3D character render "
+        "with individually visible fur strands, realistic depth and volume, soft directional studio "
+        "lighting that shows texture — NOT smooth, flat, or plush-toy-like fur. "
+        "Match the reference images' facial expression and attitude EXACTLY: sharp, alert, confident, "
+        "slightly narrowed focused eyes with personality and wit — NOT a soft, neutral, or vacant "
+        "plush-toy expression. "
         "Keep the same dark near-black/navy cinematic background style, soft glow lighting, "
-        "professional tech-conference-cover aesthetic, same as the reference images. "
+        "professional tech-conference-cover aesthetic. "
         "16:9 landscape composition. "
         "STRICT: absolutely no text, letters, numbers, words, logos, or watermarks anywhere in the image."
     )
