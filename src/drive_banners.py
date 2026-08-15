@@ -164,37 +164,41 @@ REFERENCE_COUNT = 2
 # персонажа; сцена в референсе тянется в новую генерацию вместе с зайцем,
 # путает модель). Сервисный аккаунт видит эту папку — доступ дан на всю
 # leadyup-генерация/, не только на БАННЕРЫ/ (см. память
-# drive-service-account-banners). Фиксированные 2 чистых ракурса (фронт +
-# три четверти), не случайные — тут не нужно разнообразие, нужна
-# стабильность одного и того же эталона.
+# drive-service-account-banners).
 CANON_REFERENCE_FOLDER_NAME = "референс-пак"
-CANON_REFERENCE_FILENAMES = ["01-фронт.png", "02-три-четверти.png"]
+CANON_REFERENCE_FILENAME = "01-фронт.png"  # один чистый ракурс — верность персонажа
+
+# СМЕШАННЫЙ референс (предложено владелицей 15.08.2026, после того как чисто
+# канон-референс дал верного, но "унылого" зайца — плоский фон, никакой
+# зрелищности): 1 канон-фото персонажа + 1 случайный готовый баннер из
+# «универсальные» — модель берёт дизайн персонажа с первого и энергию/стиль
+# фона со второго, не одно универсальное фото на обе задачи сразу.
 
 
 def build_banner_prompt(item: dict) -> str:
     theme = item["title"] + (f' — {item["why"]}' if item.get("why") else "")
     return (
-        "Using the exact same rabbit mascot character shown in the reference images "
-        "(same species, same fur color, same art style, same proportions, same outfit — do not redesign it), "
-        f'create a NEW scene themed around: "{theme}". '
-        "CRITICAL — match the reference images' fur rendering EXACTLY: high-end 3D character render "
-        "with individually visible fur strands, realistic depth and volume, soft directional studio "
-        "lighting that shows texture — NOT smooth, flat, or plush-toy-like fur. "
-        "Match the reference images' facial expression and attitude EXACTLY: sharp, alert, confident, "
-        "slightly narrowed focused eyes with personality and wit — NOT a soft, neutral, or vacant "
-        "plush-toy expression. "
+        "You are given TWO reference images with DIFFERENT roles — do not treat them the same way:\n"
+        "REFERENCE 1 (character sheet): shows the EXACT rabbit mascot character to replicate — same "
+        "species, same fur color, same art style, same proportions, same outfit, same fur rendering "
+        "quality (individually visible fur strands, realistic depth/volume, NOT smooth or plush-toy-like), "
+        "same facial expression and confident attitude. Do not redesign the character.\n"
+        "REFERENCE 2 (style/mood board): shows the target BANNER STYLE to match — its dramatic lighting, "
+        "visual energy, glow/light effects and overall striking, dynamic mood. Do NOT copy its specific "
+        "pose, its specific props/chart content, or its specific composition — only match its stylistic "
+        "energy and production value.\n"
+        f'Combine both into a NEW scene themed around: "{theme}". '
         "POSE: give the rabbit a purposeful, thoughtful, dramatic pose that fits the theme (e.g. hand "
         "near chin in a pensive gesture, looking off to the side in contemplation, or interacting with "
-        "a thin glowing UI/data element related to the theme) — NOT a static frontal ID-photo stance. "
+        "a glowing UI/data element related to the theme) — NOT a static frontal ID-photo stance. Make the "
+        "scene feel striking and alive (dynamic light, glow effects, a sense of depth), not flat or dull. "
         "MANDATORY LAYOUT — this is a banner template that will have a headline overlaid on top "
         "afterwards, so the composition MUST leave room for it: "
-        "the rabbit (plus any small supporting graphic) occupies ONLY the right third of the 16:9 frame, "
-        "taking up roughly 25-30% of the total image area — NOT centered, NOT filling the frame. "
-        "The left ~55-60% of the frame MUST stay mostly empty, dark, and visually quiet (plain dark "
-        "background, at most a very subtle glow or faint graphic element) — this space is reserved for "
-        "text and must not be busy or contain the main subject. "
-        "Keep the same dark near-black/navy cinematic background style, soft glow lighting, "
-        "professional tech-conference-cover aesthetic. "
+        "the rabbit (plus any supporting graphic/light effects) occupies ONLY the right third of the "
+        "16:9 frame, taking up roughly 25-30% of the total image area — NOT centered, NOT filling the "
+        "frame. The left ~55-60% of the frame MUST stay mostly empty and visually quiet (dark background, "
+        "at most a subtle glow bleeding in from the right) — this space is reserved for text and must "
+        "not contain the main subject or busy detail. "
         "16:9 landscape composition. "
         "STRICT: absolutely no text, letters, numbers, words, logos, or watermarks anywhere in the image."
     )
@@ -215,18 +219,30 @@ def _find_folder_by_name(service, name: str):
 
 
 def pick_reference_images(service, n: int = REFERENCE_COUNT) -> list:
-    """Эталонные референсы персонажа — фиксированный набор чистых ракурсов
-    из CANON_REFERENCE_FOLDER_NAME (без сцены/реквизита/конкретной позы —
-    только дизайн персонажа). Пустой список, если папка/файлы не нашлись —
-    вызывающий код откатится на обычный подбор из Drive."""
+    """Смешанный референс: [0] — канон персонажа (чистый ракурс, без сцены,
+    см. CANON_REFERENCE_FILENAME), [1] — случайный готовый баннер из
+    «универсальные» (для стиля/энергии, не для персонажа — там уже сцена).
+    Порядок важен, build_banner_prompt разъясняет модели роль каждого по
+    позиции. Пустой список, если канон-референс не нашёлся — вызывающий код
+    откатится на обычный подбор из Drive."""
     folder_id = _find_folder_by_name(service, CANON_REFERENCE_FOLDER_NAME)
     if not folder_id:
         return []
     available = {f["name"]: f["id"] for f in _list_children(service, folder_id)}
-    file_ids = [available[name] for name in CANON_REFERENCE_FILENAMES if name in available]
-    if not file_ids:
+    canon_id = available.get(CANON_REFERENCE_FILENAME)
+    if not canon_id:
         return []
-    return [service.files().get_media(fileId=fid).execute() for fid in file_ids[:n]]
+    refs = [service.files().get_media(fileId=canon_id).execute()]
+
+    folders = list_topic_folders(service)
+    universal = next((f for f in folders if f["name"] == UNIVERSAL_FOLDER_NAME), None)
+    if universal:
+        branded = [f for f in list_available(service, universal["id"]) if _is_branded(f["name"])]
+        if branded:
+            chosen = random.choice(branded)
+            refs.append(service.files().get_media(fileId=chosen["id"]).execute())
+
+    return refs[:n]
 
 
 def generate_and_store_banner(service, item: dict) -> dict:
