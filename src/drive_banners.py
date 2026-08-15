@@ -140,9 +140,9 @@ PAIN_FOLDER_NAMES = [
 
 # Подбор из Drive-папок (ниже) остаётся ЗАПАСНЫМ путём. Основной путь —
 # генерация баннера под конкретную тему через GPT Image 2 (common.py:
-# generate_topic_banner), с реальными фирменными баннерами из «универсальные»
-# как референс персонажа, чтобы заяц не перерисовывался с нуля каждый раз.
-# Проверено вживую с владелицей 15.08.2026 на реальной теме — устроило.
+# generate_topic_banner), с эталонным референс-паком персонажа (см. ниже),
+# чтобы заяц не перерисовывался с нуля каждый раз. Проверено вживую с
+# владелицей 15.08.2026 на реальной теме — устроило.
 #
 # Сгенерированные баннеры хранятся ЛОКАЛЬНО (data/banners/ai/<id>.png), не в
 # Drive: попытка загрузить туда файл упала с "Service Accounts do not have
@@ -156,6 +156,19 @@ PAIN_FOLDER_NAMES = [
 AI_GENERATED_FOLDER_NAME = "сгенерированные-ИИ"
 AI_BANNER_DIR = DATA_DIR / "banners" / "ai"
 REFERENCE_COUNT = 2
+
+# Эталонный референс-пак персонажа — НЕ в БАННЕРЫ/, отдельное дерево
+# ассеты/персонажи/заяц/референс-пак/ (найдено владелицей 15.08.2026 после
+# того, как я по умолчанию брала случайные готовые баннеры со СЦЕНОЙ —
+# заяц с графиком, в конкретной позе — а не чистый референс дизайна
+# персонажа; сцена в референсе тянется в новую генерацию вместе с зайцем,
+# путает модель). Сервисный аккаунт видит эту папку — доступ дан на всю
+# leadyup-генерация/, не только на БАННЕРЫ/ (см. память
+# drive-service-account-banners). Фиксированные 2 чистых ракурса (фронт +
+# три четверти), не случайные — тут не нужно разнообразие, нужна
+# стабильность одного и того же эталона.
+CANON_REFERENCE_FOLDER_NAME = "референс-пак"
+CANON_REFERENCE_FILENAMES = ["01-фронт.png", "02-три-четверти.png"]
 
 
 def build_banner_prompt(item: dict) -> str:
@@ -171,21 +184,33 @@ def build_banner_prompt(item: dict) -> str:
     )
 
 
+def _find_folder_by_name(service, name: str):
+    """Ищет папку по названию где угодно в доступной сервисному аккаунту
+    части Диска, не только под БАННЕРЫ/ — эталонный референс-пак лежит в
+    отдельном дереве (ассеты/персонажи/заяц/)."""
+    resp = service.files().list(
+        q=f"name = '{name}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false",
+        fields="files(id,name)",
+        supportsAllDrives=True,
+        includeItemsFromAllDrives=True,
+    ).execute()
+    files = resp.get("files", [])
+    return files[0]["id"] if files else None
+
+
 def pick_reference_images(service, n: int = REFERENCE_COUNT) -> list:
-    """Случайные фирменные баннеры (с зайцем) как референс персонажа для
-    ИИ-генерации — берутся из «универсальные», не помечаются использованными
-    (это только референс, не публикуемая картинка). Пустой список, если
-    папки/фирменных файлов не нашлось — вызывающий код должен уметь
-    откатиться на обычный подбор из Drive."""
-    folders = list_topic_folders(service)
-    universal = next((f for f in folders if f["name"] == UNIVERSAL_FOLDER_NAME), None)
-    if not universal:
+    """Эталонные референсы персонажа — фиксированный набор чистых ракурсов
+    из CANON_REFERENCE_FOLDER_NAME (без сцены/реквизита/конкретной позы —
+    только дизайн персонажа). Пустой список, если папка/файлы не нашлись —
+    вызывающий код откатится на обычный подбор из Drive."""
+    folder_id = _find_folder_by_name(service, CANON_REFERENCE_FOLDER_NAME)
+    if not folder_id:
         return []
-    branded = [f for f in list_available(service, universal["id"]) if _is_branded(f["name"])]
-    if not branded:
+    available = {f["name"]: f["id"] for f in _list_children(service, folder_id)}
+    file_ids = [available[name] for name in CANON_REFERENCE_FILENAMES if name in available]
+    if not file_ids:
         return []
-    chosen = random.sample(branded, min(n, len(branded)))
-    return [service.files().get_media(fileId=f["id"]).execute() for f in chosen]
+    return [service.files().get_media(fileId=fid).execute() for fid in file_ids[:n]]
 
 
 def generate_and_store_banner(service, item: dict) -> dict:
