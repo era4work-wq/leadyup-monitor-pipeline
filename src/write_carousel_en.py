@@ -52,6 +52,7 @@ def build_carousel_record_en(api_key: str, style: str, humanize_prompt: str, ser
         banner = drive_banners.get_or_pick_banner(service, item)
         banner_meta = {
             "id": banner["id"],
+            "source": banner.get("source", "drive"),
             "name": banner["name"],
             "headline": data["cover_headline"],
             "badge": BADGE_LABEL_EN.get(item.get("rubric", ""), DEFAULT_BADGE_CAROUSEL_EN),

@@ -111,6 +111,7 @@ def get_post_banner_en(service, item: dict, headline_en: str) -> Optional[dict]:
     badge = BADGE_LABEL_EN.get(item.get("rubric", ""), DEFAULT_BADGE_EN)
     return {
         "id": banner["id"],
+        "source": banner.get("source", "drive"),
         "name": banner["name"],
         "headline": headline_en,
         "badge": badge,

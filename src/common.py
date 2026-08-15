@@ -199,3 +199,43 @@ def generate_cover_image(api_key: str, prompt: str, model: str = IMAGE_MODEL) ->
     except Exception as exc:
         print(f"[WARN] generate_cover_image упал: {exc}")
         return None
+
+
+TOPIC_BANNER_MODEL = "openai/gpt-image-2"  # держит персонажа похожим по референсным фото
+
+
+def generate_topic_banner(api_key: str, prompt: str, reference_images: list) -> Optional[bytes]:
+    """Генерирует баннер под тему через Images API OpenRouter (не chat/completions
+    — этот эндпоинт умеет принимать входные референсные картинки, чтобы
+    фирменный персонаж не перерисовывался с нуля каждый раз). Возвращает
+    сырые байты PNG или None при любой проблеме — best-effort, как и
+    generate_cover_image: подбор баннера из Drive остаётся запасным путём."""
+    try:
+        input_refs = [
+            {
+                "type": "image_url",
+                "image_url": {"url": f"data:image/png;base64,{base64.b64encode(b).decode()}"},
+            }
+            for b in reference_images
+        ]
+        resp = requests.post(
+            "https://openrouter.ai/api/v1/images",
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            json={
+                "model": TOPIC_BANNER_MODEL,
+                "prompt": prompt,
+                "input_references": input_refs,
+                "aspect_ratio": "16:9",
+                "quality": "medium",
+            },
+            timeout=120,
+        )
+        if not resp.ok:
+            print(f"[WARN] generate_topic_banner: {resp.status_code} {resp.text[:300]}")
+            return None
+        body = resp.json()
+        b64_part = body["data"][0]["b64_json"]
+        return base64.b64decode(b64_part)
+    except Exception as exc:
+        print(f"[WARN] generate_topic_banner упал: {exc}")
+        return None

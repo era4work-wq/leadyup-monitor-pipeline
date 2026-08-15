@@ -53,7 +53,7 @@ def render_banner(item: dict, service) -> bytes:
     if not banner:
         return None
     try:
-        raw = service.files().get_media(fileId=banner["id"]).execute()
+        raw = drive_banners.load_banner_bytes(service, banner)
         headline = banner.get("headline")
         if not headline:
             return raw  # старый кэш без headline (до 30.07.2026) — как есть

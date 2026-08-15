@@ -234,6 +234,7 @@ def get_post_banner(service, item: dict, draft_text: str) -> Optional[dict]:
     banner = drive_banners.get_or_pick_banner(service, item, headline=hook, badge=badge)
     return {
         "id": banner["id"],
+        "source": banner.get("source", "drive"),
         "name": banner["name"],
         "headline": banner.get("headline", hook),
         "badge": banner.get("badge", badge),

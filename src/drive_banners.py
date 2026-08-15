@@ -5,6 +5,7 @@
 ещё свежее (лежит в корне темы), а что уже пошло в дело (в "использовано").
 Владелица ориентируется по тому же признаку, когда сама смотрит на Диск.
 """
+import os
 import random
 import sys
 from pathlib import Path
@@ -13,7 +14,7 @@ import requests
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-from common import DATA_DIR, read_json, require_env, write_json
+from common import DATA_DIR, generate_topic_banner, read_json, require_env, write_json
 
 SERVICE_ACCOUNT_FILE = Path(__file__).resolve().parent.parent / "secrets" / "drive-service-account.json"
 USED_FOLDER_NAME = "использовано"
@@ -137,6 +138,77 @@ PAIN_FOLDER_NAMES = [
 ]
 
 
+# Подбор из Drive-папок (ниже) остаётся ЗАПАСНЫМ путём. Основной путь —
+# генерация баннера под конкретную тему через GPT Image 2 (common.py:
+# generate_topic_banner), с реальными фирменными баннерами из «универсальные»
+# как референс персонажа, чтобы заяц не перерисовывался с нуля каждый раз.
+# Проверено вживую с владелицей 15.08.2026 на реальной теме — устроило.
+#
+# Сгенерированные баннеры хранятся ЛОКАЛЬНО (data/banners/ai/<id>.png), не в
+# Drive: попытка загрузить туда файл упала с "Service Accounts do not have
+# storage quota" — у сервисных аккаунтов нет собственной квоты хранения на
+# личном Диске владелицы (это ограничение Google, снимается только Shared
+# Drive или delegation на стороне заказчика — не настроено). Читать/двигать
+# файлы в её Диске сервисный аккаунт может (доступ дан на папку), а вот
+# создавать новые с содержимым — нет. Если это будет мешать (например
+# захочется видеть архив сгенерированного в самом Диске) — нужен один из
+# этих двух шагов с их стороны, не код.
+AI_GENERATED_FOLDER_NAME = "сгенерированные-ИИ"
+AI_BANNER_DIR = DATA_DIR / "banners" / "ai"
+REFERENCE_COUNT = 2
+
+
+def build_banner_prompt(item: dict) -> str:
+    theme = item["title"] + (f' — {item["why"]}' if item.get("why") else "")
+    return (
+        "Using the exact same cartoon rabbit mascot character shown in the reference images "
+        "(same species, same fur color, same art style, same proportions — do not redesign it), "
+        f'create a NEW scene themed around: "{theme}". '
+        "Keep the same dark near-black/navy cinematic background style, soft glow lighting, "
+        "professional tech-conference-cover aesthetic, same as the reference images. "
+        "16:9 landscape composition. "
+        "STRICT: absolutely no text, letters, numbers, words, logos, or watermarks anywhere in the image."
+    )
+
+
+def pick_reference_images(service, n: int = REFERENCE_COUNT) -> list:
+    """Случайные фирменные баннеры (с зайцем) как референс персонажа для
+    ИИ-генерации — берутся из «универсальные», не помечаются использованными
+    (это только референс, не публикуемая картинка). Пустой список, если
+    папки/фирменных файлов не нашлось — вызывающий код должен уметь
+    откатиться на обычный подбор из Drive."""
+    folders = list_topic_folders(service)
+    universal = next((f for f in folders if f["name"] == UNIVERSAL_FOLDER_NAME), None)
+    if not universal:
+        return []
+    branded = [f for f in list_available(service, universal["id"]) if _is_branded(f["name"])]
+    if not branded:
+        return []
+    chosen = random.sample(branded, min(n, len(branded)))
+    return [service.files().get_media(fileId=f["id"]).execute() for f in chosen]
+
+
+def generate_and_store_banner(service, item: dict) -> dict:
+    """Генерирует баннер под тему и сохраняет байты локально (data/banners/ai/,
+    см. комментарий выше про квоту сервисного аккаунта). Возвращает None,
+    если референсов нет или генерация не удалась — вызывающий код откатится
+    на обычный подбор из Drive."""
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    if not api_key:
+        return None
+    refs = pick_reference_images(service)
+    if not refs:
+        return None
+    image_bytes = generate_topic_banner(api_key, build_banner_prompt(item), refs)
+    if not image_bytes:
+        return None
+    AI_BANNER_DIR.mkdir(parents=True, exist_ok=True)
+    filename = f"{item['id']}.png"
+    (AI_BANNER_DIR / filename).write_bytes(image_bytes)
+    print(f"  баннер: сгенерирован ИИ под тему -> {filename}", file=sys.stderr)
+    return {"source": "ai", "name": filename, "bytes": image_bytes}
+
+
 def pick_topic_folder(service, item: dict) -> dict:
     """Выбирает подпапку БАННЕРЫ/ под тему поста — по названию папки, без
     просмотра самих картинок (дорого по токенам). Если подпапка одна —
@@ -208,14 +280,45 @@ def get_or_pick_banner(service, item: dict, headline: str = None, badge: str = N
             cached["headline"] = headline
             cached["badge"] = badge
             write_json(cache_path, cached)
-        data = service.files().get_media(fileId=cached["id"]).execute()
+        # "source" нет у кэша, записанного до этой функции — тогда единственным
+        # путём был подбор из Drive, читаем как раньше (обратная совместимость).
+        if cached.get("source", "drive") == "ai":
+            data = (AI_BANNER_DIR / cached["name"]).read_bytes()
+        else:
+            data = service.files().get_media(fileId=cached["id"]).execute()
         return {**cached, "bytes": data}
 
-    folder = pick_topic_folder(service, item)
-    banner = pick_and_mark(service, folder["id"])
-    cache_entry = {"id": banner["id"], "name": banner["name"], "folder": folder["name"]}
+    banner = generate_and_store_banner(service, item)
+    if banner is not None:
+        # "id" тут не настоящий Drive id (для ИИ-баннера его нет) — стабильная
+        # синтетическая метка (= имени локального файла), чтобы весь код ниже
+        # по цепочке (write_*.py/notify_*.py), который просто читает banner["id"]
+        # для сохранения в drafts/*.json, не падал на отсутствующем ключе.
+        # За реальную загрузку байт отвечает "source", см. load_banner_bytes().
+        cache_entry = {
+            "source": "ai",
+            "id": item["id"],
+            "name": banner["name"],
+            "folder": AI_GENERATED_FOLDER_NAME,
+        }
+    else:
+        folder = pick_topic_folder(service, item)
+        banner = pick_and_mark(service, folder["id"])
+        cache_entry = {"source": "drive", "id": banner["id"], "name": banner["name"], "folder": folder["name"]}
+
     if headline:
         cache_entry["headline"] = headline
         cache_entry["badge"] = badge
     write_json(cache_path, cache_entry)
     return {**banner, **cache_entry}
+
+
+def load_banner_bytes(service, banner: dict) -> bytes:
+    """Достаёт сырые байты баннера по метаданным, сохранённым в drafts/*.json
+    (id/name/source) — из Drive, если баннер оттуда, или локально
+    (data/banners/ai/), если сгенерирован ИИ. Используют notify_*.py/publish.py
+    при отправке — они получают только эти метаданные, не сами байты
+    (get_or_pick_banner к тому моменту уже отработал в отдельном прогоне)."""
+    if banner.get("source") == "ai":
+        return (AI_BANNER_DIR / banner["name"]).read_bytes()
+    return service.files().get_media(fileId=banner["id"]).execute()

@@ -47,7 +47,7 @@ def send_article(token: str, chat_id: str, item: dict, service) -> dict:
     banner = item.get("banner")
     if banner:
         try:
-            raw = service.files().get_media(fileId=banner["id"]).execute()
+            raw = drive_banners.load_banner_bytes(service, banner)
             headline = banner.get("headline")
             if headline:
                 data_uri = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")

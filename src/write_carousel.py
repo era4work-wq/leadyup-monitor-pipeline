@@ -138,6 +138,7 @@ def build_carousel_record(api_key: str, style: str, humanize_prompt: str, servic
         # у всех форматов темы была одна и та же картинка с одним заголовком.
         banner_meta = {
             "id": banner["id"],
+            "source": banner.get("source", "drive"),
             "name": banner["name"],
             "headline": banner.get("headline", data["cover_headline"]),
             "badge": banner.get("badge", "КАРУСЕЛЬ"),

@@ -56,7 +56,7 @@ def render_slides(item: dict, service) -> list[bytes]:
     background = None
     if banner:
         try:
-            raw = service.files().get_media(fileId=banner["id"]).execute()
+            raw = drive_banners.load_banner_bytes(service, banner)
             background = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")
         except Exception as exc:
             print(f"  [WARN] не удалось скачать баннер: {exc}", file=sys.stderr)

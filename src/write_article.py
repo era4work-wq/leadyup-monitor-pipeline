@@ -111,6 +111,7 @@ def main():
             # при отправке, не здесь — см. notify_article.py.
             banner_meta = {
                 "id": banner["id"],
+                "source": banner.get("source", "drive"),
                 "name": banner["name"],
                 "headline": banner.get("headline", title),
                 "badge": banner.get("badge", "СТАТЬЯ"),
