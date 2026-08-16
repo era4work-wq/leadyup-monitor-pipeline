@@ -1,0 +1,38 @@
+[
+  {
+    "id": "16b6211bb57bb10f",
+    "title": "ChatGPT's Index, GA Benchmarks, Google Refiles Complaint – SEO Pulse via @sejournal, @MattGSouthern",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/seo-pulse-chatgpts-index-ga-benchmarks-google-refiles-complaint/585748/",
+    "why": "Google Analytics добавил бенчмарки по кампаниям — инструмент для сравнения своих метрик с индустрией, помогает P3 понять, нормален ли их трафик или нужно менять стратегию.",
+    "rubric": "дайджест",
+    "persona": "интернет-магазины P3, SaaS P2"
+  },
+  {
+    "id": "ef91971446e58624",
+    "title": "AI Overviews: How Freshpet Stands Out in SEO & GEO [Webinar]",
+    "source": "Search Engine Journal",
+    "link": "https://www.searchenginejournal.com/ai-overviews-how-freshpet-stands-out-seo-geo/584796/",
+    "why": "Кейс, как бренд попадает в AI Overviews — новый трафик-канал, который меняет SEO-стратегию для P1/P3, показывает конкретный пример оптимизации под AI-поиск вместо классического Google.",
+    "rubric": "кейс-с-цифрами",
+    "persona": "интернет-магазины P1, P3"
+  },
+  {
+    "id": "ca555e35a5035742",
+    "title": "Google Local Report Owner Response",
+    "source": "Search Engine Roundtable",
+    "link": "https://www.seroundtable.com/google-report-owner-response-41873.html",
+    "why": "Новая опция в Google Business Profiles — локальный сервис/магазин может теперь блокировать оскорбительные ответы конкурентов на отзывы, практический инструмент защиты репутации для P1 и локального бизнеса.",
+    "rubric": "лайфхак-инструкция",
+    "persona": "интернет-магазины P1, P4"
+  },
+  {
+    "id": "27dcca354d02b8fd",
+    "title": "Chert",
+    "source": "Product Hunt",
+    "link": "https://www.producthunt.com/products/chert",
+    "why": "AI video agents для FaceTime — может заменить live-звонок с менеджером на первичной консультации, автоматизирует приём заявок для P2/P4 в SaaS, экономит время на скрининг лидов.",
+    "rubric": "ai-инструмент",
+    "persona": "SaaS P2, P4"
+  }
+]
