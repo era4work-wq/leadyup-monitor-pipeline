@@ -1,0 +1,38 @@
+name: Напоминание — вернуть репозиторий в приватный
+
+# Репозиторий сделан ПУБЛИЧНЫМ 22.08.2026 (решение владелицы) — временно,
+# чтобы обойти биллинг GitHub Actions (карта/лимит трат не позволяли
+# запускать приватный репозиторий, публичные репозитории — безлимитные
+# минуты бесплатно). Как только у каналов появится реальная аудитория,
+# репозиторий нужно вернуть в приватный — GitHub Settings → General →
+# Danger Zone → Change visibility. Этот workflow раз в месяц проверяет,
+# не забыли ли это сделать, и шлёт напоминание в Telegram, только если
+# репозиторий всё ещё публичный (иначе тихо ничего не делает).
+
+on:
+  schedule:
+    - cron: "17 10 22 * *"  # 22-е число каждого месяца, 10:17 UTC — не круглое время специально
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Проверить видимость репозитория и напомнить, если всё ещё публичный
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          IS_PRIVATE=$(gh api repos/${{ github.repository }} -q '.private')
+          if [ "$IS_PRIVATE" = "true" ]; then
+            echo "Репозиторий уже приватный — ничего слать не нужно."
+            exit 0
+          fi
+          TEXT="⚠️ Напоминание: репозиторий leadyup-monitor-pipeline всё ещё ПУБЛИЧНЫЙ (сделан открытым 22.08.2026 из-за проблемы с оплатой GitHub Actions).%0A%0AЕсли у каналов уже есть реальная аудитория — пора вернуть в приватный: GitHub → Settings → General → Danger Zone → Change visibility.%0A%0AЕсли ещё рано — просто игнорируйте, это напоминание придёт снова через месяц."
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT_ID}" \
+            -d "text=${TEXT}"
