@@ -30,7 +30,7 @@ def main():
     for item in selected:
         text = format_message(item)
         formats = item.get("suggested_formats", [])
-        keyboard = build_topic_keyboard(item["id"], formats)
+        keyboard = build_topic_keyboard(item["id"], formats, rubric=item.get("rubric"))
         result = tg_call(
             token, "sendMessage", chat_id=chat_id, text=text,
             parse_mode="HTML", disable_web_page_preview=True, reply_markup=keyboard,

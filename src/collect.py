@@ -10,12 +10,15 @@ import sys
 import time
 
 import feedparser
+import requests
+from lxml import html
 
 from common import DATA_DIR, ROOT, STATE_DIR, item_id, read_json, today, write_json
 
 MAX_PER_FEED = 6  # не даём одному источнику залить весь батч
 MAX_AGE_DAYS = 4  # свежесть публикации, если дата известна
 REQUEST_TIMEOUT = 20
+TELEGRAM_TITLE_LIMIT = 100  # у поста в Telegram нет заголовка — отрезаем первую часть текста под заголовок
 
 
 def load_sources():
@@ -49,6 +52,65 @@ def entry_is_fresh(age_days) -> bool:
     return age_days <= MAX_AGE_DAYS
 
 
+def is_telegram_source(url: str) -> bool:
+    return "t.me/s/" in url
+
+
+def fetch_telegram_channel(url: str) -> list[dict]:
+    """Публичный веб-превью Telegram-канала (t.me/s/<канал>) — без бота, без
+    токена, просто HTML-страница, доступная кому угодно. Решение владелицы
+    16.08.2026: у большинства нужных RU-сервисов (Авито, Ozon, VK Реклама и
+    т.д.) в 2026 году нет RSS вообще, только официальные Telegram-каналы —
+    вместо Bot API (туда нужны права админа канала, которых у нас нет)
+    читаем ту же публичную страницу, что видит браузер без логина.
+
+    Отдаёт entries в том же виде, что и feedparser (title/link/summary/
+    published_parsed) — дальше по пайплайну (entry_age_days, дедуп, сборка
+    кандидата) ничего не должно знать, что источник не RSS.
+
+    Репосты (`tgme_widget_message_forwarded_from`) пропускаются — это уже
+    не первоисточник, канал просто ретранслирует чужую новость (правило
+    владелицы: только то, что компания публикует от своего имени)."""
+    resp = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (leadyup-monitor-bot)"}, timeout=REQUEST_TIMEOUT)
+    resp.raise_for_status()
+    tree = html.fromstring(resp.text)
+    messages = tree.xpath('//div[contains(concat(" ", normalize-space(@class), " "), " tgme_widget_message ")]')
+
+    entries = []
+    for m in messages:
+        if m.xpath('.//div[contains(@class,"tgme_widget_message_forwarded_from")]'):
+            continue
+        text_el = m.xpath('.//div[contains(@class,"tgme_widget_message_text")]')
+        text = text_el[0].text_content().strip() if text_el else ""
+        if not text:
+            continue  # пост без текста (только фото/видео) — нечего оценивать на отборе
+        date_el = m.xpath('.//a[contains(@class,"tgme_widget_message_date")]/time')
+        link_el = m.xpath('.//a[contains(@class,"tgme_widget_message_date")]')
+        if not date_el or not link_el:
+            continue
+        dt_str = date_el[0].get("datetime")  # "2026-08-20T09:38:40+00:00" — Telegram отдаёт в UTC
+        try:
+            published_parsed = time.strptime(dt_str[:19], "%Y-%m-%dT%H:%M:%S")
+        except (ValueError, TypeError):
+            published_parsed = None
+
+        if len(text) <= TELEGRAM_TITLE_LIMIT:
+            title, summary = text, ""
+        else:
+            cut = text.rfind(" ", 0, TELEGRAM_TITLE_LIMIT)
+            if cut == -1:
+                cut = TELEGRAM_TITLE_LIMIT
+            title, summary = text[:cut].strip(), text[cut:].strip()
+
+        entries.append({
+            "title": title,
+            "link": link_el[0].get("href"),
+            "summary": summary,
+            "published_parsed": published_parsed,
+        })
+    return entries
+
+
 def collect() -> list[dict]:
     seen_path = STATE_DIR / "seen.json"
     seen = read_json(seen_path, {})
@@ -60,17 +122,20 @@ def collect() -> list[dict]:
         name = row["Название"]
         rss_url = row["RSS"].strip()
         try:
-            feed = feedparser.parse(rss_url, request_headers={"User-Agent": "Mozilla/5.0 (leadyup-monitor-bot)"})
+            if is_telegram_source(rss_url):
+                entries = fetch_telegram_channel(rss_url)
+            else:
+                feed = feedparser.parse(rss_url, request_headers={"User-Agent": "Mozilla/5.0 (leadyup-monitor-bot)"})
+                if feed.bozo and not feed.entries:
+                    print(f"[WARN] {name}: фид не распарсился ({feed.bozo_exception})", file=sys.stderr)
+                    continue
+                entries = feed.entries
         except Exception as exc:  # сеть/парсинг — не роняем весь прогон
             print(f"[WARN] {name}: {exc}", file=sys.stderr)
             continue
 
-        if feed.bozo and not feed.entries:
-            print(f"[WARN] {name}: фид не распарсился ({feed.bozo_exception})", file=sys.stderr)
-            continue
-
         added = 0
-        for entry in feed.entries:
+        for entry in entries:
             link = entry.get("link", "").strip()
             title = entry.get("title", "").strip()
             if not link or not title:

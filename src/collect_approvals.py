@@ -207,7 +207,7 @@ def main():
                 token, "editMessageReplyMarkup",
                 chat_id=callback["message"]["chat"]["id"],
                 message_id=callback["message"]["message_id"],
-                reply_markup=build_topic_keyboard(item_id, entry["formats"]),
+                reply_markup=build_topic_keyboard(item_id, entry["formats"], rubric=entry.get("rubric")),
             )
             tg_call_safe(token, "answerCallbackQuery", callback_query_id=callback["id"], text=f"Формат: {fmt}")
             continue

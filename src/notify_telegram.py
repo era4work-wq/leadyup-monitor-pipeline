@@ -80,18 +80,28 @@ def _format_button(fmt: str, item_id: str, selected: set) -> dict:
     }
 
 
-def build_topic_keyboard(item_id: str, selected_formats: list) -> dict:
-    """Верхний ряд — RU-форматы, второй — EN-форматы (тумблеры контента,
-    можно выбрать несколько или ни одного — для RU тогда по умолчанию
-    берём «пост» при взятии в работу, для EN дефолта нет). Нижний ряд —
-    обычное решение по теме."""
+def build_topic_keyboard(item_id: str, selected_formats: list, rubric: str = None) -> dict:
+    """Тумблеры контента (можно выбрать несколько или ни одного — по
+    умолчанию берём «пост» при взятии в работу), плюс обычное решение по
+    теме.
+
+    «Статья» скрыта для тем НЕ из rubric=«боль-и-решение» (решение
+    16.08.2026 — длинные статьи только по болям, из мониторинга больше не
+    делаем ни одной; тему из мониторинга физически нельзя утвердить как
+    статью, только пост/карусель).
+
+    EN-ряд убран из клавиатуры (решение 22.08.2026 — этот репозиторий
+    теперь RU-only машина, английский переезжает в отдельный международный
+    проект). EN-генерация (write_draft_en.py и т.д.) в коде осталась
+    нетронутой, просто отсюда её больше нельзя вызвать тумблером — если
+    понадобится вернуть специально для этого репозитория, это одна строка
+    (вернуть en_row в inline_keyboard ниже), не переписывание с нуля."""
     selected = set(selected_formats or [])
-    ru_row = [_format_button(fmt, item_id, selected) for fmt in FORMAT_ORDER]
-    en_row = [_format_button(fmt, item_id, selected) for fmt in FORMAT_ORDER_EN]
+    ru_formats = FORMAT_ORDER if rubric == "боль-и-решение" else [f for f in FORMAT_ORDER if f != "статья"]
+    ru_row = [_format_button(fmt, item_id, selected) for fmt in ru_formats]
     return {
         "inline_keyboard": [
             ru_row,
-            en_row,
             [
                 {"text": "✅ Взять в работу", "callback_data": f"take:{item_id}"},
                 {"text": "❌ Пропустить", "callback_data": f"skip:{item_id}"},
@@ -203,7 +213,7 @@ def main():
     pending = {}
     for item in selected:
         text = format_message(item)
-        keyboard = build_topic_keyboard(item["id"], [])
+        keyboard = build_topic_keyboard(item["id"], [], rubric=item.get("rubric"))
         result = tg_call(
             token,
             "sendMessage",

@@ -51,6 +51,7 @@ def write_article(api_key: str, style: str, humanize_prompt: str, item: dict, ar
         "link": item["link"],
         "why": item.get("why", ""),
         "rubric": item.get("rubric", ""),
+        "persona": item.get("persona", ""),
         "article_text": (article_text or "")[:ARTICLE_TEXT_LIMIT] or None,
     }
     messages = [
@@ -85,11 +86,13 @@ def main():
     written = 0
     for item in pending:
         print(f"Пишу статью: {item['title'][:60]}", file=sys.stderr)
+        # С 16.08.2026 сюда попадают только темы rubric="боль-и-решение"
+        # (см. notify_telegram.build_topic_keyboard — «статья» скрыта для
+        # остальных тем), у них get_article() всегда отдаёт пустой текст
+        # по дизайну (фактура — в why из банка болей, не с внешней
+        # страницы) — это больше не повод пропускать тему.
         article = get_article(item)
         article_text = article.get("text")
-        if not article_text:
-            print("  нет текста источника — пропускаю (нельзя писать без фактуры)", file=sys.stderr)
-            continue
         text = write_article(api_key, style, humanize_prompt, item, article_text)
         if text == "НЕДОСТАТОЧНО ФАКТУРЫ":
             print("  модель отказалась — фактуры недостаточно", file=sys.stderr)
