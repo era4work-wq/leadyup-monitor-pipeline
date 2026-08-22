@@ -6,7 +6,12 @@
 статья на 1500-2500 слов, которая не публикуется автоматически (у VC.ru нет
 API — см. движок/площадки-и-форматы.md), а сдаётся файлом в чат согласования
 через notify_article.py.
-"""
+
+Модуль — отдельная линия контента (не общая с постами/каруселями), гейтится
+секретом ARTICLES_ENABLED=true (решение владелицы 22.08.2026 — задел под
+будущий единый сервис, где посты/карусели/статьи включаются независимо друг
+от друга). Без секрета — молча пропускается, как EN/pains-модули."""
+import os
 import re
 import sys
 
@@ -65,6 +70,10 @@ def write_article(api_key: str, style: str, humanize_prompt: str, item: dict, ar
 
 
 def main():
+    if os.environ.get("ARTICLES_ENABLED", "").strip().lower() != "true":
+        print("ARTICLES_ENABLED не включён — модуль статей пропущен.", file=sys.stderr)
+        return
+
     api_key = require_env("OPENROUTER_API_KEY")
     style = (ROOT / "prompts" / "write-article.md").read_text(encoding="utf-8")
     humanize_prompt = (ROOT / "prompts" / "humanize.md").read_text(encoding="utf-8")

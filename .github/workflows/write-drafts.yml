@@ -82,6 +82,7 @@ jobs:
         continue-on-error: true
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ARTICLES_ENABLED: ${{ secrets.ARTICLES_ENABLED }}
         run: python write_article.py
 
       - name: Отправка статьи файлом в чат

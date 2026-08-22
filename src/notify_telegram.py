@@ -5,6 +5,7 @@ message_id сохраняется в data/pending/<дата>.json, чтобы co
 знал, какое сообщение редактировать после решения.
 """
 import json
+import os
 import sys
 
 import requests
@@ -88,7 +89,10 @@ def build_topic_keyboard(item_id: str, selected_formats: list, rubric: str = Non
     «Статья» скрыта для тем НЕ из rubric=«боль-и-решение» (решение
     16.08.2026 — длинные статьи только по болям, из мониторинга больше не
     делаем ни одной; тему из мониторинга физически нельзя утвердить как
-    статью, только пост/карусель).
+    статью, только пост/карусель). Плюс скрыта целиком, если модуль статей
+    выключен секретом ARTICLES_ENABLED (решение 22.08.2026 — статьи теперь
+    отдельная включаемая линия контента, как EN/pains, а не всегда-доступный
+    формат).
 
     EN-ряд убран из клавиатуры (решение 22.08.2026 — этот репозиторий
     теперь RU-only машина, английский переезжает в отдельный международный
@@ -96,8 +100,9 @@ def build_topic_keyboard(item_id: str, selected_formats: list, rubric: str = Non
     нетронутой, просто отсюда её больше нельзя вызвать тумблером — если
     понадобится вернуть специально для этого репозитория, это одна строка
     (вернуть en_row в inline_keyboard ниже), не переписывание с нуля."""
+    articles_enabled = os.environ.get("ARTICLES_ENABLED", "").strip().lower() == "true"
     selected = set(selected_formats or [])
-    ru_formats = FORMAT_ORDER if rubric == "боль-и-решение" else [f for f in FORMAT_ORDER if f != "статья"]
+    ru_formats = FORMAT_ORDER if (articles_enabled and rubric == "боль-и-решение") else [f for f in FORMAT_ORDER if f != "статья"]
     ru_row = [_format_button(fmt, item_id, selected) for fmt in ru_formats]
     return {
         "inline_keyboard": [
