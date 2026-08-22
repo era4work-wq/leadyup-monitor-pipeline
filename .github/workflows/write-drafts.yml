@@ -67,6 +67,7 @@ jobs:
         continue-on-error: true
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CAROUSELS_ENABLED: ${{ secrets.CAROUSELS_ENABLED }}
         run: python write_carousel.py
 
       - name: Отправка карусели на согласование

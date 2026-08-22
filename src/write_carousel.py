@@ -6,8 +6,15 @@
 финальный CTA (седьмой слайд статичный, не генерируется — см.
 notify_carousel.py). PNG не рендерятся здесь и не хранятся в репозитории —
 только текст и метаданные баннера, картинки собираются при отправке.
-"""
+
+Отдельная включаемая линия контента (как статьи, EN, pains) — гейтится
+секретом CAROUSELS_ENABLED=true (решение владелицы 22.08.2026, задел под
+будущий единый сервис). Баннер темы при этом ОБЩИЙ с постом/статьёй той же
+темы (drive_banners.get_or_pick_banner кэширует по item['id'], не по тому,
+какой модуль его вызвал) — включение/выключение карусели не плодит лишних
+генераций картинки."""
 import json
+import os
 import re
 import sys
 
@@ -163,6 +170,10 @@ def build_carousel_record(api_key: str, style: str, humanize_prompt: str, servic
 
 
 def main():
+    if os.environ.get("CAROUSELS_ENABLED", "").strip().lower() != "true":
+        print("CAROUSELS_ENABLED не включён — модуль карусели пропущен.", file=sys.stderr)
+        return
+
     api_key = require_env("OPENROUTER_API_KEY")
     style = (ROOT / "prompts" / "write-carousel.md").read_text(encoding="utf-8")
     humanize_prompt = (ROOT / "prompts" / "humanize.md").read_text(encoding="utf-8")

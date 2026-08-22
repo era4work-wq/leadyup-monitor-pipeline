@@ -39,6 +39,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           ARTICLES_ENABLED: ${{ secrets.ARTICLES_ENABLED }}
+          CAROUSELS_ENABLED: ${{ secrets.CAROUSELS_ENABLED }}
         run: python notify_telegram.py
 
       - name: Сохранить state и data обратно в репозиторий

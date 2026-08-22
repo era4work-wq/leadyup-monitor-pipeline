@@ -99,10 +99,19 @@ def build_topic_keyboard(item_id: str, selected_formats: list, rubric: str = Non
     проект). EN-генерация (write_draft_en.py и т.д.) в коде осталась
     нетронутой, просто отсюда её больше нельзя вызвать тумблером — если
     понадобится вернуть специально для этого репозитория, это одна строка
-    (вернуть en_row в inline_keyboard ниже), не переписывание с нуля."""
+    (вернуть en_row в inline_keyboard ниже), не переписывание с нуля.
+
+    «Карусель» скрыта целиком, если модуль выключен секретом
+    CAROUSELS_ENABLED — тот же паттерн, что у статей (решение 22.08.2026)."""
     articles_enabled = os.environ.get("ARTICLES_ENABLED", "").strip().lower() == "true"
+    carousels_enabled = os.environ.get("CAROUSELS_ENABLED", "").strip().lower() == "true"
+    statya_allowed = articles_enabled and rubric == "боль-и-решение"
+    ru_formats = [
+        f for f in FORMAT_ORDER
+        if not (f == "статья" and not statya_allowed)
+        and not (f == "карусель" and not carousels_enabled)
+    ]
     selected = set(selected_formats or [])
-    ru_formats = FORMAT_ORDER if (articles_enabled and rubric == "боль-и-решение") else [f for f in FORMAT_ORDER if f != "статья"]
     ru_row = [_format_button(fmt, item_id, selected) for fmt in ru_formats]
     return {
         "inline_keyboard": [
