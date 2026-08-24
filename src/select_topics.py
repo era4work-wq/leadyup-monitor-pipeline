@@ -44,6 +44,7 @@ def select(candidates: list[dict]) -> list[dict]:
         {
             **{k: c[k] for k in ("id", "title", "source", "link", "summary", "priority")},
             "age_days": c.get("age_days"),  # None = дата публикации неизвестна, см. select-criteria.md
+            "is_telegram": c.get("is_telegram", False),  # True = title обрезан механически, модель должна переписать, см. select-criteria.md
         }
         for c in candidates
     ]

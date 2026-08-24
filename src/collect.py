@@ -121,8 +121,9 @@ def collect() -> list[dict]:
     for row in sources:
         name = row["Название"]
         rss_url = row["RSS"].strip()
+        is_tg = is_telegram_source(rss_url)
         try:
-            if is_telegram_source(rss_url):
+            if is_tg:
                 entries = fetch_telegram_channel(rss_url)
             else:
                 feed = feedparser.parse(rss_url, request_headers={"User-Agent": "Mozilla/5.0 (leadyup-monitor-bot)"})
@@ -154,6 +155,7 @@ def collect() -> list[dict]:
                 {
                     "id": uid,
                     "title": title,
+                    "is_telegram": is_tg,  # для select_topics.py: title тут — обрезанный текст поста, не редакционный заголовок, см. select-criteria.md
                     "link": link,
                     "summary": summary[:600],
                     "source": name,
