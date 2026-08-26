@@ -298,6 +298,8 @@
     "formats": [
       "пост"
     ],
-    "status": "ждёт"
+    "status": "взято",
+    "approver": "Romanise",
+    "decided_at": "26.08 14:08"
   }
 }
