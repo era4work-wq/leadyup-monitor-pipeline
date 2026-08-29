@@ -95,11 +95,11 @@ def main():
     written = 0
     for item in pending:
         print(f"Пишу статью: {item['title'][:60]}", file=sys.stderr)
-        # С 16.08.2026 сюда попадают только темы rubric="боль-и-решение"
-        # (см. notify_telegram.build_topic_keyboard — «статья» скрыта для
-        # остальных тем), у них get_article() всегда отдаёт пустой текст
-        # по дизайну (фактура — в why из банка болей, не с внешней
-        # страницы) — это больше не повод пропускать тему.
+        # С 29.08.2026 сюда попадают темы и из мониторинга, и из банка
+        # болей (см. notify_telegram.build_topic_keyboard) — write-article.md
+        # сам определяет режим по наличию article_text: для боль-тем
+        # get_article() всегда отдаёт пустой текст по дизайну (фактура — в
+        # why), для тем мониторинга — текст источника.
         article = get_article(item)
         article_text = article.get("text")
         text = write_article(api_key, style, humanize_prompt, item, article_text)
