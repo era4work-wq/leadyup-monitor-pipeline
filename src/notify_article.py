@@ -92,20 +92,39 @@ def main():
         return
 
     service = drive_banners.get_service()
+    path = DATA_DIR / "article_sent" / f"{today()}.json"
 
-    article_sent = {}
+    sent_count = 0
+    failed = []
     for item in pending_send:
         print(f"Отправляю: {item['title'][:60]}", file=sys.stderr)
-        article_sent[item["id"]] = send_article(token, chat_id, item, service)
+        try:
+            result = send_article(token, chat_id, item, service)
+        except Exception as exc:
+            # Пишем СРАЗУ после каждой статьи (не батчем в конце) — при сбое
+            # (например Telegram 429 на N-й теме из партии) уже успешно
+            # отправленные не должны теряться и слаться заново завтра. Баг,
+            # пойманный на практике 09-10.09.2026: одно необработанное
+            # исключение посреди цикла роняло весь main() ДО единственной
+            # записи в конце — article_sent так и не обновлялся, и на
+            # следующий день ВСЕ статьи (включая уже успешно доставленные)
+            # рассылались заново, потому что already_sent_ids() их не видел.
+            print(f"  [ERROR] не удалось отправить: {exc}", file=sys.stderr)
+            failed.append(item["title"][:60])
+            continue
 
-    # Слияние, не перезапись — см. notify_final.py, тот же баг: несколько
-    # запусков write-drafts.yml в день (мгновенный триггер) стирали друг
-    # у друга уже отправленные записи.
-    path = DATA_DIR / "article_sent" / f"{today()}.json"
-    existing = read_json(path, {})
-    existing.update(article_sent)
-    write_json(path, existing)
-    print(f"Отправлено статей файлом: {len(article_sent)}.", file=sys.stderr)
+        # Слияние, не перезапись — см. notify_final.py, тот же баг: несколько
+        # запусков write-drafts.yml в день (мгновенный триггер) стирали друг
+        # у друга уже отправленные записи.
+        existing = read_json(path, {})
+        existing[item["id"]] = result
+        write_json(path, existing)
+        sent_count += 1
+
+    print(f"Отправлено статей файлом: {sent_count}.", file=sys.stderr)
+    if failed:
+        print(f"Не отправлено: {len(failed)} — попробуются в следующем запуске: {failed}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

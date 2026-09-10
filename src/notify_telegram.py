@@ -7,12 +7,38 @@ message_id сохраняется в data/pending/<дата>.json, чтобы co
 import json
 import os
 import sys
+import time
 
 import requests
 
 from common import DATA_DIR, require_env, today, read_json, write_json
 
 API_BASE = "https://api.telegram.org/bot{token}/{method}"
+
+MAX_RATE_LIMIT_RETRIES = 5  # на случай серии сообщений подряд (баннер+статья+фото на каждую тему) — Telegram шлёт 429, если бить API слишком часто
+
+
+def _post_with_retry(url: str, **kwargs):
+    """requests.post с обработкой 429 Too Many Requests — без этого один
+    rate-limit посреди цикла отправки роняет весь скрипт необработанным
+    исключением ДО того, как уже успешно отправленные темы попадут в
+    article_sent/final_sent и т.п., из-за чего на следующий день всё
+    рассылается заново с нуля (баг, пойманный на практике 09.09-10.09.2026
+    — 6 статей слались каждый день, потому что 6-я всегда падала по 429 и
+    state не сохранялся). Ждём ровно столько, сколько просит Telegram
+    (`retry_after`), плюс секунда про запас."""
+    kwargs.setdefault("timeout", 60)
+    for attempt in range(MAX_RATE_LIMIT_RETRIES):
+        resp = requests.post(url, **kwargs)
+        if resp.status_code != 429:
+            return resp
+        try:
+            wait = resp.json().get("parameters", {}).get("retry_after", 5)
+        except Exception:
+            wait = 5
+        print(f"  [WARN] Telegram 429, жду {wait + 1} сек (попытка {attempt + 1}/{MAX_RATE_LIMIT_RETRIES})", file=sys.stderr)
+        time.sleep(wait + 1)
+    return resp
 
 RUBRIC_LABEL = {
     "дайджест": "📰 дайджест",
@@ -25,7 +51,7 @@ RUBRIC_LABEL = {
 
 def tg_call(token: str, method: str, **params):
     url = API_BASE.format(token=token, method=method)
-    resp = requests.post(url, json=params, timeout=20)
+    resp = _post_with_retry(url, json=params, timeout=20)
     resp.raise_for_status()
     body = resp.json()
     if not body.get("ok"):
@@ -44,7 +70,7 @@ def tg_send_photo_bytes(token: str, chat_id, image_bytes: bytes, **params):
             continue
         data[key] = json.dumps(value) if isinstance(value, (dict, list)) else value
     files = {"photo": ("cover.png", image_bytes, "image/png")}
-    resp = requests.post(url, data=data, files=files, timeout=60)
+    resp = _post_with_retry(url, data=data, files=files)
     if not resp.ok:
         raise RuntimeError(f"Telegram API sendPhoto(bytes) failed ({resp.status_code}): {resp.text}")
     body = resp.json()
@@ -139,7 +165,7 @@ def tg_send_document_bytes(token: str, chat_id, filename: str, content_bytes: by
             continue
         data[key] = json.dumps(value) if isinstance(value, (dict, list)) else value
     files = {"document": (filename, content_bytes, "text/markdown")}
-    resp = requests.post(url, data=data, files=files, timeout=60)
+    resp = _post_with_retry(url, data=data, files=files)
     if not resp.ok:
         raise RuntimeError(f"Telegram API sendDocument failed ({resp.status_code}): {resp.text}")
     body = resp.json()
@@ -167,7 +193,7 @@ def tg_send_media_group_bytes(token: str, chat_id, photos: list[bytes], caption:
         media.append(entry)
         files[key] = (f"{key}.png", photo, "image/png")
     data = {"chat_id": chat_id, "media": json.dumps(media)}
-    resp = requests.post(url, data=data, files=files, timeout=120)
+    resp = _post_with_retry(url, data=data, files=files, timeout=120)
     if not resp.ok:
         raise RuntimeError(f"Telegram API sendMediaGroup failed ({resp.status_code}): {resp.text}")
     body = resp.json()

@@ -146,25 +146,28 @@ def main():
         return
 
     service = drive_banners.get_service()
+    path = DATA_DIR / "carousel_pending" / f"{today()}.json"
 
-    carousel_pending = {}
+    sent_count = 0
     for item in pending_send:
         print(f"Отправляю карусель: {item['title'][:60]}", file=sys.stderr)
         try:
-            carousel_pending[item["id"]] = send_carousel(token, chat_id, item, service)
+            result = send_carousel(token, chat_id, item, service)
         except Exception as exc:
             print(f"  [WARN] не удалось отправить карусель: {exc}", file=sys.stderr)
+            continue
+        # Пишем СРАЗУ после каждой карусели, не батчем в конце (см.
+        # notify_article.py — тот же класс бага пойман там 09-10.09.2026:
+        # процесс, убитый посреди цикла, терял бы даже успешные отправки).
+        # Слияние, не перезапись — см. notify_final.py: несколько запусков
+        # write-drafts.yml в день (мгновенный триггер) стирали друг у друга
+        # уже отправленные карточки.
+        existing = read_json(path, {})
+        existing[item["id"]] = result
+        write_json(path, existing)
+        sent_count += 1
 
-    if not carousel_pending:
-        return
-    # Слияние, не перезапись — см. notify_final.py, тот же баг: несколько
-    # запусков write-drafts.yml в день (мгновенный триггер) стирали друг
-    # у друга уже отправленные карточки.
-    path = DATA_DIR / "carousel_pending" / f"{today()}.json"
-    existing = read_json(path, {})
-    existing.update(carousel_pending)
-    write_json(path, existing)
-    print(f"Отправлено каруселей на согласование: {len(carousel_pending)}.", file=sys.stderr)
+    print(f"Отправлено каруселей на согласование: {sent_count}.", file=sys.stderr)
 
 
 if __name__ == "__main__":

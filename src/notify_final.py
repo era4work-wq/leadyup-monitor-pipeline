@@ -137,20 +137,39 @@ def main():
         return
 
     service = drive_banners.get_service()
-    final_pending = {}
-    for item in pending_send:
-        final_pending[item["id"]] = send_final_card(token, chat_id, item, service)
-
-    # Слияние, не перезапись — write-drafts.yml теперь может запускаться
-    # несколько раз в день (мгновенный триггер по каждому клику), и второй
-    # запуск в тот же день раньше стирал карточки, отправленные первым, —
-    # они переставали числиться «уже отправленными» и рассылались заново
-    # (поймано на практике 01.08.2026: посты A/B чередовались в файле).
     path = DATA_DIR / "final_pending" / f"{today()}.json"
-    existing = read_json(path, {})
-    existing.update(final_pending)
-    write_json(path, existing)
-    print(f"Отправлено на финальное согласование: {len(final_pending)}.", file=sys.stderr)
+
+    sent_count = 0
+    failed = []
+    for item in pending_send:
+        try:
+            result = send_final_card(token, chat_id, item, service)
+        except Exception as exc:
+            # Пишем СРАЗУ после каждой темы, не батчем в конце — иначе один
+            # сбой (например Telegram 429 при серии карточек подряд) роняет
+            # main() ДО единственной записи в конце, уже отправленные карточки
+            # теряются из final_pending и на следующий день рассылаются
+            # заново (тот же класс бага, что и 01.08.2026 — см. коммент
+            # ниже — но там был не exception, а перезапись; пойман заново на
+            # notify_article.py 09-10.09.2026, чинится тем же способом здесь).
+            print(f"  [ERROR] не удалось отправить {item.get('title','')[:60]}: {exc}", file=sys.stderr)
+            failed.append(item["id"])
+            continue
+
+        # Слияние, не перезапись — write-drafts.yml теперь может запускаться
+        # несколько раз в день (мгновенный триггер по каждому клику), и второй
+        # запуск в тот же день раньше стирал карточки, отправленные первым, —
+        # они переставали числиться «уже отправленными» и рассылались заново
+        # (поймано на практике 01.08.2026: посты A/B чередовались в файле).
+        existing = read_json(path, {})
+        existing[item["id"]] = result
+        write_json(path, existing)
+        sent_count += 1
+
+    print(f"Отправлено на финальное согласование: {sent_count}.", file=sys.stderr)
+    if failed:
+        print(f"Не отправлено: {len(failed)} — попробуются в следующем запуске.", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
